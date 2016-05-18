@@ -241,9 +241,7 @@ static NSString * indentifier = @"attentionCell";
 //数据解析
 - (void)getDataFromResponseObj:(id)responseObj {
     if ([responseObj[@"data"] isKindOfClass:[NSNull class]]) {//没有数据
-        self.dataAry = nil;
-        [self.baseTable reloadData];
-        return;
+        
     }else{//有数据
         NSArray * dataAry = responseObj[@"data"];
         for (NSDictionary * dict in dataAry) {//企业 数据解析
