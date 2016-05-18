@@ -12,15 +12,12 @@
 //#import "MainNavigationController.h"
 #import "ICETutorialController.h"
 #import "ICETutorialPage.h"
-#import <ShareSDK/ShareSDK.h>
-#import <ShareSDKConnector/ShareSDKConnector.h>
-#import "WXApi.h"
-#import "WeiboSDK.h"
-#import <TencentOpenAPI/QQApiInterface.h>
-#import <TencentOpenAPI/TencentOAuth.h>
 #import <SSKeychain.h>
 #import "XWLoginController.h"
-#import <Bugly/CrashReporter.h>
+#import "AppDelegate+ShareSDK.h"
+#import "AppDelegate+IQKeyBoard.h"
+#import "AppDelegate+Bugle.h"
+
 @interface AppDelegate ()
 @property (nonatomic, strong) NSArray *tutorialLayers;
 @property (nonatomic, strong) ICETutorialController *viewController;
@@ -28,92 +25,24 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIApplication *app = [UIApplication sharedApplication];
     app.statusBarStyle = UIStatusBarStyleLightContent;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
+    
     /*分享*/
     [self configureShare];
     /*配置键盘*/
-//    [self configureKeyBoard];
+    [self configureKeyBoard];
+    
+    [self configureBugle];
     //判断是不是第一次启动应用
     [self firstBegin];
 
-    //
-    [[CrashReporter sharedInstance] enableLog:YES];
-    [[CrashReporter sharedInstance] installWithAppId:@"900018522"];
     return YES;
 }
 
-#pragma mark - 分享
-- (void)configureShare {
-    /**
-     *  分享
-    */
-    [ShareSDK registerApp:@"12c00583791f6"
-          activePlatforms:@[@(SSDKPlatformSubTypeWechatSession),
-                            @(SSDKPlatformSubTypeWechatTimeline),
-                            @(SSDKPlatformSubTypeQQFriend),
-                            @(SSDKPlatformTypeSinaWeibo)]
-        onImport:^(SSDKPlatformType platformType) {
-        switch (platformType) {
-            case SSDKPlatformTypeWechat:
-            {
-                [ShareSDKConnector connectWeChat:[WXApi class]];
-                //                [ShareSDKConnector connectWeChat:[WXApi class] delegate:self];
-            }
-                break;
-            case SSDKPlatformTypeQQ :
-            {
-                [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
-            }
-                break;
-            case SSDKPlatformTypeSinaWeibo:
-            {
-                [ShareSDKConnector connectWeibo:[WeiboSDK class]];
-            }
-            default:
-                break;
-        }
-    } onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
-        switch (platformType) {
-            case SSDKPlatformTypeWechat:
-            {
-                [appInfo SSDKSetupWeChatByAppId:@"wxef37270a3109f624"
-                                      appSecret:@"cc188b3c1dc39115f983a0ef272e66c8"];
-            }
-                break;
-            case SSDKPlatformTypeQQ:
-            {
-                [appInfo SSDKSetupQQByAppId:@"1104978366"
-                                     appKey:@"1eAcBPNqzgqanUXS"
-                                   authType:@"SSDKAuthTypeSSO"];
-            }
-                break;
-            case SSDKPlatformTypeSinaWeibo:
-            {
-                [appInfo SSDKSetupSinaWeiboByAppKey:@"1649734259"
-                                          appSecret:@"b96788584a4150c4a1afd16be3a7361f"
-                                        redirectUri:@"http://www.sharesdk.cn"
-                                           authType:@"SSDKAuthTypeBoth"];
-            }
-                break;
-            default:
-                break;
-        }
-    }];
-}
-#pragma mark - 键盘
-- (void)configureKeyBoard {
-    //键盘
-    [[IQKeyboardManager sharedManager] setEnable:YES];
-    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
-    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
-    [IQKeyboardManager sharedManager].layoutIfNeededOnUpdate = YES;
-
-}
 #pragma mark - 第一次启动
 - (void)firstBegin {
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
@@ -129,7 +58,6 @@
                                                                 description:@"The Eiffel Tower with\n cloudy weather"pictureName:@"引导页-2.jpg"];
         
         ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithSubTitle:@"Picture 3" description:@"An other famous street of Paris" pictureName:@"引导页-3.jpg"];
-        
         
         self.tutorialLayers = [NSArray arrayWithObjects:layer1, layer2, layer3, nil];
         self.viewController = [[ICETutorialController alloc] initWithNibandPages:_tutorialLayers];

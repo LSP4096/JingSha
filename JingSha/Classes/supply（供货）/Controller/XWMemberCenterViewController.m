@@ -557,6 +557,7 @@ static NSString *const indentifier2 = @"XWCell";
     }
 }
 #pragma mark - 清理缓存
+//获取缓存数据的大小
 - (NSString *)calculateHistorySize {
     
     NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -566,19 +567,27 @@ static NSString *const indentifier2 = @"XWCell";
 }
 //清理缓存
 - (void)clear {
-    dispatch_async(
-                   dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-                   , ^{
-                       NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-                       NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
-                       for (NSString *p in files) {
-                           NSError *error;
-                           NSString *path = [cachPath stringByAppendingPathComponent:p];
-                           if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-                               [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确认清除" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ensureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        dispatch_async(
+                       dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+                       , ^{
+                           NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+                           NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
+                           for (NSString *p in files) {
+                               NSError *error;
+                               NSString *path = [cachPath stringByAppendingPathComponent:p];
+                               if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                                   [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+                               }
                            }
-                       }
-                       [self performSelectorOnMainThread:@selector(clearCacheSuccess) withObject:nil waitUntilDone:YES];});
+                           [self performSelectorOnMainThread:@selector(clearCacheSuccess) withObject:nil waitUntilDone:YES];});
+    }];
+    UIAlertAction *cancelACtion = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+    
+    [alertController addAction:ensureAction];
+    [alertController addAction:cancelACtion];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 //清理缓存成功
 -(void)clearCacheSuccess

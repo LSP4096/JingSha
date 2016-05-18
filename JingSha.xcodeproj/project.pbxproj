@@ -272,6 +272,9 @@
 		21F8E6081C29527400C73C9B /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21F8E6061C29527400C73C9B /* AddTableViewCell.xib */; };
 		21F8E60C1C295D8200C73C9B /* MyStandingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F8E60B1C295D8200C73C9B /* MyStandingsTableViewController.m */; };
 		21F8E6101C2964E500C73C9B /* TopHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F8E60F1C2964E500C73C9B /* TopHeaderView.m */; };
+		4C4664FC1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4664FB1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m */; };
+		4C4664FF1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4664FE1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.m */; };
+		4C4665021CEC3810005E31C1 /* AppDelegate+Bugle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4665011CEC3810005E31C1 /* AppDelegate+Bugle.m */; };
 		4CC6FCE91CE5B1CD00BF43DC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */; };
 		8106B21C1BF4B4CC005F94C3 /* FirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */; };
 		8106B2211BF4BDFD005F94C3 /* HeadViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21F1BF4BDFD005F94C3 /* HeadViewTableViewCell.m */; };
@@ -853,6 +856,12 @@
 		21F8E60F1C2964E500C73C9B /* TopHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopHeaderView.m; sourceTree = "<group>"; };
 		42BC8AC691B32255F68B79A7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4C4664F91CEC32BD005E31C1 /* AppMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppMacro.h; sourceTree = "<group>"; };
+		4C4664FA1CEC36E5005E31C1 /* AppDelegate+ShareSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ShareSDK.h"; sourceTree = "<group>"; };
+		4C4664FB1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ShareSDK.m"; sourceTree = "<group>"; };
+		4C4664FD1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+IQKeyBoard.h"; sourceTree = "<group>"; };
+		4C4664FE1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+IQKeyBoard.m"; sourceTree = "<group>"; };
+		4C4665001CEC3810005E31C1 /* AppDelegate+Bugle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Bugle.h"; sourceTree = "<group>"; };
+		4C4665011CEC3810005E31C1 /* AppDelegate+Bugle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Bugle.m"; sourceTree = "<group>"; };
 		4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8106B2191BF4B4CC005F94C3 /* FirstPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageViewController.h; sourceTree = "<group>"; };
 		8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstPageViewController.m; sourceTree = "<group>"; };
@@ -1589,6 +1598,12 @@
 			children = (
 				813679F31BE4758C0032C1E8 /* AppDelegate.h */,
 				813679F41BE4758C0032C1E8 /* AppDelegate.m */,
+				4C4664FD1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.h */,
+				4C4664FE1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.m */,
+				4C4664FA1CEC36E5005E31C1 /* AppDelegate+ShareSDK.h */,
+				4C4664FB1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m */,
+				4C4665001CEC3810005E31C1 /* AppDelegate+Bugle.h */,
+				4C4665011CEC3810005E31C1 /* AppDelegate+Bugle.m */,
 			);
 			name = Appdelegate;
 			sourceTree = "<group>";
@@ -1596,12 +1611,12 @@
 		4C4664F41CEC2F7E005E31C1 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				81B9834E1BE703A6005A6CA2 /* Login（登陆） */,
-				81BA8BA71BF447FF006954D6 /* Me(我的) */,
-				81BA8BA31BF447F8006954D6 /* request（求购） */,
 				81BA8B9F1BF447EA006954D6 /* firstPage（首页） */,
+				81BA8BA31BF447F8006954D6 /* request（求购） */,
 				813679E41BE4758C0032C1E8 /* Home（资讯） */,
-				813679E81BE4758C0032C1E8 /* Root（主页） */,
+				81BA8BA71BF447FF006954D6 /* Me(我的) */,
+				81B9834E1BE703A6005A6CA2 /* Login（登陆） */,
+				813679E81BE4758C0032C1E8 /* Root */,
 				813679EE1BE4758C0032C1E8 /* Mine */,
 			);
 			name = Module;
@@ -1903,14 +1918,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		813679E81BE4758C0032C1E8 /* Root（主页） */ = {
+		813679E81BE4758C0032C1E8 /* Root */ = {
 			isa = PBXGroup;
 			children = (
 				813679E91BE4758C0032C1E8 /* Controller */,
 				813679EC1BE4758C0032C1E8 /* Model */,
 				813679ED1BE4758C0032C1E8 /* View */,
 			);
-			name = "Root（主页）";
+			name = Root;
 			path = Classes/Main;
 			sourceTree = "<group>";
 		};
@@ -2842,7 +2857,9 @@
 				213F7FEA1C76ACC7006BC607 /* ShangjiaViewController.m in Sources */,
 				811393CA1BE9E99200FD0DCF /* RegisterViewController.m in Sources */,
 				21F8E5F61C290EEC00C73C9B /* AnswerMessageViewController.m in Sources */,
+				4C4664FC1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m in Sources */,
 				215BFA311C2E234200E61D1E /* DownTableViewController.m in Sources */,
+				4C4664FF1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.m in Sources */,
 				21DD095A1C2CDD6F00C13B15 /* CompoentCollectionViewCell.m in Sources */,
 				81BBC1E11BEDBC4D00D1216A /* HotSearchTableViewCell.m in Sources */,
 				81F2895B1BF9AA510078D0F8 /* FlatButton.m in Sources */,
@@ -2908,6 +2925,7 @@
 				21F402851C31104C003AF09D /* XWTableViewCell.m in Sources */,
 				21A9F2B31C1578F200B8878D /* RecommendSupplierTableViewCell.m in Sources */,
 				81C16F9C1C03EBF500588CD7 /* HelpTableViewController.m in Sources */,
+				4C4665021CEC3810005E31C1 /* AppDelegate+Bugle.m in Sources */,
 				21071F971C2A3E4A00D40D88 /* convertHistoryTableViewCell.m in Sources */,
 				21F8E6071C29527400C73C9B /* AddTableViewCell.m in Sources */,
 				81367A2B1BE4758C0032C1E8 /* NSString+Helper.m in Sources */,
