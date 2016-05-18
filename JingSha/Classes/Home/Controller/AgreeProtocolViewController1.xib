@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AgreeProtocolViewController">
+            <connections>
+                <outlet property="bgView" destination="aCb-Oi-adf" id="Emg-s3-ump"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCb-Oi-adf">
+                    <rect key="frame" x="20" y="84" width="335" height="388"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="《协议条款》" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjC-3i-ApB">
+                            <rect key="frame" x="20" y="10" width="102" height="21"/>
+                            <color key="backgroundColor" red="0.25117142689999999" green="0.28275138770000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBG-n8-aSb">
+                            <rect key="frame" x="310" y="0.0" width="25" height="30"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="AF8-rZ-XhK"/>
+                                <constraint firstAttribute="width" constant="25" id="j7w-0W-Bxd"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="tab-close">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2py-gR-5Te">
+                            <rect key="frame" x="20" y="41" width="295" height="327"/>
+                            <color key="backgroundColor" red="0.25117142690407923" green="0.28275138769924735" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.084248471617222487" blue="0.13931524613740642" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="IjC-3i-ApB" firstAttribute="top" secondItem="aCb-Oi-adf" secondAttribute="top" constant="10" id="62t-dd-n4S"/>
+                        <constraint firstAttribute="trailing" secondItem="oBG-n8-aSb" secondAttribute="trailing" id="BZ3-Y0-ZL2"/>
+                        <constraint firstItem="oBG-n8-aSb" firstAttribute="top" secondItem="aCb-Oi-adf" secondAttribute="top" id="EFl-Pu-R8F"/>
+                        <constraint firstAttribute="bottom" secondItem="2py-gR-5Te" secondAttribute="bottom" constant="20" id="Mn5-fT-FF9"/>
+                        <constraint firstAttribute="trailing" secondItem="2py-gR-5Te" secondAttribute="trailing" constant="20" id="Mto-9c-Ej2"/>
+                        <constraint firstItem="IjC-3i-ApB" firstAttribute="leading" secondItem="aCb-Oi-adf" secondAttribute="leading" constant="20" id="OfK-Yg-guH"/>
+                        <constraint firstItem="2py-gR-5Te" firstAttribute="leading" secondItem="aCb-Oi-adf" secondAttribute="leading" constant="20" id="rwa-Qn-2E8"/>
+                        <constraint firstItem="2py-gR-5Te" firstAttribute="top" secondItem="IjC-3i-ApB" secondAttribute="bottom" constant="10" id="zzN-hx-C64"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aCb-Oi-adf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="5Fo-Lh-oAP"/>
+                <constraint firstAttribute="bottom" secondItem="aCb-Oi-adf" secondAttribute="bottom" constant="195" id="Bin-PE-Ofp"/>
+                <constraint firstAttribute="centerX" secondItem="aCb-Oi-adf" secondAttribute="centerX" multiplier="0.5" id="Fqm-5e-eTa"/>
+                <constraint firstAttribute="centerY" secondItem="aCb-Oi-adf" secondAttribute="centerY" multiplier="1.2" id="IQa-aI-oP2"/>
+                <constraint firstAttribute="trailing" secondItem="aCb-Oi-adf" secondAttribute="trailing" constant="20" id="Nmq-5I-P5z"/>
+                <constraint firstItem="aCb-Oi-adf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="PLB-I5-XoL"/>
+                <constraint firstAttribute="bottom" secondItem="aCb-Oi-adf" secondAttribute="bottom" constant="248" id="fir-iL-OgN"/>
+                <constraint firstAttribute="trailing" secondItem="aCb-Oi-adf" secondAttribute="trailing" constant="68" id="rU0-o4-LXs"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Fqm-5e-eTa"/>
+                    <exclude reference="IQa-aI-oP2"/>
+                    <exclude reference="fir-iL-OgN"/>
+                    <exclude reference="rU0-o4-LXs"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="72.5" y="196.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tab-close" width="12" height="12"/>
+    </resources>
+</document>

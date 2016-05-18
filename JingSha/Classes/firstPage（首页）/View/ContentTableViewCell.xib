@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="contentCell" id="KGk-i7-Jjw" customClass="ContentTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ege-2l-pdq">
+                        <rect key="frame" x="20" y="0.0" width="280" height="149"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kMb-Mg-z5I" customClass="MyTextView">
+                                <rect key="frame" x="5" y="5" width="270" height="139"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.83529411764705885" green="0.83529411764705885" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderCorlor">
+                                        <color key="value" red="0.87851525448669388" green="0.9882352941176471" blue="0.21773221736022352" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="kMb-Mg-z5I" firstAttribute="leading" secondItem="ege-2l-pdq" secondAttribute="leading" constant="5" id="002-bq-bUx"/>
+                            <constraint firstItem="kMb-Mg-z5I" firstAttribute="top" secondItem="ege-2l-pdq" secondAttribute="top" constant="5" id="guO-OS-l4l"/>
+                            <constraint firstAttribute="trailing" secondItem="kMb-Mg-z5I" secondAttribute="trailing" constant="5" id="kVe-JI-yye"/>
+                            <constraint firstAttribute="bottom" secondItem="kMb-Mg-z5I" secondAttribute="bottom" constant="5" id="wXC-uG-W85"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                <color key="value" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YF0-ml-vS5">
+                        <rect key="frame" x="0.0" y="0.0" width="20" height="149"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="Css-60-52a"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4m-UN-ENj">
+                        <rect key="frame" x="300" y="0.0" width="20" height="149"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="K35-WK-iYQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="m4m-UN-ENj" secondAttribute="trailing" id="0o5-Lz-2gf"/>
+                    <constraint firstItem="m4m-UN-ENj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6AF-36-GQM"/>
+                    <constraint firstAttribute="bottom" secondItem="m4m-UN-ENj" secondAttribute="bottom" id="LKg-Ts-NsI"/>
+                    <constraint firstAttribute="bottom" secondItem="ege-2l-pdq" secondAttribute="bottom" id="QMl-eD-8r4"/>
+                    <constraint firstAttribute="trailing" secondItem="ege-2l-pdq" secondAttribute="trailing" constant="20" id="bYj-Vv-7wa"/>
+                    <constraint firstItem="ege-2l-pdq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="c60-Gk-r6o"/>
+                    <constraint firstItem="YF0-ml-vS5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fGy-4e-fNr"/>
+                    <constraint firstItem="ege-2l-pdq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="h6u-Jr-mYS"/>
+                    <constraint firstItem="YF0-ml-vS5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lu2-vJ-ngb"/>
+                    <constraint firstAttribute="bottom" secondItem="YF0-ml-vS5" secondAttribute="bottom" id="zoR-jZ-UEE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="textview" destination="kMb-Mg-z5I" id="jl5-va-Vpv"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

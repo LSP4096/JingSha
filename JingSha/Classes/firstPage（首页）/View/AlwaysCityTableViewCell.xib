@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="alwayCell" id="KGk-i7-Jjw" customClass="AlwaysCityTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ooy-Vu-e2J">
+                        <rect key="frame" x="0.0" y="0.0" width="80" height="43"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qh2-PA-wgm">
+                                <rect key="frame" x="10" y="7" width="60" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="13T-XM-cOV"/>
+                                    <constraint firstAttribute="width" constant="46" id="VgR-go-tku"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VgR-go-tku"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <constraints>
+                            <constraint firstItem="Qh2-PA-wgm" firstAttribute="leading" secondItem="Ooy-Vu-e2J" secondAttribute="leading" constant="10" id="NyM-Qc-emb"/>
+                            <constraint firstItem="Qh2-PA-wgm" firstAttribute="centerY" secondItem="Ooy-Vu-e2J" secondAttribute="centerY" id="To2-qH-gcu"/>
+                            <constraint firstAttribute="trailing" secondItem="Qh2-PA-wgm" secondAttribute="trailing" constant="10" id="dCC-Uj-CBd"/>
+                            <constraint firstItem="Qh2-PA-wgm" firstAttribute="centerX" secondItem="Ooy-Vu-e2J" secondAttribute="centerX" id="k86-st-BRu"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGs-mr-ECf">
+                        <rect key="frame" x="80" y="0.0" width="80" height="43"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckY-x8-rdS">
+                                <rect key="frame" x="10" y="7" width="60" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="eFq-ee-CB5"/>
+                                    <constraint firstAttribute="height" constant="30" id="mQz-t3-2mI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.41568627450980394" green="0.41568627450980394" blue="0.41568627450980394" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="eFq-ee-CB5"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <constraints>
+                            <constraint firstItem="ckY-x8-rdS" firstAttribute="centerY" secondItem="CGs-mr-ECf" secondAttribute="centerY" id="2si-uf-fMo"/>
+                            <constraint firstAttribute="trailing" secondItem="ckY-x8-rdS" secondAttribute="trailing" constant="10" id="8PM-q9-TRD"/>
+                            <constraint firstItem="ckY-x8-rdS" firstAttribute="leading" secondItem="CGs-mr-ECf" secondAttribute="leading" constant="10" id="f8N-id-Kfb"/>
+                            <constraint firstItem="ckY-x8-rdS" firstAttribute="centerX" secondItem="CGs-mr-ECf" secondAttribute="centerX" id="hRM-S5-cPv"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvB-9a-eML">
+                        <rect key="frame" x="160" y="0.0" width="80" height="43"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGw-03-9yM">
+                                <rect key="frame" x="10" y="7" width="60" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ut1-YO-ZNh"/>
+                                    <constraint firstAttribute="width" constant="46" id="dSG-tf-I2s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.42352941176470588" green="0.42352941176470588" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="dSG-tf-I2s"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="CGw-03-9yM" secondAttribute="trailing" constant="10" id="1lr-PP-QcS"/>
+                            <constraint firstItem="CGw-03-9yM" firstAttribute="leading" secondItem="DvB-9a-eML" secondAttribute="leading" constant="10" id="ChU-Ab-jQq"/>
+                            <constraint firstItem="CGw-03-9yM" firstAttribute="centerX" secondItem="DvB-9a-eML" secondAttribute="centerX" id="cgy-Zq-IaX"/>
+                            <constraint firstItem="CGw-03-9yM" firstAttribute="centerY" secondItem="DvB-9a-eML" secondAttribute="centerY" id="grv-07-VhB"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jt2-0u-tiE">
+                        <rect key="frame" x="240" y="0.0" width="80" height="43"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hST-xW-SAX">
+                                <rect key="frame" x="10" y="7" width="60" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="nYH-Ce-jeS"/>
+                                    <constraint firstAttribute="width" constant="46" id="pdd-eQ-9Ff"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="pdd-eQ-9Ff"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <constraints>
+                            <constraint firstItem="hST-xW-SAX" firstAttribute="centerX" secondItem="jt2-0u-tiE" secondAttribute="centerX" id="5aO-No-qbd"/>
+                            <constraint firstAttribute="trailing" secondItem="hST-xW-SAX" secondAttribute="trailing" constant="10" id="PmN-1Z-sMD"/>
+                            <constraint firstItem="hST-xW-SAX" firstAttribute="centerY" secondItem="jt2-0u-tiE" secondAttribute="centerY" id="i64-XN-UGu"/>
+                            <constraint firstItem="hST-xW-SAX" firstAttribute="leading" secondItem="jt2-0u-tiE" secondAttribute="leading" constant="10" id="sYL-z4-d4i"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Ooy-Vu-e2J" secondAttribute="bottom" id="1Ns-SR-we2"/>
+                    <constraint firstItem="jt2-0u-tiE" firstAttribute="width" secondItem="Ooy-Vu-e2J" secondAttribute="width" id="1yS-vJ-8Aj"/>
+                    <constraint firstItem="CGs-mr-ECf" firstAttribute="height" secondItem="Ooy-Vu-e2J" secondAttribute="height" id="4gO-sd-jP0"/>
+                    <constraint firstItem="jt2-0u-tiE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CqW-c0-N47"/>
+                    <constraint firstItem="jt2-0u-tiE" firstAttribute="height" secondItem="Ooy-Vu-e2J" secondAttribute="height" id="DmX-Lf-be5"/>
+                    <constraint firstAttribute="bottom" secondItem="jt2-0u-tiE" secondAttribute="bottom" id="DyJ-KF-ffi"/>
+                    <constraint firstItem="jt2-0u-tiE" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:4" id="Exz-EQ-esG"/>
+                    <constraint firstItem="CGs-mr-ECf" firstAttribute="leading" secondItem="Ooy-Vu-e2J" secondAttribute="trailing" id="JKL-zK-UAz"/>
+                    <constraint firstItem="jt2-0u-tiE" firstAttribute="leading" secondItem="DvB-9a-eML" secondAttribute="trailing" id="Jil-8A-w6T"/>
+                    <constraint firstAttribute="bottom" secondItem="CGs-mr-ECf" secondAttribute="bottom" id="P8D-CN-NMD"/>
+                    <constraint firstItem="CGs-mr-ECf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RmF-q6-lcM"/>
+                    <constraint firstItem="Ooy-Vu-e2J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="apM-WL-lik"/>
+                    <constraint firstAttribute="bottom" secondItem="DvB-9a-eML" secondAttribute="bottom" id="bcM-T1-sZF"/>
+                    <constraint firstItem="DvB-9a-eML" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fgl-Fg-FgU"/>
+                    <constraint firstItem="DvB-9a-eML" firstAttribute="width" secondItem="Ooy-Vu-e2J" secondAttribute="width" id="qZy-QO-A2a"/>
+                    <constraint firstItem="CGs-mr-ECf" firstAttribute="width" secondItem="Ooy-Vu-e2J" secondAttribute="width" id="unI-Td-z7f"/>
+                    <constraint firstItem="Ooy-Vu-e2J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zdE-yd-AY9"/>
+                    <constraint firstItem="DvB-9a-eML" firstAttribute="height" secondItem="Ooy-Vu-e2J" secondAttribute="height" id="zi8-fY-YYd"/>
+                    <constraint firstItem="DvB-9a-eML" firstAttribute="leading" secondItem="CGs-mr-ECf" secondAttribute="trailing" id="zsU-ke-whs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="button2" destination="ckY-x8-rdS" id="65v-fl-F9H"/>
+                <outlet property="button3" destination="CGw-03-9yM" id="0aK-WP-00y"/>
+                <outlet property="button4" destination="hST-xW-SAX" id="sGP-SM-Lpa"/>
+                <outlet property="buttton1" destination="Qh2-PA-wgm" id="QkX-xI-gVI"/>
+            </connections>
+            <point key="canvasLocation" x="-284" y="224"/>
+        </tableViewCell>
+    </objects>
+</document>

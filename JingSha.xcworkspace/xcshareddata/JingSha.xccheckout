@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DDA893F1-2A42-4CC5-AB98-85F8AB8A65B0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>JingSha</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>46F7C8D3F7A4EF2DB2625C3E7A9EC326B2CE6247</key>
+		<string>git.oschina.net:boc_web/JingSha.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>JingSha.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>46F7C8D3F7A4EF2DB2625C3E7A9EC326B2CE6247</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>git.oschina.net:boc_web/JingSha.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>46F7C8D3F7A4EF2DB2625C3E7A9EC326B2CE6247</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>46F7C8D3F7A4EF2DB2625C3E7A9EC326B2CE6247</string>
+			<key>IDESourceControlWCCName</key>
+			<string>JingSha</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StandingShopViewController">
+            <connections>
+                <outlet property="convertBut" destination="dWY-3O-gXH" id="Pa6-r7-xQp"/>
+                <outlet property="scoreBut" destination="7Mk-AU-mZv" id="Nwq-X5-hzr"/>
+                <outlet property="topBannerView" destination="tFx-hs-ri5" id="SYx-G4-Aai"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Mk-AU-mZv">
+                    <rect key="frame" x="0.0" y="184" width="188" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="mxR-Un-6Y2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="积分6224" image="Me_convertCount">
+                        <color key="titleColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnc-FP-Q1P">
+                    <rect key="frame" x="188" y="184" width="1" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="Tn1-dg-dZs"/>
+                        <constraint firstAttribute="height" constant="30" id="t2p-67-ED9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWY-3O-gXH">
+                    <rect key="frame" x="189" y="184" width="186" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="VQO-ni-5Cu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="兑换记录" image="Me_box2">
+                        <color key="titleColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="converthistoryButClicked:" destination="-1" eventType="touchUpInside" id="0aB-ah-y2d"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFx-hs-ri5" customClass="SDCycleScrollView">
+                    <rect key="frame" x="0.0" y="64" width="375" height="120"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.80012077052630226" green="1" blue="0.5556049213010823" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="IC1-Zj-IeB"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Mnc-FP-Q1P" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="184" id="BXV-hW-oB9"/>
+                <constraint firstItem="Mnc-FP-Q1P" firstAttribute="leading" secondItem="7Mk-AU-mZv" secondAttribute="trailing" id="II5-Fa-zvv"/>
+                <constraint firstItem="dWY-3O-gXH" firstAttribute="top" secondItem="tFx-hs-ri5" secondAttribute="bottom" id="KIX-dN-lru"/>
+                <constraint firstAttribute="trailing" secondItem="dWY-3O-gXH" secondAttribute="trailing" id="Kuq-JQ-bh5"/>
+                <constraint firstItem="tFx-hs-ri5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Md4-Ij-PXg"/>
+                <constraint firstItem="7Mk-AU-mZv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SIg-hf-dFh"/>
+                <constraint firstItem="7Mk-AU-mZv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="1:2" id="TQl-nW-KS8"/>
+                <constraint firstItem="7Mk-AU-mZv" firstAttribute="top" secondItem="tFx-hs-ri5" secondAttribute="bottom" id="bT9-ff-6Ed"/>
+                <constraint firstAttribute="trailing" secondItem="tFx-hs-ri5" secondAttribute="trailing" id="ecH-2G-ZNZ"/>
+                <constraint firstItem="tFx-hs-ri5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="ofC-J7-cBC"/>
+                <constraint firstItem="dWY-3O-gXH" firstAttribute="leading" secondItem="Mnc-FP-Q1P" secondAttribute="trailing" id="ynQ-Wc-o9s"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="104.5" y="371.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Me_box2" width="20" height="20"/>
+        <image name="Me_convertCount" width="20" height="20"/>
+    </resources>
+</document>

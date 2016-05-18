@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companyCollectCell" rowHeight="80" id="KGk-i7-Jjw" customClass="CompanyCollectTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetBusy" translatesAutoresizingMaskIntoConstraints="NO" id="MoP-Oe-l6r">
+                        <rect key="frame" x="15" y="10" width="71" height="59"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="福建省长乐市华源纺织有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpD-wb-ha6">
+                        <rect key="frame" x="91" y="16" width="170" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="kJE-KB-TYN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.32156862745098042" green="0.32156862745098042" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精纺纱线，粗纺纱线，半精纺纱线" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQv-cW-1ld">
+                        <rect key="frame" x="91" y="42" width="196" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="LcG-bb-vFf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.52549019607843139" green="0.52549019607843139" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Me_collectLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Rtq-l9-gNZ">
+                        <rect key="frame" x="302" y="43" width="8" height="11"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="WXl-Qi-9FM"/>
+                            <constraint firstAttribute="height" constant="11" id="m0h-S0-QZU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看企业" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVY-mG-bKx">
+                        <rect key="frame" x="266" y="21" width="44" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="M06-E5-Hj4"/>
+                            <constraint firstAttribute="height" constant="14" id="iEu-Cz-hp3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="dQv-cW-1ld" secondAttribute="bottom" constant="16" id="ANC-Jq-OoJ"/>
+                    <constraint firstAttribute="bottom" secondItem="Rtq-l9-gNZ" secondAttribute="bottom" constant="25" id="CLE-B4-0th"/>
+                    <constraint firstItem="QVY-mG-bKx" firstAttribute="leading" secondItem="dpD-wb-ha6" secondAttribute="trailing" constant="5" id="ERk-0A-zbX"/>
+                    <constraint firstItem="MoP-Oe-l6r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GB2-tY-IY4"/>
+                    <constraint firstItem="dQv-cW-1ld" firstAttribute="leading" secondItem="MoP-Oe-l6r" secondAttribute="trailing" constant="5" id="OAB-Ty-Oor"/>
+                    <constraint firstAttribute="trailing" secondItem="QVY-mG-bKx" secondAttribute="trailing" constant="10" id="PAv-5W-WPn"/>
+                    <constraint firstItem="Rtq-l9-gNZ" firstAttribute="leading" secondItem="dQv-cW-1ld" secondAttribute="trailing" constant="15" id="S5c-5Y-rqn"/>
+                    <constraint firstAttribute="trailing" secondItem="Rtq-l9-gNZ" secondAttribute="trailing" constant="10" id="Zqy-pX-fvK"/>
+                    <constraint firstAttribute="bottom" secondItem="MoP-Oe-l6r" secondAttribute="bottom" constant="10" id="aJe-h8-cHL"/>
+                    <constraint firstItem="MoP-Oe-l6r" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:4.5" id="cfZ-jg-TJH"/>
+                    <constraint firstItem="Rtq-l9-gNZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dmZ-zJ-7aM"/>
+                    <constraint firstItem="dpD-wb-ha6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="eIy-Pj-lgt"/>
+                    <constraint firstItem="QVY-mG-bKx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="eVe-kL-tq0"/>
+                    <constraint firstItem="MoP-Oe-l6r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="lOL-Ng-HpA"/>
+                    <constraint firstItem="dpD-wb-ha6" firstAttribute="leading" secondItem="MoP-Oe-l6r" secondAttribute="trailing" constant="5" id="qcb-jY-yow"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="dmZ-zJ-7aM"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="gongsiLable" destination="dpD-wb-ha6" id="zbk-aL-3vL"/>
+                <outlet property="logoImageView" destination="MoP-Oe-l6r" id="2BJ-mh-hM4"/>
+                <outlet property="zycpLable" destination="dQv-cW-1ld" id="m1H-GG-dNM"/>
+            </connections>
+            <point key="canvasLocation" x="282" y="200"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Me_collectLeft" width="6" height="7"/>
+        <image name="NetBusy" width="96" height="66"/>
+    </resources>
+</document>

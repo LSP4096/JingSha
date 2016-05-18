@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="visitCell" id="KGk-i7-Jjw" customClass="VisitTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="网络暂忙-193-133" translatesAutoresizingMaskIntoConstraints="NO" id="6rc-bN-Bdf">
+                        <rect key="frame" x="15" y="6" width="90" height="67"/>
+                        <animations/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="福建省长乐市华源纺织有限公司访问了您的涡流纺纱产品" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRW-wg-2UD">
+                        <rect key="frame" x="113" y="8" width="199" height="36"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="pxe-mj-bAB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-12-21  12：09" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4v-dJ-kGM">
+                        <rect key="frame" x="113" y="52" width="145" height="15"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="145" id="pN7-Ck-vFl"/>
+                            <constraint firstAttribute="height" constant="15" id="vGF-2e-qlD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="6rc-bN-Bdf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="45O-pw-NVc"/>
+                    <constraint firstItem="j4v-dJ-kGM" firstAttribute="top" secondItem="mRW-wg-2UD" secondAttribute="bottom" constant="8" id="5JY-SU-9YM"/>
+                    <constraint firstAttribute="trailing" secondItem="mRW-wg-2UD" secondAttribute="trailing" constant="8" id="BME-dh-tq5"/>
+                    <constraint firstItem="6rc-bN-Bdf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Hp3-xn-zdh"/>
+                    <constraint firstItem="mRW-wg-2UD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="KOn-p6-tty"/>
+                    <constraint firstAttribute="bottom" secondItem="6rc-bN-Bdf" secondAttribute="bottom" constant="6" id="P6E-er-BDv"/>
+                    <constraint firstItem="j4v-dJ-kGM" firstAttribute="leading" secondItem="6rc-bN-Bdf" secondAttribute="trailing" constant="8" id="Qa2-6z-vyM"/>
+                    <constraint firstItem="6rc-bN-Bdf" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:4" constant="10" id="RiZ-4u-tNF"/>
+                    <constraint firstItem="mRW-wg-2UD" firstAttribute="leading" secondItem="6rc-bN-Bdf" secondAttribute="trailing" constant="8" id="ljw-he-4FB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="网络暂忙-193-133" width="96" height="66"/>
+    </resources>
+</document>

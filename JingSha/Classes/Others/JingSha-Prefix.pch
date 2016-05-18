@@ -1,0 +1,96 @@
+//
+//  Yoyou-Prefix.pch
+//  Yoyou
+//
+//  Created by Remmo on 15/9/22.
+//  Copyright © 2015年 bocweb. All rights reserved.
+//
+
+#ifndef Yoyou_Prefix_pch
+#define Yoyou_Prefix_pch
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "UIButton+BackgroundColor.h"
+#import "UIView+Extension.h"
+#import "NSString+Helper.h"
+#import "MBProgressHUD+RY.h"
+#import "SVProgressHUD.h"
+//#import "UIImage+Color.h"
+#import "UIImageView+WebCache.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
+
+#import "IQKeyboardManager.h"
+
+#import "MJRefresh.h"
+#import "MJExtension.h"
+#import "HttpTool.h"
+#import "FMDatabase.h"
+//1. 日志输出宏定义
+#ifdef DEBUG
+// 调试状态
+#define MyLog(...) NSLog(__VA_ARGS__)
+#else
+// 发布状态
+#define MyLog(...)
+#endif
+// 2.获得RGB颜色
+
+#define RGBAColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
+#define RGBColor(r, g, b) RGBAColor(r,g,b,1.0)
+
+#define kGlobalBg RGBColor(242, 242, 242)
+#define kGlobalTintColor RGBColor(65, 156, 184)
+#define kGlobalRedColor RGBColor(226, 91, 91)
+#define kGlobalDividerColor RGBColor(230, 230, 230)
+
+// 随机色
+#define RandomColor RGBColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+
+//定义高度
+#define kUIScreenSize [UIScreen mainScreen].bounds.size
+#define kUIScreenWidth kUIScreenSize.width
+#define kUIScreenHeight kUIScreenSize.height
+
+#define kNavigationBarHeight 64
+#define kTabBarHeight 49
+
+//Key
+#define kLoginStateKey @"LoginStateKey"
+#define kUserLogin [[NSUserDefaults standardUserDefaults] boolForKey:kLoginStateKey]
+#define kServiceName @"Yoyou"
+
+#define kRongCloudTokenKey @"RongCloudTokenKey"
+#define kRongCloudUserIdKey @"RongCloudUserIdKey"
+
+#define kUserLogoutNotificaiton @"UserLogoutNotificaiton"
+
+#define kAppID  @"401626263"
+
+//#define kBaseURL  @"http://121.41.128.239:8096/jxw/index.php"
+#define kBaseURL  @"http://202.91.244.52/index.php"
+//存储用的key
+#define KKeyWithNewsID(newsID) [NSString stringWithFormat:@"%@.sqlite", newsID]
+#define KKeyWithHistory @"History.sqlite" //浏览历史
+#define KKeyWithCollection @"Collection"
+#define KKeyWithUserTel @"TEL"
+
+#define KUserImfor [SingleTon shareSingleTon].userInformation
+#import "SingleTon.h"
+//屏幕比例
+#define KProportionWidth kUIScreenWidth / 375
+#define KProportionHeight kUIScreenHeight / 667
+
+#import "UIImage+CH.h"
+#import "XWBaseMethod.h"
+#import "XWNetworkLabel.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "FlatButton.h"
+#import "UIColor+CustomColors.h"
+#import <POP/POP.h>
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import "KeyboardToolBar.h"
+
+#endif

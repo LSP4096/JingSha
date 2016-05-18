@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="converTopCell" id="KGk-i7-Jjw" customClass="convertTopTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="网络暂忙-193-133" translatesAutoresizingMaskIntoConstraints="NO" id="Z2s-lh-UTH">
+                        <rect key="frame" x="15" y="7" width="80" height="55"/>
+                        <animations/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="华为 荣耀 畅玩4X（白色）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kov-Wj-NXL">
+                        <rect key="frame" x="103" y="8" width="197" height="18"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="MFj-qF-BvI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="兑换积分：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHa-RE-S8X">
+                        <rect key="frame" x="103" y="36" width="56" height="14"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="56" id="tiz-sV-GRJ"/>
+                            <constraint firstAttribute="height" constant="14" id="uhq-2g-jIE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMo-DZ-Z8e">
+                        <rect key="frame" x="159" y="36" width="22" height="11"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="11" id="L9H-FP-TXT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.69803921570000005" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="Z2s-lh-UTH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="2KA-Sq-n2X"/>
+                    <constraint firstItem="Z2s-lh-UTH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="EPW-X3-nX3"/>
+                    <constraint firstItem="nMo-DZ-Z8e" firstAttribute="leading" secondItem="pHa-RE-S8X" secondAttribute="trailing" id="Lga-LX-ni1"/>
+                    <constraint firstItem="pHa-RE-S8X" firstAttribute="top" secondItem="kov-Wj-NXL" secondAttribute="bottom" constant="10" id="MEl-0e-o0d"/>
+                    <constraint firstItem="kov-Wj-NXL" firstAttribute="leading" secondItem="Z2s-lh-UTH" secondAttribute="trailing" constant="8" id="Nuj-KF-4CZ"/>
+                    <constraint firstAttribute="trailing" secondItem="kov-Wj-NXL" secondAttribute="trailing" constant="20" id="Tc0-Er-XpY"/>
+                    <constraint firstItem="Z2s-lh-UTH" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:4" id="bTc-62-WMT"/>
+                    <constraint firstItem="pHa-RE-S8X" firstAttribute="leading" secondItem="Z2s-lh-UTH" secondAttribute="trailing" constant="8" id="fKp-zH-jxi"/>
+                    <constraint firstItem="nMo-DZ-Z8e" firstAttribute="top" secondItem="kov-Wj-NXL" secondAttribute="bottom" constant="10" id="g8g-rJ-lMP"/>
+                    <constraint firstAttribute="bottom" secondItem="Z2s-lh-UTH" secondAttribute="bottom" constant="7" id="qMr-P3-of3"/>
+                    <constraint firstItem="kov-Wj-NXL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="r3H-iC-K7J"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="jifenLable" destination="nMo-DZ-Z8e" id="wYt-ej-V51"/>
+                <outlet property="photoImageView" destination="Z2s-lh-UTH" id="767-Cj-u4b"/>
+                <outlet property="titleLable" destination="kov-Wj-NXL" id="Na5-YE-1ZA"/>
+            </connections>
+            <point key="canvasLocation" x="472" y="230"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="网络暂忙-193-133" width="96" height="66"/>
+    </resources>
+</document>

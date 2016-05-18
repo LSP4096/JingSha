@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CertifyViewController">
+            <connections>
+                <outlet property="backView" destination="jOx-Je-6Cf" id="abf-VI-Clv"/>
+                <outlet property="centifierImageView" destination="hcd-3d-XLm" id="zZ4-F0-02q"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工商注册信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg5-nh-RLf">
+                    <rect key="frame" x="20" y="10" width="92" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="92" id="ChN-I5-TeZ"/>
+                        <constraint firstAttribute="height" constant="21" id="wVO-8k-V3D"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.63921568627450975" green="0.63921568627450975" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOx-Je-6Cf">
+                    <rect key="frame" x="0.0" y="37" width="375" height="210"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hcd-3d-XLm">
+                            <rect key="frame" x="20" y="10" width="335" height="190"/>
+                            <animations/>
+                        </imageView>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="hcd-3d-XLm" secondAttribute="trailing" constant="20" id="2fp-hp-j1y"/>
+                        <constraint firstAttribute="bottom" secondItem="hcd-3d-XLm" secondAttribute="bottom" constant="10" id="7NV-Kz-01s"/>
+                        <constraint firstAttribute="height" constant="210" id="Ji7-60-0F4"/>
+                        <constraint firstItem="hcd-3d-XLm" firstAttribute="leading" secondItem="jOx-Je-6Cf" secondAttribute="leading" constant="20" id="Qqa-jT-7Fg"/>
+                        <constraint firstItem="hcd-3d-XLm" firstAttribute="top" secondItem="jOx-Je-6Cf" secondAttribute="top" constant="10" id="qfP-bb-EqQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="jOx-Je-6Cf" firstAttribute="top" secondItem="eg5-nh-RLf" secondAttribute="bottom" constant="6" id="74f-Vm-UMI"/>
+                <constraint firstAttribute="trailing" secondItem="jOx-Je-6Cf" secondAttribute="trailing" id="91s-2c-vAN"/>
+                <constraint firstItem="eg5-nh-RLf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="Hk6-sp-7Z7"/>
+                <constraint firstItem="eg5-nh-RLf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Jnz-WK-HD9"/>
+                <constraint firstItem="jOx-Je-6Cf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O80-j1-xS1"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="327.5" y="406.5"/>
+        </view>
+    </objects>
+</document>
