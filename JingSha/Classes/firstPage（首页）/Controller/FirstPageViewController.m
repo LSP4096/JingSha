@@ -48,7 +48,7 @@
 @property (nonatomic, assign) NSInteger pageCount;
 @property (nonatomic, copy) NSString * read;
 
-@property (nonatomic, strong) UILabel * titleViewLable;
+//@property (nonatomic, strong) UILabel * titleViewLable;
 @end
 
 static NSString *const reuseIdentifierWithHead = @"HeadViewTableViewCell";
@@ -82,17 +82,17 @@ static NSString *const reuseIdentifierWithMarketAttention = @"MarketAttentionTab
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setupTableView];
-    [self setupNavTitle];
+
     [self registeCell];
-//    [self setupLeftAndRightItem];
+//    [self setupNavTitle];
 }
 
-- (void)setupNavTitle{
-    self.titleViewLable = [[UILabel alloc] initWithFrame:CGRectMake(kUIScreenWidth/2 - 50, 5, 100, 30)];
-    _titleViewLable.text = @"中国纱线网";
-    _titleViewLable.textColor = [UIColor whiteColor];
-    self.navigationItem.titleView = _titleViewLable;
-}
+//- (void)setupNavTitle{
+//    self.titleViewLable = [[UILabel alloc] initWithFrame:CGRectMake(kUIScreenWidth/2 - 50, 5, 100, 30)];
+//    _titleViewLable.text = @"中国纱线网";
+//    _titleViewLable.textColor = [UIColor whiteColor];
+//    self.navigationItem.titleView = _titleViewLable;
+//}
 
 /**
  *  下拉刷新
@@ -501,7 +501,8 @@ static NSString *const reuseIdentifierWithMarketAttention = @"MarketAttentionTab
         //该显示在上边
         self.navigationItem.titleView = _secondSearchBtn;
     }else{
-        self.navigationItem.titleView = _titleViewLable;
+//        self.navigationItem.titleView = _titleViewLable;
+        self.navigationItem.titleView = nil;
     }
     
 }

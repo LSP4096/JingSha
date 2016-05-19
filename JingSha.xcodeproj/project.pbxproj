@@ -275,6 +275,8 @@
 		4C4664FC1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4664FB1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m */; };
 		4C4664FF1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4664FE1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.m */; };
 		4C4665021CEC3810005E31C1 /* AppDelegate+Bugle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4665011CEC3810005E31C1 /* AppDelegate+Bugle.m */; };
+		4C4721E51CED5DA7005143EB /* SupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4721E31CED5DA7005143EB /* SupportViewController.m */; };
+		4C4721E61CED5DA7005143EB /* SupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4721E41CED5DA7005143EB /* SupportViewController.xib */; };
 		4CC6FCE91CE5B1CD00BF43DC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */; };
 		8106B21C1BF4B4CC005F94C3 /* FirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */; };
 		8106B2211BF4BDFD005F94C3 /* HeadViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21F1BF4BDFD005F94C3 /* HeadViewTableViewCell.m */; };
@@ -862,6 +864,9 @@
 		4C4664FE1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+IQKeyBoard.m"; sourceTree = "<group>"; };
 		4C4665001CEC3810005E31C1 /* AppDelegate+Bugle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Bugle.h"; sourceTree = "<group>"; };
 		4C4665011CEC3810005E31C1 /* AppDelegate+Bugle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Bugle.m"; sourceTree = "<group>"; };
+		4C4721E21CED5DA7005143EB /* SupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportViewController.h; sourceTree = "<group>"; };
+		4C4721E31CED5DA7005143EB /* SupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportViewController.m; sourceTree = "<group>"; };
+		4C4721E41CED5DA7005143EB /* SupportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupportViewController.xib; sourceTree = "<group>"; };
 		4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8106B2191BF4B4CC005F94C3 /* FirstPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageViewController.h; sourceTree = "<group>"; };
 		8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstPageViewController.m; sourceTree = "<group>"; };
@@ -1613,6 +1618,7 @@
 			children = (
 				81BA8B9F1BF447EA006954D6 /* firstPage（首页） */,
 				81BA8BA31BF447F8006954D6 /* request（求购） */,
+				4C4721E11CED5D53005143EB /* Support（供应） */,
 				813679E41BE4758C0032C1E8 /* Home（资讯） */,
 				81BA8BA71BF447FF006954D6 /* Me(我的) */,
 				81B9834E1BE703A6005A6CA2 /* Login（登陆） */,
@@ -1668,6 +1674,40 @@
 			);
 			name = Vendors;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		4C4721E11CED5D53005143EB /* Support（供应） */ = {
+			isa = PBXGroup;
+			children = (
+				4C4721E71CED62F5005143EB /* Controller */,
+				4C4721E81CED6302005143EB /* Model */,
+				4C4721E91CED630B005143EB /* View */,
+			);
+			name = "Support（供应）";
+			sourceTree = "<group>";
+		};
+		4C4721E71CED62F5005143EB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4C4721E21CED5DA7005143EB /* SupportViewController.h */,
+				4C4721E31CED5DA7005143EB /* SupportViewController.m */,
+				4C4721E41CED5DA7005143EB /* SupportViewController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		4C4721E81CED6302005143EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4C4721E91CED630B005143EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		8129C88E1BFADAF700F78429 /* ShareSDK */ = {
@@ -2629,6 +2669,7 @@
 				211054B41C16C5D300C8D62E /* TwoTableViewCell.xib in Resources */,
 				8106B2221BF4BDFD005F94C3 /* HeadViewTableViewCell.xib in Resources */,
 				21A9F2BC1C15BC9600B8878D /* DetailGeneralCollectionViewCell.xib in Resources */,
+				4C4721E61CED5DA7005143EB /* SupportViewController.xib in Resources */,
 				21071FA91C2A467500D40D88 /* convertTotalTableViewCell.xib in Resources */,
 				21DD095B1C2CDD6F00C13B15 /* CompoentCollectionViewCell.xib in Resources */,
 				21F8E5F21C28FC5000C73C9B /* MessageContentTableViewCell.xib in Resources */,
@@ -2948,6 +2989,7 @@
 				211054CD1C16DBE800C8D62E /* ConnectStyleTableViewCell.m in Sources */,
 				211054AE1C16C2EB00C8D62E /* TopImageTableViewCell.m in Sources */,
 				81367A3B1BE4758C0032C1E8 /* main.m in Sources */,
+				4C4721E51CED5DA7005143EB /* SupportViewController.m in Sources */,
 				8144419D1BF736ED0018D72B /* CollectionModel.m in Sources */,
 				210EA6B11C3F49490020D828 /* NewsModel.m in Sources */,
 				818BAD9C1BE77E33002B467A /* ThreePhotoTableViewCell.m in Sources */,

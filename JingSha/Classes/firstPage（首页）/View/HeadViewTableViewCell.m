@@ -76,16 +76,17 @@
         [self.delegate clickedSuperMarketViewToPush:@"点击了纤维市场，对应API"];
     }
 }
-//配置求购信息
+
+//配置滚动视图
 - (void)configureData {
     //轮播图片
-    NSMutableArray *imagesURLs = [@[]mutableCopy];
+    NSMutableArray *imagesURLs = [NSMutableArray new];
     for (int i = 0; i < self.bannerDataAry.count; i++) {
         [imagesURLs addObject:[self.bannerDataAry[i] photo]];
     }
     NSArray * imagesURLStrings = [NSArray arrayWithArray:imagesURLs];
     //文字
-
+    
     //添加版图
      self.sdcycleScroll = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, kUIScreenWidth, KSDCycleScrollViewHeight)];
     _sdcycleScroll.placeholderImage = [UIImage imageNamed:@"NetBusy"];
@@ -118,6 +119,7 @@
     imageView.image = [UIImage imageNamed:@"search"];
     [_searchBarBtn addSubview:imageView];
 }
+
 //点击搜索框响应事件
 - (void)handelPush:(UIButton *)sender {
     [SingleTon shareSingleTon].selectBag = sender.tag;
@@ -125,6 +127,7 @@
         [self.delegate handlePushToSearchWithSender:sender];
     }
 }
+
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
@@ -137,7 +140,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 

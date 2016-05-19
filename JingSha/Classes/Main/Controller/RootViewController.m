@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "XWHomeController.h"
+//#import "XWHomeController.h" //资讯
 #import "UIBarButtonItem+CH.h"
 #import "FirstPageViewController.h"
 //#import "SupplyViewController.h"
@@ -15,6 +15,9 @@
 #import "MyRequestViewController.h"
 #import "MainNavigationController.h"
 #import "XWMemberCenterViewController.h"
+
+#import "SupportViewController.h"
+
 @interface RootViewController ()
 //当前显示的控制器
 //@property (nonatomic, strong) MainNavigationController *showNavController;
@@ -34,12 +37,17 @@
     [self addChildVC:shouyeVC vcTitle:@"中国纱线网" tabBarItemTitle:@"首页" image:@"main" selectedImage:@"main-selected"];
     
     //资讯
-    XWHomeController *home = [[XWHomeController alloc] init];
-    [self addChildVC:home vcTitle:@"新闻" tabBarItemTitle:@"资讯" image:@"News" selectedImage:@"News-selected"];
+//    XWHomeController *home = [[XWHomeController alloc] init];
+//    [self addChildVC:home vcTitle:@"新闻" tabBarItemTitle:@"资讯" image:@"News" selectedImage:@"News-selected"];
     
     //求购
     MyRequestViewController *requestVC = [[MyRequestViewController alloc] init];
     [self addChildVC:requestVC vcTitle:@"我的求购" tabBarItemTitle:@"求购" image:@"MainRequest" selectedImage:@"MainRequest-selected"];
+    
+    //供应
+    SupportViewController *supportVC = [[SupportViewController alloc] init];
+    [self addChildVC:supportVC vcTitle:@"供应" tabBarItemTitle:@"供应" image:@"MainRequest" selectedImage:@""];
+    
     //我的
     XWMemberCenterViewController * xwCenterVC = [[XWMemberCenterViewController alloc] init];
     [self addChildVC:xwCenterVC vcTitle:nil tabBarItemTitle:@"我的" image:@"tab-men" selectedImage:@"tab-men-selected"];
@@ -65,7 +73,7 @@
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:14.0];
     
     NSMutableDictionary *selectTextAttrs = [NSMutableDictionary dictionary];
-    selectTextAttrs[NSForegroundColorAttributeName] = RGBColor(28, 28, 40);
+    selectTextAttrs[NSForegroundColorAttributeName] = RGBColor(52, 125, 251);
   
     [childVC.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     [childVC.tabBarItem setTitleTextAttributes:selectTextAttrs forState:UIControlStateSelected];
