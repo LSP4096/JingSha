@@ -31,6 +31,8 @@
 #import "HuodongViewController.h"
 #import "ShangjiaViewController.h"
 #import "RecommendDetailViewController.h"
+
+//text reveer
 @interface FirstPageViewController () <UITableViewDataSource, UITableViewDelegate, HeadViewTableViewCellDelegate, TotalProviderTableViewCellDelegate, NewProductTableViewCellDelegate, DidAttentionTableViewCellDelegate>
 @property (strong, nonatomic) UIView *tableHeadView;
 
