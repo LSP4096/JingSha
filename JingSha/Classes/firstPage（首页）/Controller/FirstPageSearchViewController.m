@@ -23,6 +23,7 @@
 //@property (nonatomic, strong)UITableView * baseTable;
 @property (nonatomic, strong)NSMutableArray * titleAry;
 @property (nonatomic, strong)UIView * bodyView;
+
 //请求搜索数据
 @property (nonatomic, assign)NSInteger pageNum;
 @property (nonatomic, strong)NSMutableArray * dataAry;
@@ -37,13 +38,16 @@
 
 static NSString * indentifier = @"searchResultCell";
 @implementation FirstPageSearchViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.selectedTitle = @"产品";
     self.view.backgroundColor = RGBColor(236, 236, 236);
+    //最顶部的条（高20）
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kUIScreenWidth, 20)];
     view.backgroundColor = [UIColor blackColor];
     [self.view addSubview:view];
+    
     self.isChange = NO;
     [self configerSearchBar];
     [self configerTapToHidden];//点击页面，隐藏掉出现的下拉视图
@@ -55,7 +59,7 @@ static NSString * indentifier = @"searchResultCell";
     self.selectedTitle = @"产品";
 //    [self productButtonClicked];//先主动调用一次
     
-    self.cid = 23;
+    self.cid = 23;  //2 新闻  22 供应商  23 产品
     self.change = YES;
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -78,7 +82,6 @@ static NSString * indentifier = @"searchResultCell";
     NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
     [allParams setObject:@(cid) forKey:@"cid"];
     [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
-        MyLog(@"%@", responseObj);
         [self getDataFromResponseObj:responseObj];
     } failure:^(NSError *error) {
         
@@ -227,7 +230,7 @@ static NSString * indentifier = @"searchResultCell";
     //下拉菜单
     self.selctedView = [[UIView alloc] initWithFrame:CGRectMake(10, 75, 85, 70)];
     self.selctedView.backgroundColor = RGBColor(236, 236, 236);
-    [self.view.window addSubview:self.selctedView];
+    [self.view addSubview:self.selctedView];
     self.selctedView.hidden = YES;
     
     UIButton * productButton = [UIButton buttonWithType:UIButtonTypeCustom];

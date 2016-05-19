@@ -1467,6 +1467,8 @@
 		21C39C261C18205300F24B6B /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				21EF8BA31C1134ED00FCFCC4 /* FirstPageSearchViewController.h */,
+				21EF8BA41C1134ED00FCFCC4 /* FirstPageSearchViewController.m */,
 				21C39C221C181C5500F24B6B /* MoreRecommendViewController.h */,
 				21C39C231C181C5500F24B6B /* MoreRecommendViewController.m */,
 				81FEB5071C03176200BB786B /* AllSearchTableViewController.h */,
@@ -1475,8 +1477,6 @@
 				214491AF1C19A84A004D7573 /* SupplierSearchTableViewController.m */,
 				21549F2C1C47A99D004F435D /* CompTypeViewController.h */,
 				21549F2D1C47A99D004F435D /* CompTypeViewController.m */,
-				21EF8BA31C1134ED00FCFCC4 /* FirstPageSearchViewController.h */,
-				21EF8BA41C1134ED00FCFCC4 /* FirstPageSearchViewController.m */,
 				210AE8F01C1E4DD00061304C /* SelectAreaViewController.h */,
 				210AE8F11C1E4DD00061304C /* SelectAreaViewController.m */,
 				210AE8F31C1E4E130061304C /* SelectTypeViewController.h */,
