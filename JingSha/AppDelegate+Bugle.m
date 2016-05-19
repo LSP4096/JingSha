@@ -14,7 +14,7 @@
 - (void)configureBugle {
     
     [[CrashReporter sharedInstance] enableLog:YES];
-    [[CrashReporter sharedInstance] installWithAppId:@"900018522"];
+    [[CrashReporter sharedInstance] installWithAppId:@"900030886"];
 }
 
 @end
