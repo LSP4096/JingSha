@@ -119,9 +119,10 @@ static NSString * indentifier = @"searchResultCell";
     self.selctedView.hidden = YES;
     [_searchBar resignFirstResponder];
 }
+
 #pragma mark --
 - (void)configerSearchBar{
-    UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kUIScreenWidth, 65)];
+    UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kUIScreenWidth, 65)]; //导航条部分
     topView.backgroundColor = RGBColor(250, 250, 250);
     [self.view addSubview:topView];
 
@@ -195,6 +196,7 @@ static NSString * indentifier = @"searchResultCell";
         _selctedView.hidden = YES;
     }
 }
+
 #pragma mark -- 点击下拉菜单内的按钮时的触发事件
 - (void)productButtonClicked{
     //这两个方法对应下拉菜单里的两个按钮，点击哪一个本来显示的按钮就会显示那一个标题，顺便切换下边显示的 大家都在搜。
@@ -279,7 +281,7 @@ static NSString * indentifier = @"searchResultCell";
         [optionButton setTitleColor:RGBColor(123, 123, 123) forState:UIControlStateNormal];
         [optionButton setTitle:_titleAry[i] forState:UIControlStateNormal];
         optionButton.frame = CGRectMake(20 +  (Width + 15) * (i%3), 40 + (45 + 15) * (i/3), Width, 45);
-        Height = 40 + (45 + 15) * (i/3 + 1);
+        Height = 40 + (45 + 15) * (i/3 + 1);//下面历史搜索项的高度
         [optionButton addTarget:self action:@selector(optionButtonClieked:) forControlEvents:UIControlEventTouchUpInside];
         [_bodyView addSubview:optionButton];
     }
@@ -316,11 +318,12 @@ static NSString * indentifier = @"searchResultCell";
  */
 - (void)configerSearchHistory{
     NSArray * array = [[NSUserDefaults standardUserDefaults] objectForKey:@"titleAry"];
+    MyLog(@"titleArr-----%@",array);
     if (array.count > 9) {
         NSRange range = {array.count - 9 ,9};
         array = [array subarrayWithRange:range];
     }
-    NSMutableArray * titleAry = [@[]mutableCopy];
+    NSMutableArray * titleAry = [NSMutableArray new];
     NSSet *set = [NSSet setWithArray:array];
     for (NSString * title in set) {
         [titleAry addObject:title];
@@ -467,7 +470,7 @@ static NSString * indentifier = @"searchResultCell";
  */
 - (void)saveSearchhistory:(NSString *)title{
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
-    NSMutableArray * ary = [NSMutableArray arrayWithArray:[userDefault objectForKey:@"titleAry"]];
+    NSMutableArray * ary = [NSMutableArray arrayWithArray:[userDefault objectForKey:@"titleAry"]];//原来搜索的字符先添加
     [ary addObject:title];
     [userDefault setObject:ary forKey:@"titleAry"];
 }

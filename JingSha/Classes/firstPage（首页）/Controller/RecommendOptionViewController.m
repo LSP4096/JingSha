@@ -18,6 +18,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "SelectTypeViewController.h"
 #define kPageCount 10
+
 @interface RecommendOptionViewController ()<UITableViewDataSource, UITableViewDelegate,DZNEmptyDataSetDelegate, DZNEmptyDataSetSource, UISearchBarDelegate>
 @property (nonatomic, strong)UISearchBar *searchBar;
 @property (nonatomic, strong)UITableView *baseTable;
@@ -103,6 +104,7 @@
         
     }];
 }
+
 /**
  *  解析数据
  */
@@ -128,7 +130,6 @@
 }
 
 #pragma mark - UISearchBarDelegate
-
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     self.optionSearchText = searchText;
     if (searchText.length == 0) {
@@ -142,7 +143,7 @@
 #pragma mark -- 配置导航栏
 - (void)configerNavgationBar{
     CGRect mainViewBounds = self.navigationController.view.bounds;
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(CGRectGetMinX(mainViewBounds) + 60,CGRectGetMinY(mainViewBounds) + 7,mainViewBounds.size.width - 140,30)];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(CGRectGetMinX(mainViewBounds) + 60 ,CGRectGetMinY(mainViewBounds) + 7,mainViewBounds.size.width - 140,30)];
     _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];//取消搜索框背景色
     _searchBar.delegate =self;
     _searchBar.placeholder = @"请输入搜索关键字";
@@ -150,10 +151,10 @@
 //    [self.navigationController.navigationBar addSubview: _searchBar];
     //右侧按钮
     UIButton * rightButton2 = [UIButton buttonWithType:UIButtonTypeCustom];
-//    rightButton2.backgroundColor = [UIColor red Color];
+//    rightButton2.backgroundColor = [UIColor redColor];
     rightButton2.frame  =CGRectMake(mainViewBounds.size.width - 50, 0, 35, 35);
-    [rightButton2 setImage:[UIImage imageNamed:@"sift"] forState:UIControlStateNormal];
-    rightButton2.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    [rightButton2 setImage:img(@"sift") forState:UIControlStateNormal];
+    rightButton2.imageEdgeInsets = UIEdgeInsetsMake(3, -5, 0, 0);//上左下右 原则
     [rightButton2 setTitle:@"筛选" forState:UIControlStateNormal];
     rightButton2.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 0, -20);
     
@@ -162,6 +163,7 @@
     [rightButton2 addTarget:self action:@selector(rightBarButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = but2;
 }
+
 /**
  *  筛选按钮响应事件
  */
@@ -180,6 +182,7 @@
         [self.navigationController pushViewController:supplierVC animated:YES];
     }
 }
+
 //取消searchbar背景色
 - (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
 {
@@ -195,6 +198,7 @@
     
     return image;
 }
+
 #pragma mark -- Lazy Loading
 - (UITableView *)baseTable{
     if (!_baseTable) {
@@ -215,6 +219,7 @@
     }
     return _baseTable;
 }
+
 #pragma mark - DZNEmptyDataSetDelegate,DZNEmptyDataSetSource
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = @"未搜索到相关信息";
@@ -226,6 +231,7 @@
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"banner01"];
 }
+
 #pragma mark -- UITableView代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataAry.count;
