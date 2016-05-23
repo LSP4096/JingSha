@@ -20,14 +20,14 @@
 
 @implementation SupportViewController
 
-- (NSMutableArray *)dataSource {
-    if (_dataSource == nil) {
-        _dataSource = [[NSMutableArray alloc]init];
-        for (int i = 0; i < 10; i++) {
-            [_dataSource addObject:str(@"%d",i)];
-        }
+- (void)viewDidLayoutSubviews {
+    //cell分割线的漂移需要设置两个方法才有效
+    if ([_baseTabView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_baseTabView setSeparatorInset:UIEdgeInsetsZero];
     }
-    return _dataSource;
+    if ([_baseTabView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_baseTabView setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)viewDidLoad {
@@ -36,7 +36,6 @@
     
     [self configureSearchBar];
     [self.view addSubview:self.baseTabView];
-    
 }
 
 /**
@@ -62,13 +61,24 @@
     [topView addSubview:self.searchBar];
 }
 
-#pragma mark--Lazy Loading
+#pragma mark - Lazy Loading
+- (NSMutableArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [[NSMutableArray alloc]init];
+        for (int i = 0; i < 10; i++) {
+            [_dataSource addObject:str(@"%d",i)];
+        }
+    }
+    return _dataSource;
+}
+
 - (UISearchBar *)searchBar {
     if (!_searchBar) {
         _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(20, 10, kUIScreenWidth - 40, 40)];
         _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:_searchBar.frame.size];
         _searchBar.placeholder = @"请输入关键字";
         _searchBar.searchBarStyle = 2;
+//        _searchBar.showsCancelButton = YES;
         _searchBar.delegate = self;
     }
     return _searchBar;
@@ -79,8 +89,11 @@
         _baseTabView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavigationBarHeight + KTopViewHeight, kUIScreenWidth, kUIScreenHeight - kNavigationBarHeight - KTopViewHeight- 45) style:UITableViewStylePlain];
         _baseTabView.delegate = self;
         _baseTabView.dataSource = self;
+        _baseTabView.rowHeight = 65;
         _baseTabView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData)];
         _baseTabView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+
+        
         
     }
     return _baseTabView;
@@ -102,10 +115,20 @@
     return image;
 }
 
-#pragma mark --tabViewDataSource
+#pragma mark - UITabViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSource.count;
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell == nil) {
@@ -115,9 +138,19 @@
     return cell;
 }
 
-#pragma mark --tabViewDelegate
+#pragma mark - UITabViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.baseTabView deselectRowAtIndexPath:indexPath animated:YES];
+
+}
+
+#pragma mark - UISearchBarDelegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    return YES;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    MyLog(@"%@",searchBar.text);
 }
 
 
@@ -126,14 +159,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

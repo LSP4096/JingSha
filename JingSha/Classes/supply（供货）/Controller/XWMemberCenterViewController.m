@@ -165,7 +165,6 @@ static NSString *const indentifier2 = @"XWCell";
             loginVC.fd_prefersNavigationBarHidden = YES;
             [self.navigationController pushViewController:loginVC animated:YES];
     }
-    
 }
 #pragma mark - 提交编辑
 - (void)handleSubmit {
