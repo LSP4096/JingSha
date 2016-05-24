@@ -28,10 +28,10 @@
 @implementation HeadViewTableViewCell
 
 - (void)awakeFromNib {
-    UITapGestureRecognizer *WantBuyTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(wantBuyViewClicked)];
-    [self.wantBuyView addGestureRecognizer:WantBuyTapGesture];
-    UITapGestureRecognizer *SuperMarketTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(superMarketViewClicked)];
-    [self.superMarketView addGestureRecognizer:SuperMarketTapGesture];
+//    UITapGestureRecognizer *WantBuyTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(wantBuyViewClicked)];
+//    [self.wantBuyView addGestureRecognizer:WantBuyTapGesture];
+//    UITapGestureRecognizer *SuperMarketTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(superMarketViewClicked)];
+//    [self.superMarketView addGestureRecognizer:SuperMarketTapGesture];
     
     [self loadHomePageData];
 }
@@ -65,17 +65,17 @@
 }
 
 
-- (void)wantBuyViewClicked{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(clickedWantBuyViewToPush:)]) {
-        [self.delegate clickedWantBuyViewToPush:@"点击了求购信息，对应API"];
-    }
-}
-
-- (void)superMarketViewClicked{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(clickedSuperMarketViewToPush:)]) {
-        [self.delegate clickedSuperMarketViewToPush:@"点击了纤维市场，对应API"];
-    }
-}
+//- (void)wantBuyViewClicked{
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(clickedWantBuyViewToPush:)]) {
+//        [self.delegate clickedWantBuyViewToPush:@"点击了求购信息，对应API"];
+//    }
+//}
+//
+//- (void)superMarketViewClicked{
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(clickedSuperMarketViewToPush:)]) {
+//        [self.delegate clickedSuperMarketViewToPush:@"点击了纤维市场，对应API"];
+//    }
+//}
 
 //配置滚动视图
 - (void)configureData {
@@ -104,7 +104,7 @@
     //添加搜索框 -- 图片！！！
     _searchBarBtn = [[UIButton alloc] initWithFrame:CGRectMake(kUIScreenWidth * 0.075, CGRectGetMaxY(_sdcycleScroll.frame) - KSearchBarHeight - 20, kUIScreenWidth * 0.85, KSearchBarHeight)];
     _searchBarBtn.layer.cornerRadius = 5;
-    [_searchBarBtn setTitle:@"请输入关键字" forState:UIControlStateNormal];
+    [_searchBarBtn setTitle:@"请输入产品/企业/求购" forState:UIControlStateNormal];
     [_searchBarBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     _searchBarBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     _searchBarBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;

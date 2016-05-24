@@ -202,6 +202,7 @@
     self.pageNum++;
     [self configerDataFromPage:self.pageNum type:self.typeNum];
 }
+
 /**
  *  右上角“全部”按钮及下拉菜单
  */

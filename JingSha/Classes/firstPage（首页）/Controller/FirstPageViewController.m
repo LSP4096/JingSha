@@ -31,7 +31,16 @@
 #import "HuodongViewController.h"
 #import "ShangjiaViewController.h"
 #import "RecommendDetailViewController.h"
-@interface FirstPageViewController () <UITableViewDataSource, UITableViewDelegate, HeadViewTableViewCellDelegate, TotalProviderTableViewCellDelegate, NewProductTableViewCellDelegate, DidAttentionTableViewCellDelegate>
+@interface FirstPageViewController ()
+<
+UITableViewDataSource,
+UITableViewDelegate,
+HeadViewTableViewCellDelegate,
+TotalProviderTableViewCellDelegate,
+NewProductTableViewCellDelegate,
+DidAttentionTableViewCellDelegate
+>
+
 @property (strong, nonatomic) UIView *tableHeadView;
 
 @property (strong, nonatomic) UITableView *contentTableView;
@@ -54,21 +63,10 @@
 static NSString *const reuseIdentifierWithHead = @"HeadViewTableViewCell";
 static NSString *const reuseIdentWithNewProdect = @"NewProductTableViewCell";
 static NSString *const reuseIdentifierWithMarketAttention = @"MarketAttentionTableViewCell";
+
 @implementation FirstPageViewController
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    NSInteger seletTag = [SingleTon shareSingleTon].selectBag;
-//    if (seletTag) {
-//        if (seletTag == KSearchBtnTag) {
-//            _isSearchBarHiden = NO;
-//            self.secondSearchBtn.hidden = YES;
-//        }
-//        if (seletTag == KSecondBtnTag) {
-//            _isSearchBarHiden = YES;
-//            self.secondSearchBtn.hidden = NO;
-//        }
-//    }
-//    [self refreshFirstPageData];
     
     self.tabBarController.tabBar.hidden = NO;
 }
@@ -84,22 +82,13 @@ static NSString *const reuseIdentifierWithMarketAttention = @"MarketAttentionTab
     [self setupTableView];
 
     [self registeCell];
-//    [self setupNavTitle];
 }
-
-//- (void)setupNavTitle{
-//    self.titleViewLable = [[UILabel alloc] initWithFrame:CGRectMake(kUIScreenWidth/2 - 50, 5, 100, 30)];
-//    _titleViewLable.text = @"中国纱线网";
-//    _titleViewLable.textColor = [UIColor whiteColor];
-//    self.navigationItem.titleView = _titleViewLable;
-//}
 
 /**
  *  下拉刷新
  */
 - (void)refreshFirstPageData{
     [self loadData];
-//    [self setupLeftAndRightItem];
 }
 
 /**
@@ -183,7 +172,7 @@ static NSString *const reuseIdentifierWithMarketAttention = @"MarketAttentionTab
     
     _secondSearchBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, kUIScreenWidth * 0.85,30)];//35 * KProportionHeight
     _secondSearchBtn.layer.cornerRadius = 5;
-    [_secondSearchBtn setTitle:@"请输入关键字" forState:UIControlStateNormal];
+    [_secondSearchBtn setTitle:@"请输入产品/企业/求购" forState:UIControlStateNormal];
     [_secondSearchBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     _secondSearchBtn.titleLabel.font = [UIFont systemFontOfSize:15];
 //    _secondSearchBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
@@ -209,14 +198,14 @@ static NSString *const reuseIdentifierWithMarketAttention = @"MarketAttentionTab
 - (void)handlePushToSearchWithSender:(UIButton *)sender{
     [self handlePuthAllSelectedWith:sender];
 }
-- (void)clickedWantBuyViewToPush:(NSString *)sender{
-    RequestViewController  *requestVC = [[RequestViewController alloc] init];
-    [self.navigationController pushViewController:requestVC animated:YES];
-}
-- (void)clickedSuperMarketViewToPush:(NSString *)sender{
-    SuperMarketViewController * superMarketVC = [[SuperMarketViewController alloc] init];
-    [self.navigationController pushViewController:superMarketVC animated:YES];
-}
+//- (void)clickedWantBuyViewToPush:(NSString *)sender{
+//    RequestViewController  *requestVC = [[RequestViewController alloc] init];
+//    [self.navigationController pushViewController:requestVC animated:YES];
+//}
+//- (void)clickedSuperMarketViewToPush:(NSString *)sender{
+//    SuperMarketViewController * superMarketVC = [[SuperMarketViewController alloc] init];
+//    [self.navigationController pushViewController:superMarketVC animated:YES];
+//}
 - (void)bannerPush:(BannerModel *)model{
     BannerViewController * bannerVC = [[BannerViewController alloc] init];
     bannerVC.TopTitle = model.title;
@@ -256,7 +245,7 @@ static NSString *const reuseIdentifierWithMarketAttention = @"MarketAttentionTab
 //返回cell的行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 300 * KProportionHeight;
+        return 210 * KProportionHeight;
     }else if (indexPath.section == 1){
         if (self.NewProCount <= 3) {
             return 200 * KProportionHeight * 1/2;
