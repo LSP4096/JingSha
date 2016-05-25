@@ -277,6 +277,12 @@
 		4C4665021CEC3810005E31C1 /* AppDelegate+Bugle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4665011CEC3810005E31C1 /* AppDelegate+Bugle.m */; };
 		4C4721E51CED5DA7005143EB /* SupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4721E31CED5DA7005143EB /* SupportViewController.m */; };
 		4C4721E61CED5DA7005143EB /* SupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4721E41CED5DA7005143EB /* SupportViewController.xib */; };
+		4C52C02A1CF5827E00159C2D /* SPHotProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C52C0281CF5827E00159C2D /* SPHotProductTableViewCell.m */; };
+		4C52C02B1CF5827E00159C2D /* SPHotProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C52C0291CF5827E00159C2D /* SPHotProductTableViewCell.xib */; };
+		4C52C0341CF583AF00159C2D /* SPExchangeCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C52C0321CF583AF00159C2D /* SPExchangeCenterCell.m */; };
+		4C52C0351CF583AF00159C2D /* SPExchangeCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C52C0331CF583AF00159C2D /* SPExchangeCenterCell.xib */; };
+		4C52C0391CF586E300159C2D /* SPLatestRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C52C0371CF586E300159C2D /* SPLatestRequestCell.m */; };
+		4C52C03A1CF586E300159C2D /* SPLatestRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C52C0381CF586E300159C2D /* SPLatestRequestCell.xib */; };
 		4CC6FCE91CE5B1CD00BF43DC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */; };
 		8106B21C1BF4B4CC005F94C3 /* FirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */; };
 		8106B2211BF4BDFD005F94C3 /* HeadViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21F1BF4BDFD005F94C3 /* HeadViewTableViewCell.m */; };
@@ -867,6 +873,15 @@
 		4C4721E21CED5DA7005143EB /* SupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportViewController.h; sourceTree = "<group>"; };
 		4C4721E31CED5DA7005143EB /* SupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportViewController.m; sourceTree = "<group>"; };
 		4C4721E41CED5DA7005143EB /* SupportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupportViewController.xib; sourceTree = "<group>"; };
+		4C52C0271CF5827E00159C2D /* SPHotProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHotProductTableViewCell.h; sourceTree = "<group>"; };
+		4C52C0281CF5827E00159C2D /* SPHotProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHotProductTableViewCell.m; sourceTree = "<group>"; };
+		4C52C0291CF5827E00159C2D /* SPHotProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPHotProductTableViewCell.xib; sourceTree = "<group>"; };
+		4C52C0311CF583AF00159C2D /* SPExchangeCenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPExchangeCenterCell.h; sourceTree = "<group>"; };
+		4C52C0321CF583AF00159C2D /* SPExchangeCenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPExchangeCenterCell.m; sourceTree = "<group>"; };
+		4C52C0331CF583AF00159C2D /* SPExchangeCenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPExchangeCenterCell.xib; sourceTree = "<group>"; };
+		4C52C0361CF586E300159C2D /* SPLatestRequestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLatestRequestCell.h; sourceTree = "<group>"; };
+		4C52C0371CF586E300159C2D /* SPLatestRequestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLatestRequestCell.m; sourceTree = "<group>"; };
+		4C52C0381CF586E300159C2D /* SPLatestRequestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPLatestRequestCell.xib; sourceTree = "<group>"; };
 		4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8106B2191BF4B4CC005F94C3 /* FirstPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageViewController.h; sourceTree = "<group>"; };
 		8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstPageViewController.m; sourceTree = "<group>"; };
@@ -2289,6 +2304,15 @@
 				8106B21E1BF4BDFD005F94C3 /* HeadViewTableViewCell.h */,
 				8106B21F1BF4BDFD005F94C3 /* HeadViewTableViewCell.m */,
 				8106B2201BF4BDFD005F94C3 /* HeadViewTableViewCell.xib */,
+				4C52C0361CF586E300159C2D /* SPLatestRequestCell.h */,
+				4C52C0371CF586E300159C2D /* SPLatestRequestCell.m */,
+				4C52C0381CF586E300159C2D /* SPLatestRequestCell.xib */,
+				4C52C0271CF5827E00159C2D /* SPHotProductTableViewCell.h */,
+				4C52C0281CF5827E00159C2D /* SPHotProductTableViewCell.m */,
+				4C52C0291CF5827E00159C2D /* SPHotProductTableViewCell.xib */,
+				4C52C0311CF583AF00159C2D /* SPExchangeCenterCell.h */,
+				4C52C0321CF583AF00159C2D /* SPExchangeCenterCell.m */,
+				4C52C0331CF583AF00159C2D /* SPExchangeCenterCell.xib */,
 				814C91E81C00337D00B60BB7 /* NewProductTableViewCell.h */,
 				814C91E91C00337D00B60BB7 /* NewProductTableViewCell.m */,
 				21A70B461C0FD3260061B114 /* NewsTableViewCell.h */,
@@ -2617,6 +2641,7 @@
 				213CB4DE1C26BA630062233B /* CompanyManageTableViewCell.xib in Resources */,
 				21B804C51C5B41E200CF931B /* CheckImageViewController.xib in Resources */,
 				81BA8BB91BF45DDB006954D6 /* RequestViewController.xib in Resources */,
+				4C52C02B1CF5827E00159C2D /* SPHotProductTableViewCell.xib in Resources */,
 				21F8E6081C29527400C73C9B /* AddTableViewCell.xib in Resources */,
 				81BBC1E71BEDD88900D1216A /* Feedback ViewController.xib in Resources */,
 				81AECF5E1BEB45BA00DF91D3 /* MemberEditViewController.xib in Resources */,
@@ -2635,6 +2660,7 @@
 				817E69BE1BF0402700E059E4 /* icon@2x.png in Resources */,
 				81C2282B1BEC948C00893B1B /* ChangePWViewController.xib in Resources */,
 				81C16FA91C04476900588CD7 /* CompanyEditViewController.xib in Resources */,
+				4C52C0351CF583AF00159C2D /* SPExchangeCenterCell.xib in Resources */,
 				21DD09601C2CF27C00C13B15 /* CompoentLongCollectionViewCell.xib in Resources */,
 				217498411C40A6ED0096A791 /* ConnectViewController.xib in Resources */,
 				2157D0DE1C44943000068B20 /* CompanyCollectTableViewCell.xib in Resources */,
@@ -2645,6 +2671,7 @@
 				21071FA41C2A43BC00D40D88 /* convertTopTableViewCell.xib in Resources */,
 				212784061C1535140097A1B4 /* RequestGeneralTableViewCell.xib in Resources */,
 				81C228261BEC8B4C00893B1B /* AgreeProtocolViewController1.xib in Resources */,
+				4C52C03A1CF586E300159C2D /* SPLatestRequestCell.xib in Resources */,
 				21071FAE1C2A478A00D40D88 /* convertDetailMessageTableViewCell.xib in Resources */,
 				210BA4D71C1A5D2D009457FF /* AttentionTableViewCell.xib in Resources */,
 				81AECF471BEAF31F00DF91D3 /* BigPhotoTableViewCell.xib in Resources */,
@@ -2822,6 +2849,7 @@
 				2138EDB41C707DDD00B438E4 /* BannerDetailViewController.m in Sources */,
 				210EA6C01C3FD1970020D828 /* MessageModel.m in Sources */,
 				2157D0E61C44BD4900068B20 /* ProListModel.m in Sources */,
+				4C52C0341CF583AF00159C2D /* SPExchangeCenterCell.m in Sources */,
 				214649EE1C2037CC00605AB5 /* LeaveDetailMessageTableViewCell.m in Sources */,
 				81C2282A1BEC948C00893B1B /* ChangePWViewController.m in Sources */,
 				2109375C1C0ED323003CE1CD /* WantBuyTableViewCell.m in Sources */,
@@ -2947,6 +2975,7 @@
 				21A8009D1C3E8369001C5655 /* RecommendSupplyModel.m in Sources */,
 				21071FA81C2A467500D40D88 /* convertTotalTableViewCell.m in Sources */,
 				214649E71C2018B800605AB5 /* LeaveMessageTableViewCell.m in Sources */,
+				4C52C0391CF586E300159C2D /* SPLatestRequestCell.m in Sources */,
 				21A800971C3E689B001C5655 /* BannerViewController.m in Sources */,
 				21CA63BC1C278DC7003FA159 /* CompanyJudgeTableViewController.m in Sources */,
 				81367A2C1BE4758C0032C1E8 /* NSString+Size.m in Sources */,
@@ -2958,6 +2987,7 @@
 				21A70B711C1047DD0061B114 /* ColumnReusableView.m in Sources */,
 				212C61AA1C3B68CC000AE56E /* CheckQuoteModel.m in Sources */,
 				81C16F9F1C04039400588CD7 /* CompanyInfoViewController.m in Sources */,
+				4C52C02A1CF5827E00159C2D /* SPHotProductTableViewCell.m in Sources */,
 				21E898C41C3E53400038757C /* BannerModel.m in Sources */,
 				81C16FA81C04476900588CD7 /* CompanyEditViewController.m in Sources */,
 				21549F271C473418004F435D /* NeedKnownViewController.m in Sources */,

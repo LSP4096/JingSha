@@ -10,7 +10,7 @@
 #import "SDCycleScrollView.h"
 
 //#define KTableHeaderViewHeight (300 * KProportionWidth)
-#define KSDCycleScrollViewHeight (210 * KProportionHeight)
+#define KSDCycleScrollViewHeight (180 * KProportionHeight)
 #define KSearchBarHeight (40 * KProportionHeight)
 #define KShoppingheight (41 * KProportionHeight)
 #define KSearchBtnTag 1000

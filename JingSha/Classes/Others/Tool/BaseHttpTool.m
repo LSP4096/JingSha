@@ -56,20 +56,10 @@
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",nil];
     
-//    if ([url rangeOfString:@"userinfo/my_buy_edit"].location != NSNotFound) {
-//        mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
-//        mgr.requestSerializer = [AFHTTPRequestSerializer serializer];
-//    }
-
-    
     // 2.发送POST请求
     [mgr POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObj) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-//        if ([url rangeOfString:@"userinfo/my_buy_edit"].location != NSNotFound) {
-//            NSString *result = [[NSString alloc] initWithData:responseObj encoding:NSUTF8StringEncoding];
-//            MyLog(@"&&&&&&&&&%@", result);
-//        }
+
         if (success) {
             success(responseObj);
         }

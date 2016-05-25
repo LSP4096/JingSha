@@ -105,7 +105,8 @@
             [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", responseObj[@"msg"]]];
         }
     } failure:^(NSError *error) {
- 
+        
+        MyLog(@"======登录请求错误======\n\n%@",error);
     }];
 }
 

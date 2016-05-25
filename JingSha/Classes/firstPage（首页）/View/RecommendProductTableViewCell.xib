@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,7 +16,6 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="品名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCH-Re-6Sn">
                         <rect key="frame" x="10" y="8" width="42" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="DVc-nO-tjM"/>
                             <constraint firstAttribute="width" constant="42" id="P0Q-L9-aWT"/>
@@ -27,7 +26,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精梳纯棉纱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyS-sQ-P3F">
                         <rect key="frame" x="52" y="8" width="180" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="180" id="DFl-eD-Bmc"/>
                             <constraint firstAttribute="height" constant="21" id="cU5-bE-unn"/>
@@ -38,7 +36,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生产企业：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dF3-Aa-Gd8">
                         <rect key="frame" x="10" y="33" width="70" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="15l-77-Hjm"/>
                             <constraint firstAttribute="width" constant="70" id="BJS-oQ-fZd"/>
@@ -49,7 +46,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原料成分：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNF-kx-bRM">
                         <rect key="frame" x="10" y="58" width="70" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="xjT-D4-CcI"/>
                             <constraint firstAttribute="height" constant="21" id="zRv-kU-LHl"/>
@@ -60,7 +56,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="江苏 泰州市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUj-dM-ULW">
                         <rect key="frame" x="10" y="83" width="106" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="106" id="2Wi-gi-I8i"/>
                             <constraint firstAttribute="width" constant="74" id="cof-fR-1CM"/>
@@ -77,7 +72,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支数：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9w-5J-LvG">
                         <rect key="frame" x="124" y="83" width="43" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="43" id="4Ss-fE-7SN"/>
                             <constraint firstAttribute="height" constant="21" id="aNq-m2-nc5"/>
@@ -88,7 +82,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCa-lx-ZxK">
                         <rect key="frame" x="240" y="83" width="42" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="42" id="UlF-H6-QXA"/>
                             <constraint firstAttribute="height" constant="21" id="lfx-2j-qCl"/>
@@ -99,7 +92,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="面议" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5R-G9-JBX">
                         <rect key="frame" x="282" y="83" width="28" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="ePC-64-yvD"/>
                         </constraints>
@@ -109,7 +101,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%棉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1I-Xf-GQn">
                         <rect key="frame" x="80" y="58" width="145" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="SaO-lZ-dHh"/>
                         </constraints>
@@ -119,7 +110,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="32S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcj-bX-yKw">
                         <rect key="frame" x="167" y="83" width="63" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="EQw-xy-7sC"/>
                         </constraints>
@@ -129,7 +119,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看详细&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2B-o2-LGJ">
                         <rect key="frame" x="245" y="45" width="65" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="65" id="gFk-Vf-5Mj"/>
                             <constraint firstAttribute="height" constant="21" id="gHn-dE-s3Q"/>
@@ -140,7 +129,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="江苏裕纶纺织集团有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Co-tO-5Cu">
                         <rect key="frame" x="80" y="33" width="206" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Dzt-pf-Kqf"/>
                         </constraints>
@@ -149,7 +137,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <animations/>
                 <constraints>
                     <constraint firstItem="8Co-tO-5Cu" firstAttribute="leading" secondItem="dF3-Aa-Gd8" secondAttribute="trailing" id="0HZ-Fg-4yC"/>
                     <constraint firstItem="S9w-5J-LvG" firstAttribute="leading" secondItem="BUj-dM-ULW" secondAttribute="trailing" constant="8" id="1nz-zw-TZC"/>
@@ -188,7 +175,6 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
-            <animations/>
             <connections>
                 <outlet property="chengfenLable" destination="d1I-Xf-GQn" id="H2Y-7J-YCv"/>
                 <outlet property="gongsiLable" destination="8Co-tO-5Cu" id="KHh-V3-YsI"/>

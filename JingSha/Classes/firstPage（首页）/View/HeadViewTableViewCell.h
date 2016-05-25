@@ -15,8 +15,8 @@
 //点击了搜索按钮
 - (void)handlePushToSearchWithSender:(UIButton *)sender;
 //点击了纤维超市和求购信息的代理，在视图控制器中push
-- (void)clickedWantBuyViewToPush:(NSString *)sender;
-- (void)clickedSuperMarketViewToPush:(NSString *)sender;
+//- (void)clickedWantBuyViewToPush:(NSString *)sender;
+//- (void)clickedSuperMarketViewToPush:(NSString *)sender;
 - (void)bannerPush:(BannerModel *)model;
 
 @end

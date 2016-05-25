@@ -143,7 +143,7 @@
                 <outlet property="titleLable" destination="Gb3-BE-VbK" id="0SX-kC-j6C"/>
                 <outlet property="yuanyinLable" destination="n4n-zD-nap" id="oii-Oe-s1S"/>
             </connections>
-            <point key="canvasLocation" x="-219" y="173"/>
+            <point key="canvasLocation" x="-127" y="235"/>
         </tableViewCell>
     </objects>
 </document>
