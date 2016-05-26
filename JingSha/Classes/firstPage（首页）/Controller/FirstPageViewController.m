@@ -40,7 +40,11 @@
 <
 UITableViewDataSource,
 UITableViewDelegate,
-HeadViewTableViewCellDelegate
+HeadViewTableViewCellDelegate,
+
+SPLatestRequestcellDelegate,
+SPHotProductCellDelegata
+
 //TotalProviderTableViewCellDelegate
 //NewProductTableViewCellDelegate,
 //DidAttentionTableViewCellDelegate
@@ -237,6 +241,21 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     }
 }
 
+#pragma mark - SPLatestRequestCell的代理
+//最新求购more按钮
+- (void)moreBtnClick:(UIButton *)sender {
+    RequestViewController  *requestVC = [[RequestViewController alloc] init];
+    [self.navigationController pushViewController:requestVC animated:YES];
+}
+
+#pragma mark - SPHotProductCellDelegata
+//热门产品more按钮
+- (void)HotProductMoreBtnClick:(id)sender {
+    
+    MoreRecommendViewController * moreRecommendVC = [[MoreRecommendViewController alloc] init];
+//    moreRecommendVC.fd_prefersNavigationBarHidden = YES;
+    [self.navigationController pushViewController:moreRecommendVC animated:YES];
+}
 
 #pragma mark -－－ UITableViewDataSource, UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -278,7 +297,12 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 //            return 150;
 //        }
 //    }
-    return 180 * KProportionHeight;
+    if (indexPath.section == 0) {
+        return 180 * KProportionHeight;
+    }
+    else {
+        return 150 * KProportionHeight;
+    }
 }
 
 //区头视图
@@ -391,7 +415,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 //            NewProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentWithNewProdect forIndexPath:indexPath];
             SPLatestRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithLatesRequest forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone; //选中时的颜色 无
-//            cell.delegate = self; 
+            cell.delegate = self; 
             return cell;
         }
             break;
@@ -400,7 +424,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 //            self.cell = [tableView dequeueReusableCellWithIdentifier:@"totalCell"];
             SPHotProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithHotProduct forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            _cell.delegate =self;
+            cell.delegate = self;
             return cell;
         }
         default:
