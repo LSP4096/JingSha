@@ -22,21 +22,20 @@
     [super awakeFromNib];
     // Initialization code
 
-    self.LabelView.frame = CGRectMake(128 * KProportionHeight, 45 * KProportionHeight, 277 * KProportionHeight, 96 * KProportionHeight);
-    [self baseLabelUI];
+//    [self baseLabelUI];
 }
 
-- (void)baseLabelUI {
-    for (int i =  0; i < 2; i++) {
-        for (int j = 0; j < 3; j++) {
-            CGFloat label_Y =  (j + 1) * (self.LabelView.frame.size.height - 3 * KLabelHight) / 4 + KLabelHight * j - 5;
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.LabelView.frame.size.width * 1/2 * i, label_Y, KLabelWeight, KLabelHight)];
-            label.tag = 100 * i + j * 200;
-            label.text = @"text";
-            [self.LabelView addSubview:label];
-        }
-    }
-}
+//- (void)baseLabelUI {
+//    for (int i =  0; i < 2; i++) {
+//        for (int j = 0; j < 3; j++) {
+//            CGFloat label_Y =  (j + 1) * (self.LabelView.frame.size.height - 3 * KLabelHight) / 4 + KLabelHight * j - 5;
+//            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.LabelView.frame.size.width * 1/2 * i, label_Y, KLabelWeight, KLabelHight)];
+//            label.tag = 100 * i + j * 200;
+//            label.text = @"text";
+//            [self.LabelView addSubview:label];
+//        }
+//    }
+//}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

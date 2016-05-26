@@ -301,7 +301,8 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
         return 180 * KProportionHeight;
     }
     else {
-        return 150 * KProportionHeight;
+//        return 160 * KProportionHeight;
+        return 160;
     }
 }
 
