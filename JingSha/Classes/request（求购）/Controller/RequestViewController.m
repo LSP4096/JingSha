@@ -15,6 +15,7 @@
  #import "UIScrollView+EmptyDataSet.h"
 #import "IssueRequestViewController.h"
 #define kTopViewHeight 65
+#define KSecViewHeight 100
 #define kPageCount 15
 @interface RequestViewController ()<UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate,DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
@@ -23,36 +24,116 @@
 @property (nonatomic, assign)NSInteger pageNum;
 @property (nonatomic, strong)NSMutableArray * dataAry;
 @property (nonatomic, copy)NSString * wanStr;
+@property (nonatomic, strong) UIButton *backBtn;
+
 @end
 
 @implementation RequestViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.title = @"求购信息";
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, kUIScreenWidth, kTopViewHeight)];
-    [self.view addSubview:view];
-    UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight - 1, kUIScreenWidth, 1)];
-    bottomView.backgroundColor = RGBColor(230, 230, 230);
-    [view addSubview:bottomView];
-    //搜素框
-    [view addSubview:self.searchBar];
-
-    //UITableView
-    [self.view addSubview:self.baseTable];
-    [self configerRigTopButton];
-    [self configerBottomView];
-    
-    self.pageNum = 1;
-    self.dataAry = [NSMutableArray array];
-    [self refreshNewData];
-}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 //    self.pageNum = 1;
 //    self.dataAry = [NSMutableArray array];
 //    [self refreshNewData];
+    
+    //显示tabBar
+//    [self setTabBarHidden:NO]; 
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kUIScreenWidth, kTopViewHeight)];
+    view.backgroundColor = RGBColor(31, 111, 251);
+    [self.view addSubview:view];
+    
+    //searBar底部View
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(55, 26, kUIScreenWidth - 100, 28)];
+    bottomView.backgroundColor = RGBColor(234, 235, 237);
+    bottomView.layer.cornerRadius = 5;
+    bottomView.layer.masksToBounds = YES;
+    bottomView.layer.borderWidth = 0.001;
+    [view addSubview:bottomView];
+    
+    //设置secView
+    [self setSecView];
+    
+    //返回按钮
+    _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _backBtn.frame = CGRectMake(5, 20, 40, 40);
+    _backBtn.backgroundColor = [UIColor clearColor];
+    [_backBtn setImage:[UIImage imageNamed:@"tab-left"] forState:UIControlStateNormal];
+    [_backBtn addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:_backBtn];
+    
+    //搜素框
+    [view addSubview:self.searchBar];
+
+    //UITableView
+    [self.view addSubview:self.baseTable];
+//    [self configerRigTopButton];
+//    [self configerBottomView];
+    
+    self.pageNum = 1;
+    self.dataAry = [NSMutableArray array];
+    [self refreshNewData];
+}
+
+- (void)setSecView {
+    UIView *secView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight, kUIScreenWidth, KSecViewHeight)];
+//    secView.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:secView];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kUIScreenWidth / 2, 21)];
+    label.text = @"大家都在搜";
+    label.font = [UIFont systemFontOfSize:16.0];
+    [secView addSubview:label];
+    
+    //换一批按钮
+    UIButton *selecteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    selecteBtn.frame = CGRectMake( kUIScreenWidth - 80, 10, 70, 21);
+    [selecteBtn setTitle:@"换一批" forState:UIControlStateNormal];
+    [selecteBtn setImage:img(@"searchNext") forState:UIControlStateNormal];
+    selecteBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [selecteBtn setTitleColor:RGBColor(115, 112, 276) forState:UIControlStateNormal];
+    selecteBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
+    selecteBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 50, 0, 0);
+    [selecteBtn addTarget:self action:@selector(selectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [secView addSubview:selecteBtn];
+}
+
+- (void)selectBtnClick:(UIButton *)sender {
+    MyLog(@"huan");
+}
+
+
+- (void)setTabBarHidden:(BOOL)hidden
+{
+    UIView *tab = self.tabBarController.view;
+    
+    if ([tab.subviews count] < 2) {
+        return;
+    }
+    UIView *view;
+    
+    if ([[tab.subviews objectAtIndex:0] isKindOfClass:[UITabBar class]]) {
+        view = [tab.subviews objectAtIndex:1];
+    } else {
+        view = [tab.subviews objectAtIndex:0];
+    }
+    
+    if (hidden) {
+        view.frame = tab.bounds;
+    } else {
+        view.frame = CGRectMake(tab.bounds.origin.x, tab.bounds.origin.y, tab.bounds.size.width, tab.bounds.size.height);
+    }
+    self.view.frame = view.frame;
+    self.tabBarController.tabBar.hidden = hidden;
+}
+
+- (void)backClick:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /**
@@ -124,14 +205,14 @@
 /**
  *  导航栏右侧按钮
  */
-- (void)configerRigTopButton{
-    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 60, 30);
-    [button setTitle:@"我的报价" forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:14];
-    [button addTarget:self action:@selector(rightBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-}
+//- (void)configerRigTopButton{
+//    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(0, 0, 60, 30);
+//    [button setTitle:@"我的报价" forState:UIControlStateNormal];
+//    button.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [button addTarget:self action:@selector(rightBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+//}
 //取消searchbar背景色
 - (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
 {
@@ -156,9 +237,9 @@
 #pragma mark--Lazy Loading
 -(UISearchBar *)searchBar{
     if (!_searchBar) {
-        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(20, 10, kUIScreenWidth - 40, 40)];
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(48, 16, kUIScreenWidth - 85, 48)];
         _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];
-        _searchBar.placeholder = @"请输入关键字";
+        _searchBar.placeholder = @"关键字";
         _searchBar.searchBarStyle = 2;
         _searchBar.showsCancelButton = YES;
         _searchBar.delegate =self;
@@ -168,7 +249,7 @@
 }
 - (UITableView *)baseTable{
     if (!_baseTable) {
-        _baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight + kTopViewHeight, kUIScreenWidth, kUIScreenHeight - kNavigationBarHeight - kTopViewHeight - 45) style:UITableViewStylePlain];
+        _baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight - kNavigationBarHeight - kTopViewHeight ) style:UITableViewStylePlain];
         _baseTable.delegate = self;
         _baseTable.dataSource = self;
         _baseTable.rowHeight = 90;
@@ -191,26 +272,26 @@
     return _baseTable;
 }
 
-- (void)configerBottomView{
-    UIButton * bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    bottomBtn.frame = CGRectMake(0, kUIScreenHeight - 45, kUIScreenWidth, 45);
-    bottomBtn.backgroundColor = RGBColor(30, 75, 145);
-    [bottomBtn setTitle:@"发布求购" forState:UIControlStateNormal];
-    bottomBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [bottomBtn addTarget:self action:@selector(bottomBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:bottomBtn];
-}
-- (void)bottomBtnClicked{
-    
-    NSString * netPath = @"userinfo/userinfo_post";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [HttpTool postWithPath:netPath params:allParams success:^(id responseObj) {
-        [self getWanStr:responseObj];
-    } failure:^(NSError *error) {
-        
-    }];
-}
+//- (void)configerBottomView{
+//    UIButton * bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    bottomBtn.frame = CGRectMake(0, kUIScreenHeight - 45, kUIScreenWidth, 45);
+//    bottomBtn.backgroundColor = RGBColor(30, 75, 145);
+//    [bottomBtn setTitle:@"发布求购" forState:UIControlStateNormal];
+//    bottomBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+//    [bottomBtn addTarget:self action:@selector(bottomBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:bottomBtn];
+//}
+//- (void)bottomBtnClicked{
+//    
+//    NSString * netPath = @"userinfo/userinfo_post";
+//    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
+//    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
+//    [HttpTool postWithPath:netPath params:allParams success:^(id responseObj) {
+//        [self getWanStr:responseObj];
+//    } failure:^(NSError *error) {
+//        
+//    }];
+//}
 - (void)getWanStr:(id)response{
     _wanStr = response[@"data"][@"wan"];
     if ([_wanStr isEqualToString:@"0"]) {

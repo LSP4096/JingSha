@@ -80,7 +80,6 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -245,6 +244,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 //最新求购more按钮
 - (void)moreBtnClick:(UIButton *)sender {
     RequestViewController  *requestVC = [[RequestViewController alloc] init];
+     requestVC.fd_prefersNavigationBarHidden = YES;
     [self.navigationController pushViewController:requestVC animated:YES];
 }
 
