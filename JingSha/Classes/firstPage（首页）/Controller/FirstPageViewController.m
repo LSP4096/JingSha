@@ -508,6 +508,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 //        [self handleCHange:nil];
 //    }
 //}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //选中后变回颜色
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

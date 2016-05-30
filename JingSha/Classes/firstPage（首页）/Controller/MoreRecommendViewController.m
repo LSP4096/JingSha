@@ -12,17 +12,22 @@
 #import "ProOptionModel.h"
  #import "UIScrollView+EmptyDataSet.h"
 #define kPageCount 15
+#define KNavgationBarHight self.navigationController.navigationBar.height
+
 @interface MoreRecommendViewController ()<UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 @property (nonatomic, strong)UITableView *baseTable;
 @property (nonatomic ,retain)UISearchBar * searchBar;
-@property (nonatomic, strong)UIView * menuView;
-@property (nonatomic, assign)BOOL isHidden;
-@property (nonatomic ,strong)UIButton *rightButton;
 
 @property (nonatomic, strong)NSMutableArray * dataAry;
 @property (nonatomic, assign)NSInteger pageNum;
-@property (nonatomic, copy)NSString * type;//右上角全部、化纤、纱线
+@property (nonatomic, copy)NSString * type;
 @property (nonatomic, copy)NSString * keyword;
+
+@property (nonatomic, strong) UIView * headerView;
+@property (nonatomic, strong) NSMutableArray *titleArr;
+@property (nonatomic, strong) NSMutableArray *titleArr2;
+@property (nonatomic, assign) NSInteger index;
+
 @end
 
 @implementation MoreRecommendViewController
@@ -32,7 +37,7 @@
     self.view.backgroundColor =[UIColor blackColor];
     [self.view addSubview:self.baseTable];
     [self configerNavgationbar];
-    [self rightButtonClicked];
+    [self configSelectedView];
     self.type = @"";
     
     [self refreshNewData];
@@ -74,6 +79,7 @@
         
     }];
 }
+
 /**
  *  解析数据
  */
@@ -106,60 +112,66 @@
     self.keyword = searchBar.text;
     [self refreshNewData];
 }
+
+/**
+ *  配置搜索栏
+ */
+- (void)configSelectedView {
+    
+    if (self.headerView) {
+        [self.headerView removeFromSuperview];
+    }
+    
+    MyLog(@"titleArr.count--%ld",self.titleArr.count);
+    
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, KNavgationBarHight, kUIScreenWidth, 110)];
+    [self.view addSubview:self.headerView];
+    
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kUIScreenWidth / 2, 21)];
+    label.text = @"热门搜索";
+    label.font = [UIFont systemFontOfSize:16.0];
+    [_headerView addSubview:label];
+    
+    //换一批按钮
+    UIButton *selecteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    selecteBtn.frame = CGRectMake( kUIScreenWidth - 80, 10, 70, 21);
+    [selecteBtn setTitle:@"换一批" forState:UIControlStateNormal];
+    [selecteBtn setImage:img(@"searchNext") forState:UIControlStateNormal];
+    selecteBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [selecteBtn setTitleColor:RGBColor(115, 112, 276) forState:UIControlStateNormal];
+    selecteBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
+    selecteBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 50, 0, 0);
+    [selecteBtn addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [_headerView addSubview:selecteBtn];
+    
+    CGFloat Width = (kUIScreenWidth - 60) / 3;
+    for (int i = 0; i < self.titleArr.count; i++) {
+        UIButton *optionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        optionBtn.frame = CGRectMake(20 +  (Width + 10) * (i%3), 38 + (21 + 10) * (i/3), Width, 21);
+        [optionBtn setTitle:self.titleArr[i] forState:UIControlStateNormal];
+        optionBtn.layer.cornerRadius = 10.0f;
+        optionBtn.layer.borderWidth = 0.001f;
+        optionBtn.layer.masksToBounds = YES;
+        [optionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        optionBtn.backgroundColor = RGBColor(31, 111, 251);
+        [optionBtn addTarget:self action:@selector(optionBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_headerView addSubview:optionBtn];
+    }
+}
+
 /**
  *  配置导航条
  */
 - (void)configerNavgationbar{
-    self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _rightButton.frame = CGRectMake(kUIScreenWidth - 40, 17, 40, 30);
-    [_rightButton setTitle:@"全部" forState:UIControlStateNormal];
-//    [_rightButton setTitleColor:RGBColor(131, 131, 131) forState:UIControlStateNormal];
-    _rightButton.titleLabel.font = [UIFont systemFontOfSize:15];
-    [_rightButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
-    [_rightButton addTarget:self action:@selector(rightButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_rightButton];
-    //中间的搜索框
+    //搜索框
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(60, 17, kUIScreenWidth - 120, 30)];
     _searchBar.placeholder = @"请输入关键字";
     _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:self.searchBar.bounds.size];
     _searchBar.delegate = self;
     self.navigationItem.titleView = _searchBar;
-    //右侧全部按钮的下拉菜单
-    self.menuView = [[UIView alloc] initWithFrame:CGRectMake(kUIScreenWidth - 100, kNavigationBarHeight, 100, 105)];
-    _menuView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:_menuView];
-    //
-    for (int i = 0; i < 3; i++) {
-        NSArray * titlrAry = @[@"全部",@"纱线",@"化纤"];
-        UIButton * but1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        but1.frame = CGRectMake(0, 35 * i, 100, 35);
-        [but1 setTitle:titlrAry[i] forState:UIControlStateNormal];
-        [but1 setTitleColor:RGBColor(123, 123, 123) forState:UIControlStateNormal];
-        but1.titleLabel.font = [UIFont systemFontOfSize:12];
-        but1.layer.borderWidth = 1;
-        but1.layer.borderColor = RGBColor(240, 240, 240).CGColor;
-        but1.tag = 1000 + i;
-        [but1 addTarget:self action:@selector(optionButClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [_menuView addSubview:but1];
-    }
 }
-/**
- * 下拉菜单的按钮响应事件
- */
-- (void)optionButClicked:(UIButton *)sender{
-    [_rightButton setTitle:@"全部" forState:UIControlStateNormal];
-    if (sender.tag == 1000) {
-        self.type = nil;
-    }else if(sender.tag == 1001){
-        [_rightButton setTitle:@"纱线" forState:UIControlStateNormal];
-        self.type = @"1";
-    }else if (sender.tag == 1002){
-        [_rightButton setTitle:@"化纤" forState:UIControlStateNormal];
-        self.type = @"2";
-    }
-    [self rightButtonClicked];
-    [self refreshNewData];
-}
+
 //取消搜索框背景色
 - (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
 {
@@ -176,22 +188,12 @@
     return image;
 }
 /**
- *  右侧按钮点击事件
+ *  左侧按钮点击事件
  */
 - (void)leftButtonClicked{
     [self.navigationController popViewControllerAnimated:YES];
 }
-/**
- *  右侧按钮响应事件
- */
-- (void)rightButtonClicked{
-    if (self.isHidden) {
-        self.menuView.hidden = NO;
-    }else{
-        self.menuView.hidden = YES;
-    }
-    self.isHidden = !self.isHidden;
-}
+
 #pragma mark -- Lazy Loading
 -(UITableView *)baseTable{
     if (!_baseTable) {

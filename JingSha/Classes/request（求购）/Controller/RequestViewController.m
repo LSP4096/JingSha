@@ -19,12 +19,17 @@
 #define kPageCount 15
 @interface RequestViewController ()<UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate,DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
-@property (nonatomic, strong)UISearchBar * searchBar;
-@property (nonatomic, strong)UITableView * baseTable;
-@property (nonatomic, assign)NSInteger pageNum;
-@property (nonatomic, strong)NSMutableArray * dataAry;
-@property (nonatomic, copy)NSString * wanStr;
+@property (nonatomic, strong) UISearchBar * searchBar;
+@property (nonatomic, strong) UITableView * baseTable;
+@property (nonatomic, assign) NSInteger pageNum;
+@property (nonatomic, strong) NSMutableArray * dataAry;
+@property (nonatomic, copy) NSString * wanStr;
 @property (nonatomic, strong) UIButton *backBtn;
+
+@property (nonatomic, strong) UIView *secView;
+@property (nonatomic, strong) NSMutableArray *titleArr;
+@property (nonatomic, strong) NSMutableArray *titleArr2;
+@property (nonatomic, assign) NSInteger index;
 
 @end
 
@@ -40,7 +45,6 @@
 //    [self setTabBarHidden:NO]; 
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -50,14 +54,15 @@
     
     //searBar底部View
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(55, 26, kUIScreenWidth - 100, 28)];
-    bottomView.backgroundColor = RGBColor(234, 235, 237);
+    bottomView.backgroundColor = [UIColor whiteColor];
     bottomView.layer.cornerRadius = 5;
     bottomView.layer.masksToBounds = YES;
     bottomView.layer.borderWidth = 0.001;
     [view addSubview:bottomView];
     
-    //设置secView
-    [self setSecView];
+    self.index = 0;
+    //设置选择按钮
+    [self selectBtnClick];
     
     //返回按钮
     _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -72,23 +77,80 @@
 
     //UITableView
     [self.view addSubview:self.baseTable];
-//    [self configerRigTopButton];
-//    [self configerBottomView];
     
     self.pageNum = 1;
     self.dataAry = [NSMutableArray array];
     [self refreshNewData];
 }
 
-- (void)setSecView {
-    UIView *secView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight, kUIScreenWidth, KSecViewHeight)];
+#pragma mark--Lazy Loading
+- (NSMutableArray *)titleArr2 {
+    if (!_titleArr2) {
+        _titleArr2 = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10",@"11", @"12", @"13", @"14", @"15", nil];
+    }
+    return  _titleArr2;
+}
+
+- (NSMutableArray *)titleArr {
+    if (!_titleArr) {
+        _titleArr = [[NSMutableArray array] init];
+    }
+    return _titleArr;
+}
+
+-(UISearchBar *)searchBar{
+    if (!_searchBar) {
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(48, 16, kUIScreenWidth - 85, 48)];
+        _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];
+        _searchBar.placeholder = @"关键字";
+        _searchBar.searchBarStyle = 2;
+        _searchBar.showsCancelButton = YES;
+        _searchBar.delegate =self;
+        _searchBar.showsCancelButton = NO;
+    }
+    return _searchBar;
+}
+- (UITableView *)baseTable{
+    if (!_baseTable) {
+        _baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight - kNavigationBarHeight - kTopViewHeight ) style:UITableViewStylePlain];
+        _baseTable.delegate = self;
+        _baseTable.dataSource = self;
+        _baseTable.rowHeight = 90;
+        _baseTable.tableFooterView = [[UIView alloc] init];
+        _baseTable.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshNewData)];
+        _baseTable.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+        [_baseTable registerNib:[UINib nibWithNibName:@"WantBuyTableViewCell" bundle:nil] forCellReuseIdentifier:@"wantCell"];
+        //为了设置cell分割线的偏移
+        if ([_baseTable respondsToSelector:@selector(setSeparatorInset:)]) {
+            [_baseTable setSeparatorInset:UIEdgeInsetsZero];
+        }
+        
+        if ([_baseTable respondsToSelector:@selector(setLayoutMargins:)]) {
+            [_baseTable setLayoutMargins:UIEdgeInsetsZero];
+        }
+        //
+        _baseTable.emptyDataSetDelegate = self;
+        _baseTable.emptyDataSetSource = self;
+    }
+    return _baseTable;
+}
+
+- (void)configOptionBtn {
+    
+    if (self.secView) {
+        [self.secView removeFromSuperview];
+    }
+    
+    MyLog(@"titleArr.count--%ld",self.titleArr.count);
+    
+    _secView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight, kUIScreenWidth, KSecViewHeight)];
 //    secView.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:secView];
+    [self.view addSubview:_secView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kUIScreenWidth / 2, 21)];
     label.text = @"大家都在搜";
     label.font = [UIFont systemFontOfSize:16.0];
-    [secView addSubview:label];
+    [_secView addSubview:label];
     
     //换一批按钮
     UIButton *selecteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -99,14 +161,90 @@
     [selecteBtn setTitleColor:RGBColor(115, 112, 276) forState:UIControlStateNormal];
     selecteBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
     selecteBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 50, 0, 0);
-    [selecteBtn addTarget:self action:@selector(selectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [secView addSubview:selecteBtn];
+    [selecteBtn addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [_secView addSubview:selecteBtn];
+    
+    CGFloat Width = (kUIScreenWidth - 60) / 3;
+    for (int i = 0; i < self.titleArr.count; i++) {
+        UIButton *optionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        optionBtn.frame = CGRectMake(20 +  (Width + 10) * (i%3), 38 + (21 + 10) * (i/3), Width, 21);
+        [optionBtn setTitle:self.titleArr[i] forState:UIControlStateNormal];
+        optionBtn.layer.cornerRadius = 10.0f;
+        optionBtn.layer.borderWidth = 0.001f;
+        optionBtn.layer.masksToBounds = YES;
+        [optionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        optionBtn.backgroundColor = RGBColor(31, 111, 251);
+        [optionBtn addTarget:self action:@selector(optionBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_secView addSubview:optionBtn];
+    }
+    
 }
 
-- (void)selectBtnClick:(UIButton *)sender {
-    MyLog(@"huan");
+- (void)selectBtnClick {
+    
+    NSMutableArray *muArr = [[NSMutableArray alloc] init];
+    
+    if (self.titleArr2.count > 6) {
+        NSInteger count = self.titleArr2.count / 6;
+        switch (count) {
+            case 1: {
+                NSArray *subArr1 = [self.titleArr2 subarrayWithRange:NSMakeRange(0, 6)];
+                NSArray *subArr2 = [self.titleArr2 subarrayWithRange:NSMakeRange(6, self.titleArr2.count - 6)];
+                [muArr addObject:subArr1];
+                [muArr addObject:subArr2];
+            }
+                break;
+            case 2: {
+                NSArray *subArr1 = [self.titleArr2 subarrayWithRange:NSMakeRange(0, 6)];
+                NSArray *subArr2 = [self.titleArr2 subarrayWithRange:NSMakeRange(6, 6)];
+                NSArray *subArr3 = [self.titleArr2 subarrayWithRange:NSMakeRange(12, self.titleArr2.count - 12)];
+                [muArr addObject:subArr1];
+                [muArr addObject:subArr2];
+                [muArr addObject:subArr3];
+            }
+                break;
+            case 3: {
+                NSArray *subArr1 = [self.titleArr2 subarrayWithRange:NSMakeRange(0, 6)];
+                NSArray *subArr2 = [self.titleArr2 subarrayWithRange:NSMakeRange(6, 6)];
+                NSArray *subArr3 = [self.titleArr2 subarrayWithRange:NSMakeRange(12, 6)];
+                NSArray *subArr4 = [self.titleArr2 subarrayWithRange:NSMakeRange(18, self.titleArr2.count - 18)];
+                [muArr addObject:subArr1];
+                [muArr addObject:subArr2];
+                [muArr addObject:subArr3];
+                [muArr addObject:subArr4];
+            }
+                break;
+            default:
+                break;
+        }
+        
+        if (count == 1) {
+            if (self.index == 2) {
+                self.index = 0;
+            }
+         self.titleArr = muArr[self.index];
+        }else if (count == 2){
+            if (self.index == 3) {
+                self.index = 0;
+            }
+            self.titleArr = muArr[self.index];
+            
+        }else if (count == 3){
+            if (self.index == 4) {
+                self.index = 0;
+            }
+            self.titleArr = muArr[self.index];
+        }else {
+        
+        }
+        self.index++;
+    } else {
+        //不用操作,直接赋值
+        self.titleArr = self.titleArr2;
+    }
+    
+    [self configOptionBtn];
 }
-
 
 - (void)setTabBarHidden:(BOOL)hidden
 {
@@ -176,6 +314,9 @@
         if (page == 1) {
             self.dataAry = [NSMutableArray array];
         }
+        
+        MyLog(@"respons %@",responseObj);
+        
         for (NSDictionary * dict in responseObj[@"data"]) {
             RequestMsgModel * model = [RequestMsgModel objectWithKeyValues:dict];
             [self.dataAry addObject:model];
@@ -228,80 +369,7 @@
     
     return image;
 }
-#pragma mark -- 导航栏右侧按钮响应事件
-- (void)rightBarButtonClick{
-    MyLog(@"右侧按钮点击");
-    MyQuotedViewController * MyQuotedVC = [[MyQuotedViewController alloc] init];
-    [self.navigationController pushViewController:MyQuotedVC animated:YES];
-}
-#pragma mark--Lazy Loading
--(UISearchBar *)searchBar{
-    if (!_searchBar) {
-        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(48, 16, kUIScreenWidth - 85, 48)];
-        _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];
-        _searchBar.placeholder = @"关键字";
-        _searchBar.searchBarStyle = 2;
-        _searchBar.showsCancelButton = YES;
-        _searchBar.delegate =self;
-        _searchBar.showsCancelButton = NO;
-    }
-    return _searchBar;
-}
-- (UITableView *)baseTable{
-    if (!_baseTable) {
-        _baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight - kNavigationBarHeight - kTopViewHeight ) style:UITableViewStylePlain];
-        _baseTable.delegate = self;
-        _baseTable.dataSource = self;
-        _baseTable.rowHeight = 90;
-        _baseTable.tableFooterView = [[UIView alloc] init];
-        _baseTable.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshNewData)];
-        _baseTable.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-        [_baseTable registerNib:[UINib nibWithNibName:@"WantBuyTableViewCell" bundle:nil] forCellReuseIdentifier:@"wantCell"];
-        //为了设置cell分割线的偏移
-        if ([_baseTable respondsToSelector:@selector(setSeparatorInset:)]) {
-            [_baseTable setSeparatorInset:UIEdgeInsetsZero];
-        }
-        
-        if ([_baseTable respondsToSelector:@selector(setLayoutMargins:)]) {
-            [_baseTable setLayoutMargins:UIEdgeInsetsZero];
-        }
-        //
-        _baseTable.emptyDataSetDelegate = self;
-        _baseTable.emptyDataSetSource = self;
-    }
-    return _baseTable;
-}
 
-//- (void)configerBottomView{
-//    UIButton * bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    bottomBtn.frame = CGRectMake(0, kUIScreenHeight - 45, kUIScreenWidth, 45);
-//    bottomBtn.backgroundColor = RGBColor(30, 75, 145);
-//    [bottomBtn setTitle:@"发布求购" forState:UIControlStateNormal];
-//    bottomBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-//    [bottomBtn addTarget:self action:@selector(bottomBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:bottomBtn];
-//}
-//- (void)bottomBtnClicked{
-//    
-//    NSString * netPath = @"userinfo/userinfo_post";
-//    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-//    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-//    [HttpTool postWithPath:netPath params:allParams success:^(id responseObj) {
-//        [self getWanStr:responseObj];
-//    } failure:^(NSError *error) {
-//        
-//    }];
-//}
-- (void)getWanStr:(id)response{
-    _wanStr = response[@"data"][@"wan"];
-    if ([_wanStr isEqualToString:@"0"]) {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"企业信息未完善,不能发布" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
-    }else{
-        IssueRequestViewController * issueVC = [[IssueRequestViewController alloc] init];
-        [self.navigationController pushViewController:issueVC animated:YES];
-    }
-}
 #pragma mark - DZNEmptyDataSetDelegate,DZNEmptyDataSetSource
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = @"暂无求购信息";
@@ -352,9 +420,14 @@
     requestDetailVC.shareTitle = model.title;
     [self.navigationController pushViewController:requestDetailVC animated:YES];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)optionBtnClick:(UIButton *)sender {
+    MyLog(@"%@",sender.titleLabel.text);
 }
 
 /*
