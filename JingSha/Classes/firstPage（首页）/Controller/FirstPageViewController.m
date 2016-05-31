@@ -43,7 +43,8 @@ UITableViewDelegate,
 HeadViewTableViewCellDelegate,
 
 SPLatestRequestcellDelegate,
-SPHotProductCellDelegata
+SPHotProductCellDelegata,
+SPExchangeCenterDelegate
 
 //TotalProviderTableViewCellDelegate
 //NewProductTableViewCellDelegate,
@@ -213,14 +214,14 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 - (void)handlePushToSearchWithSender:(UIButton *)sender{
     [self handlePuthAllSelectedWith:sender];
 }
-//- (void)clickedWantBuyViewToPush:(NSString *)sender{
-//    RequestViewController  *requestVC = [[RequestViewController alloc] init];
-//    [self.navigationController pushViewController:requestVC animated:YES];
-//}
-//- (void)clickedSuperMarketViewToPush:(NSString *)sender{
-//    SuperMarketViewController * superMarketVC = [[SuperMarketViewController alloc] init];
-//    [self.navigationController pushViewController:superMarketVC animated:YES];
-//}
+- (void)clickedWantBuyViewToPush:(NSString *)sender{
+    RequestViewController  *requestVC = [[RequestViewController alloc] init];
+    [self.navigationController pushViewController:requestVC animated:YES];
+}
+- (void)clickedSuperMarketViewToPush:(NSString *)sender{
+    SuperMarketViewController * superMarketVC = [[SuperMarketViewController alloc] init];
+    [self.navigationController pushViewController:superMarketVC animated:YES];
+}
 - (void)bannerPush:(BannerModel *)model{
     BannerViewController * bannerVC = [[BannerViewController alloc] init];
     bannerVC.TopTitle = model.title;
@@ -255,6 +256,13 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     MoreRecommendViewController * moreRecommendVC = [[MoreRecommendViewController alloc] init];
 //    moreRecommendVC.fd_prefersNavigationBarHidden = YES;
     [self.navigationController pushViewController:moreRecommendVC animated:YES];
+}
+
+#pragma mark - SPExchagneCellDelegate
+//热门产品more按钮
+- (void)exchangeMoreBtnClick {
+    SuperMarketViewController * superMarketVC = [[SuperMarketViewController alloc] init];
+    [self.navigationController pushViewController:superMarketVC animated:YES];
 }
 
 #pragma mark -－－ UITableViewDataSource, UITableViewDelegate
@@ -443,6 +451,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 //            }
             SPExchangeCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithExchangeCenter forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.delegate = self;
             return cell;
         }
             break;

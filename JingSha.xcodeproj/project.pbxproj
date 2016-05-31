@@ -277,6 +277,8 @@
 		4C4665021CEC3810005E31C1 /* AppDelegate+Bugle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4665011CEC3810005E31C1 /* AppDelegate+Bugle.m */; };
 		4C4721E51CED5DA7005143EB /* SupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4721E31CED5DA7005143EB /* SupportViewController.m */; };
 		4C4721E61CED5DA7005143EB /* SupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4721E41CED5DA7005143EB /* SupportViewController.xib */; };
+		4C49F13B1CFD3008001A95F4 /* SuperMarketTabViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C49F1391CFD3008001A95F4 /* SuperMarketTabViewCell.m */; };
+		4C49F13C1CFD3008001A95F4 /* SuperMarketTabViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C49F13A1CFD3008001A95F4 /* SuperMarketTabViewCell.xib */; };
 		4C4A1C691CF690B80037176B /* SPHotProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A1C671CF690B80037176B /* SPHotProductTableViewCell.m */; };
 		4C4A1C6A1CF690B80037176B /* SPHotProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A1C681CF690B80037176B /* SPHotProductTableViewCell.xib */; };
 		4C4A1C6E1CF690CC0037176B /* SPLatestRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A1C6C1CF690CC0037176B /* SPLatestRequestCell.m */; };
@@ -873,6 +875,9 @@
 		4C4721E21CED5DA7005143EB /* SupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportViewController.h; sourceTree = "<group>"; };
 		4C4721E31CED5DA7005143EB /* SupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportViewController.m; sourceTree = "<group>"; };
 		4C4721E41CED5DA7005143EB /* SupportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupportViewController.xib; sourceTree = "<group>"; };
+		4C49F1381CFD3008001A95F4 /* SuperMarketTabViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperMarketTabViewCell.h; sourceTree = "<group>"; };
+		4C49F1391CFD3008001A95F4 /* SuperMarketTabViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperMarketTabViewCell.m; sourceTree = "<group>"; };
+		4C49F13A1CFD3008001A95F4 /* SuperMarketTabViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuperMarketTabViewCell.xib; sourceTree = "<group>"; };
 		4C4A1C661CF690B80037176B /* SPHotProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHotProductTableViewCell.h; sourceTree = "<group>"; };
 		4C4A1C671CF690B80037176B /* SPHotProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHotProductTableViewCell.m; sourceTree = "<group>"; };
 		4C4A1C681CF690B80037176B /* SPHotProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPHotProductTableViewCell.xib; sourceTree = "<group>"; };
@@ -2313,6 +2318,9 @@
 				4C4A1C701CF690E30037176B /* SPExchangeCenterCell.h */,
 				4C4A1C711CF690E30037176B /* SPExchangeCenterCell.m */,
 				4C4A1C721CF690E30037176B /* SPExchangeCenterCell.xib */,
+				4C49F1381CFD3008001A95F4 /* SuperMarketTabViewCell.h */,
+				4C49F1391CFD3008001A95F4 /* SuperMarketTabViewCell.m */,
+				4C49F13A1CFD3008001A95F4 /* SuperMarketTabViewCell.xib */,
 				814C91E81C00337D00B60BB7 /* NewProductTableViewCell.h */,
 				814C91E91C00337D00B60BB7 /* NewProductTableViewCell.m */,
 				21A70B461C0FD3260061B114 /* NewsTableViewCell.h */,
@@ -2664,6 +2672,7 @@
 				21DD09601C2CF27C00C13B15 /* CompoentLongCollectionViewCell.xib in Resources */,
 				217498411C40A6ED0096A791 /* ConnectViewController.xib in Resources */,
 				2157D0DE1C44943000068B20 /* CompanyCollectTableViewCell.xib in Resources */,
+				4C49F13C1CFD3008001A95F4 /* SuperMarketTabViewCell.xib in Resources */,
 				21F8E5F71C290EEC00C73C9B /* AnswerMessageViewController.xib in Resources */,
 				210AE9001C1E5ABA0061304C /* RequestMessageTableViewCell.xib in Resources */,
 				211054AA1C16BD7400C8D62E /* IntroductTableViewController.xib in Resources */,
@@ -3012,6 +3021,7 @@
 				210AE8FF1C1E5ABA0061304C /* RequestMessageTableViewCell.m in Sources */,
 				2109BEE61C4E71270065C664 /* TAAbstractDotView.m in Sources */,
 				813880591BF5BEB400179503 /* XWWriteReply.m in Sources */,
+				4C49F13B1CFD3008001A95F4 /* SuperMarketTabViewCell.m in Sources */,
 				813880761BF5D7FC00179503 /* CommentContentTableViewCell.m in Sources */,
 				213CB4DD1C26BA630062233B /* CompanyManageTableViewCell.m in Sources */,
 				210B78221C2AC73300858D0A /* VisitTableViewCell.m in Sources */,

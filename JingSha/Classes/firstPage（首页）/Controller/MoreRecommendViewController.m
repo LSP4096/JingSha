@@ -12,7 +12,8 @@
 #import "ProOptionModel.h"
  #import "UIScrollView+EmptyDataSet.h"
 #define kPageCount 15
-#define KNavgationBarHight self.navigationController.navigationBar.height
+#define KHeaderViewHeight 100
+#define KNavgationBarHight self.navigationController.navigationBar.frame.size.height
 
 @interface MoreRecommendViewController ()<UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 @property (nonatomic, strong)UITableView *baseTable;
@@ -36,10 +37,12 @@
     [super viewDidLoad];
     self.view.backgroundColor =[UIColor blackColor];
     [self.view addSubview:self.baseTable];
+    
     [self configerNavgationbar];
-    [self configSelectedView];
+    
     self.type = @"";
     
+    [self selectBtnClick];
     [self refreshNewData];
 }
 
@@ -91,6 +94,7 @@
             self.dataAry = [NSMutableArray array];
         }
         NSArray * listAry = responseObj[@"data"];
+        MyLog(@"%@",responseObj[@"data"]);
         for (NSDictionary * dict in listAry) {
             ProOptionModel * model = [ProOptionModel objectWithKeyValues:dict];
             [self.dataAry addObject:model];
@@ -124,7 +128,8 @@
     
     MyLog(@"titleArr.count--%ld",self.titleArr.count);
     
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, KNavgationBarHight, kUIScreenWidth, 110)];
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, KNavgationBarHight + 20, kUIScreenWidth, KHeaderViewHeight)];
+    self.headerView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.headerView];
     
     
@@ -160,6 +165,74 @@
     }
 }
 
+- (void)selectBtnClick {
+    NSMutableArray *muArr = [[NSMutableArray alloc] init];
+    if (self.titleArr2.count > 6) {
+        NSInteger count = (self.titleArr2.count - 1) / 6;
+        switch (count) {
+            case 1: {
+                NSArray *subArr1 = [self.titleArr2 subarrayWithRange:NSMakeRange(0, 6)];
+                NSArray *subArr2 = [self.titleArr2 subarrayWithRange:NSMakeRange(6, self.titleArr2.count - 6)];
+                [muArr addObject:subArr1];
+                [muArr addObject:subArr2];
+            }
+                break;
+            case 2: {
+                NSArray *subArr1 = [self.titleArr2 subarrayWithRange:NSMakeRange(0, 6)];
+                NSArray *subArr2 = [self.titleArr2 subarrayWithRange:NSMakeRange(6, 6)];
+                NSArray *subArr3 = [self.titleArr2 subarrayWithRange:NSMakeRange(12, self.titleArr2.count - 12)];
+                [muArr addObject:subArr1];
+                [muArr addObject:subArr2];
+                [muArr addObject:subArr3];
+            }
+                break;
+            case 3: {
+                NSArray *subArr1 = [self.titleArr2 subarrayWithRange:NSMakeRange(0, 6)];
+                NSArray *subArr2 = [self.titleArr2 subarrayWithRange:NSMakeRange(6, 6)];
+                NSArray *subArr3 = [self.titleArr2 subarrayWithRange:NSMakeRange(12, 6)];
+                NSArray *subArr4 = [self.titleArr2 subarrayWithRange:NSMakeRange(18, self.titleArr2.count - 18)];
+                [muArr addObject:subArr1];
+                [muArr addObject:subArr2];
+                [muArr addObject:subArr3];
+                [muArr addObject:subArr4];
+            }
+                break;
+            default:
+                break;
+        }
+        
+        if (count == 1) {
+            if (self.index == 2) {
+                self.index = 0;
+            }
+            self.titleArr = muArr[self.index];
+        }else if (count == 2){
+            if (self.index == 3) {
+                self.index = 0;
+            }
+            self.titleArr = muArr[self.index];
+            
+        }else if (count == 3){
+            if (self.index == 4) {
+                self.index = 0;
+            }
+            self.titleArr = muArr[self.index];
+        }else {
+            
+        }
+        self.index++;
+    } else {
+        //不用操作,直接赋值
+        self.titleArr = self.titleArr2;
+    }
+    
+    [self configSelectedView];
+}
+
+- (void)optionBtnClick:(UIButton *)sender {
+    MyLog(@"%@",sender.titleLabel.text);
+}
+
 /**
  *  配置导航条
  */
@@ -187,6 +260,7 @@
     
     return image;
 }
+
 /**
  *  左侧按钮点击事件
  */
@@ -195,9 +269,24 @@
 }
 
 #pragma mark -- Lazy Loading
+- (NSMutableArray *)titleArr {
+    if (!_titleArr) {
+        _titleArr = [[NSMutableArray alloc] init];
+    }
+    return _titleArr;
+}
+
+- (NSMutableArray *)titleArr2 {
+    if (!_titleArr2) {
+        _titleArr2 = [[NSMutableArray alloc] initWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12", @"13", nil];
+    }
+    return _titleArr2;
+    
+}
+
 -(UITableView *)baseTable{
     if (!_baseTable) {
-        self.baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kUIScreenWidth, kUIScreenHeight) style:UITableViewStylePlain];
+        self.baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KHeaderViewHeight, kUIScreenWidth, kUIScreenHeight) style:UITableViewStylePlain];
         _baseTable.rowHeight = 105;
         _baseTable.delegate =self;
         _baseTable.dataSource = self;
@@ -218,7 +307,6 @@
     NSString *text = @"未搜索到相关信息";
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-    
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {

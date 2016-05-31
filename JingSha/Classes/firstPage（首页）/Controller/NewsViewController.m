@@ -45,7 +45,7 @@
     [allParams setObject:@(page) forKey:@"page"];
     [allParams setObject:@(kPageCount) forKey:@"pagecount"];
     [HttpTool postWithPath:netPath params:allParams success:^(id responseObj) {
-//        MyLog(@"YYYYY%@", responseObj);
+        MyLog(@"YYYYY%@", responseObj);
         if (![responseObj[@"data"] isKindOfClass:[NSNull class]]) {
             [self getDataFromResponseObj:responseObj];
         }

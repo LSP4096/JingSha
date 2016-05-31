@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="superMarketCell" id="gTV-IL-0wX" customClass="SuperMarketCollectionViewCell">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="SuperMarketCollectionViewCell">
             <rect key="frame" x="0.0" y="0.0" width="160" height="190"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -174,7 +174,7 @@
                 <outlet property="photoImageView" destination="mpU-Hu-Uea" id="tzq-ag-0jI"/>
                 <outlet property="titleLable" destination="EiJ-i1-S5Z" id="iYb-ge-lAC"/>
             </connections>
-            <point key="canvasLocation" x="-246" y="92"/>
+            <point key="canvasLocation" x="-87" y="175"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,7 +16,6 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QGX-DP-TN4">
                         <rect key="frame" x="15" y="12" width="20" height="20"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="0Zw-3t-nnd"/>
                             <constraint firstAttribute="height" constant="20" id="I3D-kM-VMO"/>
@@ -24,7 +23,6 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="企业等级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkQ-Sc-w0A">
                         <rect key="frame" x="47" y="11" width="63" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="A7a-z1-IsX"/>
                             <constraint firstAttribute="width" constant="63" id="OlN-L8-fLd"/>
@@ -35,7 +33,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-lz-P4Z">
                         <rect key="frame" x="182" y="11" width="105" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="105" id="WAn-Yt-bxj"/>
                             <constraint firstAttribute="height" constant="21" id="iUT-b9-3t8"/>
@@ -46,7 +43,6 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvZ-zt-ljl" customClass="HCSStarRatingView">
                         <rect key="frame" x="115" y="12" width="62" height="20"/>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="62" id="TcN-bo-SFg"/>
@@ -61,7 +57,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <animations/>
                 <constraints>
                     <constraint firstItem="fvZ-zt-ljl" firstAttribute="leading" secondItem="tkQ-Sc-w0A" secondAttribute="trailing" constant="5" id="0xq-AK-6Zw"/>
                     <constraint firstAttribute="bottom" secondItem="fvZ-zt-ljl" secondAttribute="bottom" constant="11" id="4pT-h0-dsx"/>
@@ -74,14 +69,13 @@
                     <constraint firstItem="w9r-lz-P4Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="dOB-Tk-bRa"/>
                 </constraints>
             </tableViewCellContentView>
-            <animations/>
             <connections>
                 <outlet property="detailLable" destination="w9r-lz-P4Z" id="OUb-ae-FqR"/>
                 <outlet property="titleImageView" destination="QGX-DP-TN4" id="gg3-9B-aqb"/>
                 <outlet property="titleLable" destination="tkQ-Sc-w0A" id="VVj-lz-2Rg"/>
                 <outlet property="xingjiView" destination="fvZ-zt-ljl" id="BTh-v0-Z9k"/>
             </connections>
-            <point key="canvasLocation" x="153" y="486"/>
+            <point key="canvasLocation" x="243" y="485"/>
         </tableViewCell>
     </objects>
     <resources>

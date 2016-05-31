@@ -25,7 +25,7 @@
 }
 
 - (IBAction)moreBtnClick:(UIButton *)sender {
-    MyLog(@"more");
+    [self.delegate exchangeMoreBtnClick];
 }
 
 @end

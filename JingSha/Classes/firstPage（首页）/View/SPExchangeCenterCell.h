@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPExchangeCenterCell : UITableViewCell
+@protocol SPExchangeCenterDelegate <NSObject>
+- (void)exchangeMoreBtnClick;
 
+@end
+
+@interface SPExchangeCenterCell : UITableViewCell
+@property (nonatomic, strong)id <SPExchangeCenterDelegate> delegate;
 @end
