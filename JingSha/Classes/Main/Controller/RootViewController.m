@@ -16,7 +16,8 @@
 #import "MainNavigationController.h"
 #import "XWMemberCenterViewController.h"
 
-#import "SupportViewController.h"
+//#import "SupportViewController.h"
+#import "SupplyManageViewController.h"
 
 @interface RootViewController ()
 //当前显示的控制器
@@ -45,8 +46,8 @@
     [self addChildVC:requestVC vcTitle:@"我的求购" tabBarItemTitle:@"发布求购" image:@"MainRequest" selectedImage:@"MainRequest-selected"];
     
     //供应
-    SupportViewController *supportVC = [[SupportViewController alloc] init];
-    [self addChildVC:supportVC vcTitle:@"供应" tabBarItemTitle:@"发布供应" image:@"MainRequest" selectedImage:@""];
+    SupplyManageViewController *supportVC = [[SupplyManageViewController alloc] init];
+    [self addChildVC:supportVC vcTitle:@"供应管理" tabBarItemTitle:@"发布供应" image:@"MainRequest" selectedImage:@""];
     
     //我的
     XWMemberCenterViewController * xwCenterVC = [[XWMemberCenterViewController alloc] init];

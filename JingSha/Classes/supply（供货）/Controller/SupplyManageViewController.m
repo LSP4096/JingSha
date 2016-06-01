@@ -39,6 +39,7 @@
 @property (nonatomic, strong)RKNotificationHub * hub;
 @end
 #define kPageCount 15
+#define KTabBarHeight 45
 static NSString * indentifier = @"cell1";
 @implementation SupplyManageViewController
 
@@ -263,7 +264,7 @@ static NSString * indentifier = @"cell1";
 #pragma mark ---
 - (void)configerAddButton{
     UIButton * addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    addButton.frame = CGRectMake(0, kUIScreenHeight - 45, kUIScreenWidth, 45);
+    addButton.frame = CGRectMake(0, kUIScreenHeight - 45 - KTabBarHeight, kUIScreenWidth, 45);
     [addButton setTitle:@"添加产品" forState:UIControlStateNormal];
     [addButton setTitleColor:RGBColor(255, 255, 255) forState:UIControlStateNormal];
     [addButton setBackgroundColor:RGBColor(45, 78, 147) forState:UIControlStateNormal];

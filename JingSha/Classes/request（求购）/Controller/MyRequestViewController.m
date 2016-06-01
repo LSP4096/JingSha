@@ -31,6 +31,8 @@
 @property (nonatomic, strong)NSString * wanStr;
 @end
 #define kPageCount 15
+#define KTabBarHeight 45
+
 @implementation MyRequestViewController
 
 - (void)viewDidLoad {
@@ -50,25 +52,26 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
+//    self.tabBarController.tabBar.hidden = YES;
     if (!self.fromMe) {
-        [self configerLeftBarBtn];
+//        [self configerLeftBarBtn];
     }
 //    [self refreshNewData];
 }
-- (void)configerLeftBarBtn{
-    UIButton * leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn.frame = CGRectMake(0, 0, 15, 15);
-    self.navigationItem.leftBarButtonItem  =[[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-    [leftBtn setImage:[UIImage imageNamed:@"tab-left"] forState:UIControlStateNormal];
-    [leftBtn addTarget:self action:@selector(leftBarBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-}
-- (void)leftBarBtnClicked:(UIButton *)sender{
-    self.tabBarController.selectedIndex = 0;
-}
+//- (void)configerLeftBarBtn{
+//    UIButton * leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    leftBtn.frame = CGRectMake(0, 0, 15, 15);
+//    self.navigationItem.leftBarButtonItem  =[[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+//    [leftBtn setImage:[UIImage imageNamed:@"tab-left"] forState:UIControlStateNormal];
+//    [leftBtn addTarget:self action:@selector(leftBarBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+//}
+//- (void)leftBarBtnClicked:(UIButton *)sender{
+//    self.tabBarController.tabBar.hidden = NO;
+//    self.tabBarController.selectedIndex = 0;
+//}
 - (void)configerBottomView{
     UIButton * bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    bottomBtn.frame = CGRectMake(0, kUIScreenHeight - 45, kUIScreenWidth, 45);
+    bottomBtn.frame = CGRectMake(0, kUIScreenHeight - 45 - KTabBarHeight, kUIScreenWidth, 45);
     [bottomBtn setTitle:@"发布求购" forState:UIControlStateNormal];
     bottomBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [bottomBtn addTarget:self action:@selector(bottomClicked:) forControlEvents:UIControlEventTouchUpInside];
