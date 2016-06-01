@@ -47,7 +47,7 @@
     
     //供应
     SupplyManageViewController *supportVC = [[SupplyManageViewController alloc] init];
-    [self addChildVC:supportVC vcTitle:@"供应管理" tabBarItemTitle:@"发布供应" image:@"MainRequest" selectedImage:@""];
+    [self addChildVC:supportVC vcTitle:@"供应管理" tabBarItemTitle:@"发布供应" image:@"tab-request" selectedImage:@"tab-requestSelected"];
     
     //我的
     XWMemberCenterViewController * xwCenterVC = [[XWMemberCenterViewController alloc] init];

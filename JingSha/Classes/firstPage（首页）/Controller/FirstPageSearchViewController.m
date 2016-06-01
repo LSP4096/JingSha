@@ -9,6 +9,7 @@
 #import "FirstPageSearchViewController.h"
 #import "RecommendOptionViewController.h"
 #define kPageCount 10
+
 @interface FirstPageSearchViewController ()<UISearchBarDelegate>
 @property (nonatomic, assign)BOOL isChange;
 @property (nonatomic, strong)UIView * selctedView;
@@ -41,12 +42,11 @@ static NSString * indentifier = @"searchResultCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"搜索";
+    
     self.selectedTitle = @"产品";
     self.view.backgroundColor = RGBColor(236, 236, 236);
-    //最顶部的条（高20）
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kUIScreenWidth, 20)];
-    view.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:view];
     
     self.isChange = NO;
     [self configerSearchBar];
@@ -122,7 +122,7 @@ static NSString * indentifier = @"searchResultCell";
 
 #pragma mark --
 - (void)configerSearchBar{
-    UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kUIScreenWidth, 65)]; //导航条部分
+    UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.height + 20, kUIScreenWidth, 65)]; //导航条部分
     topView.backgroundColor = RGBColor(250, 250, 250);
     [self.view addSubview:topView];
 
@@ -135,7 +135,6 @@ static NSString * indentifier = @"searchResultCell";
     //左侧下拉选择按钮
     self.selectButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.selectButton.frame = CGRectMake(5, 10, 70, 25);
-//    self.selectButton.backgroundColor = [UIColor redColor];
     [self.selectButton setTitleColor:RGBColor(104, 104, 104) forState:UIControlStateNormal];
     [self.selectButton setImage:[UIImage imageNamed:@"search_01"] forState:UIControlStateNormal];
     
@@ -157,12 +156,12 @@ static NSString * indentifier = @"searchResultCell";
     [cancleButton addTarget:self action:@selector(cancleButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:cancleButton];
     //分割线
-    UIView * middleView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_selectButton.frame)+5, 10, 2, 25)];
-    middleView.backgroundColor = RGBColor(232, 233, 232);
-    [topBackView addSubview:middleView];
+//    UIView * middleView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_selectButton.frame)+5, 10, 2, 25)];
+//    middleView.backgroundColor = RGBColor(232, 233, 232);
+//    [topBackView addSubview:middleView];
     
     //搜索框
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(CGRectGetMinX(middleView.frame) + 3, 8, kUIScreenWidth - 160, 30)];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_selectButton.frame) + 5, 8, kUIScreenWidth - 160, 30)];
     _searchBar.placeholder = @"请输入搜索内容";
     _searchBar.backgroundImage = [self imageWithColor:RGBColor(250, 250, 250) size:_searchBar.bounds.size];
     _searchBar.delegate = self;
@@ -222,16 +221,31 @@ static NSString * indentifier = @"searchResultCell";
     self.changeButPage = 0;
     MyLog(@"供应商");
 }
+- (void)requestBtnClicked {
+    [self.selectButton setTitle:@"求购" forState:UIControlStateNormal];
+    self.selctedView.height = YES;
+    _isChange = !_isChange;
+    self.selectedTitle = @"求购";
+    [self loadDataWithCid:22];
+    self.cid = 22;
+    self.change = YES;
+    self.changeButPage = 0;
+    MyLog(@"求购");
+}
+
 - (void)congigerOptionButton{
     if (self.bodyView) {
         [self.bodyView removeFromSuperview];
     }
-    self.bodyView = [[UIView alloc] initWithFrame:CGRectMake(0, 85, kUIScreenWidth, kUIScreenHeight - 85)];
+    self.bodyView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.height + 85, kUIScreenWidth, kUIScreenHeight - 85)];
     _bodyView.backgroundColor = RGBColor(236, 236, 236);
     [self.view addSubview:_bodyView];
     //下拉菜单
-    self.selctedView = [[UIView alloc] initWithFrame:CGRectMake(10, 75, 85, 70)];
-    self.selctedView.backgroundColor = RGBColor(236, 236, 236);
+    self.selctedView = [[UIView alloc] initWithFrame:CGRectMake(10, 75, 85, 105)];
+    self.selctedView.backgroundColor = RGBColor(234, 234, 235);
+    self.selctedView.layer.cornerRadius = 8;
+    self.selctedView.layer.borderWidth = 0.1;
+    self.selctedView.layer.masksToBounds = YES;
     [self.view addSubview:self.selctedView];
     self.selctedView.hidden = YES;
     
@@ -250,6 +264,14 @@ static NSString * indentifier = @"searchResultCell";
     [supplyButton setTitleColor:RGBColor(106, 106, 106) forState:UIControlStateNormal];
     [supplyButton addTarget:self action:@selector(supplyButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.selctedView addSubview:supplyButton];
+    
+    UIButton *requestBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    requestBtn.frame = CGRectMake(0, CGRectGetMaxY(supplyButton.frame), 85, 35);
+    [requestBtn setTitle:@"求购" forState:UIControlStateNormal];
+    requestBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [requestBtn setTitleColor:RGBColor(106, 106, 106) forState:UIControlStateNormal];
+    [requestBtn addTarget:self action:@selector(requestBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.selctedView addSubview:requestBtn];
     
     //大家都在搜
     UILabel * EveryOneSearchLable = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 80,20)];
@@ -276,12 +298,15 @@ static NSString * indentifier = @"searchResultCell";
     CGFloat Width = (kUIScreenWidth - 70) / 3;
     for (int i = 0; i < _titleAry.count; i++) {
         UIButton * optionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        optionButton.backgroundColor = [UIColor whiteColor];
+        optionButton.backgroundColor = RGBColor(31, 111, 251);
         optionButton.titleLabel.font = [UIFont systemFontOfSize:14];
-        [optionButton setTitleColor:RGBColor(123, 123, 123) forState:UIControlStateNormal];
+        [optionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [optionButton setTitle:_titleAry[i] forState:UIControlStateNormal];
-        optionButton.frame = CGRectMake(20 +  (Width + 15) * (i%3), 40 + (45 + 15) * (i/3), Width, 45);
-        Height = 40 + (45 + 15) * (i/3 + 1);//下面历史搜索项的高度
+        optionButton.frame = CGRectMake(20 +  (Width + 15) * (i%3), 40 + 35 * (i/3), Width, 25);
+        optionButton.layer.cornerRadius = 10.0f;
+        optionButton.layer.borderWidth = 0.001f;
+        optionButton.layer.masksToBounds = YES;
+        Height = 25 + (25 + 15) * (i/3 + 1);//下面历史搜索项的高度
         [optionButton addTarget:self action:@selector(optionButtonClieked:) forControlEvents:UIControlEventTouchUpInside];
         [_bodyView addSubview:optionButton];
     }

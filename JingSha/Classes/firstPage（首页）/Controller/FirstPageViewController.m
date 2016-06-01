@@ -45,8 +45,8 @@ HeadViewTableViewCellDelegate,
 SPLatestRequestcellDelegate,
 SPHotProductCellDelegata,
 SPExchangeCenterDelegate
-
-//TotalProviderTableViewCellDelegate
+//
+//TotalProviderTableViewCellDelegate,
 //NewProductTableViewCellDelegate,
 //DidAttentionTableViewCellDelegate
 >
@@ -205,7 +205,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 - (void)handlePuthAllSelectedWith:(UIButton *)sender {
     [SingleTon shareSingleTon].selectBag = sender.tag;
     FirstPageSearchViewController * firstPageSearchVC = [[FirstPageSearchViewController alloc] init];
-    firstPageSearchVC.fd_prefersNavigationBarHidden = YES;//用这个方法保证push之后，导航栏会隐藏而且时机正好
+//    firstPageSearchVC.fd_prefersNavigationBarHidden = YES;//用这个方法保证push之后，导航栏会隐藏而且时机正好
     [self.navigationController pushViewController:firstPageSearchVC animated:YES];
     
 }
@@ -306,11 +306,10 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 //        }
 //    }
     if (indexPath.section == 0) {
-        return 180 * KProportionHeight;
+        return 180 * KProportionHeight; //代码约束
     }
     else {
-//        return 160 * KProportionHeight;
-        return 160;
+        return 134; //xib约束
     }
 }
 
@@ -419,7 +418,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
             return cell;
         }
             break;
-            case 1:
+        case 1:
         {
 //            NewProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentWithNewProdect forIndexPath:indexPath];
             SPLatestRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithLatesRequest forIndexPath:indexPath];

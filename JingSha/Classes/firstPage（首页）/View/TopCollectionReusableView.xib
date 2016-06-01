@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,7 +13,6 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="网络暂忙-193-133" translatesAutoresizingMaskIntoConstraints="NO" id="i02-YP-Oku">
                     <rect key="frame" x="13" y="13" width="80" height="80"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="hKM-VN-jpX"/>
                         <constraint firstAttribute="height" constant="80" id="ifh-bK-BAS"/>
@@ -21,7 +20,6 @@
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="江苏大生集团有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRx-y1-QNn">
                     <rect key="frame" x="98" y="18" width="267" height="20"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="dmm-gG-biR"/>
                     </constraints>
@@ -31,7 +29,6 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPj-ls-YVc">
                     <rect key="frame" x="98" y="42" width="43" height="20"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="43" id="Ta7-Ki-6wG"/>
                         <constraint firstAttribute="height" constant="20" id="h28-cz-nL4"/>
@@ -42,7 +39,6 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGM-jP-huK">
                     <rect key="frame" x="98" y="67" width="40" height="20"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="7mv-DO-ukI"/>
                         <constraint firstAttribute="width" constant="40" id="dRU-E6-bvb"/>
@@ -53,7 +49,6 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="杭州莫干山路1515号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHA-yG-24Z">
                     <rect key="frame" x="141" y="42" width="100" height="20"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="GbO-c4-oEk"/>
                         <constraint firstAttribute="height" constant="20" id="T0S-SK-tU6"/>
@@ -64,7 +59,6 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15158733695" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwG-KA-sxz">
                     <rect key="frame" x="138" y="66" width="120" height="20"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="DHy-CI-1mT"/>
                         <constraint firstAttribute="width" constant="120" id="fBf-YS-VME"/>
@@ -75,7 +69,6 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CtF-0k-E7G">
                     <rect key="frame" x="335" y="43" width="30" height="20"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="8ap-ga-YUE"/>
                     </constraints>
@@ -88,7 +81,6 @@
                     </connections>
                 </button>
             </subviews>
-            <animations/>
             <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="DRx-y1-QNn" firstAttribute="leading" secondItem="i02-YP-Oku" secondAttribute="trailing" constant="5" id="3AF-wr-lWq"/>
