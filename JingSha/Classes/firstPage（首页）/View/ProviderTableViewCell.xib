@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -17,18 +17,15 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recommend" translatesAutoresizingMaskIntoConstraints="NO" id="E1S-uH-ZH2">
                         <rect key="frame" x="15" y="10" width="133" height="127"/>
-                        <animations/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主营产品：各种颜色纱；合股纱；拖把纱；棉纺纱；再生棉纱；尼龙系列；牛仔纱..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eG-XS-xdU">
                         <rect key="frame" x="163" y="43" width="306" height="94"/>
-                        <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.61568627450980395" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苍南县盛涛再生棉纺厂" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxO-KT-R6h">
                         <rect key="frame" x="163" y="10" width="238" height="30"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="1zz-kb-Swh"/>
                         </constraints>
@@ -38,7 +35,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浙江 杭州" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8I4-41-HgI">
                         <rect key="frame" x="411" y="10" width="70" height="20"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="DbP-Wd-0Bu"/>
                             <constraint firstAttribute="width" constant="70" id="NOT-Ly-s5D"/>
@@ -54,7 +50,6 @@
                         </variation>
                     </label>
                 </subviews>
-                <animations/>
                 <constraints>
                     <constraint firstItem="4eG-XS-xdU" firstAttribute="top" secondItem="8I4-41-HgI" secondAttribute="bottom" id="5rq-WM-Jzf"/>
                     <constraint firstAttribute="trailing" secondItem="8I4-41-HgI" secondAttribute="trailing" constant="8" id="6b3-KB-YyP"/>
@@ -85,7 +80,6 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
-            <animations/>
             <connections>
                 <outlet property="NameLabel" destination="oxO-KT-R6h" id="wON-Dx-eEE"/>
                 <outlet property="addressLabel" destination="8I4-41-HgI" id="wkl-dz-2au"/>

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol SPHotProductCellDelegata <NSObject>
 - (void)HotProductMoreBtnClick:(id)sender;
+- (void)pushToDetailVCFromCell:(NSString *)string;
 
 @end
 

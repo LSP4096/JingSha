@@ -12,6 +12,7 @@
 
 //点击了 more按钮
 - (void)moreBtnClick:(UIButton *)sender;
+- (void)requestDetailVCFromCell:(NSString *)Id;
 
 @end
 

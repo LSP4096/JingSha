@@ -412,6 +412,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.searchBar resignFirstResponder];
     [self.baseTable deselectRowAtIndexPath:indexPath animated:YES];
+    
     RequestDetailViewController * requestDetailVC = [[RequestDetailViewController alloc] init];
     RequestMsgModel * model = self.dataAry[indexPath.row];
     requestDetailVC.HTMLUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/buyinfo/%@/%@", model.Id, KUserImfor[@"userid"]];

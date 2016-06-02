@@ -7,12 +7,22 @@
 //
 
 #import "SPLatestRequestCell.h"
+#import "NewProModel.h"
+
 #define KLabelHight (21 * KProportionHeight)
 #define KLabelWeight (100 * KProportionHeight)
 
 @interface SPLatestRequestCell ()
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
-@property (weak, nonatomic) IBOutlet UIView *LabelView;
+@property (weak, nonatomic) IBOutlet UILabel *title1;
+@property (weak, nonatomic) IBOutlet UILabel *title2;
+@property (weak, nonatomic) IBOutlet UILabel *title3;
+@property (weak, nonatomic) IBOutlet UILabel *title4;
+@property (weak, nonatomic) IBOutlet UILabel *title6;
+@property (weak, nonatomic) IBOutlet UILabel *title5;
+
+@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSMutableArray *titleArr;
 
 @end
 
@@ -21,21 +31,76 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-
-//    [self baseLabelUI];
+    
+    self.titleArr = [NSMutableArray arrayWithObjects:self.title1, self.title2, self.title3, self.title4, self.title5, self.title6, nil];
+    
+    [self loadData];
 }
 
-//- (void)baseLabelUI {
-//    for (int i =  0; i < 2; i++) {
-//        for (int j = 0; j < 3; j++) {
-//            CGFloat label_Y =  (j + 1) * (self.LabelView.frame.size.height - 3 * KLabelHight) / 4 + KLabelHight * j - 5;
-//            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.LabelView.frame.size.width * 1/2 * i, label_Y, KLabelWeight, KLabelHight)];
-//            label.tag = 100 * i + j * 200;
-//            label.text = @"text";
-//            [self.LabelView addSubview:label];
-//        }
-//    }
-//}
+#define mark - Lazyloading
+- (NSMutableArray *)dataArr {
+    if (!_dataArr ) {
+        _dataArr = [[NSMutableArray alloc] init];
+    }
+    return _dataArr;
+}
+
+/**
+ *  加载数据
+ */
+- (void)loadData {
+    NSString *netPath = @"pro/home_list2";
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    [params setObject:KUserImfor[@"userid"] forKey:@"userid"];
+    [HttpTool getWithPath:netPath params:params success:^(id responseObj) {
+         MyLog(@"首页热门推荐数据%@", responseObj);
+        [self getDataFromResponseObj:responseObj];
+    } failure:^(NSError *error) {
+        MyLog(@"首页数据请求错误%@",error);
+    }];
+    
+}
+
+/**
+ *  分解数据
+ */
+- (void)getDataFromResponseObj:(id)responseObj {
+    
+    self.countLabel.text = [NSString stringWithFormat:@"%@",responseObj[@"buylistcount"]];
+    MyLog(@"%@",responseObj[@"buylistcount"]);
+    NSDictionary * dict  = responseObj[@"data"];
+    for (NSDictionary * smallDict in dict[@"newbuy"]) {
+        NewProModel * model = [NewProModel objectWithKeyValues:smallDict];
+        [self.dataArr addObject:model];
+    }
+    [self setDataToLabel];
+}
+
+- (void)setDataToLabel {
+    for (int i = 0 ; i < self.dataArr.count; i++) {
+        NewProModel *model = [[NewProModel alloc] init];
+        model = self.dataArr[i];
+        UILabel *label = self.titleArr[i];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        label.userInteractionEnabled = YES;
+        [label addGestureRecognizer:tap];
+        if (!model.title) {
+            label.text = @"";
+        } else {
+            label.text = model.title;
+        }
+    }
+}
+
+-(void)tapAction:(UITapGestureRecognizer *)gesture {
+    UIView *selectView = gesture.view;
+    NSInteger index =selectView.tag - 101;
+    NewProModel * model = _dataArr[index];
+    NSString * ID = model.Id;
+    if (_delegate && [_delegate respondsToSelector:@selector(requestDetailVCFromCell:)]) {
+        [_delegate requestDetailVCFromCell:ID];
+    }
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

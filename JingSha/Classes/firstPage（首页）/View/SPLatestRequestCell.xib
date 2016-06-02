@@ -55,7 +55,7 @@
                             <action selector="moreBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rEB-rQ-2Hp"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Suf-39-YrK">
+                    <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Suf-39-YrK">
                         <rect key="frame" x="200" y="55" width="80" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Suf-39-YrK" secondAttribute="height" multiplier="80:19" id="GEr-Tt-W2e"/>
@@ -64,14 +64,14 @@
                         <color key="textColor" red="0.98039215690000003" green="0.33725490200000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Me_banner" translatesAutoresizingMaskIntoConstraints="NO" id="W8a-RJ-4fT">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="request" translatesAutoresizingMaskIntoConstraints="NO" id="W8a-RJ-4fT">
                         <rect key="frame" x="25" y="55" width="64" height="61"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="61" id="IGu-IG-Uhw"/>
                             <constraint firstAttribute="width" constant="64" id="KN6-6X-auY"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hm-sG-cwX">
+                    <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hm-sG-cwX">
                         <rect key="frame" x="104" y="55" width="80" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="0Hm-sG-cwX" secondAttribute="height" multiplier="80:19" id="B6Q-eN-a33"/>
@@ -80,17 +80,17 @@
                         <color key="textColor" red="0.98039215690000003" green="0.33725490200000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00000000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viC-Ic-pJm">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viC-Ic-pJm">
                         <rect key="frame" x="146" y="15" width="69" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="69" id="6Yk-My-f6B"/>
                             <constraint firstAttribute="height" constant="16" id="v8r-Gz-QjX"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgj-2H-eFQ">
+                    <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgj-2H-eFQ">
                         <rect key="frame" x="104" y="76" width="80" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Bgj-2H-eFQ" secondAttribute="height" multiplier="80:19" id="4Ky-jq-wVk"/>
@@ -98,7 +98,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uR1-r4-Ghh">
+                    <label opaque="NO" userInteractionEnabled="NO" tag="105" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uR1-r4-Ghh">
                         <rect key="frame" x="104" y="97" width="80" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="uR1-r4-Ghh" secondAttribute="height" multiplier="80:19" id="ZE1-dF-1Wj"/>
@@ -106,7 +106,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6c-fz-J6E">
+                    <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6c-fz-J6E">
                         <rect key="frame" x="200" y="76" width="80" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="K6c-fz-J6E" secondAttribute="height" multiplier="80:19" id="CcH-sL-TOH"/>
@@ -114,7 +114,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gri-Fr-OVy">
+                    <label opaque="NO" userInteractionEnabled="NO" tag="106" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gri-Fr-OVy">
                         <rect key="frame" x="200" y="97" width="80" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="gri-Fr-OVy" secondAttribute="height" multiplier="80:19" id="U77-Ha-eb3"/>
@@ -169,12 +169,18 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="countLabel" destination="DHB-Go-MBd" id="6fB-1p-cZB"/>
+                <outlet property="countLabel" destination="viC-Ic-pJm" id="rZU-jK-e95"/>
+                <outlet property="title1" destination="0Hm-sG-cwX" id="I4T-9i-7yV"/>
+                <outlet property="title2" destination="Suf-39-YrK" id="kuO-IN-lI7"/>
+                <outlet property="title3" destination="Bgj-2H-eFQ" id="vbl-Lp-rFO"/>
+                <outlet property="title4" destination="K6c-fz-J6E" id="o0r-k2-1na"/>
+                <outlet property="title5" destination="uR1-r4-Ghh" id="MHO-pb-BNW"/>
+                <outlet property="title6" destination="gri-Fr-OVy" id="Qmy-Qw-OSr"/>
             </connections>
-            <point key="canvasLocation" x="-5161" y="402"/>
+            <point key="canvasLocation" x="-5229" y="386"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Me_banner" width="375" height="158"/>
+        <image name="request" width="50" height="48"/>
     </resources>
 </document>

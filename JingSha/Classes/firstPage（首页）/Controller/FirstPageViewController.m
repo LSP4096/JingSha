@@ -36,6 +36,10 @@
 #import "HuodongViewController.h"
 #import "ShangjiaViewController.h"
 #import "RecommendDetailViewController.h"
+
+#import "RequestDetailViewController.h"
+#import "SupplyDetailViewController.h"
+
 @interface FirstPageViewController ()
 <
 UITableViewDataSource,
@@ -107,7 +111,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
  *  加载数据(这里只是为了得出新品推荐的个数，以便确定要显示的高度)
  */
 - (void)loadData{
-    NSString * netPath = @"pro/home_list";
+    NSString * netPath = @"pro/getcid";
     NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
     [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
     [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
@@ -249,6 +253,15 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     [self.navigationController pushViewController:requestVC animated:YES];
 }
 
+- (void)requestDetailVCFromCell:(NSString *)Id {
+    RequestDetailViewController * requestDetailVC = [[RequestDetailViewController alloc] init];
+    requestDetailVC.HTMLUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/buyinfo/%@/%@", Id, KUserImfor[@"userid"]];
+    requestDetailVC.Id = Id;
+//    requestDetailVC.shareContent = model.jianjie;
+//    requestDetailVC.shareTitle = model.title;
+    [self.navigationController pushViewController:requestDetailVC animated:YES];
+}
+
 #pragma mark - SPHotProductCellDelegata
 //热门产品more按钮
 - (void)HotProductMoreBtnClick:(id)sender {
@@ -258,11 +271,25 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     [self.navigationController pushViewController:moreRecommendVC animated:YES];
 }
 
+- (void)pushToDetailVCFromCell:(NSString *)string {
+    SupplyDetailViewController * supplyVC = [[SupplyDetailViewController alloc] init];
+    supplyVC.sendUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/supply/%@/%@",string, KUserImfor[@"userid"]];
+    supplyVC.chanpinId = string;
+    [self.navigationController pushViewController:supplyVC animated:YES];
+}
+
 #pragma mark - SPExchagneCellDelegate
-//热门产品more按钮
+//交易中心more按钮
 - (void)exchangeMoreBtnClick {
     SuperMarketViewController * superMarketVC = [[SuperMarketViewController alloc] init];
     [self.navigationController pushViewController:superMarketVC animated:YES];
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)gesture {
+    SupplyDetailViewController * supplyVC = [[SupplyDetailViewController alloc] init];
+//    supplyVC.sendUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/supply/%@/%@", [self.dateArr[view.tag] Id], KUserImfor[@"userid"]];
+//    supplyVC.chanpinId =
+//    [self.navigationController pushViewController:supplyVC animated:YES];
 }
 
 #pragma mark -－－ UITableViewDataSource, UITableViewDelegate
@@ -308,7 +335,9 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     if (indexPath.section == 0) {
         return 180 * KProportionHeight; //代码约束
     }
-    else {
+    else if(indexPath.section == 3){
+        return 154; //xib约束
+    } else {
         return 134; //xib约束
     }
 }
