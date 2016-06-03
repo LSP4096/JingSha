@@ -379,6 +379,8 @@ static NSString * indentifier = @"searchResultCell";
  */
 - (void)changeButtonClicked{
     
+    self.selctedView.hidden = YES;
+    
     NSMutableArray * ary = [NSMutableArray array];
     
     if (self.titleAry2.count > 9) {//大于9个
