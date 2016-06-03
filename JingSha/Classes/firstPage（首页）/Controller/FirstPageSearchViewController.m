@@ -8,7 +8,7 @@
 
 #import "FirstPageSearchViewController.h"
 #import "RecommendOptionViewController.h"
-#define kPageCount 10
+#define kPageCount 40
 
 @interface FirstPageSearchViewController ()<UISearchBarDelegate>
 @property (nonatomic, assign)BOOL isChange;
@@ -59,7 +59,7 @@ static NSString * indentifier = @"searchResultCell";
     self.selectedTitle = @"产品";
 //    [self productButtonClicked];//先主动调用一次
     
-    self.cid = 23;  //2 新闻  22 供应商  23 产品
+    self.cid = 23;  //2 新闻  22 供应商 23 产品/求购
     self.change = YES;
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -77,6 +77,7 @@ static NSString * indentifier = @"searchResultCell";
     [SingleTon shareSingleTon].zcdStr = nil;
     [SingleTon shareSingleTon].qiyefenleiStr = nil;
 }
+
 - (void)loadDataWithCid:(NSInteger)cid{
     NSString * netPath = @"news/keyword_list";
     NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
@@ -227,8 +228,8 @@ static NSString * indentifier = @"searchResultCell";
     self.selctedView.height = YES;
     _isChange = !_isChange;
     self.selectedTitle = @"求购";
-    [self loadDataWithCid:22];
-    self.cid = 22;
+    [self loadDataWithCid:23];
+    self.cid = 23;
     self.change = YES;
     self.changeButPage = 0;
     MyLog(@"求购");
@@ -245,7 +246,7 @@ static NSString * indentifier = @"searchResultCell";
     self.selctedView = [[UIView alloc] initWithFrame:CGRectMake(10, 75, 85, 105)];
     self.selctedView.backgroundColor = RGBColor(234, 234, 235);
     self.selctedView.layer.cornerRadius = 8;
-    self.selctedView.layer.borderWidth = 0.1;
+    self.selctedView.layer.borderWidth = 0.001;
     self.selctedView.layer.masksToBounds = YES;
     [self.view addSubview:self.selctedView];
     self.selctedView.hidden = YES;
@@ -379,6 +380,8 @@ static NSString * indentifier = @"searchResultCell";
  */
 - (void)changeButtonClicked{
     
+    self.selctedView.hidden = YES;
+    
     NSMutableArray * ary = [NSMutableArray array];
     
     if (self.titleAry2.count > 9) {//大于9个
@@ -474,7 +477,6 @@ static NSString * indentifier = @"searchResultCell";
     recommendOptionVC.searchTitle = self.selectedTitle;
     recommendOptionVC.optionSearchText = sender.titleLabel.text;
     [self.navigationController pushViewController:recommendOptionVC animated:YES];
-    
     [self saveSearchhistory:sender.titleLabel.text];
 }
 /**
