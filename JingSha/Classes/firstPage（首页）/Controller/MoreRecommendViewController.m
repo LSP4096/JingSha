@@ -259,6 +259,7 @@
 
 - (void)optionBtnClick:(UIButton *)sender {
     self.keyword = sender.titleLabel.text;
+    self.searchBar.text = sender.titleLabel.text;
     [self refreshNewData];
 }
 

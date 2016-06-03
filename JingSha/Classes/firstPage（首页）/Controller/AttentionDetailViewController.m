@@ -320,8 +320,8 @@ static NSString * indentifier = @"attentionCell";
             return cell;
         }
         WantBuyTableViewCell * cell = [_baseTable dequeueReusableCellWithIdentifier:@"wantCell"];
-//        cell.model = self.dataAry[indexPath.row];
-//        cell.myBaojia = NO;
+        cell.model = self.dataAry[indexPath.row];
+        cell.myBaojia = NO;
         return cell;
     }
     else {//供应
