@@ -116,7 +116,11 @@
                 <outlet property="titleLable" destination="Piw-Bq-1FJ" id="Kdn-Ux-xzC"/>
                 <outlet property="zhisu" destination="lwN-Hg-xvG" id="gKa-Ad-2xQ"/>
             </connections>
+<<<<<<< HEAD
             <point key="canvasLocation" x="-4747" y="345"/>
+=======
+            <point key="canvasLocation" x="-2536" y="147"/>
+>>>>>>> parent of f10c950... 搜索也添加求购
         </tableViewCell>
     </objects>
 </document>

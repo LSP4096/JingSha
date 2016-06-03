@@ -17,10 +17,6 @@
 #import "CompanyListModel.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "SelectTypeViewController.h"
-
-#import "RequestDetailViewController.h"
-#import "WantBuyTableViewCell.h"
-#import "RequestMsgModel.h"
 #define kPageCount 10
 
 @interface RecommendOptionViewController ()<UITableViewDataSource, UITableViewDelegate,DZNEmptyDataSetDelegate, DZNEmptyDataSetSource, UISearchBarDelegate>
@@ -29,7 +25,6 @@
 
 @property (nonatomic, strong)NSMutableArray * dataAry;
 @property (nonatomic, assign)NSInteger pageNum;
-
 @end
 
 @implementation RecommendOptionViewController
@@ -67,16 +62,12 @@
 }
 
 - (void)configerData{
-
     NSString * netPath = [NSString string];
     if ([self.searchTitle isEqualToString:@"产品"]) {
         netPath = @"pro/pro_list";
     }else if([self.searchTitle isEqualToString:@"供应商"]){
         netPath = @"pro/user_list";
-    }else if([self.searchTitle isEqualToString:@"求购"]){
-        netPath = @"pro/buy_list";
     }
-    
 //    MyLog(@"%@" ,self.optionSearchText);
     NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
     [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
@@ -85,7 +76,6 @@
 
     [allParams setObject:@(self.pageNum) forKey:@"page"];
     [allParams setObject:self.optionSearchText forKey:@"keyword"];
-    
     if ([SingleTon shareSingleTon].leibieStr) {//类别存在，说明是从筛选界面返回来的
         [allParams setObject:[SingleTon shareSingleTon].leibieStr forKey:@"leibie"];
         _searchBar.text = nil;
@@ -131,11 +121,8 @@
         }else if ([self.searchTitle isEqualToString:@"产品"]){
             ProOptionModel * model = [ProOptionModel objectWithKeyValues:dict];
             [self.dataAry addObject:model];
-        }else if ([self.searchTitle isEqualToString:@"求购"]){
-            RequestMsgModel * model = [RequestMsgModel objectWithKeyValues:dict];
-            [self.dataAry addObject:model];
-        } else {
-        
+        }else{
+            
         }
     }
  }
@@ -223,7 +210,6 @@
         //注册cell
         [_baseTable registerNib:[UINib nibWithNibName:@"RecommendSupplierTableViewCell" bundle:nil] forCellReuseIdentifier:@"RecommendSupplierCell"];
         [_baseTable registerNib:[UINib nibWithNibName:@"RecommendProductTableViewCell" bundle:nil] forCellReuseIdentifier:@"recommendProductCell"];
-        [_baseTable registerNib:[UINib nibWithNibName:@"WantBuyTableViewCell" bundle:nil] forCellReuseIdentifier:@"wantCell"];
         //
         _baseTable.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
         _baseTable.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshNewData)];
@@ -267,16 +253,7 @@
         RecommendSupplierTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"RecommendSupplierCell"];
         cell.model = self.dataAry[indexPath.row];
         return cell;
-    }else if([self.searchTitle isEqualToString:@"求购"]){
-        if (self.dataAry.count == 0) {
-            WantBuyTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"wantCell"];
-            return cell;
-        }
-        WantBuyTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"wantCell"];
-        cell.model = self.dataAry[indexPath.row];
-        return cell;
-    }
-    else{
+    }else{
         return nil;
     }
 }
@@ -292,16 +269,6 @@
         RecommendDetailViewController * recommDeVC = [[RecommendDetailViewController alloc] init];
         recommDeVC.qiyeId = [self.dataAry[indexPath.row] Id];
         [self.navigationController pushViewController:recommDeVC animated:YES];
-    }else if ([self.searchTitle isEqualToString:@"求购"]){
-        RequestDetailViewController * requestDetailVC = [[RequestDetailViewController alloc] init];
-        RequestMsgModel * model = self.dataAry[indexPath.row];
-        requestDetailVC.HTMLUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/buyinfo/%@/%@", model.Id, KUserImfor[@"userid"]];
-        requestDetailVC.Id = model.Id;
-        requestDetailVC.shareContent = model.jianjie;
-        requestDetailVC.shareTitle = model.title;
-        [self.navigationController pushViewController:requestDetailVC animated:YES];
-    } else {
-
     }
 }
 
