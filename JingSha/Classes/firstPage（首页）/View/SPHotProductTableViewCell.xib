@@ -182,7 +182,7 @@
                 <outlet property="title5" destination="J0A-g4-ADs" id="aLU-WP-ceI"/>
                 <outlet property="title6" destination="ydS-aX-Mi5" id="D9p-bu-jot"/>
             </connections>
-            <point key="canvasLocation" x="-2846" y="345"/>
+            <point key="canvasLocation" x="-3025" y="355"/>
         </tableViewCell>
     </objects>
     <resources>

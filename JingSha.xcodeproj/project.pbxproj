@@ -286,6 +286,8 @@
 		4C4A1C731CF690E30037176B /* SPExchangeCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A1C711CF690E30037176B /* SPExchangeCenterCell.m */; };
 		4C4A1C741CF690E30037176B /* SPExchangeCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A1C721CF690E30037176B /* SPExchangeCenterCell.xib */; };
 		4C4D1EE71D001A8300D60718 /* ExchangeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D1EE61D001A8300D60718 /* ExchangeDetailView.m */; };
+		4C87BE6A1D015A6200A4ACE0 /* WantBuyiewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87BE681D015A6200A4ACE0 /* WantBuyiewCell.m */; };
+		4C87BE6B1D015A6200A4ACE0 /* WantBuyiewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C87BE691D015A6200A4ACE0 /* WantBuyiewCell.xib */; };
 		4CC6FCE91CE5B1CD00BF43DC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */; };
 		8106B21C1BF4B4CC005F94C3 /* FirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */; };
 		8106B2211BF4BDFD005F94C3 /* HeadViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21F1BF4BDFD005F94C3 /* HeadViewTableViewCell.m */; };
@@ -890,6 +892,9 @@
 		4C4A1C721CF690E30037176B /* SPExchangeCenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPExchangeCenterCell.xib; sourceTree = "<group>"; };
 		4C4D1EE51D001A8300D60718 /* ExchangeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeDetailView.h; sourceTree = "<group>"; };
 		4C4D1EE61D001A8300D60718 /* ExchangeDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeDetailView.m; sourceTree = "<group>"; };
+		4C87BE671D015A6200A4ACE0 /* WantBuyiewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WantBuyiewCell.h; sourceTree = "<group>"; };
+		4C87BE681D015A6200A4ACE0 /* WantBuyiewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WantBuyiewCell.m; sourceTree = "<group>"; };
+		4C87BE691D015A6200A4ACE0 /* WantBuyiewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WantBuyiewCell.xib; sourceTree = "<group>"; };
 		4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8106B2191BF4B4CC005F94C3 /* FirstPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageViewController.h; sourceTree = "<group>"; };
 		8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstPageViewController.m; sourceTree = "<group>"; };
@@ -1400,6 +1405,9 @@
 		21A70B7B1C1066610061B114 /* Request Message */ = {
 			isa = PBXGroup;
 			children = (
+				4C87BE671D015A6200A4ACE0 /* WantBuyiewCell.h */,
+				4C87BE681D015A6200A4ACE0 /* WantBuyiewCell.m */,
+				4C87BE691D015A6200A4ACE0 /* WantBuyiewCell.xib */,
 				210937591C0ED323003CE1CD /* WantBuyTableViewCell.h */,
 				2109375A1C0ED323003CE1CD /* WantBuyTableViewCell.m */,
 				2109375B1C0ED323003CE1CD /* WantBuyTableViewCell.xib */,
@@ -2625,6 +2633,7 @@
 				8129C8B01BFADAF700F78429 /* WeiboSDK.bundle in Resources */,
 				214649E81C2018B800605AB5 /* LeaveMessageTableViewCell.xib in Resources */,
 				21E898BC1C3E13770038757C /* CheckConnectStyleViewController.xib in Resources */,
+				4C87BE6B1D015A6200A4ACE0 /* WantBuyiewCell.xib in Resources */,
 				210B781E1C2AC0D000858D0A /* RealDataTableViewCell.xib in Resources */,
 				8147880B1BFD7883006B8BBC /* MyCommentTableViewCell.xib in Resources */,
 				21A70B7A1C105BE00061B114 /* DetailTopTableViewCell.xib in Resources */,
@@ -2874,6 +2883,7 @@
 				21A70B491C0FD3260061B114 /* NewsTableViewCell.m in Sources */,
 				81367A291BE4758C0032C1E8 /* AppDelegate.m in Sources */,
 				213C76731C564A0600B23512 /* CertifyViewController.m in Sources */,
+				4C87BE6A1D015A6200A4ACE0 /* WantBuyiewCell.m in Sources */,
 				21A70B701C1047DD0061B114 /* CoclumnCollectionViewCell.m in Sources */,
 				21071FB21C2A4A2700D40D88 /* bottomDetailTableViewCell.m in Sources */,
 				81367A2D1BE4758C0032C1E8 /* UIButton+BackgroundColor.m in Sources */,

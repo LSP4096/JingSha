@@ -21,7 +21,7 @@
                             <constraint firstAttribute="width" secondItem="0u4-Ai-bod" secondAttribute="height" multiplier="19:16" id="9iI-FT-HKC"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njZ-gs-Qzt" userLabel="title">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njZ-gs-Qzt" userLabel="title">
                         <rect key="frame" x="107" y="20" width="66" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -31,7 +31,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkN-Sq-JjZ" userLabel="material">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkN-Sq-JjZ" userLabel="material">
                         <rect key="frame" x="181" y="20" width="71" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -64,9 +64,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBo-pA-fxk" userLabel="productPlaceNum">
-                        <rect key="frame" x="139" y="45" width="50" height="15"/>
+                        <rect key="frame" x="139" y="45" width="84" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="mXR-sB-wGF"/>
+                            <constraint firstAttribute="width" constant="84" id="mXR-sB-wGF"/>
                             <constraint firstAttribute="height" constant="15" id="oan-gO-d0Q"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -93,21 +93,6 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWl-uU-6kn">
-                        <rect key="frame" x="236" y="71" width="62" height="23"/>
-                        <color key="backgroundColor" red="0.24122717460000001" green="0.52637315200000001" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="23" id="8Yg-bc-tC2"/>
-                            <constraint firstAttribute="width" constant="62" id="TqI-Op-Y7s"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <state key="normal" title="意向报名">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="signBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FCJ-V8-j39"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnQ-36-VRc" userLabel="price">
                         <rect key="frame" x="111" y="63" width="28" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -118,7 +103,6 @@
                 <constraints>
                     <constraint firstItem="0u4-Ai-bod" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="2A8-fB-Q3z"/>
                     <constraint firstItem="0u4-Ai-bod" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="95:117" id="2q3-UK-L4Y"/>
-                    <constraint firstAttribute="trailing" secondItem="XWl-uU-6kn" secondAttribute="trailing" constant="22" id="3IK-Cr-I8x"/>
                     <constraint firstItem="UnQ-36-VRc" firstAttribute="width" secondItem="MXX-5b-vQ0" secondAttribute="width" id="3Ze-sW-0qE"/>
                     <constraint firstAttribute="trailing" secondItem="PkN-Sq-JjZ" secondAttribute="trailing" constant="68" id="3dW-65-FIg"/>
                     <constraint firstItem="CBo-pA-fxk" firstAttribute="leading" secondItem="MXX-5b-vQ0" secondAttribute="trailing" id="4PS-wS-ysE"/>
@@ -141,7 +125,6 @@
                     <constraint firstItem="pbC-ka-mkU" firstAttribute="leading" secondItem="mPT-32-1Lf" secondAttribute="trailing" id="uFG-ex-Xxu"/>
                     <constraint firstItem="UnQ-36-VRc" firstAttribute="leading" secondItem="0u4-Ai-bod" secondAttribute="trailing" constant="12" id="ue8-Th-nYF"/>
                     <constraint firstAttribute="bottom" secondItem="66O-ii-g8O" secondAttribute="bottom" constant="4" id="vCR-yq-gMZ"/>
-                    <constraint firstItem="66O-ii-g8O" firstAttribute="top" secondItem="XWl-uU-6kn" secondAttribute="bottom" constant="3" id="wxG-7z-w0N"/>
                     <constraint firstItem="eJs-hQ-duM" firstAttribute="top" secondItem="CBo-pA-fxk" secondAttribute="bottom" constant="3" id="wxe-qk-VaW"/>
                     <constraint firstItem="mPT-32-1Lf" firstAttribute="top" secondItem="UnQ-36-VRc" secondAttribute="bottom" constant="4" id="wzC-D2-e6H"/>
                     <constraint firstItem="UnQ-36-VRc" firstAttribute="top" secondItem="MXX-5b-vQ0" secondAttribute="bottom" constant="3" id="xRU-AW-hUO"/>
@@ -154,11 +137,10 @@
                 <outlet property="numLabel" destination="pbC-ka-mkU" id="2Qj-Sm-89b"/>
                 <outlet property="pliceLabel" destination="eJs-hQ-duM" id="7oh-cZ-EY9"/>
                 <outlet property="productPlace" destination="CBo-pA-fxk" id="DKE-Up-xzc"/>
-                <outlet property="signBtn" destination="XWl-uU-6kn" id="7Vu-03-xss"/>
                 <outlet property="timeLabel" destination="66O-ii-g8O" id="8Mh-4m-Twn"/>
                 <outlet property="titleLabel" destination="njZ-gs-Qzt" id="bMe-nu-2Nm"/>
             </connections>
-            <point key="canvasLocation" x="-2790" y="359"/>
+            <point key="canvasLocation" x="-3297" y="265"/>
         </tableViewCell>
     </objects>
 </document>

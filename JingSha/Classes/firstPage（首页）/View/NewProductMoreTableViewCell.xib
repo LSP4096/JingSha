@@ -57,21 +57,6 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWl-Tr-NHz">
-                        <rect key="frame" x="220" y="52" width="78" height="22"/>
-                        <color key="backgroundColor" red="0.24122717457979981" green="0.52637315195865586" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="78" id="09K-IP-NpE"/>
-                            <constraint firstAttribute="height" constant="22" id="7dh-W6-f9x"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <state key="normal" title="我要留言">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="messageBtnClick:" destination="fhB-Bf-rRD" eventType="touchUpInside" id="8zY-EX-hXc"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-5-5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GN-id-KvA" userLabel="time">
                         <rect key="frame" x="220" y="75" width="78" height="21"/>
                         <constraints>
@@ -95,13 +80,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="4GN-id-KvA" secondAttribute="trailing" constant="22" id="1wB-bh-FVf"/>
-                    <constraint firstItem="4GN-id-KvA" firstAttribute="top" secondItem="AWl-Tr-NHz" secondAttribute="bottom" constant="1" id="8xN-lU-m4d"/>
                     <constraint firstItem="6ll-Ny-QUZ" firstAttribute="leading" secondItem="zOo-M6-Jxb" secondAttribute="leading" constant="10" id="9JD-yY-W9C"/>
                     <constraint firstItem="bFv-4M-VTo" firstAttribute="top" secondItem="gK6-Yb-Q8H" secondAttribute="top" id="9Mw-ew-ZXH"/>
                     <constraint firstItem="lVs-FX-J0x" firstAttribute="top" secondItem="zOo-M6-Jxb" secondAttribute="top" constant="7" id="CtA-es-e4m"/>
                     <constraint firstItem="BFk-S9-P7B" firstAttribute="trailing" secondItem="bFv-4M-VTo" secondAttribute="trailing" id="CvF-cC-lgC"/>
                     <constraint firstItem="lVs-FX-J0x" firstAttribute="leading" secondItem="6ll-Ny-QUZ" secondAttribute="trailing" constant="8" id="FvA-uq-u8Z"/>
-                    <constraint firstAttribute="trailing" secondItem="AWl-Tr-NHz" secondAttribute="trailing" constant="22" id="NY1-B4-Omu"/>
                     <constraint firstItem="BFk-S9-P7B" firstAttribute="leading" secondItem="zOo-M6-Jxb" secondAttribute="leadingMargin" constant="4" id="Vft-SX-TOc"/>
                     <constraint firstItem="gK6-Yb-Q8H" firstAttribute="leading" secondItem="zOo-M6-Jxb" secondAttribute="leading" constant="54" id="bx8-Ip-fW0"/>
                     <constraint firstItem="6ll-Ny-QUZ" firstAttribute="top" secondItem="zOo-M6-Jxb" secondAttribute="top" constant="7" id="dwT-1p-UgA"/>
@@ -119,12 +102,11 @@
             <connections>
                 <outlet property="chengfenLable" destination="lVs-FX-J0x" id="sVO-vU-ZuV"/>
                 <outlet property="jiageLable" destination="gK6-Yb-Q8H" id="gbL-MW-5ry"/>
-                <outlet property="messageBtn" destination="AWl-Tr-NHz" id="8Lo-WW-hs6"/>
                 <outlet property="pruductPlace" destination="FeP-Cf-lBS" id="QYB-Ip-dyy"/>
                 <outlet property="time" destination="4GN-id-KvA" id="5Yi-o8-OlP"/>
                 <outlet property="titleLable" destination="6ll-Ny-QUZ" id="1DF-HJ-ZdE"/>
             </connections>
-            <point key="canvasLocation" x="-1209" y="532.5"/>
+            <point key="canvasLocation" x="-1157" y="526.5"/>
         </tableViewCell>
     </objects>
 </document>

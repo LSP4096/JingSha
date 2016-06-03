@@ -436,8 +436,8 @@
         return cell;
     }
     WantBuyTableViewCell * cell = [_baseTable dequeueReusableCellWithIdentifier:@"wantCell"];
-    cell.model = self.dataAry[indexPath.row];
-    cell.myBaojia = NO;
+//    cell.model = self.dataAry[indexPath.row];
+//    cell.myBaojia = NO;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -37,6 +37,8 @@
 - (void)setModel:(SuppleMsgModel *)model {
     _model = model;
     self.titleLabel.text = _model.title;
+    self.productPlace.text = model.zcd;
+    self.numLabel.text = model.zhisu;
     self.pliceLabel.text = [NSString stringWithFormat:@"￥%@",_model.jiage];
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:_model.photo] placeholderImage:[UIImage imageNamed:@"NetBusy"] completed:nil];
 }

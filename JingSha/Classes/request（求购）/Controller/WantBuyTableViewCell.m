@@ -11,13 +11,9 @@
 @interface WantBuyTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *timeLable;
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
-@property (weak, nonatomic) IBOutlet UILabel *subtitle1;//规格
-@property (weak, nonatomic) IBOutlet UILabel *subTitle2;//原料
-@property (weak, nonatomic) IBOutlet UILabel *subContent1;
-@property (weak, nonatomic) IBOutlet UILabel *subContent2;
-
-@property (weak, nonatomic) IBOutlet UILabel *subTitle3; // 大类
-@property (weak, nonatomic) IBOutlet UILabel *subContent3;
+@property (weak, nonatomic) IBOutlet UILabel *class;
+@property (weak, nonatomic) IBOutlet UILabel *resouce;
+@property (weak, nonatomic) IBOutlet UILabel *zhisu;
 @property (weak, nonatomic) IBOutlet UILabel *quotes; //报价人数
 
 @end
@@ -30,27 +26,39 @@
 
 - (void)setModel:(RequestMsgModel *)model{
     _model = model;
-    self.titleLable.text = _model.title;
-    self.timeLable.text = _model.time;
+        self.titleLable.text = _model.title;
+        self.timeLable.text = _model.time;
+    
+        if (_model.baojia ) {
+            self.quotes.text = @"已有人报价";
+        }else {
+            self.quotes.text = @"暂无报价信息";
+        }
+        self.class.text = @"大类:暂无";
+        self.resouce.text = str(@"原料:%@",_model.chengfen);
+        self.zhisu.text = str(@"支数:%@",_model.zhisu);
+}
 
-    if ([_model.type isEqualToString:@"2"]) {//纱线
-//        self.subtitle1.text = @"规格:";
-        if (_model.guige.length != 0) {
-            self.subtitle1.text = @"规格:";
-            self.subContent1.text = _model.guige;
-        }
-    }else{
-        self.subtitle1.text = @"支数:";
-        if (_model.zhisu.length != 0) {
-            self.subContent1.text = _model.zhisu;
-        }
-        
-//        self.subTitle2.text = @"原料:";
-        if (_model.chengfen.length != 0) {
-            self.subTitle2.text = @"原料:";
-            self.subContent2.text = _model.chengfen;
-        }
-    }
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    
+    // Configure the view for the selected state
 }
 
 @end
+
+/*
+ @property (nonatomic, copy)NSString * jiage;
+ @property (nonatomic, copy)NSString * Id;
+ @property (nonatomic, copy)NSString * title;
+ @property (nonatomic, copy)NSString * jianjie;
+ @property (nonatomic, copy)NSString * time;
+ @property (nonatomic, copy)NSString * zhisu;
+ @property (nonatomic, copy)NSString * chengfen;
+ @property (nonatomic, copy)NSString * guige;
+ @property (nonatomic, copy)NSString * type;
+ @property (nonatomic, copy)NSString * baojia;//是否有人报价
+ @property (nonatomic, copy)NSString * zhuangtai;//1审核中2拒绝3同意/求购中4完成
+ @property (nonatomic, copy)NSString * Type;//1纱线 2化纤  我的求购
+ */
