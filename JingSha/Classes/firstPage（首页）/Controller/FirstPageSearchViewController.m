@@ -99,6 +99,7 @@ static NSString * indentifier = @"searchResultCell";
     for (NSDictionary * smallDic in dict) {
         [self.titleAry2 addObject:smallDic[@"title"]];
     }
+    
     if (self.titleAry2.count > 36) {
         NSRange range = {0, 35};
        self.titleAry2 = [[self.titleAry2 subarrayWithRange:range] mutableCopy];
