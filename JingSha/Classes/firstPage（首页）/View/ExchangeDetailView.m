@@ -28,7 +28,7 @@
 
 - (void)setModel:(SuppleMsgModel *)model {
     for (int i = 0; i < 5; i++) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, i * self.height / 5, self.width, self.height / 5)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(2, i * self.height / 5, self.width - 5, self.height / 5)];
         label.tag = i + 100;
         label.font = [UIFont systemFontOfSize:11.0];
         if (label.tag == 100) {

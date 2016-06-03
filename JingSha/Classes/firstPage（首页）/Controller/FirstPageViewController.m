@@ -111,7 +111,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
  *  加载数据(这里只是为了得出新品推荐的个数，以便确定要显示的高度)
  */
 - (void)loadData{
-    NSString * netPath = @"pro/getcid";
+    NSString * netPath = @"pro/home_list2";
     NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
     [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
     [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
@@ -285,11 +285,11 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     [self.navigationController pushViewController:superMarketVC animated:YES];
 }
 
-- (void)tapAction:(UITapGestureRecognizer *)gesture {
+-(void)putIntoExchangeDetail:(NSString *)Id {
     SupplyDetailViewController * supplyVC = [[SupplyDetailViewController alloc] init];
-//    supplyVC.sendUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/supply/%@/%@", [self.dateArr[view.tag] Id], KUserImfor[@"userid"]];
-//    supplyVC.chanpinId =
-//    [self.navigationController pushViewController:supplyVC animated:YES];
+    supplyVC.sendUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/supply/%@/%@", Id, KUserImfor[@"userid"]];
+    supplyVC.chanpinId = Id;
+    [self.navigationController pushViewController:supplyVC animated:YES];
 }
 
 #pragma mark -－－ UITableViewDataSource, UITableViewDelegate
