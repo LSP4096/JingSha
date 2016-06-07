@@ -285,11 +285,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     [self.navigationController pushViewController:superMarketVC animated:YES];
 }
 
-<<<<<<< HEAD
-- (void) putIntoExchangeDetail:(NSString *)Id {
-=======
 -(void)putIntoExchangeDetail:(NSString *)Id {
->>>>>>> origin/master
     SupplyDetailViewController * supplyVC = [[SupplyDetailViewController alloc] init];
     supplyVC.sendUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/supply/%@/%@", Id, KUserImfor[@"userid"]];
     supplyVC.chanpinId = Id;

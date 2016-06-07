@@ -10,12 +10,7 @@
 
 @protocol SPExchangeCenterDelegate <NSObject>
 - (void)exchangeMoreBtnClick;
-<<<<<<< HEAD
-- (void) putIntoExchangeDetail:(NSString *)Id;
-=======
 -(void)putIntoExchangeDetail:(NSString *)Id;
->>>>>>> origin/master
-
 @end
 
 @interface SPExchangeCenterCell : UITableViewCell
