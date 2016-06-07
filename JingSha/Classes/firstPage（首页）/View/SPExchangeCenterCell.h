@@ -10,7 +10,7 @@
 
 @protocol SPExchangeCenterDelegate <NSObject>
 - (void)exchangeMoreBtnClick;
-- (void)tapAction:(UITapGestureRecognizer *)gesture;
+- (void) putIntoExchangeDetail:(NSString *)Id;
 
 @end
 

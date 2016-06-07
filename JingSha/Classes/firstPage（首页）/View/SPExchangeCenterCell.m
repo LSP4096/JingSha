@@ -78,6 +78,7 @@
     }
     
     self.baseScrollerView.contentSize = CGSizeMake(self.pages * kUIScreenWidth, scrollerHight);
+    int index = 0;
     
     for (int i = 0; i < self.pages; i++) {
         UIImageView *imgView = [[UIImageView alloc] initWithImage:img(@"exchange")];
@@ -85,11 +86,11 @@
         [self.baseScrollerView addSubview:imgView];
         
         CGFloat tableWidth = (kUIScreenWidth - 120) / 2;
-
+        
         for (int j = 0; j < 2; j++) {
             ExchangeDetailView *ExchangeView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imgView.frame) + j * tableWidth + 10, 0, tableWidth, scrollerHight)];
-            ExchangeView.tag = 100 + i;
-            ExchangeView.model = self.dateArr[i];
+            ExchangeView.tag = 100 + index;
+            ExchangeView.model = self.dateArr[index++];
             
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
             [ExchangeView addGestureRecognizer:tap];
@@ -102,13 +103,13 @@
 
 - (void)tapAction:(UITapGestureRecognizer *)gesture {
     UIView *view  = gesture.view;
-    NSString *id = [self.dateArr[view.tag] Id];
+    NSString *id = [self.dateArr[view.tag - 100] Id];
     [self putIntoExchangeDetail:id];
 }
 
 -(void)putIntoExchangeDetail:(NSString *)Id {
-     if (self.delegate&&[self.delegate respondsToSelector:@selector(tapAction:)]) {
-//        [self.delegate tapAction:Id];
+     if (self.delegate&&[self.delegate respondsToSelector:@selector(putIntoExchangeDetail:)]) {
+        [self.delegate putIntoExchangeDetail:Id];
     }
 }
 
