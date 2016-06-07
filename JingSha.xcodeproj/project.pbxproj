@@ -3181,9 +3181,9 @@
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/SinaWeiboSDK",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zgsxw.dfgerg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zgsxw.jingsha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e26fc497-6bf9-419c-a94c-8a39e65f3c1c";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3213,9 +3213,9 @@
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/SinaWeiboSDK",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zgsxw.dfgerg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zgsxw.jingsha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e26fc497-6bf9-419c-a94c-8a39e65f3c1c";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -105,6 +105,7 @@
     _searchBarBtn = [[UIButton alloc] initWithFrame:CGRectMake(kUIScreenWidth * 0.075, CGRectGetMaxY(_sdcycleScroll.frame) - KSearchBarHeight - 20, kUIScreenWidth * 0.85, KSearchBarHeight)];
     _searchBarBtn.layer.cornerRadius = 5;
     [_searchBarBtn setTitle:@"请输入产品/企业/求购" forState:UIControlStateNormal];
+    _searchBarBtn.alpha = 0.9;
     [_searchBarBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     _searchBarBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     _searchBarBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
