@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSMutableArray *titleArr;
 @property (nonatomic, strong) NSMutableArray *titleArr2;
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) NSString *keyword;
 
 @end
 
@@ -61,9 +62,8 @@
     [view addSubview:bottomView];
     
     self.index = 0;
-    //设置选择按钮
-    [self selectBtnClick];
-    
+
+    [self loadData];
     //返回按钮
     _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _backBtn.frame = CGRectMake(5, 20, 40, 40);
@@ -86,7 +86,7 @@
 #pragma mark--Lazy Loading
 - (NSMutableArray *)titleArr2 {
     if (!_titleArr2) {
-        _titleArr2 = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10",@"11", @"12", @"13", @"14", @"15", nil];
+        _titleArr2 = [NSMutableArray new];
     }
     return  _titleArr2;
 }
@@ -278,40 +278,73 @@
  *  下拉刷新
  */
 - (void)refreshNewData{
-    [self configerDataWithPage:1 keyword:nil];
+    [self.dataAry removeAllObjects];
+    self.pageNum = 1;
+    [self configerData];
 }
 /**
  *  上拉加载更多
  */
 - (void)loadMoreData{
-    [self configerDataWithPage:self.pageNum + 1 keyword:nil];
+    self.pageNum++;
+    [self configerData];
 }
+/**
+ *  获得关键字
+ *
+ */
+- (void)loadData{
+    NSString * netPath = @"news/keyword_list";
+    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
+    [allParams setObject:@(23) forKey:@"cid"];
+    [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
+        [self getKeywordData:responseObj];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+- (void)getKeywordData:(id)responseObj{
+    self.titleArr = [NSMutableArray array];
+    self.titleArr2 = [NSMutableArray array];
+    NSDictionary * dict = responseObj[@"data"];
+    [self.titleArr removeAllObjects];
+    for (NSDictionary * smallDic in dict) {
+        [self.titleArr2 addObject:smallDic[@"title"]];
+    }
+    
+    if (self.titleArr2.count > 24) {
+        NSRange range = {0, 23};
+        self.titleArr2 = [[self.titleArr2 subarrayWithRange:range] mutableCopy];
+    }
+    [self selectBtnClick];
+}
+
 /**
  *  获取原始数据
  */
-- (void)configerDataWithPage:(NSInteger)page keyword:(NSString *)keyword{
+- (void)configerData{
     NSString * netPath = @"pro/buy_list";
     NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
     [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
     [allParams setObject:@(kPageCount) forKey:@"pagecount"];
-    [allParams setObject:@(page) forKey:@"page"];
-    if (keyword != nil) {
-        [allParams setObject:keyword forKey:@"keyword"];
+    [allParams setObject:@(self.pageNum) forKey:@"page"];
+    if (self.keyword != nil) {
+        [allParams setObject:_keyword forKey:@"keyword"];
     }
     [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
         [_baseTable.header endRefreshing];
         [_baseTable.footer endRefreshing];
-        [self getDataFromResponseObj:responseObj currentPage:page];
+        [self getDataFromResponseObj:responseObj];
     } failure:^(NSError *error) {
         MyLog(@"首页求购信息错误:%@",error);
     }];
 }
-- (void)getDataFromResponseObj:(id)responseObj currentPage:(NSInteger)page{
-    self.pageNum = page;
+
+- (void)getDataFromResponseObj:(id)responseObj {
     if ([responseObj[@"data"] isKindOfClass:[NSNull class]]) {//数据为空
         //
     }else{
-        if (page == 1) {
+        if (_pageNum == 1) {
             self.dataAry = [NSMutableArray array];
         }
         
@@ -333,13 +366,15 @@
     if (searchText.length == 0) {
         [_searchBar resignFirstResponder];
         [self.dataAry removeAllObjects];
-        [self configerDataWithPage:1 keyword:searchText];
+        self.keyword = searchText;
+        [self refreshNewData];
     }
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
     [self.dataAry removeAllObjects];
-    [self configerDataWithPage:1 keyword:searchBar.text];
+    self.keyword = searchBar.text;
+    [self refreshNewData];
 }
 
 
@@ -428,7 +463,9 @@
 }
 
 - (void)optionBtnClick:(UIButton *)sender {
-    MyLog(@"%@",sender.titleLabel.text);
+    self.keyword = sender.titleLabel.text;
+    self.searchBar.text = sender.titleLabel.text;
+    [self refreshNewData];
 }
 
 /*

@@ -25,8 +25,6 @@
 		21071FB31C2A4A2700D40D88 /* bottomDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21071FB11C2A4A2700D40D88 /* bottomDetailTableViewCell.xib */; };
 		210937571C0ECC19003CE1CD /* MyQuotedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210937551C0ECC19003CE1CD /* MyQuotedViewController.m */; };
 		210937581C0ECC19003CE1CD /* MyQuotedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 210937561C0ECC19003CE1CD /* MyQuotedViewController.xib */; };
-		2109375C1C0ED323003CE1CD /* WantBuyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2109375A1C0ED323003CE1CD /* WantBuyTableViewCell.m */; };
-		2109375D1C0ED323003CE1CD /* WantBuyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2109375B1C0ED323003CE1CD /* WantBuyTableViewCell.xib */; };
 		2109BEB81C4E55DD0065C664 /* XWMemberCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2109BEB61C4E55DD0065C664 /* XWMemberCenterViewController.m */; };
 		2109BEB91C4E55DD0065C664 /* XWMemberCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2109BEB71C4E55DD0065C664 /* XWMemberCenterViewController.xib */; };
 		2109BEBB1C4E65ED0065C664 /* ThreePhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2109BEBA1C4E65ED0065C664 /* ThreePhotoTableViewCell.xib */; };
@@ -286,6 +284,8 @@
 		4C4A1C731CF690E30037176B /* SPExchangeCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A1C711CF690E30037176B /* SPExchangeCenterCell.m */; };
 		4C4A1C741CF690E30037176B /* SPExchangeCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A1C721CF690E30037176B /* SPExchangeCenterCell.xib */; };
 		4C4D1EE71D001A8300D60718 /* ExchangeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D1EE61D001A8300D60718 /* ExchangeDetailView.m */; };
+		4C87BE6F1D01606C00A4ACE0 /* WantBuyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */; };
+		4C87BE701D01606C00A4ACE0 /* WantBuyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */; };
 		4CC6FCE91CE5B1CD00BF43DC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */; };
 		8106B21C1BF4B4CC005F94C3 /* FirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */; };
 		8106B2211BF4BDFD005F94C3 /* HeadViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21F1BF4BDFD005F94C3 /* HeadViewTableViewCell.m */; };
@@ -442,9 +442,6 @@
 		210937541C0ECC19003CE1CD /* MyQuotedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyQuotedViewController.h; path = "../../request（求购）/Controller/MyQuotedViewController.h"; sourceTree = "<group>"; };
 		210937551C0ECC19003CE1CD /* MyQuotedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyQuotedViewController.m; path = "../../request（求购）/Controller/MyQuotedViewController.m"; sourceTree = "<group>"; };
 		210937561C0ECC19003CE1CD /* MyQuotedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyQuotedViewController.xib; path = "../../request（求购）/Controller/MyQuotedViewController.xib"; sourceTree = "<group>"; };
-		210937591C0ED323003CE1CD /* WantBuyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WantBuyTableViewCell.h; path = "JingSha/Classes/request（求购）/Controller/WantBuyTableViewCell.h"; sourceTree = SOURCE_ROOT; };
-		2109375A1C0ED323003CE1CD /* WantBuyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WantBuyTableViewCell.m; path = "JingSha/Classes/request（求购）/Controller/WantBuyTableViewCell.m"; sourceTree = SOURCE_ROOT; };
-		2109375B1C0ED323003CE1CD /* WantBuyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WantBuyTableViewCell.xib; path = "JingSha/Classes/request（求购）/Controller/WantBuyTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		2109BEB51C4E55DD0065C664 /* XWMemberCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWMemberCenterViewController.h; sourceTree = "<group>"; };
 		2109BEB61C4E55DD0065C664 /* XWMemberCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWMemberCenterViewController.m; sourceTree = "<group>"; };
 		2109BEB71C4E55DD0065C664 /* XWMemberCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XWMemberCenterViewController.xib; sourceTree = "<group>"; };
@@ -890,6 +887,9 @@
 		4C4A1C721CF690E30037176B /* SPExchangeCenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPExchangeCenterCell.xib; sourceTree = "<group>"; };
 		4C4D1EE51D001A8300D60718 /* ExchangeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeDetailView.h; sourceTree = "<group>"; };
 		4C4D1EE61D001A8300D60718 /* ExchangeDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeDetailView.m; sourceTree = "<group>"; };
+		4C87BE6C1D01606C00A4ACE0 /* WantBuyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WantBuyTableViewCell.h; sourceTree = "<group>"; };
+		4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WantBuyTableViewCell.m; sourceTree = "<group>"; };
+		4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WantBuyTableViewCell.xib; sourceTree = "<group>"; };
 		4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8106B2191BF4B4CC005F94C3 /* FirstPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageViewController.h; sourceTree = "<group>"; };
 		8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstPageViewController.m; sourceTree = "<group>"; };
@@ -1400,9 +1400,9 @@
 		21A70B7B1C1066610061B114 /* Request Message */ = {
 			isa = PBXGroup;
 			children = (
-				210937591C0ED323003CE1CD /* WantBuyTableViewCell.h */,
-				2109375A1C0ED323003CE1CD /* WantBuyTableViewCell.m */,
-				2109375B1C0ED323003CE1CD /* WantBuyTableViewCell.xib */,
+				4C87BE6C1D01606C00A4ACE0 /* WantBuyTableViewCell.h */,
+				4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */,
+				4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */,
 				21A70B761C105BE00061B114 /* DetailTopTableViewCell.h */,
 				21A70B771C105BE00061B114 /* DetailTopTableViewCell.m */,
 				21A70B781C105BE00061B114 /* DetailTopTableViewCell.xib */,
@@ -2638,6 +2638,7 @@
 				211296161C23F3060077A0D3 /* ConfirmRequestViewController.xib in Resources */,
 				2109BEBB1C4E65ED0065C664 /* ThreePhotoTableViewCell.xib in Resources */,
 				81BBC1E21BEDBC4D00D1216A /* HotSearchTableViewCell.xib in Resources */,
+				4C87BE701D01606C00A4ACE0 /* WantBuyTableViewCell.xib in Resources */,
 				21071FB31C2A4A2700D40D88 /* bottomDetailTableViewCell.xib in Resources */,
 				213C76741C564A0600B23512 /* CertifyViewController.xib in Resources */,
 				21E898B71C3DEF5D0038757C /* AcceptPromteViewController.xib in Resources */,
@@ -2696,7 +2697,6 @@
 				8129C8B81BFADAF700F78429 /* ShareSDKUI.bundle in Resources */,
 				213E981F1C2975A2005EB63B /* StandingShopViewController.xib in Resources */,
 				81AECF661BEB988600DF91D3 /* ForgetPWViewController.xib in Resources */,
-				2109375D1C0ED323003CE1CD /* WantBuyTableViewCell.xib in Resources */,
 				211054931C166ED300C8D62E /* TopCollectionReusableView.xib in Resources */,
 				210AE9081C1E68060061304C /* CheckQuoteTableViewCell.xib in Resources */,
 				8129C8AE1BFADAF700F78429 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -2868,7 +2868,6 @@
 				2157D0E61C44BD4900068B20 /* ProListModel.m in Sources */,
 				214649EE1C2037CC00605AB5 /* LeaveDetailMessageTableViewCell.m in Sources */,
 				81C2282A1BEC948C00893B1B /* ChangePWViewController.m in Sources */,
-				2109375C1C0ED323003CE1CD /* WantBuyTableViewCell.m in Sources */,
 				213E98251C2978E1005EB63B /* convertHistoryTableViewController.m in Sources */,
 				210BA4CD1C1A5BE8009457FF /* MarketAttentionTableViewCell.m in Sources */,
 				21A70B491C0FD3260061B114 /* NewsTableViewCell.m in Sources */,
@@ -2940,6 +2939,7 @@
 				21F8E5DB1C28E4BD00C73C9B /* SWTableViewCell.m in Sources */,
 				21CA63BF1C27A8A4003FA159 /* AlterCompanyMassageViewController.m in Sources */,
 				213F7FEA1C76ACC7006BC607 /* ShangjiaViewController.m in Sources */,
+				4C87BE6F1D01606C00A4ACE0 /* WantBuyTableViewCell.m in Sources */,
 				811393CA1BE9E99200FD0DCF /* RegisterViewController.m in Sources */,
 				21F8E5F61C290EEC00C73C9B /* AnswerMessageViewController.m in Sources */,
 				4C4664FC1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m in Sources */,
@@ -3181,9 +3181,9 @@
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/SinaWeiboSDK",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zgsxw.jing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zgsxw.jingsha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e26fc497-6bf9-419c-a94c-8a39e65f3c1c";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3213,9 +3213,9 @@
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/SinaWeiboSDK",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zgsxw.jing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zgsxw.jingsha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e26fc497-6bf9-419c-a94c-8a39e65f3c1c";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

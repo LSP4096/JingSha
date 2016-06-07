@@ -41,9 +41,9 @@
     [self configerNavgationbar];
     
     self.type = @"";
-    
-    [self selectBtnClick];
+
     [self refreshNewData];
+    [self getKeywordFromNet];
 }
 
 
@@ -60,7 +60,35 @@
     self.pageNum++;
     [self configerData];
 }
+/**
+ *  获得Keyword关键字
+ */
+- (void)getKeywordFromNet {
+    NSString * netPath = @"news/keyword_list";
+    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
+    [allParams setObject:@(23) forKey:@"cid"];
+    [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
+        [self getKeywordFromResponseObj:responseObj];
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
+- (void)getKeywordFromResponseObj:(id)responseObj {
+    NSDictionary * dict = responseObj[@"data"];
+    [self.titleArr removeAllObjects];
+    for (NSDictionary * smallDic in dict) {
+        [self.titleArr2 addObject:smallDic[@"title"]];
+    }
+    if (self.titleArr2.count > 24) {
+        NSRange rang = {0, 23};
+        self.titleArr2 = [[self.titleArr2 subarrayWithRange:rang] mutableCopy];
+    }
+    [self selectBtnClick];
+}
+/**
+ *  获得列表内容
+ */
 - (void)configerData{
     NSString * netPath = @"pro/pro_list";
     NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
@@ -230,7 +258,9 @@
 }
 
 - (void)optionBtnClick:(UIButton *)sender {
-    MyLog(@"%@",sender.titleLabel.text);
+    self.keyword = sender.titleLabel.text;
+    self.searchBar.text = sender.titleLabel.text;
+    [self refreshNewData];
 }
 
 /**
@@ -278,7 +308,7 @@
 
 - (NSMutableArray *)titleArr2 {
     if (!_titleArr2) {
-        _titleArr2 = [[NSMutableArray alloc] initWithObjects:@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12", @"13", nil];
+        _titleArr2 = [[NSMutableArray alloc] init];
     }
     return _titleArr2;
     

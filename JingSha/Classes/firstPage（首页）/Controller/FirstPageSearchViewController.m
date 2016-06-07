@@ -99,6 +99,7 @@ static NSString * indentifier = @"searchResultCell";
     for (NSDictionary * smallDic in dict) {
         [self.titleAry2 addObject:smallDic[@"title"]];
     }
+    
     if (self.titleAry2.count > 36) {
         NSRange range = {0, 35};
        self.titleAry2 = [[self.titleAry2 subarrayWithRange:range] mutableCopy];
@@ -226,8 +227,8 @@ static NSString * indentifier = @"searchResultCell";
     self.selctedView.height = YES;
     _isChange = !_isChange;
     self.selectedTitle = @"求购";
-    [self loadDataWithCid:22];
-    self.cid = 22;
+    [self loadDataWithCid:23];
+    self.cid = 23;
     self.change = YES;
     self.changeButPage = 0;
     MyLog(@"求购");
@@ -244,7 +245,7 @@ static NSString * indentifier = @"searchResultCell";
     self.selctedView = [[UIView alloc] initWithFrame:CGRectMake(10, 75, 85, 105)];
     self.selctedView.backgroundColor = RGBColor(234, 234, 235);
     self.selctedView.layer.cornerRadius = 8;
-    self.selctedView.layer.borderWidth = 0.1;
+    self.selctedView.layer.borderWidth = 0.001;
     self.selctedView.layer.masksToBounds = YES;
     [self.view addSubview:self.selctedView];
     self.selctedView.hidden = YES;
@@ -377,6 +378,8 @@ static NSString * indentifier = @"searchResultCell";
  *  换一批按钮点击事件
  */
 - (void)changeButtonClicked{
+    
+    self.selctedView.hidden = YES;
     
     NSMutableArray * ary = [NSMutableArray array];
     
