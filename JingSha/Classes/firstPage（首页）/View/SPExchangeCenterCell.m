@@ -13,6 +13,7 @@
 @interface SPExchangeCenterCell () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UIView *cntView;
 @property (nonatomic, strong) UIScrollView *baseScrollerView;
 @property (nonatomic, assign) NSInteger pages;
 @property (nonatomic, strong) NSMutableArray *dateArr;
@@ -33,6 +34,10 @@
     [super awakeFromNib];
     // Initialization code
     
+    self.cntView.layer.cornerRadius = 5;
+    self.cntView.layer.borderWidth = 0.001;
+    self.cntView.layer.masksToBounds = YES;
+    
     [self loadHomePageData];
 }
 
@@ -41,7 +46,7 @@
     NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
     [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
     [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
-        //        MyLog(@"++%@", responseObj);
+                MyLog(@"++%@", responseObj);
         [self getDataFromResponseObj:responseObj];
     } failure:^(NSError *error) {
         MyLog(@"首页数据加载错误信息%@", error);
@@ -60,8 +65,8 @@
 
 - (void)configUI {
     
-    CGFloat scrollerHight = (134 - self.headerView.frame.size.height);
-    self.baseScrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.headerView.frame), kUIScreenWidth, scrollerHight)];
+    CGFloat scrollerHight = (self.cntView.size.height - self.headerView.frame.size.height - 10);
+    self.baseScrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(_cntView.frame.origin.x, CGRectGetMaxY(self.headerView.frame) + 8, self.cntView.size.width, scrollerHight)];
     _baseScrollerView.delegate = self;
     _baseScrollerView.pagingEnabled = YES;
     _baseScrollerView.showsVerticalScrollIndicator = NO;
@@ -76,20 +81,15 @@
     } else if (self.dateArr.count > 4 && self.dateArr.count <= 6) {
         self.pages = 3;
     }
-    
-    self.baseScrollerView.contentSize = CGSizeMake(self.pages * kUIScreenWidth, scrollerHight);
+    self.baseScrollerView.contentSize = CGSizeMake(self.pages * _cntView.frame.size.width, scrollerHight);
     int index = 0;
-    
+    CGFloat Width = self.cntView.size.width / 2;
+        
     for (int i = 0; i < self.pages; i++) {
-        UIImageView *imgView = [[UIImageView alloc] initWithImage:img(@"exchange")];
-        imgView.frame = CGRectMake(25 + i * kUIScreenWidth, 55 - CGRectGetMaxY(self.headerView.frame), 64, 61);
-        [self.baseScrollerView addSubview:imgView];
-        
-        CGFloat tableWidth = (kUIScreenWidth - 120) / 2;
-        
         for (int j = 0; j < 2; j++) {
-            ExchangeDetailView *ExchangeView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imgView.frame) + j * tableWidth + 10, 0, tableWidth, scrollerHight)];
+            ExchangeDetailView *ExchangeView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(i * _cntView.frame.size.width + j * Width, 0, Width, scrollerHight)];
             ExchangeView.tag = 100 + index;
+//            ExchangeView.backgroundColor = RandomColor;
             ExchangeView.model = self.dateArr[index++];
             
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];

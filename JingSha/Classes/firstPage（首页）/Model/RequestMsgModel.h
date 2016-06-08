@@ -23,9 +23,18 @@
 @property (nonatomic, copy)NSString * zhuangtai;//1审核中2拒绝3同意/求购中4完成
 @property (nonatomic, copy)NSString * Type;//1纱线 2化纤  我的求购
 
-
+@property (nonatomic, copy)NSString * num;
 //我的报价
 @property (nonatomic, copy)NSString * bao;//我的报价的状态
 @property (nonatomic, copy)NSString * bid;//我的报价的求购的id
 
 @end
+/*
+ chengfen = "";
+ id = 435;
+ jianjie = "";
+ num = "";
+ time = "2016-06-07 ";
+ title = "全棉高配紧密纱";
+ zhisu = 60S;
+ */

@@ -284,6 +284,8 @@
 		4C4A1C731CF690E30037176B /* SPExchangeCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A1C711CF690E30037176B /* SPExchangeCenterCell.m */; };
 		4C4A1C741CF690E30037176B /* SPExchangeCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A1C721CF690E30037176B /* SPExchangeCenterCell.xib */; };
 		4C4D1EE71D001A8300D60718 /* ExchangeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D1EE61D001A8300D60718 /* ExchangeDetailView.m */; };
+		4C556DD81D07F12100CA54AB /* JSLastRequestDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C556DD61D07F12100CA54AB /* JSLastRequestDetailCell.m */; };
+		4C556DD91D07F12100CA54AB /* JSLastRequestDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C556DD71D07F12100CA54AB /* JSLastRequestDetailCell.xib */; };
 		4C87BE6F1D01606C00A4ACE0 /* WantBuyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */; };
 		4C87BE701D01606C00A4ACE0 /* WantBuyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */; };
 		4CC6FCE91CE5B1CD00BF43DC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */; };
@@ -887,6 +889,9 @@
 		4C4A1C721CF690E30037176B /* SPExchangeCenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPExchangeCenterCell.xib; sourceTree = "<group>"; };
 		4C4D1EE51D001A8300D60718 /* ExchangeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeDetailView.h; sourceTree = "<group>"; };
 		4C4D1EE61D001A8300D60718 /* ExchangeDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeDetailView.m; sourceTree = "<group>"; };
+		4C556DD51D07F12100CA54AB /* JSLastRequestDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSLastRequestDetailCell.h; sourceTree = "<group>"; };
+		4C556DD61D07F12100CA54AB /* JSLastRequestDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSLastRequestDetailCell.m; sourceTree = "<group>"; };
+		4C556DD71D07F12100CA54AB /* JSLastRequestDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSLastRequestDetailCell.xib; sourceTree = "<group>"; };
 		4C87BE6C1D01606C00A4ACE0 /* WantBuyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WantBuyTableViewCell.h; sourceTree = "<group>"; };
 		4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WantBuyTableViewCell.m; sourceTree = "<group>"; };
 		4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WantBuyTableViewCell.xib; sourceTree = "<group>"; };
@@ -2315,12 +2320,17 @@
 				4C4A1C6B1CF690CC0037176B /* SPLatestRequestCell.h */,
 				4C4A1C6C1CF690CC0037176B /* SPLatestRequestCell.m */,
 				4C4A1C6D1CF690CC0037176B /* SPLatestRequestCell.xib */,
+				4C556DD51D07F12100CA54AB /* JSLastRequestDetailCell.h */,
+				4C556DD61D07F12100CA54AB /* JSLastRequestDetailCell.m */,
+				4C556DD71D07F12100CA54AB /* JSLastRequestDetailCell.xib */,
 				4C4A1C661CF690B80037176B /* SPHotProductTableViewCell.h */,
 				4C4A1C671CF690B80037176B /* SPHotProductTableViewCell.m */,
 				4C4A1C681CF690B80037176B /* SPHotProductTableViewCell.xib */,
 				4C4A1C701CF690E30037176B /* SPExchangeCenterCell.h */,
 				4C4A1C711CF690E30037176B /* SPExchangeCenterCell.m */,
 				4C4A1C721CF690E30037176B /* SPExchangeCenterCell.xib */,
+				4C4D1EE51D001A8300D60718 /* ExchangeDetailView.h */,
+				4C4D1EE61D001A8300D60718 /* ExchangeDetailView.m */,
 				4C49F1381CFD3008001A95F4 /* SuperMarketTabViewCell.h */,
 				4C49F1391CFD3008001A95F4 /* SuperMarketTabViewCell.m */,
 				4C49F13A1CFD3008001A95F4 /* SuperMarketTabViewCell.xib */,
@@ -2341,8 +2351,6 @@
 				2131DF651C57B7730068866C /* AlwaysCityTableViewCell.h */,
 				2131DF661C57B7730068866C /* AlwaysCityTableViewCell.m */,
 				2131DF671C57B7730068866C /* AlwaysCityTableViewCell.xib */,
-				4C4D1EE51D001A8300D60718 /* ExchangeDetailView.h */,
-				4C4D1EE61D001A8300D60718 /* ExchangeDetailView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2664,6 +2672,7 @@
 				81EE18CF1BF1C38A00D7A02B /* SearchResultTableViewCell.xib in Resources */,
 				21313D1E1C4DC07F0044EB20 /* ContentTableViewCell.xib in Resources */,
 				2109BEB91C4E55DD0065C664 /* XWMemberCenterViewController.xib in Resources */,
+				4C556DD91D07F12100CA54AB /* JSLastRequestDetailCell.xib in Resources */,
 				21E898C11C3E339C0038757C /* ConnectDetailViewController.xib in Resources */,
 				4C4A1C6F1CF690CC0037176B /* SPLatestRequestCell.xib in Resources */,
 				81FEB4FF1C02B31000BB786B /* ProviderTableViewCell.xib in Resources */,
@@ -2841,6 +2850,7 @@
 				8106B2211BF4BDFD005F94C3 /* HeadViewTableViewCell.m in Sources */,
 				2157D0DD1C44943000068B20 /* CompanyCollectTableViewCell.m in Sources */,
 				21717A751C4D1D140034B2FC /* SleepTableViewCell.m in Sources */,
+				4C556DD81D07F12100CA54AB /* JSLastRequestDetailCell.m in Sources */,
 				81BA8B9E1BF44400006954D6 /* RootViewController.m in Sources */,
 				211296061C23A8A20077A0D3 /* IssueRequestViewController.m in Sources */,
 				210AE8F51C1E4E130061304C /* SelectTypeViewController.m in Sources */,

@@ -68,6 +68,7 @@ SPExchangeCenterDelegate
 @property (nonatomic, strong) TotalProviderTableViewCell *cell;
 @property (nonatomic ,strong) NSMutableArray * attentionAry;//例子，实验市场关注里面返回的cell样式和高度
 @property (nonatomic, assign) NSInteger NewProCount;
+@property (nonatomic, assign) NSInteger NewBuyCount;
 @property (nonatomic, assign) NSInteger pageCount;
 @property (nonatomic, copy) NSString * read;
 
@@ -130,7 +131,9 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     NSDictionary * dict  = responseObj[@"data"];
     self.read = dict[@"read"];
     NSArray * newProAry = dict[@"newpro"];
+    NSArray *newBuyArr = dict[@"newbuy"];
     self.NewProCount = newProAry.count;
+    self.NewBuyCount = newBuyArr.count;
     self.pageCount = [dict[@"userlist"] count];
     self.attentionAry = [NSMutableArray array];
     if (![dict[@"guanzhu"] isKindOfClass:[NSNull class]]) {
@@ -310,35 +313,15 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 }
 //返回cell的行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.section == 0) {
-//        return 210 * KProportionHeight;
-//    }else if (indexPath.section == 1){
-//        if (self.NewProCount <= 3) {
-//            return 200 * KProportionHeight * 1/2;
-//        }
-//        if (self.NewProCount > 3 && self.NewProCount <= 6) {
-//            return 200 * KProportionHeight;
-//        }
-//        return 200 * KProportionHeight * 3/2;
-//    }else if (indexPath.section == 2){
-//        return 300 * KProportionHeight;
-//    }else{
-//        if (self.attentionAry.count != 0) {
-////            FirstPageAttModel * model = self.attentionAry[indexPath.row];
-////            NSArray * ary = [model typelist];
-//            NSArray * ary = @[];
-//            return [DidAttentionTableViewCell callHight:ary];
-//        }else{
-//            return 150;
-//        }
-//    }
     if (indexPath.section == 0) {
         return 180 * KProportionHeight; //代码约束
     }
-    else if(indexPath.section == 3){
-        return 154; //xib约束
-    } else {
-        return 134; //xib约束
+    else if(indexPath.section == 1){
+        return 166; //xib约束
+    } else if(indexPath.section == 2) {
+        return 134 - 90 + self.NewBuyCount * 90; //xib约束
+    }else {
+        return 250;
     }
 }
 
@@ -420,24 +403,14 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 //        return nil;
 //    }
 //}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return section ? 35 : 0.001;
     return 0.001;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    if (section == 2) {
-//        return 30;
-//    }else if (section == 3){
-//        return 0.001;
-//    }else{
-//        return 13;
-//    }
-    if (section == 1||section == 2) {
-        return 4;
-    } else {
-        return 0.001;
-    }
+    return 0.001;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
         case 0:
@@ -449,35 +422,23 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
             break;
         case 1:
         {
-//            NewProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentWithNewProdect forIndexPath:indexPath];
-            SPLatestRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithLatesRequest forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone; //选中时的颜色 无
-            cell.delegate = self; 
+            SPExchangeCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithExchangeCenter forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.delegate = self;
             return cell;
         }
             break;
         case 2:
         {
-//            self.cell = [tableView dequeueReusableCellWithIdentifier:@"totalCell"];
-            SPHotProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithHotProduct forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            SPLatestRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithLatesRequest forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone; //选中时的颜色 无
             cell.delegate = self;
             return cell;
+            
         }
         default:
         {
-//            if (self.attentionAry.count == 0) {//没有关注信息的时候
-//                MarketAttentionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithMarketAttention forIndexPath:indexPath];
-//                [cell.marketAttentionBut addTarget:self action:@selector(handleCHange:) forControlEvents:UIControlEventTouchUpInside];
-//                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//                return cell;
-//            }else{//有关注的时候显示
-//                DidAttentionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-//                cell.model = self.attentionAry[indexPath.row];
-//                cell.delegate = self;
-//                return cell;
-//            }
-            SPExchangeCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithExchangeCenter forIndexPath:indexPath];
+            SPHotProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierWithHotProduct forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.delegate = self;
             return cell;

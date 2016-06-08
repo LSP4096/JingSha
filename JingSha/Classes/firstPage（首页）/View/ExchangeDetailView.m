@@ -27,27 +27,39 @@
 }
 
 - (void)setModel:(SuppleMsgModel *)model {
-    for (int i = 0; i < 5; i++) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(2, i * self.height / 5, self.width - 5, self.height / 5)];
+    
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 62, 74)];
+    imgView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:str(@"%@",model.photo)]]];
+    [self addSubview:imgView];
+    UILabel *lastLabel = nil;
+    
+    for (int i = 0; i < 3; i++) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imgView.frame) + 2, i * imgView.size.height / 4 + 5, self.width - imgView.size.width - 10, imgView.frame.size.height / 4)];
         label.tag = i + 100;
         label.font = [UIFont systemFontOfSize:11.0];
         if (label.tag == 100) {
             label.text = model.title;
         } else if (label.tag == 101) {
-            label.text = [NSString stringWithFormat:@"产地:%@",model.zcd];
-        } else if (label.tag == 102) {
-            label.text = [NSString stringWithFormat:@"价格:%@",model.jiage];
-        } else if (label.tag == 103) {
             label.text = [NSString stringWithFormat:@"数量:%@",model.guige];
         } else {
-            if (!model.time) {
-                model.time = @"2016-6-1";
+            if (!model.jiage) {
+                model.jiage = @"0元/吨";
             }
-            label.text = [NSString stringWithFormat:@"时间:%@",model.time];
+            lastLabel = label;
+            label.text = [NSString stringWithFormat:@"价格:%@元/吨",model.jiage];
         }
-        
         [self addSubview:label];
     }
+    
+    UIButton *regiBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [regiBtn setTitle:@"意向报名" forState:UIControlStateNormal];
+    regiBtn.titleLabel.font = [UIFont systemFontOfSize:11.0f];
+    [regiBtn setBackgroundColor:RGBColor(0, 122, 255) forState:UIControlStateNormal];
+    regiBtn.layer.cornerRadius = 11;
+    regiBtn.layer.borderWidth = 0.001;
+    regiBtn.layer.masksToBounds = YES;
+    regiBtn.frame = CGRectMake(CGRectGetMaxX(imgView.frame) + 2,CGRectGetMaxY(lastLabel.frame) + 5 , self.width - imgView.size.width - 20, imgView.frame.size.height / 4 + 5);
+    [self addSubview:regiBtn];
 }
 
 @end

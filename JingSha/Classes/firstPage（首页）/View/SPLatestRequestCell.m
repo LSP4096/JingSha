@@ -7,42 +7,44 @@
 //
 
 #import "SPLatestRequestCell.h"
-#import "NewProModel.h"
+#import "RequestMsgModel.h"
+#import "JSLastRequestDetailCell.h"
 
 #define KLabelHight (21 * KProportionHeight)
 #define KLabelWeight (100 * KProportionHeight)
 
-@interface SPLatestRequestCell ()
+@interface SPLatestRequestCell () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
-@property (weak, nonatomic) IBOutlet UILabel *title1;
-@property (weak, nonatomic) IBOutlet UILabel *title2;
-@property (weak, nonatomic) IBOutlet UILabel *title3;
-@property (weak, nonatomic) IBOutlet UILabel *title4;
-@property (weak, nonatomic) IBOutlet UILabel *title6;
-@property (weak, nonatomic) IBOutlet UILabel *title5;
-
-@property (nonatomic, strong) NSMutableArray *dataArr;
-@property (nonatomic, strong) NSMutableArray *titleArr;
+@property (weak, nonatomic) IBOutlet UIView *cntView;
+@property (weak, nonatomic) IBOutlet UITableView *baseTableView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 
 @end
 
+static NSString *const reUseCellId = @"JSLastRequestDetailCell";
 @implementation SPLatestRequestCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+ 
+    self.cntView.layer.cornerRadius = 5;
+    self.cntView.layer.borderWidth = 0.001;
+    self.cntView.layer.masksToBounds = YES;
     
-    self.titleArr = [NSMutableArray arrayWithObjects:self.title1, self.title2, self.title3, self.title4, self.title5, self.title6, nil];
+    self.baseTableView.delegate = self;
+    self.baseTableView.dataSource = self;
+    self.baseTableView.rowHeight = 90;
+    [self.baseTableView registerNib:[UINib nibWithNibName:@"JSLastRequestDetailCell" bundle:nil] forCellReuseIdentifier:reUseCellId];
     
     [self loadData];
 }
-
-#define mark - Lazyloading
-- (NSMutableArray *)dataArr {
-    if (!_dataArr ) {
-        _dataArr = [[NSMutableArray alloc] init];
+#pragma mark - LazingLoading
+- (NSMutableArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray new];
     }
-    return _dataArr;
+    return _dataSource;
 }
 
 /**
@@ -54,6 +56,7 @@
     [params setObject:KUserImfor[@"userid"] forKey:@"userid"];
     [HttpTool getWithPath:netPath params:params success:^(id responseObj) {
          MyLog(@"首页热门推荐数据%@", responseObj);
+        self.countLabel.text = [NSString stringWithFormat:@"%@",responseObj[@"buylistcount"]];
         [self getDataFromResponseObj:responseObj];
     } failure:^(NSError *error) {
         MyLog(@"首页数据请求错误%@",error);
@@ -63,43 +66,30 @@
 
 /**
  *  分解数据
+ *
+ *  @param responseObj 数据
  */
 - (void)getDataFromResponseObj:(id)responseObj {
-    
-    self.countLabel.text = [NSString stringWithFormat:@"%@",responseObj[@"buylistcount"]];
-    MyLog(@"%@",responseObj[@"buylistcount"]);
-    NSDictionary * dict  = responseObj[@"data"];
-    for (NSDictionary * smallDict in dict[@"newbuy"]) {
-        NewProModel * model = [NewProModel objectWithKeyValues:smallDict];
-        [self.dataArr addObject:model];
+    NSDictionary *dict = responseObj[@"data"];
+    NSArray *arrData = dict[@"newbuy"];
+    for (id dicData in arrData) {
+        RequestMsgModel *model = [RequestMsgModel objectWithKeyValues:dicData];
+        [self.dataSource addObject:model];
     }
-    [self setDataToLabel];
+    [self.baseTableView reloadData];
+}
+#pragma mark - UITableViewDelegate
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    MyLog(@"%ld",self.dataSource.count);
+    return self.dataSource.count;
 }
 
-- (void)setDataToLabel {
-    for (int i = 0 ; i < self.dataArr.count; i++) {
-        NewProModel *model = [[NewProModel alloc] init];
-        model = self.dataArr[i];
-        UILabel *label = self.titleArr[i];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-        label.userInteractionEnabled = YES;
-        [label addGestureRecognizer:tap];
-        if (!model.title) {
-            label.text = @"";
-        } else {
-            label.text = model.title;
-        }
-    }
-}
-
--(void)tapAction:(UITapGestureRecognizer *)gesture {
-    UIView *selectView = gesture.view;
-    NSInteger index =selectView.tag - 101;
-    NewProModel * model = _dataArr[index];
-    NSString * ID = model.Id;
-    if (_delegate && [_delegate respondsToSelector:@selector(requestDetailVCFromCell:)]) {
-        [_delegate requestDetailVCFromCell:ID];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    JSLastRequestDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:reUseCellId];
+    cell.model = self.dataSource[indexPath.row];
+    return cell;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

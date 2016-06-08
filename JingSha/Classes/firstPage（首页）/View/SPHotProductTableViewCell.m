@@ -11,16 +11,23 @@
 
 @interface SPHotProductTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UIView *cntView;
 @property (weak, nonatomic) IBOutlet UILabel *title1;
 @property (weak, nonatomic) IBOutlet UILabel *title2;
 @property (weak, nonatomic) IBOutlet UILabel *title3;
 @property (weak, nonatomic) IBOutlet UILabel *title4;
 @property (weak, nonatomic) IBOutlet UILabel *title5;
 @property (weak, nonatomic) IBOutlet UILabel *title6;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView1;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView2;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView3;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView4;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView5;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView6;
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) NSMutableArray *titleArr;
-
+@property (nonatomic, strong) NSMutableArray *imgs;
 @end
 
 @implementation SPHotProductTableViewCell
@@ -29,8 +36,12 @@
     [super awakeFromNib];
     // Initialization code
     
-    self.titleArr = [NSMutableArray arrayWithObjects:self.title1, self.title2, self.title3, self.title4, self.title5, self.title6, nil];
+    self.cntView.layer.cornerRadius = 5;
+    self.cntView.layer.borderWidth = 0.001;
+    self.cntView.layer.masksToBounds = YES;
     
+    self.titleArr = [NSMutableArray arrayWithObjects:self.title1, self.title2, self.title3, self.title4, self.title5, self.title6, nil];
+    self.imgs = [NSMutableArray arrayWithObjects:_imgView1, _imgView2, _imgView3, _imgView4, _imgView5, _imgView6, nil];
     [self loadData];
 }
 
@@ -77,10 +88,13 @@
         NewProModel *model = [[NewProModel alloc] init];
         model = self.dataArr[i];
         UILabel *label = self.titleArr[i];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-        label.userInteractionEnabled = YES;
-        [label addGestureRecognizer:tap];
         label.text = model.title;
+        
+        UIImageView *imgView = self.imgs[i];
+        imgView.userInteractionEnabled = YES;
+        imgView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.photo]]];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [imgView addGestureRecognizer:tap];
     }
 }
 
