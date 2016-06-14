@@ -336,17 +336,17 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
         return 180 * KProportionHeight; //代码约束
     }
     else if(indexPath.section == 1){
-        return 166; //xib约束
+        return 167; //xib约束
     } else if(indexPath.section == 2) {
-        return 134 - 90 + self.NewBuyCount * 90; //xib约束
+        return 135 - 90 + self.NewBuyCount * 90; //xib约束
     }else {
         if (self.NewProCount <= 3) {
-            return 260 * KProportionHeight * 1/2;
+            return 261 * KProportionHeight * 1/2;
         }
         if (self.NewProCount > 3 && self.NewProCount <= 6) {
-            return 260 * KProportionHeight;
+            return 261 * KProportionHeight;
         }
-        return 260 * KProportionHeight * 3/2;
+        return 261 * KProportionHeight * 3/2;
     }
 }
 
