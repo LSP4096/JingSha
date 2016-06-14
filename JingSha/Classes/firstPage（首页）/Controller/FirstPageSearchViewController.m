@@ -275,7 +275,7 @@ static NSString * indentifier = @"searchResultCell";
     [self.selctedView addSubview:requestBtn];
     
     //大家都在搜
-    UILabel * EveryOneSearchLable = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 80,20)];
+    UILabel * EveryOneSearchLable = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 80,20)];
     EveryOneSearchLable.text = @"大家都在搜";
     EveryOneSearchLable.textColor = RGBColor(122, 122, 122);
 //    EveryOneSearchLable.backgroundColor = [UIColor redColor];
@@ -283,7 +283,7 @@ static NSString * indentifier = @"searchResultCell";
     [_bodyView addSubview:EveryOneSearchLable];
     //换一批
     UIButton * changeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    changeButton.frame = CGRectMake(kUIScreenWidth - 70, 10, 60, 20);
+    changeButton.frame = CGRectMake(kUIScreenWidth - 70, 15, 60, 20);
 //    changeButton.backgroundColor = [UIColor redColor];
     [changeButton setTitle:@"换一批" forState:UIControlStateNormal];
     changeButton.titleLabel.font =[UIFont systemFontOfSize:13];
@@ -303,8 +303,8 @@ static NSString * indentifier = @"searchResultCell";
         optionButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [optionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [optionButton setTitle:_titleAry[i] forState:UIControlStateNormal];
-        optionButton.frame = CGRectMake(20 +  (Width + 15) * (i%3), 40 + 35 * (i/3), Width, 25);
-        optionButton.layer.cornerRadius = 10.0f;
+        optionButton.frame = CGRectMake(20 +  (Width + 15) * (i%3), 50 + 50 * (i/3), Width, 40);
+        optionButton.layer.cornerRadius = 8.0f;
         optionButton.layer.borderWidth = 0.001f;
         optionButton.layer.masksToBounds = YES;
         Height = 25 + (25 + 15) * (i/3 + 1);//下面历史搜索项的高度
@@ -312,14 +312,14 @@ static NSString * indentifier = @"searchResultCell";
         [_bodyView addSubview:optionButton];
     }
     //搜索历史
-    UILabel * SearchHistoryLable = [[UILabel alloc] initWithFrame:CGRectMake(20, Height + 15, 80, 20)];
+    UILabel * SearchHistoryLable = [[UILabel alloc] initWithFrame:CGRectMake(20, Height + 55, 80, 20)];
     SearchHistoryLable.text = @"搜索历史";
     SearchHistoryLable.textColor = RGBColor(122, 122, 122);
     SearchHistoryLable.font = [UIFont systemFontOfSize:14];
     [_bodyView addSubview:SearchHistoryLable];
     //清空历史
     UIButton * cleanHistoryButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    cleanHistoryButton.frame = CGRectMake(kUIScreenWidth - 80, Height + 15, 60, 20);
+    cleanHistoryButton.frame = CGRectMake(kUIScreenWidth - 80, Height + 55, 60, 20);
     [cleanHistoryButton setTitle:@"清空历史" forState:UIControlStateNormal];
     [cleanHistoryButton setTitleColor:RGBColor(122, 122, 122) forState:UIControlStateNormal];
     cleanHistoryButton.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -365,7 +365,7 @@ static NSString * indentifier = @"searchResultCell";
         optionButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [optionButton setTitleColor:RGBColor(123, 123, 123) forState:UIControlStateNormal];
         [optionButton setTitle:titleAry[i] forState:UIControlStateNormal];
-        optionButton.frame = CGRectMake(20 +  (Width + 15) * (i%3), _bottomLable.y + 10 + (25 + 10) * (i/3), Width, 25);
+        optionButton.frame = CGRectMake(20 +  (Width + 15) * (i%3), _bottomLable.y + 10 + (25 + 20) * (i/3), Width, 35);
         optionButton.tag = 1000;
         optionButton.layer.masksToBounds = YES;
         optionButton.layer.cornerRadius = 10;

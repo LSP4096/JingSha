@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *place;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UIButton *priceBtn;
+@property (nonatomic, strong) NSString *Id;
 
 @end
 
@@ -37,6 +38,7 @@
     self.requestCount.text = model.num;
     self.place.text = @"暂无";
     self.time.text = model.time;
+    self.Id = model.Id;
     
 }
 
@@ -48,6 +50,7 @@
 
 - (IBAction)clickPriceBtn:(id)sender {
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BaoJia" object:nil userInfo:@{@"id":self.Id}];
 }
 
 @end

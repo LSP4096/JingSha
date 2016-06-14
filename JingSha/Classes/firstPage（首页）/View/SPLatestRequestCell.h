@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RequestMsgModel.h"
 
 @protocol SPLatestRequestcellDelegate <NSObject>
 
 //点击了 more按钮
 - (void)moreBtnClick:(UIButton *)sender;
+- (void)pushToDetailPageVC:(RequestMsgModel *)model;
 
 @end
 

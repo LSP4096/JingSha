@@ -39,6 +39,8 @@
 
 #import "RequestDetailViewController.h"
 #import "SupplyDetailViewController.h"
+#import "JSLastRequestDetailCell.h"
+#import "SingUpViewController.h"
 
 @interface FirstPageViewController ()
 <
@@ -48,7 +50,8 @@ HeadViewTableViewCellDelegate,
 
 SPLatestRequestcellDelegate,
 SPHotProductCellDelegata,
-SPExchangeCenterDelegate
+SPExchangeCenterDelegate,
+JSLasterRequestDetailCellDelegate
 //
 //TotalProviderTableViewCellDelegate,
 //NewProductTableViewCellDelegate,
@@ -97,8 +100,9 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setupTableView];
-
     [self registeCell];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickBaoJiaBtn:) name:@"BaoJia" object:nil];
 }
 
 /**
@@ -255,14 +259,29 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
      requestVC.fd_prefersNavigationBarHidden = YES;
     [self.navigationController pushViewController:requestVC animated:YES];
 }
-
-- (void)requestDetailVCFromCell:(NSString *)Id {
+/**
+ *  cell代理
+ *
+ *  @param model 传入数据
+ */
+- (void)pushToDetailPageVC:(RequestMsgModel *)model{
     RequestDetailViewController * requestDetailVC = [[RequestDetailViewController alloc] init];
-    requestDetailVC.HTMLUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/buyinfo/%@/%@", Id, KUserImfor[@"userid"]];
-    requestDetailVC.Id = Id;
-//    requestDetailVC.shareContent = model.jianjie;
-//    requestDetailVC.shareTitle = model.title;
+    requestDetailVC.HTMLUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/buyinfo/%@/%@", model.Id, KUserImfor[@"userid"]];
+    requestDetailVC.Id = model.Id;
+    requestDetailVC.shareContent = model.jianjie;
+    requestDetailVC.shareTitle = model.title;
     [self.navigationController pushViewController:requestDetailVC animated:YES];
+}
+/**
+ *  报价按钮
+ *
+ *  @param Id ID
+ */
+- (void)clickBaoJiaBtn:(NSNotification *)no {
+    NSString *id = no.userInfo[@"id"];
+    SingUpViewController * singUpVC = [[SingUpViewController alloc] init];
+    singUpVC.Id = id;
+    [self.navigationController pushViewController:singUpVC animated:YES];
 }
 
 #pragma mark - SPHotProductCellDelegata
@@ -321,7 +340,13 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     } else if(indexPath.section == 2) {
         return 134 - 90 + self.NewBuyCount * 90; //xib约束
     }else {
-        return 250;
+        if (self.NewProCount <= 3) {
+            return 260 * KProportionHeight * 1/2;
+        }
+        if (self.NewProCount > 3 && self.NewProCount <= 6) {
+            return 260 * KProportionHeight;
+        }
+        return 260 * KProportionHeight * 3/2;
     }
 }
 

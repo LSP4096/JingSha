@@ -9,6 +9,8 @@
 #import "SPLatestRequestCell.h"
 #import "RequestMsgModel.h"
 #import "JSLastRequestDetailCell.h"
+#import "RequestDetailViewController.h"
+#import "RequestMsgModel.h"
 
 #define KLabelHight (21 * KProportionHeight)
 #define KLabelWeight (100 * KProportionHeight)
@@ -82,14 +84,26 @@ static NSString *const reUseCellId = @"JSLastRequestDetailCell";
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    MyLog(@"%ld",self.dataSource.count);
     return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.dataSource.count == 0) {
+        JSLastRequestDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:reUseCellId];
+        return cell;
+    }
     JSLastRequestDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:reUseCellId];
     cell.model = self.dataSource[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+
+    RequestMsgModel * model = self.dataSource[indexPath.row];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pushToDetailPageVC:)]) {
+        [self.delegate pushToDetailPageVC:model];//跳转用的企业数据
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
