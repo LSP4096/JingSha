@@ -151,7 +151,7 @@
                 <outlet property="title" destination="O16-8e-pts" id="3QG-pL-ks8"/>
                 <outlet property="titleImg" destination="62u-tx-Pxh" id="Lzi-El-iTN"/>
             </connections>
-            <point key="canvasLocation" x="-421" y="433"/>
+            <point key="canvasLocation" x="-571" y="426"/>
         </tableViewCell>
     </objects>
     <resources>

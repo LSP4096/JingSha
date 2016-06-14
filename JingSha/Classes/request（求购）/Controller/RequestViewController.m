@@ -105,7 +105,6 @@
         _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];
         _searchBar.placeholder = @"关键字";
         _searchBar.searchBarStyle = 2;
-        _searchBar.showsCancelButton = YES;
         _searchBar.delegate =self;
         _searchBar.showsCancelButton = NO;
     }
@@ -161,7 +160,7 @@
     [selecteBtn setTitle:@"换一批" forState:UIControlStateNormal];
     [selecteBtn setImage:img(@"searchNext") forState:UIControlStateNormal];
     selecteBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [selecteBtn setTitleColor:RGBColor(115, 112, 276) forState:UIControlStateNormal];
+    [selecteBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     selecteBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
     selecteBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 50, 0, 0);
     [selecteBtn addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -175,8 +174,8 @@
         optionBtn.layer.cornerRadius = 10.0f;
         optionBtn.layer.borderWidth = 0.001f;
         optionBtn.layer.masksToBounds = YES;
-        [optionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        optionBtn.backgroundColor = RGBColor(31, 111, 251);
+        [optionBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        optionBtn.backgroundColor = [UIColor whiteColor];
         [optionBtn addTarget:self action:@selector(optionBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [_secView addSubview:optionBtn];
     }
