@@ -15,8 +15,10 @@
  #import "UIScrollView+EmptyDataSet.h"
 #import "IssueRequestViewController.h"
 #define kTopViewHeight 65
-#define KSecViewHeight 100
+#define KSecViewHeight 120
 #define kPageCount 15
+#define ksearchViewHight 50
+
 @interface RequestViewController ()<UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate,DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
 @property (nonatomic, strong) UISearchBar * searchBar;
@@ -31,6 +33,7 @@
 @property (nonatomic, strong) NSMutableArray *titleArr2;
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) NSString *keyword;
+@property (nonatomic, strong) UIView *searchView;
 
 @end
 
@@ -38,12 +41,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    self.pageNum = 1;
-//    self.dataAry = [NSMutableArray array];
-//    [self refreshNewData];
-    
-    //显示tabBar
-//    [self setTabBarHidden:NO]; 
+
 }
 
 - (void)viewDidLoad {
@@ -53,13 +51,12 @@
     view.backgroundColor = RGBColor(31, 111, 251);
     [self.view addSubview:view];
     
-    //searBar底部View
-    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(55, 26, kUIScreenWidth - 100, 28)];
-    bottomView.backgroundColor = [UIColor whiteColor];
-    bottomView.layer.cornerRadius = 5;
-    bottomView.layer.masksToBounds = YES;
-    bottomView.layer.borderWidth = 0.001;
-    [view addSubview:bottomView];
+    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(45, 15, kUIScreenWidth - 90, 50)];
+    titleLable.text = @"求购信息";
+    titleLable.font = [UIFont systemFontOfSize:18.0];
+    titleLable.textColor = [UIColor whiteColor];
+    titleLable.textAlignment = NSTextAlignmentCenter;
+    [view addSubview:titleLable];
     
     self.index = 0;
 
@@ -73,7 +70,11 @@
     [view addSubview:_backBtn];
     
     //搜素框
-    [view addSubview:self.searchBar];
+    self.searchView = [[UIView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, kUIScreenWidth, ksearchViewHight)];
+    self.searchView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.searchView];
+    
+    [self.searchView addSubview:self.searchBar];
 
     //UITableView
     [self.view addSubview:self.baseTable];
@@ -100,7 +101,7 @@
 
 -(UISearchBar *)searchBar{
     if (!_searchBar) {
-        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(48, 16, kUIScreenWidth - 85, 48)];
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(10, 0, kUIScreenWidth - 20, 50)];
         _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];
         _searchBar.placeholder = @"关键字";
         _searchBar.searchBarStyle = 2;
@@ -110,12 +111,14 @@
     }
     return _searchBar;
 }
+
 - (UITableView *)baseTable{
     if (!_baseTable) {
-        _baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight - kNavigationBarHeight - kTopViewHeight ) style:UITableViewStylePlain];
+        _baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight + KSecViewHeight + ksearchViewHight, kUIScreenWidth, kUIScreenHeight - kNavigationBarHeight - kTopViewHeight - ksearchViewHight - 20) style:UITableViewStylePlain];
         _baseTable.delegate = self;
         _baseTable.dataSource = self;
-        _baseTable.rowHeight = 90;
+        _baseTable.rowHeight = 110;
+        _baseTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         _baseTable.tableFooterView = [[UIView alloc] init];
         _baseTable.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshNewData)];
         _baseTable.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
@@ -143,8 +146,8 @@
     
     MyLog(@"titleArr.count--%ld",self.titleArr.count);
     
-    _secView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight, kUIScreenWidth, KSecViewHeight)];
-//    secView.backgroundColor = [UIColor grayColor];
+    _secView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight + ksearchViewHight, kUIScreenWidth, KSecViewHeight)];
+    _secView.backgroundColor = RGBColor(232, 232, 232);
     [self.view addSubview:_secView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kUIScreenWidth / 2, 21)];
@@ -167,7 +170,7 @@
     CGFloat Width = (kUIScreenWidth - 60) / 3;
     for (int i = 0; i < self.titleArr.count; i++) {
         UIButton *optionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        optionBtn.frame = CGRectMake(20 +  (Width + 10) * (i%3), 38 + (21 + 10) * (i/3), Width, 21);
+        optionBtn.frame = CGRectMake(20 +  (Width + 10) * (i%3), 38 + (21 + 20) * (i/3), Width, 31);
         [optionBtn setTitle:self.titleArr[i] forState:UIControlStateNormal];
         optionBtn.layer.cornerRadius = 10.0f;
         optionBtn.layer.borderWidth = 0.001f;
@@ -177,6 +180,10 @@
         [optionBtn addTarget:self action:@selector(optionBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [_secView addSubview:optionBtn];
     }
+    
+    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, self.secView.frame.size.height - 2, kUIScreenWidth, 1)];
+    bottomLineView.backgroundColor = [UIColor grayColor];
+    [self.secView addSubview:bottomLineView];
     
 }
 
@@ -418,6 +425,7 @@
 }
 
 #pragma mark ---UITableView的代理方法
+
 // 这个会在表格视图的其中一个单元变为可视前立刻被调用，它是你在表格视图单元显示在屏幕上之前的外观定制的最后机会
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {

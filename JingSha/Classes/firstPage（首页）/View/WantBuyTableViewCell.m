@@ -8,12 +8,15 @@
 
 #import "WantBuyTableViewCell.h"
 @interface WantBuyTableViewCell ()
+@property (weak, nonatomic) IBOutlet UIView *cntView;
 @property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *daCail;
-@property (weak, nonatomic) IBOutlet UILabel *resouce;
-@property (weak, nonatomic) IBOutlet UILabel *zhisu;
+@property (weak, nonatomic) IBOutlet UILabel *place;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UILabel *quotes;
+@property (weak, nonatomic) IBOutlet UILabel *num;
+@property (weak, nonatomic) IBOutlet UIButton *BaoJia;
+@property (weak, nonatomic) IBOutlet UIImageView *titleImg;
+@property (nonatomic, strong) NSString *id;
 
 @end
 
@@ -21,6 +24,18 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.cntView.layer.cornerRadius = 5;
+    self.cntView.layer.borderWidth = 0.001;
+    self.cntView.layer.masksToBounds = YES;
+    
+    self.titleImg.layer.cornerRadius = 12;
+    self.titleImg.layer.borderWidth = 0.001;
+    self.titleImg.layer.masksToBounds = YES;
+    
+    self.BaoJia.layer.cornerRadius = 5;
+    self.BaoJia.layer.borderWidth = 0.001;
+    self.BaoJia.layer.masksToBounds = YES;
 }
 
 - (void)setModel:(RequestMsgModel *)model{
@@ -33,14 +48,39 @@
     }else {
         self.quotes.text = @"暂无报价信息";
     }
-    self.daCail.text = @"大类:暂无";
-    self.resouce.text = str(@"原料:%@",_model.chengfen);
-    self.zhisu.text = str(@"支数:%@",_model.zhisu);
+    self.num.text = model.num;
+    self.place.text = @"暂无";
+    self.id = model.Id;
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
 
+- (IBAction)clickBaoJiaBtn:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BaoJia" object:nil userInfo:@{@"id":self.id}];
+}
+
 @end
+
+/*
+ @property (nonatomic, copy)NSString * jiage;
+ @property (nonatomic, copy)NSString * Id;
+ @property (nonatomic, copy)NSString * title;
+ @property (nonatomic, copy)NSString * jianjie;
+ @property (nonatomic, copy)NSString * time;
+ @property (nonatomic, copy)NSString * zhisu;
+ @property (nonatomic, copy)NSString * chengfen;
+ @property (nonatomic, copy)NSString * guige;
+ @property (nonatomic, copy)NSString * type;
+ @property (nonatomic, copy)NSString * baojia;//是否有人报价
+ @property (nonatomic, copy)NSString * zhuangtai;//1审核中2拒绝3同意/求购中4完成
+ @property (nonatomic, copy)NSString * Type;//1纱线 2化纤  我的求购
+ 
+ @property (nonatomic, copy)NSString * num;
+ //我的报价
+ @property (nonatomic, copy)NSString * bao;//我的报价的状态
+ @property (nonatomic, copy)NSString * bid;//我的报价的求购的id
+ */

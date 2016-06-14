@@ -21,6 +21,8 @@
 @property (nonatomic, strong)NSMutableArray * dataAry;
 @property (nonatomic, assign)NSInteger pageNum;
 @property (nonatomic, copy)NSString * keyword;
+
+
 @end
 
 @implementation SuperMarketViewController

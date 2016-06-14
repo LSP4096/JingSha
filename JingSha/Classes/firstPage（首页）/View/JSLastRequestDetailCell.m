@@ -24,7 +24,7 @@
     [super awakeFromNib];
     // Initialization code
     
-    self.priceBtn.layer.cornerRadius = 10;
+    self.priceBtn.layer.cornerRadius = 5;
     self.priceBtn.layer.borderWidth = 0.001;
     self.priceBtn.layer.masksToBounds = YES;
     

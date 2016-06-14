@@ -117,7 +117,7 @@
                 <outlet property="cntView" destination="BO4-AJ-jjP" id="dgB-Jn-mLp"/>
                 <outlet property="countLabel" destination="viC-Ic-pJm" id="rZU-jK-e95"/>
             </connections>
-            <point key="canvasLocation" x="-7982" y="425"/>
+            <point key="canvasLocation" x="-7743" y="500"/>
         </tableViewCell>
     </objects>
     <resources>
