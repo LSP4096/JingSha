@@ -1385,9 +1385,6 @@
 		21A70B751C105A8B0061B114 /* Request Message */ = {
 			isa = PBXGroup;
 			children = (
-				81BA8BB51BF45DDB006954D6 /* RequestViewController.h */,
-				81BA8BB61BF45DDB006954D6 /* RequestViewController.m */,
-				81BA8BB71BF45DDB006954D6 /* RequestViewController.xib */,
 				21A70B561C1039C80061B114 /* RequestDetailViewController.h */,
 				21A70B571C1039C80061B114 /* RequestDetailViewController.m */,
 				210937541C0ECC19003CE1CD /* MyQuotedViewController.h */,
@@ -1506,8 +1503,6 @@
 			children = (
 				21EF8BA31C1134ED00FCFCC4 /* FirstPageSearchViewController.h */,
 				21EF8BA41C1134ED00FCFCC4 /* FirstPageSearchViewController.m */,
-				21C39C221C181C5500F24B6B /* MoreRecommendViewController.h */,
-				21C39C231C181C5500F24B6B /* MoreRecommendViewController.m */,
 				81FEB5071C03176200BB786B /* AllSearchTableViewController.h */,
 				81FEB5081C03176200BB786B /* AllSearchTableViewController.m */,
 				214491AE1C19A84A004D7573 /* SupplierSearchTableViewController.h */,
@@ -2273,10 +2268,15 @@
 			children = (
 				8106B2191BF4B4CC005F94C3 /* FirstPageViewController.h */,
 				8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */,
-				21A70B431C0FD21D0061B114 /* NewsViewController.h */,
-				21A70B441C0FD21D0061B114 /* NewsViewController.m */,
 				21A70B4E1C10276A0061B114 /* SuperMarketViewController.h */,
 				21A70B4F1C10276A0061B114 /* SuperMarketViewController.m */,
+				81BA8BB51BF45DDB006954D6 /* RequestViewController.h */,
+				81BA8BB61BF45DDB006954D6 /* RequestViewController.m */,
+				81BA8BB71BF45DDB006954D6 /* RequestViewController.xib */,
+				21C39C221C181C5500F24B6B /* MoreRecommendViewController.h */,
+				21C39C231C181C5500F24B6B /* MoreRecommendViewController.m */,
+				21A70B431C0FD21D0061B114 /* NewsViewController.h */,
+				21A70B441C0FD21D0061B114 /* NewsViewController.m */,
 				214649DE1C1FF88600605AB5 /* SupplyDetailViewController.h */,
 				214649DF1C1FF88600605AB5 /* SupplyDetailViewController.m */,
 				214649E11C200E3B00605AB5 /* LeaveMessageTableViewController.h */,

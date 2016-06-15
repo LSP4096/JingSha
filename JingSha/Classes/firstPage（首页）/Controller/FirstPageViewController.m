@@ -285,7 +285,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 }
 
 #pragma mark - SPHotProductCellDelegata
-//热门产品more按钮
+//热门推荐more按钮
 - (void)HotProductMoreBtnClick:(id)sender {
     
     MoreRecommendViewController * moreRecommendVC = [[MoreRecommendViewController alloc] init];

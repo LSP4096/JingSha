@@ -10,10 +10,12 @@
 #import "NewProductMoreTableViewCell.h"
 #import "SupplyDetailViewController.h"
 #import "ProOptionModel.h"
- #import "UIScrollView+EmptyDataSet.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "LeaveMessageTableViewController.h"
+
 #define kPageCount 15
-#define KHeaderViewHeight 100
-#define KNavgationBarHight self.navigationController.navigationBar.frame.size.height
+#define KSecViewHeight 120
+#define ksearchViewHight 50
 
 @interface MoreRecommendViewController ()<UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 @property (nonatomic, strong)UITableView *baseTable;
@@ -24,10 +26,10 @@
 @property (nonatomic, copy)NSString * type;
 @property (nonatomic, copy)NSString * keyword;
 
-@property (nonatomic, strong) UIView * headerView;
 @property (nonatomic, strong) NSMutableArray *titleArr;
 @property (nonatomic, strong) NSMutableArray *titleArr2;
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) UIView *secView;
 
 @end
 
@@ -35,27 +37,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor =[UIColor blackColor];
+    self.title = @"供应信息";
     [self.view addSubview:self.baseTable];
     
-    [self configerNavgationbar];
+    [self configSelectedView];
     
     self.type = @"";
-
+    
     [self refreshNewData];
     [self getKeywordFromNet];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leaveMessage:) name:@"message" object:nil];
 }
 
 
 /**
- *  请求数据
+ *  下拉
  */
 - (void)refreshNewData{
+    [self moveBack];
     self.dataAry = [NSMutableArray array];
     self.pageNum = 1;
     [self configerData];
 }
-
+/**
+ *  上啦
+ */
 - (void)loadMoreData{
     self.pageNum++;
     [self configerData];
@@ -146,25 +153,31 @@
 }
 
 /**
- *  配置搜索栏
+ *  配置UI
  */
 - (void)configSelectedView {
     
-    if (self.headerView) {
-        [self.headerView removeFromSuperview];
+    if (self.secView) {
+        [self.secView removeFromSuperview];
     }
     
     MyLog(@"titleArr.count--%ld",self.titleArr.count);
     
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, KNavgationBarHight + 20, kUIScreenWidth, KHeaderViewHeight)];
-    self.headerView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.headerView];
+    //搜素框
+    UIView * searchView = [[UIView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, kUIScreenWidth, ksearchViewHight)];
+    searchView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:searchView];
     
+    [searchView addSubview:self.searchBar];
+    
+    self.secView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(searchView.frame), kUIScreenWidth, KSecViewHeight)];
+    _secView.backgroundColor = RGBColor(240, 240, 240);
+    [self.view addSubview:_secView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kUIScreenWidth / 2, 21)];
-    label.text = @"热门搜索";
+    label.text = @"大家都在搜";
     label.font = [UIFont systemFontOfSize:16.0];
-    [_headerView addSubview:label];
+    [_secView addSubview:label];
     
     //换一批按钮
     UIButton *selecteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -172,25 +185,30 @@
     [selecteBtn setTitle:@"换一批" forState:UIControlStateNormal];
     [selecteBtn setImage:img(@"searchNext") forState:UIControlStateNormal];
     selecteBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
-    [selecteBtn setTitleColor:RGBColor(115, 112, 276) forState:UIControlStateNormal];
+    [selecteBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     selecteBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
     selecteBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 50, 0, 0);
     [selecteBtn addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [_headerView addSubview:selecteBtn];
+    [_secView addSubview:selecteBtn];
     
     CGFloat Width = (kUIScreenWidth - 60) / 3;
     for (int i = 0; i < self.titleArr.count; i++) {
         UIButton *optionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        optionBtn.frame = CGRectMake(20 +  (Width + 10) * (i%3), 38 + (21 + 10) * (i/3), Width, 21);
+        optionBtn.frame = CGRectMake(20 +  (Width + 10) * (i%3), 38 + (21 + 20) * (i/3), Width, 31);
         [optionBtn setTitle:self.titleArr[i] forState:UIControlStateNormal];
         optionBtn.layer.cornerRadius = 10.0f;
         optionBtn.layer.borderWidth = 0.001f;
         optionBtn.layer.masksToBounds = YES;
-        [optionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        optionBtn.backgroundColor = RGBColor(31, 111, 251);
+        [optionBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        optionBtn.backgroundColor = [UIColor whiteColor];
         [optionBtn addTarget:self action:@selector(optionBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_headerView addSubview:optionBtn];
+        [_secView addSubview:optionBtn];
     }
+    
+    //底部的灰线
+    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, self.secView.frame.size.height - 2, kUIScreenWidth, 1)];
+    bottomLineView.backgroundColor = RGBColor(164, 164, 164);
+    [self.secView addSubview:bottomLineView];
 }
 
 - (void)selectBtnClick {
@@ -263,18 +281,6 @@
     [self refreshNewData];
 }
 
-/**
- *  配置导航条
- */
-- (void)configerNavgationbar{
-    //搜索框
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(60, 17, kUIScreenWidth - 120, 30)];
-    _searchBar.placeholder = @"请输入关键字";
-    _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:self.searchBar.bounds.size];
-    _searchBar.delegate = self;
-    self.navigationItem.titleView = _searchBar;
-}
-
 //取消搜索框背景色
 - (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
 {
@@ -314,12 +320,25 @@
     
 }
 
+-(UISearchBar *)searchBar{
+    if (!_searchBar) {
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(10, 0, kUIScreenWidth - 20, 50)];
+        _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];
+        _searchBar.placeholder = @"关键字";
+        _searchBar.searchBarStyle = 2;
+        _searchBar.delegate =self;
+        _searchBar.showsCancelButton = NO;
+    }
+    return _searchBar;
+}
+
 -(UITableView *)baseTable{
     if (!_baseTable) {
-        self.baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KHeaderViewHeight, kUIScreenWidth, kUIScreenHeight) style:UITableViewStylePlain];
-        _baseTable.rowHeight = 105;
+        _baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight- (ksearchViewHight + KSecViewHeight)) style:UITableViewStylePlain];
+        _baseTable.rowHeight = 105 * KProportionHeight;
         _baseTable.delegate =self;
         _baseTable.dataSource = self;
+        _baseTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         _baseTable.tableFooterView = [[UIView alloc] init];
         //集成下拉刷新和上拉加载
         _baseTable.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshNewData)];
@@ -343,6 +362,24 @@
     return [UIImage imageNamed:@"banner01"];
 }
 
+#pragma mark - UIScrollerDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [UIView animateWithDuration:1 animations:^{
+        self.secView.alpha = 0;
+        [UIView animateWithDuration:5 animations:^{
+            self.baseTable.frame = CGRectMake(0, ksearchViewHight, kUIScreenWidth, kUIScreenHeight- ksearchViewHight);
+        }];
+    }];
+    
+}
+
+- (void)moveBack {
+    [UIView animateWithDuration:1 animations:^{
+        self.secView.alpha = 1;
+        self.baseTable.frame = CGRectMake(0, ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight-( ksearchViewHight + KSecViewHeight));
+    }];
+}
+
 #pragma mark --UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataAry.count;
@@ -363,6 +400,15 @@
     supplyVC.chanpinId = [self.dataAry[indexPath.row] Id];
     [self.navigationController pushViewController:supplyVC animated:YES];
 }
+
+- (void)leaveMessage:(NSNotification *)no {
+    NSString *id = no.userInfo[@"id"];
+    LeaveMessageTableViewController *leavemessage = [[LeaveMessageTableViewController alloc] init];
+    leavemessage.chanpinID = id;
+    [self.navigationController pushViewController:leavemessage animated:YES];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
