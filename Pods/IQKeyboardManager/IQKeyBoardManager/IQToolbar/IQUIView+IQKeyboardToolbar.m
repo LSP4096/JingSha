@@ -381,7 +381,7 @@
             buttonFrame = CGRectMake(0, 0, toolbar.frame.size.width-66-57.0-16, 44);
         }
         
-        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame title:self.shouldHideTitle?nil:@"完成"];
+        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame title:self.shouldHideTitle?nil:titleText];
         [items addObject:title];
     }
     
@@ -390,8 +390,7 @@
     [items addObject:nilButton];
     
     //  Create a done button to show on keyboard to resign it. Adding a selector to resign it.
-//    IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:target action:doneAction];
-    IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:target action:doneAction];
+    IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:target action:doneAction];
     [items addObject:doneButton];
     
     //  Adding button to toolBar.
@@ -434,8 +433,8 @@
 	NSMutableArray *items = [[NSMutableArray alloc] init];
 	
 	//  Create a done button to show on keyboard to resign it. Adding a selector to resign it.
-//    IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:target action:doneAction];
-	IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:target action:doneAction];
+    IQBarButtonItem *doneButton =[[IQBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:target action:doneAction];
+	
 	if (IQ_IS_IOS7_OR_GREATER)
     {
         //        UIBarButtonItem *prev = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:105 target:target action:previousAction];

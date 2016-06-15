@@ -146,7 +146,7 @@
     MyLog(@"titleArr.count--%ld",self.titleArr.count);
     
     _secView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight + ksearchViewHight, kUIScreenWidth, KSecViewHeight)];
-    _secView.backgroundColor = RGBColor(232, 232, 232);
+    _secView.backgroundColor = RGBColor(240, 240, 240);
     [self.view addSubview:_secView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kUIScreenWidth / 2, 21)];
@@ -180,8 +180,9 @@
         [_secView addSubview:optionBtn];
     }
     
+    //底部的灰线
     UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, self.secView.frame.size.height - 2, kUIScreenWidth, 1)];
-    bottomLineView.backgroundColor = [UIColor grayColor];
+    bottomLineView.backgroundColor = RGBColor(164, 164, 164);
     [self.secView addSubview:bottomLineView];
     
 }
@@ -284,6 +285,8 @@
  *  下拉刷新
  */
 - (void)refreshNewData{
+    [self moveBack];
+    
     [self.dataAry removeAllObjects];
     self.pageNum = 1;
     [self configerData];
@@ -462,6 +465,26 @@
     requestDetailVC.shareContent = model.jianjie;
     requestDetailVC.shareTitle = model.title;
     [self.navigationController pushViewController:requestDetailVC animated:YES];
+}
+
+#pragma mark - UIScrollerDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [UIView animateWithDuration:1 animations:^{
+        //        self.secView.transform = CGAffineTransformMakeTranslation(0, -200);
+        self.secView.alpha = 0;
+        [UIView animateWithDuration:5 animations:^{
+            self.baseTable.frame = CGRectMake(0, kNavigationBarHeight + ksearchViewHight, kUIScreenWidth, kUIScreenHeight- (kNavigationBarHeight + ksearchViewHight));
+        }];
+    }];
+    
+}
+
+- (void)moveBack {
+    [UIView animateWithDuration:1 animations:^{
+        //        self.secView.transform = CGAffineTransformIdentity;
+        self.secView.alpha = 1;
+        self.baseTable.frame = CGRectMake(0, kNavigationBarHeight + ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight- (kNavigationBarHeight + ksearchViewHight + KSecViewHeight));
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

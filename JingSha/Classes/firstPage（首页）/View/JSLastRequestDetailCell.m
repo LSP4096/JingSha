@@ -35,7 +35,13 @@
 
 -(void)setModel:(RequestMsgModel *)model {
     self.title.text = model.title;
-    self.requestCount.text = model.num;
+    
+    if (IsStringEmpty(model.num)) {
+        self.requestCount.text = @"电议";
+    } else {
+        self.requestCount.text = model.num;
+    }
+    
     self.place.text = @"暂无";
     self.time.text = model.time;
     self.Id = model.Id;

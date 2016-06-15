@@ -48,7 +48,13 @@
     }else {
         self.quotes.text = @"暂无报价信息";
     }
-    self.num.text = model.num;
+    
+    if (IsStringEmpty(model.num)) {
+        self.num.text = @"电议";
+    } else {
+        self.num.text = model.num;
+    }
+
     self.place.text = @"暂无";
     self.id = model.Id;
 }

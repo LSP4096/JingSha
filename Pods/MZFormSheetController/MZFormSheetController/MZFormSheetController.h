@@ -85,8 +85,6 @@ typedef void(^MZFormSheetTransitionCompletionHandler)();
 @end
 
 @interface MZFormSheetController : UIViewController <MZAppearance>
-@property (nonatomic, assign) BOOL isMyFrame;
-@property (nonatomic, assign) CGRect myFrame;
 /**
  *  Register custom transition animation style.
  *  You need to setup transitionStyle to MZFormSheetTransitionStyleCustom.

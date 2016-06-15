@@ -19,6 +19,7 @@
 
 @interface SuperMarketViewController ()
 <
+//UIScrollViewDelegate,
 UITableViewDelegate,
 UITableViewDataSource,
 DZNEmptyDataSetDelegate,
@@ -69,7 +70,7 @@ UISearchBarDelegate
     
     //选择按钮底部的view
     self.secView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(searchView.frame), kUIScreenWidth, KSecViewHeight)];
-    _secView.backgroundColor = RGBColor(232, 232, 232);
+    _secView.backgroundColor = RGBColor(240, 240, 240);
     [self.view addSubview:_secView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, kUIScreenWidth / 2, 21)];
@@ -104,7 +105,7 @@ UISearchBarDelegate
     }
     
     UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, _secView.frame.size.height - 2, kUIScreenWidth, 1)];
-    bottomLineView.backgroundColor = [UIColor grayColor];
+    bottomLineView.backgroundColor = RGBColor(164, 164, 164);
     [_secView addSubview:bottomLineView];
     
 }
@@ -201,16 +202,6 @@ UISearchBarDelegate
 }
 
 - (void)getDataFromResponseObj:(id)responseObj{
-//    NSArray * ary = responseObj[@"data"];
-//    MyLog(@"%@",responseObj[@"data"]);
-//    if (![responseObj[@"data"] isKindOfClass:[NSNull class]]) {
-//        [self.dataAry removeAllObjects];
-//        for (NSDictionary * dict in ary) {
-//            SuppleMsgModel * model = [SuppleMsgModel objectWithKeyValues:dict];
-//            [self.dataAry addObject:model];
-//        }
-//    }
-//    [_baseTabView reloadData];
     
     if ([responseObj[@"data"] isKindOfClass:[NSNull class]]) {//数据为空
         //
@@ -233,6 +224,10 @@ UISearchBarDelegate
  *  刷新新数据
  */
 - (void)RefreshNewData{
+    
+    [self moveBack];
+
+    [self.dataAry removeAllObjects];
     [self configerDataWithPage:1];
     self.pageNum = 1;
 }
@@ -331,6 +326,9 @@ UISearchBarDelegate
         _baseTabView.delegate = self;
         _baseTabView.dataSource = self;
         //
+        
+        _baseTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
         _baseTabView.rowHeight = 118 * KProportionHeight;
         
         _baseTabView.emptyDataSetDelegate = self;
@@ -345,6 +343,7 @@ UISearchBarDelegate
 }
 
 #pragma mark --UITableView 的代理方法
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataAry.count;
 }
@@ -363,6 +362,25 @@ UISearchBarDelegate
     supplyVC.sendUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/supply/%@/%@", [self.dataAry[indexPath.row] Id], KUserImfor[@"userid"]];
     supplyVC.chanpinId = [self.dataAry[indexPath.row] Id];
     [self.navigationController pushViewController:supplyVC animated:YES];
+}
+#pragma mark - UIScrollerDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [UIView animateWithDuration:1 animations:^{
+//        self.secView.transform = CGAffineTransformMakeTranslation(0, -200);
+        self.secView.alpha = 0;
+        [UIView animateWithDuration:5 animations:^{
+            self.baseTabView.frame = CGRectMake(0, kNavigationBarHeight + ksearchViewHight, kUIScreenWidth, kUIScreenHeight- (kNavigationBarHeight + ksearchViewHight));
+        }];
+    }];
+    
+}
+
+- (void)moveBack {
+    [UIView animateWithDuration:1 animations:^{
+//        self.secView.transform = CGAffineTransformIdentity;
+        self.secView.alpha = 1;
+        self.baseTabView.frame = CGRectMake(0, kNavigationBarHeight + ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight- (kNavigationBarHeight + ksearchViewHight + KSecViewHeight));
+    }];
 }
 
 #pragma mark-- UISearchBar代理方法
@@ -385,6 +403,10 @@ UISearchBarDelegate
 }
 
 #pragma mark - DZNEmptyDataSetDelegate,DZNEmptyDataSetSource
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+    return YES;
+}
+
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = @"暂无相关信息";
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0],

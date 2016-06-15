@@ -29,13 +29,7 @@
 #import <objc/runtime.h>
 #import "MZFormSheetBackgroundWindowViewController.h"
 #import "UIViewController+TargetViewController.h"
-//定义高度
-#define kUIScreenSize [UIScreen mainScreen].bounds.size
-#define kUIScreenWidth kUIScreenSize.width
-#define kUIScreenHeight kUIScreenSize.height
-//屏幕比例
-#define KProportionWidth kUIScreenWidth / 375
-#define KProportionHeight kUIScreenHeight / 667
+
 #ifndef OS_OBJECT_USE_OBJC_RETAIN_RELEASE
 #define OS_OBJECT_USE_OBJC_RETAIN_RELEASE 0
 #endif
@@ -661,12 +655,11 @@ static BOOL MZFromSheetControllerIsViewControllerBasedStatusBarAppearance(void) 
         self.view.translatesAutoresizingMaskIntoConstraints = YES;
     }
     
-    //    self.presentedFSViewController.view.frame = CGRectMake(0, 0, self.presentedFormSheetSize.width, self.presentedFormSheetSize.height);
-    self.presentedFSViewController.view.frame = CGRectMake(10 *KProportionWidth, 100*KProportionHeight, 355*KProportionWidth, 450*KProportionHeight);
+    self.presentedFSViewController.view.frame = CGRectMake(0, 0, self.presentedFormSheetSize.width, self.presentedFormSheetSize.height);
     self.presentedFSViewController.view.center = CGPointMake(CGRectGetMidX(self.view.bounds), self.presentedFSViewController.view.center.y);
     self.presentedFSViewController.view.layer.cornerRadius = self.cornerRadius;
     self.presentedFSViewController.view.layer.masksToBounds = YES;
-    
+
     self.view.layer.shadowOffset = CGSizeZero;
     self.view.layer.shadowRadius = self.shadowRadius;
     self.view.layer.shadowOpacity = self.shadowOpacity;
@@ -675,10 +668,6 @@ static BOOL MZFromSheetControllerIsViewControllerBasedStatusBarAppearance(void) 
 
 - (void)setupPresentedFSViewControllerFrame
 {
-    if (self.isMyFrame == YES) {
-      self.presentedFSViewController.view.frame = self.myFrame;
-    }
-    
     if (self.keyboardVisible && self.movementWhenKeyboardAppears != MZFormSheetWhenKeyboardAppearsDoNothing) {
         CGRect formSheetRect = self.presentedFSViewController.view.frame;
         CGRect screenRect = [self.screenFrameWhenKeyboardVisible CGRectValue];

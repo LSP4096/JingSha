@@ -7,18 +7,18 @@
 //
 
 #import "SuperMarketTabViewCell.h"
+#import "SCLAlertView.h"
 
 @interface SuperMarketTabViewCell ()
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *materialLabel;
 @property (weak, nonatomic) IBOutlet UIButton *signBtn;
-@property (weak, nonatomic) IBOutlet UILabel *productPlace;
 @property (weak, nonatomic) IBOutlet UILabel *pliceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIView *cntView;
 
 @end
 
@@ -27,6 +27,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.cntView.layer.cornerRadius = 5;
+    self.cntView.layer.borderWidth = 0.001;
+    self.cntView.layer.masksToBounds = YES;
     
     self.signBtn.layer.cornerRadius = 6;
     self.signBtn.layer.borderWidth = 0.001;
@@ -37,7 +41,6 @@
 - (void)setModel:(SuppleMsgModel *)model {
     _model = model;
     self.titleLabel.text = _model.title;
-    self.productPlace.text = model.zcd;
     self.numLabel.text = model.zhisu;
     self.pliceLabel.text = [NSString stringWithFormat:@"￥%@",_model.jiage];
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:_model.photo] placeholderImage:[UIImage imageNamed:@"NetBusy"] completed:nil];
@@ -49,7 +52,7 @@
     // Configure the view for the selected state
 }
 - (IBAction)signBtnClick:(id)sender {
-    MyLog(@"sign");
+    [[SCLAlertView sharedInstance] showTitle:@"开发中，喵......" subTitle:nil closeButtonTitle:nil duration:1.f];
 }
 
 @end

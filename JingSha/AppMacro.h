@@ -110,7 +110,7 @@
  *
  *  @return 返回结果   inline是把函数展开为代码，避免函数调用开销，是为了加快运行速度，而不是加快编译速度
  */
-static inline BOOL ICIsObjectEmpty(id thing){
+static inline BOOL IsObjectEmpty(id thing){
     return thing == nil ||
     ([thing isEqual:[NSNull null]]) ||
     ([thing respondsToSelector:@selector(length)] && [(NSData *)thing length] == 0) ||
@@ -124,7 +124,7 @@ static inline BOOL ICIsObjectEmpty(id thing){
  *
  *  @return 返回结果
  */
-static inline BOOL ICIsStringEmpty(NSString *string){
+static inline BOOL IsStringEmpty(NSString *string){
     
     if ([string isEqual:[NSNull null]]) {
         return YES;

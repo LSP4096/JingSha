@@ -7,6 +7,7 @@
 //
 
 #import "ExchangeDetailView.h"
+#import "SCLAlertView.h"
 
 @implementation ExchangeDetailView
 
@@ -58,8 +59,13 @@
     regiBtn.layer.cornerRadius = 11;
     regiBtn.layer.borderWidth = 0.001;
     regiBtn.layer.masksToBounds = YES;
+    [regiBtn addTarget:self action:@selector(clickRegisterBtn) forControlEvents:UIControlEventTouchUpInside];
     regiBtn.frame = CGRectMake(CGRectGetMaxX(imgView.frame) + 2,CGRectGetMaxY(lastLabel.frame) + 5 , self.width - imgView.size.width - 20, imgView.frame.size.height / 4 + 5);
     [self addSubview:regiBtn];
+}
+
+- (void)clickRegisterBtn {
+    [[SCLAlertView sharedInstance] showTitle:@"开发中，喵......" subTitle:nil closeButtonTitle:nil duration:1.5f];
 }
 
 @end
