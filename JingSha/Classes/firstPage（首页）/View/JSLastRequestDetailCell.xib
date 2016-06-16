@@ -81,7 +81,7 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTI-ng-TNb">
                         <rect key="frame" x="237" y="48" width="84" height="30"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.56078431370000004" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="84" id="98C-GQ-96d"/>
                             <constraint firstAttribute="height" constant="30" id="ls5-aS-7w0"/>
@@ -135,7 +135,7 @@
                 <outlet property="time" destination="8aL-L6-Y6Z" id="2kX-Wv-eXh"/>
                 <outlet property="title" destination="5H9-pe-3Wk" id="x2b-ez-rI7"/>
             </connections>
-            <point key="canvasLocation" x="-352.5" y="363"/>
+            <point key="canvasLocation" x="-640.5" y="331"/>
         </tableViewCell>
     </objects>
     <resources>

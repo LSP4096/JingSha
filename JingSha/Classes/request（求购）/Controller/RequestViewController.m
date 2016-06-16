@@ -48,7 +48,7 @@
     [super viewDidLoad];
 
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kUIScreenWidth, kTopViewHeight)];
-    view.backgroundColor = RGBColor(31, 111, 251);
+    view.backgroundColor = RGBColor(61, 101, 160);
     [self.view addSubview:view];
     
     UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(45, 15, kUIScreenWidth - 90, 50)];

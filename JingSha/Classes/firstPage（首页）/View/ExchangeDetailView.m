@@ -55,7 +55,7 @@
     UIButton *regiBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [regiBtn setTitle:@"意向报名" forState:UIControlStateNormal];
     regiBtn.titleLabel.font = [UIFont systemFontOfSize:11.0f];
-    [regiBtn setBackgroundColor:RGBColor(0, 122, 255) forState:UIControlStateNormal];
+    [regiBtn setBackgroundColor:RGBColor(35, 143, 219) forState:UIControlStateNormal];
     regiBtn.layer.cornerRadius = 11;
     regiBtn.layer.borderWidth = 0.001;
     regiBtn.layer.masksToBounds = YES;
