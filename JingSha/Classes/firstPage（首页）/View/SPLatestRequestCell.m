@@ -12,9 +12,6 @@
 #import "RequestDetailViewController.h"
 #import "RequestMsgModel.h"
 
-#define KLabelHight (21 * KProportionHeight)
-#define KLabelWeight (100 * KProportionHeight)
-
 @interface SPLatestRequestCell () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UIView *cntView;
@@ -36,7 +33,7 @@ static NSString *const reUseCellId = @"JSLastRequestDetailCell";
     
     self.baseTableView.delegate = self;
     self.baseTableView.dataSource = self;
-    self.baseTableView.rowHeight = 90;
+    self.baseTableView.rowHeight = 90 * KProportionHeight;
     [self.baseTableView registerNib:[UINib nibWithNibName:@"JSLastRequestDetailCell" bundle:nil] forCellReuseIdentifier:reUseCellId];
     
     [self loadData];

@@ -58,7 +58,7 @@
                                     <constraint firstAttribute="width" constant="69" id="d7B-ot-q23"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="25" translatesAutoresizingMaskIntoConstraints="NO" id="Y8o-eC-Jie">
@@ -117,7 +117,7 @@
                 <outlet property="cntView" destination="BO4-AJ-jjP" id="dgB-Jn-mLp"/>
                 <outlet property="countLabel" destination="viC-Ic-pJm" id="rZU-jK-e95"/>
             </connections>
-            <point key="canvasLocation" x="-7743" y="500"/>
+            <point key="canvasLocation" x="-8000" y="495"/>
         </tableViewCell>
     </objects>
     <resources>

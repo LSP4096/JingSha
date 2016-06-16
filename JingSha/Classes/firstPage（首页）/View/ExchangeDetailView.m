@@ -29,8 +29,8 @@
 
 - (void)setModel:(SuppleMsgModel *)model {
     
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 62, 74)];
-    imgView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:str(@"%@",model.photo)]]];
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, self.frame.size.width / 3 , self.frame.size.height - 20)];
+    [imgView sd_setImageWithURL:[NSURL URLWithString:str(@"%@",model.photo)] placeholderImage:img(@"网络暂忙-193-133")];
     [self addSubview:imgView];
     UILabel *lastLabel = nil;
     
@@ -60,7 +60,7 @@
     regiBtn.layer.borderWidth = 0.001;
     regiBtn.layer.masksToBounds = YES;
     [regiBtn addTarget:self action:@selector(clickRegisterBtn) forControlEvents:UIControlEventTouchUpInside];
-    regiBtn.frame = CGRectMake(CGRectGetMaxX(imgView.frame) + 2,CGRectGetMaxY(lastLabel.frame) + 5 , self.width - imgView.size.width - 20, imgView.frame.size.height / 4 + 5);
+    regiBtn.frame = CGRectMake(CGRectGetMaxX(imgView.frame) + 7,CGRectGetMaxY(lastLabel.frame) + 5 , self.width - imgView.size.width - 30, 22);
     [self addSubview:regiBtn];
 }
 

@@ -333,12 +333,12 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 //返回cell的行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 180 * KProportionHeight; //代码约束
+        return 180 * KProportionHeight;
     }
     else if(indexPath.section == 1){
-        return 167; //xib约束
+        return 160 * KProportionHeight;
     } else if(indexPath.section == 2) {
-        return 135 - 90 + self.NewBuyCount * 90; //xib约束
+        return 45 + self.NewBuyCount * 90 * KProportionHeight;
     }else {
         if (self.NewProCount <= 3) {
             return 261 * KProportionHeight * 1/2;
@@ -350,84 +350,6 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     }
 }
 
-//区头视图
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    UIView *headSectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kUIScreenWidth, 35)];
-//    headSectionView.backgroundColor = [UIColor whiteColor];
-//    //类型
-//    UILabel *typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, kUIScreenWidth / 4, 25)];
-//    typeLabel.font = [UIFont systemFontOfSize:14];
-//    [headSectionView addSubview:typeLabel];
-//    //more
-//    UIButton *moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(kUIScreenWidth - typeLabel.width / 2 - 20, typeLabel.frame.origin.y, typeLabel.width / 2 + 20, 25)];
-//    [moreBtn addTarget:self action:@selector(handleMore:) forControlEvents:UIControlEventTouchUpInside];
-//    moreBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-//    [headSectionView addSubview:moreBtn];
-//    
-//    switch (section) {
-//        case 1:
-//        {
-//            typeLabel.text = @"最新求购";
-//            typeLabel.textColor = RGBColor(250, 144, 27);
-//            [moreBtn setTitle:@"...." forState:UIControlStateNormal];
-//            moreBtn.tag = 100;
-//            [moreBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-//        }
-//            break;
-//        case 2:
-//        {
-//            typeLabel.text = @"热门产品";
-//            typeLabel.textColor = RGBColor(249, 103, 63);
-//            [moreBtn setTitle:@"more>" forState:UIControlStateNormal];
-//            moreBtn.tag = 200;
-//            [moreBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-//        }
-//            break;
-//        case 3:
-//        {
-//            typeLabel.text = @"交易中心";
-//            typeLabel.textColor = RGBColor(25, 182, 230);
-//            [moreBtn setTitle:@"关注" forState:UIControlStateNormal];
-//            moreBtn.tag = 300;
-//            [moreBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-//        }
-//            break;
-//        default:
-//            return nil;
-//            break;
-//    }
-//    return headSectionView;
-//}
-
-//区尾
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-//    if (section == 2) {
-//        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kUIScreenWidth, 30)];
-//        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 0, kUIScreenWidth, 30)];
-//        NSInteger count = 0;
-//        if (self.pageCount >=1 && self.pageCount <= 3) {
-//            count = 1;
-//        }else if (self.pageCount >= 4 && self.pageCount <= 6){
-//            count = 2;
-//        }else if (self.pageCount >= 7 && self.pageCount <= 9){
-//            count = 3;
-//        }else if (self.pageCount >=10 && self.pageCount <= 12){
-//            count = 4;
-//        }
-//        if (count == 1) {
-//            self.pageControl.hidden = YES;
-//        }
-//        _pageControl.numberOfPages = count;
-//        _pageControl.currentPage = 0;
-//        _pageControl.pageIndicatorTintColor = [UIColor grayColor];
-//        _pageControl.currentPageIndicatorTintColor = [UIColor redColor];
-//        [_pageControl addTarget:self action:@selector(pageChange:) forControlEvents:UIControlEventTouchUpInside];
-//        [view addSubview:_pageControl];
-//        return view;
-//    }else{
-//        return nil;
-//    }
-//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.001;
@@ -472,65 +394,6 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     }
 }
 
-/**
- *  主页面新品推荐点击事件
- */
-//- (void)pushToDetailVCFromCell:(NSString *)string{
-//    SupplyDetailViewController * supplyVC = [[SupplyDetailViewController alloc] init];
-//    supplyVC.sendUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/supply/%@/%@",string, KUserImfor[@"userid"]];
-//    supplyVC.chanpinId = string;
-//    [self.navigationController pushViewController:supplyVC animated:YES];
-//}
-//
-///**
-// *  已经关注的市场关注的点击事件,跳转到相应的详细界面
-// */
-//-(void)clickedDidAttention:(id)sender which:(NSInteger)btnTag{
-//    AttentionDetailViewController * attentionDetailVC = [[AttentionDetailViewController alloc] init];
-////    attentionDetailVC.titleAry = sender;
-//    attentionDetailVC.titleName = sender;
-//    attentionDetailVC.contsentCount = btnTag - 1000;
-//    [self.navigationController pushViewController:attentionDetailVC animated:YES];
-//}
-
-/**
- *  点击UIPageController的响应事件。使推荐供应商界面偏移
- */
-//- (void)pageChange:(UIPageControl *)sender{
-//    [self.cell.baseScrollView setContentOffset:CGPointMake(kUIScreenWidth * sender.currentPage, 0) animated:YES];
-//}
-#pragma mark -- 执行代理方法
-//- (void)changePageNumber:(int)pageNumber{
-//    self.pageControl.currentPage = pageNumber;
-//}
-//
-//- (void)pushToDetailPageVC:(NSString *)string{
-//    RecommendDetailViewController * recommendDetailVC = [[RecommendDetailViewController alloc] init];
-//    recommendDetailVC.qiyeId = string;//代理传过来的企业id
-//    [self.navigationController pushViewController:recommendDetailVC animated:YES];
-//}
-///**点击市场关注 右侧的 关注按钮*/
-//- (void)handleCHange:(UIButton *)sender {
-//    AttentionViewController * attentionVC = [[AttentionViewController alloc] init];
-//    [self.navigationController pushViewController:attentionVC animated:YES];
-//}
-///**
-// * 更多的按钮响应事件
-// */
-//- (void)handleMore:(UIButton *)sender {
-//    if (sender.tag == 100) {
-//        MyLog(@"更多新品");
-//        MoreRecommendViewController * moreRecommendVC = [[MoreRecommendViewController alloc] init];
-////        moreRecommendVC.fd_prefersNavigationBarHidden = YES;
-//        [self.navigationController pushViewController:moreRecommendVC animated:YES];
-//    } else if (sender.tag == 200) {
-//        MyLog(@"更多供应商");
-//        MoreSupplierViewController * moreVC = [[MoreSupplierViewController alloc] init];
-//        [self.navigationController pushViewController:moreVC animated:YES];
-//    } else if (sender.tag == 300) {
-//        [self handleCHange:nil];
-//    }
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //选中后变回颜色
@@ -561,97 +424,14 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    MyLog(@"%f", (float)scrollView.contentOffset.y);
     CGFloat scrollViewY = (float)scrollView.contentOffset.y;
     if (scrollViewY > 180 * KProportionHeight) {
         //该显示在上边
         self.navigationItem.titleView = _secondSearchBtn;
     }else{
-//        self.navigationItem.titleView = _titleViewLable;
         self.navigationItem.titleView = nil;
     }
     
 }
 
-/*
-#pragma mark - tableView上滑隐藏searchBar
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    NSLog(@"%f", self.lastScrollOffset);
-    if ([scrollView isKindOfClass:[UITableView class]]) {
-        CGFloat y = scrollView.contentOffset.y;
-        HeadViewTableViewCell *cell = (HeadViewTableViewCell *)[self.contentTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        if (y < self.lastScrollOffset) {
-            //屏幕向下滚动
-//            MyLog(@"下");
-            if (scrollView.contentOffset.y < (180 * KProportionHeight) && scrollView.contentOffset.y > 0 && self.secondSearchBtn.hidden == NO) {
-//                MyLog(@"要出现了");
-                _isSearchBarHiden = NO;
-                POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-                opacityAnimation.fromValue = @(0);
-                opacityAnimation.toValue = @(1);
-                [cell.searchBarBtn.layer pop_addAnimation:opacityAnimation forKey:@"opacityAnimation"];
-                
-                POPBasicAnimation *positionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPosition];
-                CGPoint pointBtn = cell.searchBarBtn.center;
-                positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(187.5 * KProportionWidth, 180*KProportionHeight)];
-                positionAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(pointBtn.x, kNavigationBarHeight - 40 *KProportionHeight)];
-                [cell.searchBarBtn.layer pop_addAnimation:positionAnimation forKey:@"opacityAnimation"];
-                
-                POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-                scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
-                scaleAnimation.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.1f, 0.1f)];
-                [cell.searchBarBtn.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
-                
-                self.navigationItem.titleView = _secondSearchBtn;
-                POPBasicAnimation *opacityAnimation1 = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-                opacityAnimation1.fromValue = @(1);
-                opacityAnimation1.toValue = @(0);
-                [_secondSearchBtn.layer pop_addAnimation:opacityAnimation1 forKey:@"opacityAnimation"];
-                
-                UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-                titleView.text = @"中国纱线网";
-                titleView.textColor = [UIColor whiteColor];
-                self.navigationItem.titleView = titleView;
-            }
-            
-        } else {
-            //向上滚动
-//            MyLog(@"上");
-//            MyLog(@"要消失了");
-            if (scrollView.contentOffset.y > (160 * KProportionHeight) && _isSearchBarHiden == NO) {
-                self.secondSearchBtn.hidden = NO;
-                POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-                opacityAnimation.fromValue = @(1);
-                opacityAnimation.toValue = @(0);
-                [cell.searchBarBtn.layer pop_addAnimation:opacityAnimation forKey:@"opacityAnimation"];
-                
-                POPBasicAnimation *positionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPosition];
-                CGPoint pointBtn = cell.searchBarBtn.center;
-                positionAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(187.5*KProportionWidth, 160*KProportionHeight)];
-                positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(pointBtn.x, kNavigationBarHeight - 40*KProportionHeight)];
-                [cell.searchBarBtn.layer pop_addAnimation:positionAnimation forKey:@"opacityAnimation"];
-                
-                POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-                scaleAnimation.fromValue = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
-                scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.1f, 0.1f)];
-                [cell.searchBarBtn.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
-                _isSearchBarHiden = YES;
-                
-                self.navigationItem.titleView = _secondSearchBtn;
-                POPBasicAnimation *opacityAnimation1 = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-                opacityAnimation1.fromValue = @(0);
-                opacityAnimation1.toValue = @(1);
-                [_secondSearchBtn.layer pop_addAnimation:opacityAnimation1 forKey:@"opacityAnimation"];
-                
-                POPSpringAnimation *scaleAnimation1 = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-                scaleAnimation1.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.1f, 0.1f)];
-                scaleAnimation1.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
-                [self.secondSearchBtn.layer pop_addAnimation:scaleAnimation1 forKey:@"scaleAnimation"];
-            }
-        }
-        self.lastScrollOffset = y;
-
-    }
-}
-*/
 @end
