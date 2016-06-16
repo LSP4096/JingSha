@@ -25,12 +25,23 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njZ-gs-Qzt" userLabel="title">
-                                <rect key="frame" x="102" y="16" width="81" height="20"/>
+                                <rect key="frame" x="102" y="16" width="45" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="zCX-Xk-la7"/>
+                                    <constraint firstAttribute="width" constant="45" id="0YP-w2-Db2"/>
+                                    <constraint firstAttribute="height" constant="20" id="3Q7-W8-GFs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zhisu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4D-lH-Cwu" userLabel="zhisu">
+                                <rect key="frame" x="157" y="16" width="45" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="G0I-OU-iKG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -100,18 +111,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="66O-ii-g8O" firstAttribute="leading" secondItem="R4D-lH-Cwu" secondAttribute="trailing" constant="26" id="3qN-Lg-FAS"/>
                             <constraint firstItem="UnQ-36-VRc" firstAttribute="leading" secondItem="0u4-Ai-bod" secondAttribute="trailing" constant="14" id="5AB-v2-QZv"/>
                             <constraint firstItem="eJs-hQ-duM" firstAttribute="centerY" secondItem="UnQ-36-VRc" secondAttribute="centerY" id="5rn-zU-lo3"/>
                             <constraint firstItem="eJs-hQ-duM" firstAttribute="leading" secondItem="UnQ-36-VRc" secondAttribute="trailing" constant="3" id="IT5-1y-A2X"/>
+                            <constraint firstItem="UnQ-36-VRc" firstAttribute="top" secondItem="njZ-gs-Qzt" secondAttribute="bottom" constant="7" id="N82-Fl-5p6"/>
+                            <constraint firstItem="R4D-lH-Cwu" firstAttribute="centerY" secondItem="njZ-gs-Qzt" secondAttribute="centerY" id="Obg-EL-tHv"/>
                             <constraint firstItem="UnQ-36-VRc" firstAttribute="centerY" secondItem="ytX-CH-AUC" secondAttribute="centerY" id="Pcb-jS-oVc"/>
+                            <constraint firstItem="njZ-gs-Qzt" firstAttribute="leading" secondItem="UnQ-36-VRc" secondAttribute="leading" id="THG-vy-h59"/>
                             <constraint firstAttribute="trailing" secondItem="7d3-Cq-ppn" secondAttribute="trailing" constant="4" id="UwS-oO-KXf"/>
                             <constraint firstItem="0u4-Ai-bod" firstAttribute="leading" secondItem="ytX-CH-AUC" secondAttribute="leading" constant="5" id="VGE-On-ukp"/>
                             <constraint firstItem="pbC-ka-mkU" firstAttribute="centerY" secondItem="mPT-32-1Lf" secondAttribute="centerY" id="YDI-Or-xIa"/>
                             <constraint firstAttribute="trailing" secondItem="pbC-ka-mkU" secondAttribute="trailing" constant="127" id="fhK-SO-8pq"/>
-                            <constraint firstItem="66O-ii-g8O" firstAttribute="leading" secondItem="njZ-gs-Qzt" secondAttribute="trailing" constant="45" id="iol-hg-Ye5"/>
                             <constraint firstItem="7d3-Cq-ppn" firstAttribute="centerY" secondItem="ytX-CH-AUC" secondAttribute="centerY" id="mWh-oy-duv"/>
-                            <constraint firstItem="UnQ-36-VRc" firstAttribute="top" secondItem="njZ-gs-Qzt" secondAttribute="bottom" constant="7" id="nA1-90-m8d"/>
-                            <constraint firstItem="njZ-gs-Qzt" firstAttribute="leading" secondItem="UnQ-36-VRc" secondAttribute="leading" id="nXp-4q-EcJ"/>
+                            <constraint firstItem="R4D-lH-Cwu" firstAttribute="leading" secondItem="njZ-gs-Qzt" secondAttribute="trailing" constant="10" id="rFH-Th-bI1"/>
                             <constraint firstItem="7d3-Cq-ppn" firstAttribute="top" secondItem="66O-ii-g8O" secondAttribute="bottom" constant="8" id="t2D-Rm-sRe"/>
                             <constraint firstItem="7d3-Cq-ppn" firstAttribute="leading" secondItem="eJs-hQ-duM" secondAttribute="trailing" constant="20" id="v65-cV-9ZC"/>
                             <constraint firstItem="mPT-32-1Lf" firstAttribute="top" secondItem="UnQ-36-VRc" secondAttribute="bottom" constant="10" id="vMF-DG-eWZ"/>
@@ -138,8 +151,10 @@
                 <outlet property="signBtn" destination="7d3-Cq-ppn" id="oAc-rR-B2a"/>
                 <outlet property="timeLabel" destination="66O-ii-g8O" id="8Mh-4m-Twn"/>
                 <outlet property="titleLabel" destination="njZ-gs-Qzt" id="bMe-nu-2Nm"/>
+                <outlet property="titleW" destination="0YP-w2-Db2" id="w1z-iw-77Y"/>
+                <outlet property="zhisu" destination="R4D-lH-Cwu" id="Jso-v9-LUJ"/>
             </connections>
-            <point key="canvasLocation" x="-4142" y="399"/>
+            <point key="canvasLocation" x="-4961" y="406"/>
         </tableViewCell>
     </objects>
 </document>

@@ -14,6 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleW;
+
+@property (weak, nonatomic) IBOutlet UILabel *zhisu;
 @property (weak, nonatomic) IBOutlet UIButton *signBtn;
 @property (weak, nonatomic) IBOutlet UILabel *pliceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
@@ -41,6 +44,12 @@
 - (void)setModel:(SuppleMsgModel *)model {
     _model = model;
     self.titleLabel.text = _model.title;
+    
+    CGSize size = [_model.title sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0]}];
+    CGSize size1 = CGSizeMake(ceilf(size.width), ceilf(size.height));
+    _titleW.constant = size1.width;
+
+    self.zhisu.text = _model.zhisu;
     
     if (IsStringEmpty(_model.num)) {
         self.numLabel.text = @"电议";

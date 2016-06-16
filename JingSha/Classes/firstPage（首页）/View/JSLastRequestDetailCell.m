@@ -10,6 +10,8 @@
 @interface JSLastRequestDetailCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleW;
+@property (weak, nonatomic) IBOutlet UILabel *zhisu;
 @property (weak, nonatomic) IBOutlet UILabel *requestCount;
 @property (weak, nonatomic) IBOutlet UILabel *place;
 @property (weak, nonatomic) IBOutlet UILabel *time;
@@ -35,7 +37,11 @@
 
 -(void)setModel:(RequestMsgModel *)model {
     self.title.text = model.title;
+    CGSize size = [model.title sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0]}];
+    CGSize size1 = CGSizeMake(ceilf(size.width), ceilf(size.height));
+    _titleW.constant = size1.width;
     
+    self.zhisu.text = model.zhisu;
     if (IsStringEmpty(model.num)) {
         self.requestCount.text = @"电议";
     } else {

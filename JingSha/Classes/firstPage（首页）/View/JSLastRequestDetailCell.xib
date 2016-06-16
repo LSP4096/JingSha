@@ -22,10 +22,19 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5H9-pe-3Wk" userLabel="title">
-                        <rect key="frame" x="41" y="10" width="121" height="21"/>
+                        <rect key="frame" x="41" y="10" width="77" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="121" id="Tg9-tw-k0p"/>
+                            <constraint firstAttribute="width" constant="77" id="Tg9-tw-k0p"/>
                             <constraint firstAttribute="height" constant="21" id="uCe-5J-s6h"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63q-qw-YA7" userLabel="zhisu">
+                        <rect key="frame" x="126" y="10" width="90" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="tfZ-2w-7gB"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -104,6 +113,7 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="63q-qw-YA7" firstAttribute="leading" secondItem="5H9-pe-3Wk" secondAttribute="trailing" constant="8" id="4nP-sP-RID"/>
                     <constraint firstItem="LgQ-bb-f7o" firstAttribute="top" secondItem="5H9-pe-3Wk" secondAttribute="bottom" constant="3" id="6ZW-Cp-DN1"/>
                     <constraint firstItem="JAl-AF-ynq" firstAttribute="leading" secondItem="kDw-56-uYG" secondAttribute="leading" id="Aws-Gu-ddB"/>
                     <constraint firstAttribute="trailing" secondItem="rD3-YW-Im6" secondAttribute="trailing" id="CNZ-nZ-vSO"/>
@@ -117,8 +127,10 @@
                     <constraint firstAttribute="trailing" secondItem="K2T-qv-YA1" secondAttribute="trailing" constant="167" id="RRP-9T-79T"/>
                     <constraint firstItem="rD3-YW-Im6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="S6M-aN-yJJ"/>
                     <constraint firstAttribute="bottom" secondItem="rD3-YW-Im6" secondAttribute="bottom" constant="2" id="Yas-oP-fh8"/>
+                    <constraint firstItem="63q-qw-YA7" firstAttribute="centerY" secondItem="5H9-pe-3Wk" secondAttribute="centerY" id="cic-eh-jd3"/>
                     <constraint firstAttribute="trailing" secondItem="VTI-ng-TNb" secondAttribute="trailing" constant="8" id="dJj-Rh-808"/>
                     <constraint firstItem="8aL-L6-Y6Z" firstAttribute="centerX" secondItem="VTI-ng-TNb" secondAttribute="centerX" constant="2" id="fKy-OQ-pQq"/>
+                    <constraint firstItem="8aL-L6-Y6Z" firstAttribute="leading" secondItem="63q-qw-YA7" secondAttribute="trailing" constant="26" id="gu7-WU-0vw"/>
                     <constraint firstItem="rD3-YW-Im6" firstAttribute="top" secondItem="JAl-AF-ynq" secondAttribute="bottom" constant="7" id="jaO-db-rSo"/>
                     <constraint firstItem="VTI-ng-TNb" firstAttribute="top" secondItem="8aL-L6-Y6Z" secondAttribute="bottom" id="kUO-IC-qJF"/>
                     <constraint firstItem="K2T-qv-YA1" firstAttribute="leading" secondItem="JAl-AF-ynq" secondAttribute="trailing" constant="8" id="l3P-vZ-GmU"/>
@@ -134,8 +146,10 @@
                 <outlet property="requestCount" destination="LgQ-bb-f7o" id="jRy-a8-X0H"/>
                 <outlet property="time" destination="8aL-L6-Y6Z" id="2kX-Wv-eXh"/>
                 <outlet property="title" destination="5H9-pe-3Wk" id="x2b-ez-rI7"/>
+                <outlet property="titleW" destination="Tg9-tw-k0p" id="ULV-fH-FJ1"/>
+                <outlet property="zhisu" destination="63q-qw-YA7" id="MCS-Ox-H39"/>
             </connections>
-            <point key="canvasLocation" x="-1689.5" y="310"/>
+            <point key="canvasLocation" x="-2464.5" y="325"/>
         </tableViewCell>
     </objects>
     <resources>

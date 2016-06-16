@@ -11,6 +11,8 @@
 @interface NewProductMoreTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleW;
+@property (weak, nonatomic) IBOutlet UILabel *zhisu;
 @property (weak, nonatomic) IBOutlet UILabel *jiageLable;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UIButton *messageBtn;
@@ -36,8 +38,13 @@
 
 - (void)setModel:(ProOptionModel *)model{//这里返回的值全部都是有值的或者@“”的。没有<NULL>
     _model = model;
-    self.jiageLable.text = str(@"%@ 元/吨",_model.jiage);
     self.titleLable.text = _model.title;
+    CGSize size = [_model.title sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0]}];
+    CGSize size1 = CGSizeMake(ceilf(size.width), ceilf(size.height));
+    _titleW.constant = size1.width;
+    
+    self.zhisu.text = _model.zhisu;
+    self.jiageLable.text = str(@"%@ 元/吨",_model.jiage);
     self.supper.text = _model.gongsi;
     self.time.text = _model.time;
     self.id = _model.Id;

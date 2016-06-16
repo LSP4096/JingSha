@@ -10,6 +10,8 @@
 @interface WantBuyTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIView *cntView;
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleW;
+@property (weak, nonatomic) IBOutlet UILabel *zhisu;
 @property (weak, nonatomic) IBOutlet UILabel *place;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UILabel *quotes;
@@ -41,18 +43,25 @@
 - (void)setModel:(RequestMsgModel *)model{
     _model = model;
     self.title.text = _model.title;
+    
+    CGSize size = [_model.title sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0]}];
+    CGSize size1 = CGSizeMake(ceilf(size.width), ceilf(size.height));
+    _titleW.constant = size1.width;
+    
+    self.zhisu.text = _model.zhisu;
+    
     self.time.text = _model.time;
     
     self.quotes.text = _model.bao;
     
-    if (IsStringEmpty(model.num)) {
+    if (IsStringEmpty(_model.num)) {
         self.num.text = @"电议";
     } else {
-        self.num.text = model.num;
+        self.num.text = _model.num;
     }
 
     self.place.text = @"暂无";
-    self.id = model.Id;
+    self.id = _model.Id;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
