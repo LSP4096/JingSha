@@ -194,7 +194,7 @@
     CGFloat Width = (kUIScreenWidth - 60) / 3;
     for (int i = 0; i < self.titleArr.count; i++) {
         UIButton *optionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        optionBtn.frame = CGRectMake(20 +  (Width + 10) * (i%3), 38 + (21 + 20) * (i/3), Width, 31);
+        optionBtn.frame = CGRectMake(20 +  (Width + 10) * (i%3), 40 + (21 + 20) * (i/3), Width, 31);
         [optionBtn setTitle:self.titleArr[i] forState:UIControlStateNormal];
         optionBtn.layer.cornerRadius = 10.0f;
         optionBtn.layer.borderWidth = 0.001f;

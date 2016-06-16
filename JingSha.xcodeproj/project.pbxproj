@@ -1385,14 +1385,9 @@
 		21A70B751C105A8B0061B114 /* Request Message */ = {
 			isa = PBXGroup;
 			children = (
-				21A70B561C1039C80061B114 /* RequestDetailViewController.h */,
-				21A70B571C1039C80061B114 /* RequestDetailViewController.m */,
 				210937541C0ECC19003CE1CD /* MyQuotedViewController.h */,
 				210937551C0ECC19003CE1CD /* MyQuotedViewController.m */,
 				210937561C0ECC19003CE1CD /* MyQuotedViewController.xib */,
-				21F859901C3D1DB500FD17DF /* SingUpViewController.h */,
-				21F859911C3D1DB500FD17DF /* SingUpViewController.m */,
-				21F859921C3D1DB500FD17DF /* SingUpViewController.xib */,
 				21549F241C473418004F435D /* NeedKnownViewController.h */,
 				21549F251C473418004F435D /* NeedKnownViewController.m */,
 				21549F261C473418004F435D /* NeedKnownViewController.xib */,
@@ -1741,6 +1736,55 @@
 			children = (
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		4C50CE481D127D2D005D6B6F /* ExchangeVC */ = {
+			isa = PBXGroup;
+			children = (
+				21A70B4E1C10276A0061B114 /* SuperMarketViewController.h */,
+				21A70B4F1C10276A0061B114 /* SuperMarketViewController.m */,
+				214649DE1C1FF88600605AB5 /* SupplyDetailViewController.h */,
+				214649DF1C1FF88600605AB5 /* SupplyDetailViewController.m */,
+				214649E11C200E3B00605AB5 /* LeaveMessageTableViewController.h */,
+				214649E21C200E3B00605AB5 /* LeaveMessageTableViewController.m */,
+				2174983F1C40A6ED0096A791 /* ConnectViewController.h */,
+				217498401C40A6ED0096A791 /* ConnectViewController.m */,
+				2174983E1C40A6ED0096A791 /* ConnectViewController.xib */,
+			);
+			name = ExchangeVC;
+			sourceTree = "<group>";
+		};
+		4C50CE491D127D66005D6B6F /* NewRequestVC */ = {
+			isa = PBXGroup;
+			children = (
+				81BA8BB51BF45DDB006954D6 /* RequestViewController.h */,
+				81BA8BB61BF45DDB006954D6 /* RequestViewController.m */,
+				81BA8BB71BF45DDB006954D6 /* RequestViewController.xib */,
+				21A70B561C1039C80061B114 /* RequestDetailViewController.h */,
+				21A70B571C1039C80061B114 /* RequestDetailViewController.m */,
+				21F859901C3D1DB500FD17DF /* SingUpViewController.h */,
+				21F859911C3D1DB500FD17DF /* SingUpViewController.m */,
+				21F859921C3D1DB500FD17DF /* SingUpViewController.xib */,
+			);
+			name = NewRequestVC;
+			sourceTree = "<group>";
+		};
+		4C50CE4A1D127DD1005D6B6F /* HotProductVC */ = {
+			isa = PBXGroup;
+			children = (
+				21C39C221C181C5500F24B6B /* MoreRecommendViewController.h */,
+				21C39C231C181C5500F24B6B /* MoreRecommendViewController.m */,
+			);
+			name = HotProductVC;
+			sourceTree = "<group>";
+		};
+		4C50CE4B1D127DEE005D6B6F /* NewsVC */ = {
+			isa = PBXGroup;
+			children = (
+				21A70B431C0FD21D0061B114 /* NewsViewController.h */,
+				21A70B441C0FD21D0061B114 /* NewsViewController.m */,
+			);
+			name = NewsVC;
 			sourceTree = "<group>";
 		};
 		4C53A5D41D1125B000D15DE3 /* SCLAlertView */ = {
@@ -2268,22 +2312,10 @@
 			children = (
 				8106B2191BF4B4CC005F94C3 /* FirstPageViewController.h */,
 				8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */,
-				21A70B4E1C10276A0061B114 /* SuperMarketViewController.h */,
-				21A70B4F1C10276A0061B114 /* SuperMarketViewController.m */,
-				81BA8BB51BF45DDB006954D6 /* RequestViewController.h */,
-				81BA8BB61BF45DDB006954D6 /* RequestViewController.m */,
-				81BA8BB71BF45DDB006954D6 /* RequestViewController.xib */,
-				21C39C221C181C5500F24B6B /* MoreRecommendViewController.h */,
-				21C39C231C181C5500F24B6B /* MoreRecommendViewController.m */,
-				21A70B431C0FD21D0061B114 /* NewsViewController.h */,
-				21A70B441C0FD21D0061B114 /* NewsViewController.m */,
-				214649DE1C1FF88600605AB5 /* SupplyDetailViewController.h */,
-				214649DF1C1FF88600605AB5 /* SupplyDetailViewController.m */,
-				214649E11C200E3B00605AB5 /* LeaveMessageTableViewController.h */,
-				214649E21C200E3B00605AB5 /* LeaveMessageTableViewController.m */,
-				2174983F1C40A6ED0096A791 /* ConnectViewController.h */,
-				217498401C40A6ED0096A791 /* ConnectViewController.m */,
-				2174983E1C40A6ED0096A791 /* ConnectViewController.xib */,
+				4C50CE4B1D127DEE005D6B6F /* NewsVC */,
+				4C50CE481D127D2D005D6B6F /* ExchangeVC */,
+				4C50CE491D127D66005D6B6F /* NewRequestVC */,
+				4C50CE4A1D127DD1005D6B6F /* HotProductVC */,
 				210BA4CF1C1A5C66009457FF /* MarketAttention */,
 				21C39C261C18205300F24B6B /* Search */,
 				212784091C1553D00097A1B4 /* Recommend Supplier */,

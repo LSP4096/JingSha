@@ -43,11 +43,7 @@
     self.title.text = _model.title;
     self.time.text = _model.time;
     
-    if ([_model.baojia isEqualToString:@"1"]) {
-        self.quotes.text = @"已有人报价";
-    }else {
-        self.quotes.text = @"暂无报价信息";
-    }
+    self.quotes.text = _model.bao;
     
     if (IsStringEmpty(model.num)) {
         self.num.text = @"电议";
