@@ -379,6 +379,7 @@ UISearchBarDelegate
     [UIView animateWithDuration:1 animations:^{
 //        self.secView.transform = CGAffineTransformIdentity;
         self.secView.alpha = 1;
+        self.baseTabView.mj_offsetY = 0;
         self.baseTabView.frame = CGRectMake(0, kNavigationBarHeight + ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight- (kNavigationBarHeight + ksearchViewHight + KSecViewHeight));
     }];
 }

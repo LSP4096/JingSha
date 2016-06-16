@@ -33,7 +33,7 @@
     self.titleImg.layer.borderWidth = 0.001;
     self.titleImg.layer.masksToBounds = YES;
     
-    self.BaoJia.layer.cornerRadius = 5;
+    self.BaoJia.layer.cornerRadius = 13;
     self.BaoJia.layer.borderWidth = 0.001;
     self.BaoJia.layer.masksToBounds = YES;
 }

@@ -94,7 +94,7 @@
 
 - (NSMutableArray *)titleArr {
     if (!_titleArr) {
-        _titleArr = [[NSMutableArray array] init];
+        _titleArr = [NSMutableArray new];
     }
     return _titleArr;
 }
@@ -103,7 +103,7 @@
     if (!_searchBar) {
         _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(10, 0, kUIScreenWidth - 20, 50)];
         _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];
-        _searchBar.placeholder = @"关键字";
+        _searchBar.placeholder = @"请输入求购关键字";
         _searchBar.searchBarStyle = 2;
         _searchBar.delegate =self;
         _searchBar.showsCancelButton = NO;
@@ -116,7 +116,7 @@
         _baseTable = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight + KSecViewHeight + ksearchViewHight, kUIScreenWidth, kUIScreenHeight - kNavigationBarHeight - kTopViewHeight - ksearchViewHight - 20) style:UITableViewStylePlain];
         _baseTable.delegate = self;
         _baseTable.dataSource = self;
-        _baseTable.rowHeight = 110;
+        _baseTable.rowHeight = 110 * KProportionHeight;
         _baseTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         _baseTable.tableFooterView = [[UIView alloc] init];
         _baseTable.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshNewData)];
@@ -483,6 +483,7 @@
     [UIView animateWithDuration:1 animations:^{
         //        self.secView.transform = CGAffineTransformIdentity;
         self.secView.alpha = 1;
+        self.baseTable.mj_offsetY = 0;
         self.baseTable.frame = CGRectMake(0, kNavigationBarHeight + ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight- (kNavigationBarHeight + ksearchViewHight + KSecViewHeight));
     }];
 }

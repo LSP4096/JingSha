@@ -376,6 +376,7 @@
 - (void)moveBack {
     [UIView animateWithDuration:1 animations:^{
         self.secView.alpha = 1;
+        self.baseTable.mj_offsetY = 0;
         self.baseTable.frame = CGRectMake(0, ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight-( ksearchViewHight + KSecViewHeight));
     }];
 }
