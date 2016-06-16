@@ -284,6 +284,8 @@
 		4C4A1C731CF690E30037176B /* SPExchangeCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A1C711CF690E30037176B /* SPExchangeCenterCell.m */; };
 		4C4A1C741CF690E30037176B /* SPExchangeCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A1C721CF690E30037176B /* SPExchangeCenterCell.xib */; };
 		4C4D1EE71D001A8300D60718 /* ExchangeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D1EE61D001A8300D60718 /* ExchangeDetailView.m */; };
+		4C50CE4E1D129FBD005D6B6F /* HttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50CE4D1D129FBD005D6B6F /* HttpResponse.m */; };
+		4C50CE511D12A256005D6B6F /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50CE501D12A256005D6B6F /* HttpClient.m */; };
 		4C53A5E21D1125D300D15DE3 /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C53A5D61D1125D300D15DE3 /* SCLAlertView.m */; };
 		4C53A5E31D1125D300D15DE3 /* SCLAlertView+FRAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C53A5D81D1125D300D15DE3 /* SCLAlertView+FRAlertView.m */; };
 		4C53A5E41D1125D300D15DE3 /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C53A5DA1D1125D300D15DE3 /* SCLAlertViewResponder.m */; };
@@ -895,6 +897,10 @@
 		4C4A1C721CF690E30037176B /* SPExchangeCenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPExchangeCenterCell.xib; sourceTree = "<group>"; };
 		4C4D1EE51D001A8300D60718 /* ExchangeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeDetailView.h; sourceTree = "<group>"; };
 		4C4D1EE61D001A8300D60718 /* ExchangeDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeDetailView.m; sourceTree = "<group>"; };
+		4C50CE4C1D129FBD005D6B6F /* HttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpResponse.h; sourceTree = "<group>"; };
+		4C50CE4D1D129FBD005D6B6F /* HttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpResponse.m; sourceTree = "<group>"; };
+		4C50CE4F1D12A256005D6B6F /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		4C50CE501D12A256005D6B6F /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		4C53A5D51D1125D300D15DE3 /* SCLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertView.h; sourceTree = "<group>"; };
 		4C53A5D61D1125D300D15DE3 /* SCLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertView.m; sourceTree = "<group>"; };
 		4C53A5D71D1125D300D15DE3 /* SCLAlertView+FRAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCLAlertView+FRAlertView.h"; sourceTree = "<group>"; };
@@ -1679,6 +1685,10 @@
 				81367A211BE4758C0032C1E8 /* BaseHttpTool.m */,
 				81367A221BE4758C0032C1E8 /* HttpTool.h */,
 				81367A231BE4758C0032C1E8 /* HttpTool.m */,
+				4C50CE4C1D129FBD005D6B6F /* HttpResponse.h */,
+				4C50CE4D1D129FBD005D6B6F /* HttpResponse.m */,
+				4C50CE4F1D12A256005D6B6F /* HttpClient.h */,
+				4C50CE501D12A256005D6B6F /* HttpClient.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -2950,6 +2960,7 @@
 				210EA6C01C3FD1970020D828 /* MessageModel.m in Sources */,
 				4C4A1C731CF690E30037176B /* SPExchangeCenterCell.m in Sources */,
 				2157D0E61C44BD4900068B20 /* ProListModel.m in Sources */,
+				4C50CE511D12A256005D6B6F /* HttpClient.m in Sources */,
 				214649EE1C2037CC00605AB5 /* LeaveDetailMessageTableViewCell.m in Sources */,
 				81C2282A1BEC948C00893B1B /* ChangePWViewController.m in Sources */,
 				213E98251C2978E1005EB63B /* convertHistoryTableViewController.m in Sources */,
@@ -3089,6 +3100,7 @@
 				21A70B711C1047DD0061B114 /* ColumnReusableView.m in Sources */,
 				212C61AA1C3B68CC000AE56E /* CheckQuoteModel.m in Sources */,
 				81C16F9F1C04039400588CD7 /* CompanyInfoViewController.m in Sources */,
+				4C50CE4E1D129FBD005D6B6F /* HttpResponse.m in Sources */,
 				21E898C41C3E53400038757C /* BannerModel.m in Sources */,
 				81C16FA81C04476900588CD7 /* CompanyEditViewController.m in Sources */,
 				21549F271C473418004F435D /* NeedKnownViewController.m in Sources */,

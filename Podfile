@@ -17,6 +17,8 @@ pod 'FMDB'
 pod 'MZFormSheetController'
 pod 'pop'
 pod 'Bugly', '~> 1.4.3'
+pod 'JSONModel', '~>1.2.0'
+
 end
 
 

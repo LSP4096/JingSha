@@ -28,6 +28,7 @@ PODS:
   - FMDB/standard (2.5):
     - FMDB/common
   - IQKeyboardManager (3.3.4)
+  - JSONModel (1.2.0)
   - Masonry (1.0.0)
   - MJExtension (2.5.16)
   - MJRefresh (2.4.12)
@@ -57,6 +58,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - FMDB
   - IQKeyboardManager
+  - JSONModel (~> 1.2.0)
   - Masonry
   - MJExtension
   - MJRefresh
@@ -74,6 +76,7 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   IQKeyboardManager: ac803e61e5b50efae6b3aeedd95a02c7c7d3b2b3
+  JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
   Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   MJExtension: b8c1321a77d91bcc007b94d38cbf5383c95ea30e
   MJRefresh: ca8e9589895977df32d379d46e6b8a5450b3ff44
@@ -86,6 +89,6 @@ SPEC CHECKSUMS:
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   SVProgressHUD: 54de4d9ab38aa3f688da401f5766a5738084e7fb
 
-PODFILE CHECKSUM: b1bde2c19873eb2fc0dc7166b9107935daf02968
+PODFILE CHECKSUM: be37fdbbc2a0fe530b63ffff8c687bd7a7830a6d
 
 COCOAPODS: 1.0.0
