@@ -50,6 +50,7 @@
 
 - (void)configerModel:(id)response{
     NSDictionary * dataDict = response[@"data"];
+    MyLog(@"-----%@",response[@"data"]);
     self.leftTitleAry = @[@"公司名称:",@"联  系  人:",@"联系电话:",@"联系传真:",@"QQ:"];
     NSArray * array = @[@"gongsi",@"lxr",@"tel",@"chuanzhen",@"qq"];
     self.dataAry = [NSMutableArray array];
@@ -156,6 +157,7 @@
     [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
     [allParams setObject:self.chanpinID forKey:@"proid"];
     for (int i = 0; i < self.dataAry.count; i++) {
+       
         if ([self.dataAry[i] contentText] == nil) {
             [SVProgressHUD showErrorWithStatus:@"请确保必填项不为空"];
             return;

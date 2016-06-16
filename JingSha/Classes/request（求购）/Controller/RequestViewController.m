@@ -483,8 +483,9 @@
     [UIView animateWithDuration:1 animations:^{
         //        self.secView.transform = CGAffineTransformIdentity;
         self.secView.alpha = 1;
-        self.baseTable.mj_offsetY = 0;
+        
         self.baseTable.frame = CGRectMake(0, kNavigationBarHeight + ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight- (kNavigationBarHeight + ksearchViewHight + KSecViewHeight));
+        self.baseTable.mj_offsetY = 0;
     }];
 }
 

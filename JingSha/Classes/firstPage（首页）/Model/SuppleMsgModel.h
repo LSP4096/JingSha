@@ -20,5 +20,6 @@
 @property (nonatomic, copy)NSString * chengfen;
 @property (nonatomic, copy)NSString * zcd;//搜索结果的时候用
 @property (nonatomic, copy)NSString * zhisu;//搜索结果的时候用
+@property (nonatomic, copy)NSString * num;
 
 @end

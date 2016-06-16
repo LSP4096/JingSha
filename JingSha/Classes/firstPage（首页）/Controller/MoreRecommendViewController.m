@@ -324,7 +324,7 @@
     if (!_searchBar) {
         _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(10, 0, kUIScreenWidth - 20, 50)];
         _searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];
-        _searchBar.placeholder = @"关键字";
+        _searchBar.placeholder = @"请输入产品关键字";
         _searchBar.searchBarStyle = 2;
         _searchBar.delegate =self;
         _searchBar.showsCancelButton = NO;
@@ -376,8 +376,8 @@
 - (void)moveBack {
     [UIView animateWithDuration:1 animations:^{
         self.secView.alpha = 1;
-        self.baseTable.mj_offsetY = 0;
         self.baseTable.frame = CGRectMake(0, ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight-( ksearchViewHight + KSecViewHeight));
+        self.baseTable.mj_offsetY = -64;
     }];
 }
 

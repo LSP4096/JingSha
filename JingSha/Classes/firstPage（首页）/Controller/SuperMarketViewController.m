@@ -345,10 +345,15 @@ UISearchBarDelegate
 #pragma mark --UITableView 的代理方法
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    MyLog(@"%ld",self.dataAry.count);
     return self.dataAry.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.dataAry.count == 0) {
+        SuperMarketTabViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"marketCell"];
+        return cell;
+    }
     SuperMarketTabViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"marketCell"];
     cell.model = self.dataAry[indexPath.row];
     return cell;
@@ -379,8 +384,8 @@ UISearchBarDelegate
     [UIView animateWithDuration:1 animations:^{
 //        self.secView.transform = CGAffineTransformIdentity;
         self.secView.alpha = 1;
-        self.baseTabView.mj_offsetY = 0;
         self.baseTabView.frame = CGRectMake(0, kNavigationBarHeight + ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight- (kNavigationBarHeight + ksearchViewHight + KSecViewHeight));
+        self.baseTabView.mj_offsetY = 0;
     }];
 }
 
@@ -391,14 +396,12 @@ UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if (searchText.length == 0) {
         [_searchBar resignFirstResponder];
-        [self.dataAry removeAllObjects];
         self.keyword = searchText;
         [self RefreshNewData];
     }
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
-    [self.dataAry removeAllObjects];
     self.keyword = searchBar.text;
     [self RefreshNewData];
 }

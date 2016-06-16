@@ -32,7 +32,7 @@
     self.cntView.layer.borderWidth = 0.001;
     self.cntView.layer.masksToBounds = YES;
     
-    self.signBtn.layer.cornerRadius = 6;
+    self.signBtn.layer.cornerRadius = 12;
     self.signBtn.layer.borderWidth = 0.001;
     self.signBtn.layer.masksToBounds = YES;
     
@@ -41,8 +41,21 @@
 - (void)setModel:(SuppleMsgModel *)model {
     _model = model;
     self.titleLabel.text = _model.title;
-    self.numLabel.text = model.zhisu;
-    self.pliceLabel.text = [NSString stringWithFormat:@"￥%@",_model.jiage];
+    
+    if (IsStringEmpty(_model.num)) {
+        self.numLabel.text = @"电议";
+    }else {
+        self.numLabel.text = _model.num;
+    }
+    
+    if ([_model.jiage isEqualToString:@"0"] && IsStringEmpty(_model.jiage)) {
+        self.pliceLabel.text = @"电议";
+    }else {
+        self.pliceLabel.text = str(@"%@元/吨",_model.jiage);
+    }
+    
+    self.timeLabel.text = _model.time;
+    
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:_model.photo] placeholderImage:[UIImage imageNamed:@"NetBusy"] completed:nil];
 }
 

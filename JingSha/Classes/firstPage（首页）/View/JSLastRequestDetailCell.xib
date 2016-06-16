@@ -135,7 +135,7 @@
                 <outlet property="time" destination="8aL-L6-Y6Z" id="2kX-Wv-eXh"/>
                 <outlet property="title" destination="5H9-pe-3Wk" id="x2b-ez-rI7"/>
             </connections>
-            <point key="canvasLocation" x="-1516.5" y="390"/>
+            <point key="canvasLocation" x="-1689.5" y="310"/>
         </tableViewCell>
     </objects>
     <resources>

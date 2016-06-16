@@ -24,6 +24,7 @@
 
 @property (nonatomic, strong)NJKWebViewProgress * progressProxy;
 @property (nonatomic, strong)NJKWebViewProgressView * webViewProgress;
+
 @end
 
 @implementation SupplyDetailViewController
@@ -98,6 +99,7 @@
             return;
         }
         LeaveMessageTableViewController * leaveMsgVC = [[LeaveMessageTableViewController alloc] init];
+        leaveMsgVC.chanpinID = self.chanpinId;
         [self.navigationController pushViewController:leaveMsgVC animated:YES];
     }else{
         //联系洽谈

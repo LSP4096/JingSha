@@ -37,7 +37,7 @@ static NSString * indentifier = @"companyManageCell";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -52,8 +52,11 @@ static NSString * indentifier = @"companyManageCell";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CompanyManageTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:indentifier forIndexPath:indexPath];
-    NSArray * titleAry = @[@"求购管理",@"供应管理",@"企业信息",@"企业评价"];
-    NSArray * imageAry = @[@"Me_request",@"Me_supply",@"Me_message",@"Me_judge"];
+//    NSArray * titleAry = @[@"求购管理",@"供应管理",@"企业信息",@"企业评价"];
+//    NSArray * imageAry = @[@"Me_request",@"Me_supply",@"Me_message",@"Me_judge"];
+    NSArray * titleAry = @[@"企业信息",@"企业评价"];
+    NSArray * imageAry = @[@"Me_message",@"Me_judge"];
+    
     cell.titleLable.text = titleAry[indexPath.section];
     cell.imageView.image = [UIImage imageNamed:imageAry[indexPath.section]];
     
@@ -62,19 +65,22 @@ static NSString * indentifier = @"companyManageCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        MyRequestViewController *myRequestVC = [[MyRequestViewController alloc] init];
-        myRequestVC.fromMe = YES;
-        [self.navigationController pushViewController:myRequestVC animated:YES];
-    }else if (indexPath.section == 1){
-        SupplyManageViewController * supplyVC = [[SupplyManageViewController alloc] init];
-        [self.navigationController pushViewController:supplyVC animated:YES];
-    }else if (indexPath.section == 2){
-        CompanyMessageViewController * companyMessageVC = [[CompanyMessageViewController alloc] init];
+//        MyRequestViewController *myRequestVC = [[MyRequestViewController alloc] init];
+//        myRequestVC.fromMe = YES;
+//        [self.navigationController pushViewController:myRequestVC animated:YES];
+         CompanyMessageViewController * companyMessageVC = [[CompanyMessageViewController alloc] init];
         companyMessageVC.isCanAlter = YES;
         [self.navigationController pushViewController:companyMessageVC animated:YES];
-    }else{
+    }else if (indexPath.section == 1){
+//        SupplyManageViewController * supplyVC = [[SupplyManageViewController alloc] init];
+//        [self.navigationController pushViewController:supplyVC animated:YES];
+        
         CompanyJudgeTableViewController * companyJudgeVC =[[CompanyJudgeTableViewController alloc] init];
         [self.navigationController pushViewController:companyJudgeVC animated:YES];
+    }else if (indexPath.section == 2){
+       
+    }else{
+        
     }
 }
 

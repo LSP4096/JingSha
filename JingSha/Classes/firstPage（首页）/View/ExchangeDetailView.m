@@ -29,7 +29,7 @@
 
 - (void)setModel:(SuppleMsgModel *)model {
     
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, self.frame.size.width / 3 , self.frame.size.height - 20)];
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, self.frame.size.width / 3 , self.frame.size.height / 3 * 2)];
     [imgView sd_setImageWithURL:[NSURL URLWithString:str(@"%@",model.photo)] placeholderImage:img(@"网络暂忙-193-133")];
     [self addSubview:imgView];
     UILabel *lastLabel = nil;
