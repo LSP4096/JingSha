@@ -15,4 +15,6 @@
 @property (nonatomic, copy)NSString * zcd;
 @property (nonatomic, copy)NSString * num;//产品数量
 @property (nonatomic, copy)NSString * gongsi;
+@property (nonatomic, copy)NSString * logo;
+
 @end

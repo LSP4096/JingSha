@@ -40,7 +40,7 @@
     self.title = @"供应信息";
     [self.view addSubview:self.baseTable];
     
-    [self configSelectedView];
+//    [self configSelectedView];
     
     self.type = @"";
     

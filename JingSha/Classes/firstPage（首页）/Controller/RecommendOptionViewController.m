@@ -7,9 +7,14 @@
 //
 
 #import "RecommendOptionViewController.h"
+
+#import "NewProductMoreTableViewCell.h"
+#import "LeaveMessageTableViewController.h"
+
 #import "RecommendSupplierTableViewCell.h"
 #import "RecommendProductTableViewCell.h"
 #import "AllSearchTableViewController.h"
+
 #import "SupplierSearchTableViewController.h"
 #import "SupplyDetailViewController.h"
 #import "RecommendDetailViewController.h"
@@ -51,6 +56,8 @@
     [self configerNavgationBar];
     [self.view addSubview:self.baseTable];
     self.searchBar.text = self.optionSearchText;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leaveMessage:) name:@"message" object:nil];
 }
 /**
  *  请求数据
@@ -219,11 +226,14 @@
         self.baseTable= [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kUIScreenWidth, kUIScreenHeight) style:UITableViewStylePlain];
         _baseTable.delegate = self;
         _baseTable.dataSource = self;
-        _baseTable.rowHeight = 112;
+        _baseTable.rowHeight = 105 * KProportionHeight;
         _baseTable.tableFooterView = [[UIView alloc] init];
+        _baseTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         //注册cell
         [_baseTable registerNib:[UINib nibWithNibName:@"RecommendSupplierTableViewCell" bundle:nil] forCellReuseIdentifier:@"RecommendSupplierCell"];
-        [_baseTable registerNib:[UINib nibWithNibName:@"RecommendProductTableViewCell" bundle:nil] forCellReuseIdentifier:@"recommendProductCell"];
+        
+        [_baseTable registerNib:[UINib nibWithNibName:@"NewProductMoreTableViewCell" bundle:nil] forCellReuseIdentifier:@"newProductMoreCell"];
+        
         [_baseTable registerNib:[UINib nibWithNibName:@"WantBuyTableViewCell" bundle:nil] forCellReuseIdentifier:@"wantCell"];
         //
         _baseTable.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
@@ -254,10 +264,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.searchTitle isEqualToString:@"产品"]) {
         if (self.dataAry.count == 0) {
-            RecommendProductTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"recommendProductCell"];
+            NewProductMoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newProductMoreCell"];
+//            RecommendProductTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"recommendProductCell"];
             return cell;
         }
-        RecommendProductTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"recommendProductCell"];
+        NewProductMoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newProductMoreCell"];
         cell.model = self.dataAry[indexPath.row];
         return cell;
     }else if([self.searchTitle isEqualToString:@"供应商"]){
@@ -305,5 +316,11 @@
     }
 }
 
+- (void)leaveMessage:(NSNotification *)no {
+    NSString *id = no.userInfo[@"id"];
+    LeaveMessageTableViewController *leavemessage = [[LeaveMessageTableViewController alloc] init];
+    leavemessage.chanpinID = id;
+    [self.navigationController pushViewController:leavemessage animated:YES];
+}
 
 @end

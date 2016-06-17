@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIView *cntView;
 @property (weak, nonatomic) IBOutlet UITableView *baseTableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewH;
 
 @end
 
@@ -35,6 +37,8 @@ static NSString *const reUseCellId = @"JSLastRequestDetailCell";
     self.baseTableView.dataSource = self;
     self.baseTableView.rowHeight = 90 * KProportionHeight;
     [self.baseTableView registerNib:[UINib nibWithNibName:@"JSLastRequestDetailCell" bundle:nil] forCellReuseIdentifier:reUseCellId];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.headerView addGestureRecognizer:tap];
     
     [self loadData];
 }
@@ -50,15 +54,17 @@ static NSString *const reUseCellId = @"JSLastRequestDetailCell";
  *  加载数据
  */
 - (void)loadData {
-    NSString *netPath = @"pro/home_list2";
-    NSMutableDictionary *params = [NSMutableDictionary new];
-    [params setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [HttpTool getWithPath:netPath params:params success:^(id responseObj) {
-         MyLog(@"首页热门推荐数据%@", responseObj);
-        self.countLabel.text = [NSString stringWithFormat:@"%@",responseObj[@"buylistcount"]];
-        [self getDataFromResponseObj:responseObj];
-    } failure:^(NSError *error) {
-        MyLog(@"首页数据请求错误%@",error);
+    @WeakObj(self);
+    [[HttpClient sharedClient] getFirstPageInfoComplecion:^(id resoutObj, NSError *error) {
+        @StrongObj(self)
+        if (error) {
+            MyLog(@"首页数据请求错误%@", error);
+        } else {
+            MyLog(@"首页热门推荐数据%@\n", resoutObj);
+            Strongself.countLabel.text = [NSString stringWithFormat:@"%@",resoutObj[@"buylistcount"]];
+            [Strongself getDataFromResponseObj:resoutObj];
+
+        }
     }];
     
 }
@@ -81,6 +87,8 @@ static NSString *const reUseCellId = @"JSLastRequestDetailCell";
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    self.tableViewH.constant = 90 * KProportionWidth *self.dataSource.count;
     return self.dataSource.count;
 }
 
@@ -107,6 +115,10 @@ static NSString *const reUseCellId = @"JSLastRequestDetailCell";
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)sender {
+    [self moreBtnClick:nil];
 }
 
 //点击 more按钮

@@ -42,14 +42,15 @@
 }
 
 - (void)loadHomePageData {
-    NSString * netPath = @"pro/home_list2";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
-                MyLog(@"++%@", responseObj);
-        [self getDataFromResponseObj:responseObj];
-    } failure:^(NSError *error) {
-        MyLog(@"首页数据加载错误信息%@", error);
+    @WeakObj(self);
+    [[HttpClient sharedClient] getFirstPageInfoComplecion:^(id resoutObj, NSError *error) {
+        @StrongObj(self)
+        if (error) {
+            MyLog(@"首页数据加载错误信息%@", error);
+        } else {
+            MyLog(@"首页新品推荐数据%@\n", resoutObj);
+            [Strongself getDataFromResponseObj:resoutObj];
+        }
     }];
 }
 
@@ -84,7 +85,6 @@
     self.baseScrollerView.contentSize = CGSizeMake(self.pages * _cntView.frame.size.width, scrollerHight);
     int index = 0;
     CGFloat Width = self.cntView.size.width / 2;
-        
     for (int i = 0; i < self.pages; i++) {
         for (int j = 0; j < 2; j++) {
             ExchangeDetailView *ExchangeView = [[ExchangeDetailView alloc] initWithFrame:CGRectMake(i * _cntView.frame.size.width + j * Width, 0, Width, scrollerHight)];
@@ -99,6 +99,10 @@
         }
     }
     self.pageView.numberOfPages = self.pages;
+    
+    //给headerView添加手势
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerViewTapAction)];
+    [self.headerView addGestureRecognizer:tap];
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)gesture {
@@ -111,6 +115,10 @@
      if (self.delegate&&[self.delegate respondsToSelector:@selector(putIntoExchangeDetail:)]) {
         [self.delegate putIntoExchangeDetail:Id];
     }
+}
+
+- (void) headerViewTapAction {
+    [self moreBtnClick:nil];
 }
 
 - (IBAction)moreBtnClick:(UIButton *)sender {

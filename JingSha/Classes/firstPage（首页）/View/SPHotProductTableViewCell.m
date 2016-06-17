@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UIView *cntView;
 @property (weak, nonatomic) IBOutlet UIView *lineView;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @end
@@ -43,15 +44,16 @@
  *  加载数据
  */
 - (void)loadData {
-    NSString *netPath = @"pro/home_list2";
-    NSMutableDictionary *params = [NSMutableDictionary new];
-    [params setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [HttpTool getWithPath:netPath params:params success:^(id responseObj) {
-        MyLog(@"首页热门推荐数据%@", responseObj);
-        [self getDataFromResponseObj:responseObj];
-        [self setupSubViews];
-    } failure:^(NSError *error) {
-        MyLog(@"首页数据请求错误%@",error);
+    @WeakObj(self);
+    [[HttpClient sharedClient] getFirstPageInfoComplecion:^(id resoutObj, NSError *error) {
+        @StrongObj(self)
+        if (error) {
+            MyLog(@"首页数据请求错误%@", error);
+        } else {
+            MyLog(@"首页热门推荐数据%@\n", resoutObj);
+            [Strongself getDataFromResponseObj:resoutObj];
+            [Strongself setupSubViews];
+        }
     }];
 }
 
@@ -134,6 +136,11 @@
             [imageView sd_setImageWithURL:[NSURL URLWithString:[self.dataArr[i * 3 + j] photo]] placeholderImage:[UIImage imageNamed:@"NetBusy"] completed:nil];
             imageView.contentMode = UIViewContentModeScaleAspectFit;
             [view addSubview:imageView];
+            
+            //给headerView加手势 条
+            UITapGestureRecognizer *headerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerViewTapAction:)];
+            [self.headerView addGestureRecognizer:headerTap];
+            
             //给每个视图加上手势，以便对应跳转
             UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
             
@@ -156,6 +163,10 @@
     [super setSelected:selected animated:animated];
     
     // Configure the view for the selected state
+}
+
+- (void)headerViewTapAction:(UITapGestureRecognizer *)gesture {
+    [self moreBtnClick:nil];
 }
 
 - (IBAction)moreBtnClick:(id)sender {

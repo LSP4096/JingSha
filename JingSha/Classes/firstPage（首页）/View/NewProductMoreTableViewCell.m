@@ -31,7 +31,7 @@
     self.cntView.layer.borderWidth = 0.001;
     self.cntView.layer.masksToBounds = YES;
     
-    self.messageBtn.layer.cornerRadius = 5;
+    self.messageBtn.layer.cornerRadius = 12;
     self.messageBtn.layer.borderWidth = 0.01;
     self.messageBtn.layer.masksToBounds = YES;
 }
@@ -41,6 +41,9 @@
     self.titleLable.text = _model.title;
     CGSize size = [_model.title sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0]}];
     CGSize size1 = CGSizeMake(ceilf(size.width), ceilf(size.height));
+    if (size1.width > kUIScreenWidth / 3) {
+        size1.width = kUIScreenWidth / 3;
+    }
     _titleW.constant = size1.width;
     
     self.zhisu.text = _model.zhisu;

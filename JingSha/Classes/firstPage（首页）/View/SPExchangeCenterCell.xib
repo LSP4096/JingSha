@@ -104,7 +104,7 @@
                 <outlet property="headerView" destination="fOi-Lt-D1E" id="yXO-SM-tkH"/>
                 <outlet property="pageView" destination="lZG-md-sOP" id="L30-Rx-jsN"/>
             </connections>
-            <point key="canvasLocation" x="-5348.5" y="325"/>
+            <point key="canvasLocation" x="-5979.5" y="242"/>
         </tableViewCell>
     </objects>
     <resources>

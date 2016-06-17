@@ -29,6 +29,8 @@
 #import "FMDatabase.h"
 
 #import <JSONModel.h>
+#import "HttpClient.h"
+#import "HttpClient+FirstPage.h"
 
 #import "UIImage+CH.h"
 #import "XWBaseMethod.h"

@@ -47,8 +47,11 @@
     
     CGSize size = [_model.title sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0]}];
     CGSize size1 = CGSizeMake(ceilf(size.width), ceilf(size.height));
+    if (size1.width > kUIScreenWidth / 3) {
+        size1.width = kUIScreenWidth / 3;
+    }
     _titleW.constant = size1.width;
-
+    
     self.zhisu.text = _model.zhisu;
     
     if (IsStringEmpty(_model.num)) {

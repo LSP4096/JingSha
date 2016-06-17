@@ -116,15 +116,15 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
  *  加载数据(这里只是为了得出新品推荐的个数，以便确定要显示的高度)
  */
 - (void)loadData{
-    NSString * netPath = @"pro/home_list2";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
-        MyLog(@"首页新品推荐数据%@\n", responseObj);
-        [self getDataFromResponseObj:responseObj];
-        [self.contentTableView.header endRefreshing];
-    } failure:^(NSError *error) {
-        MyLog(@"首页数据加载错误信息%@\n", error);
+    @WeakObj(self);
+    [[HttpClient sharedClient] getFirstPageInfoComplecion:^(id resoutObj, NSError *error) {
+        @StrongObj(self)
+        if (error) {
+            MyLog(@"首页数据加载错误信息%@", error);
+        } else {
+            [Strongself getDataFromResponseObj:resoutObj];
+            [Strongself.contentTableView.header endRefreshing];
+        }
     }];
 }
 

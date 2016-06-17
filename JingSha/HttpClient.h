@@ -7,13 +7,23 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+#import "NSString+Hash.h"
 
 typedef void(^JSONResultBlock)(id resoutObj, NSError *error);
 
 @interface HttpClient : AFHTTPSessionManager
 
-- (HttpClient *)sharedClient;
++ (HttpClient *)sharedClient;
++ (NSDictionary *)jointParamsWithDict:(NSDictionary *)params;
 
-- (NSURLSessionDataTask *)getWithRequestName;
+- (NSURLSessionDataTask *)getWithRequestName:(NSString *)requestName
+                                   RoutePath:(NSString *)path
+                                      params:(NSDictionary *)params
+                                       block:(JSONResultBlock)resultBlock;
+
+- (NSURLSessionDataTask *)postWithRequestName:(NSString *)requestName
+                                    RoutePath:(NSString *)path
+                                       params:(NSDictionary *)params
+                                        block:(JSONResultBlock)resultBlock;
 
 @end

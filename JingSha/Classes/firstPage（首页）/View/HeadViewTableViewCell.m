@@ -40,16 +40,18 @@
  *  加载首页数据
  */
 - (void)loadHomePageData{
-    NSString * netPath = @"pro/home_list";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
-        MyLog(@"首页数据%@", responseObj);
-        [self getDataFromResponseObj:responseObj];
-        [self configureData];
-    } failure:^(NSError *error) {
-        MyLog(@"首页数据加载错误信息%@", error);
-    }];
+    
+    @WeakObj(self);
+    [[HttpClient sharedClient] getFirstPageInfoComplecion:^(id resoutObj, NSError *error) {
+                                                    @StrongObj(self)
+                                                   if (error) {
+                                                       MyLog(@"首页数据加载错误信息%@", error);
+                                                   } else {
+                                                       MyLog(@"首页新品推荐数据%@\n", resoutObj);
+                                                       [Strongself getDataFromResponseObj:resoutObj];
+                                                       [Strongself configureData];
+                                                   }
+                                               }];
 }
 
 /**

@@ -22,6 +22,7 @@
     
     // 拼接url
     NSString *netPath = [NSString stringWithFormat:@"%@/%@",kBaseURL,path];
+    MyLog(@"get---%@",netPath);
     [BaseHttpTool get:netPath params:allParams success:success failure:failure];
 }
 
@@ -32,6 +33,7 @@
 {
     NSDictionary *allParams = [self jointParamsWithDict:params];
     NSString *netPath = [NSString stringWithFormat:@"%@/%@",kBaseURL,path];
+    MyLog(@"post---%@",netPath);
     [BaseHttpTool post:netPath params:allParams success:success failure:failure];
 }
 
