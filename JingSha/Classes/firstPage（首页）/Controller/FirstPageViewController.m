@@ -105,6 +105,10 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickBaoJiaBtn:) name:@"BaoJia" object:nil];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BaoJia" object:nil];
+}
+
 /**
  *  下拉刷新
  */

@@ -23,6 +23,9 @@
 #import "MyStandingsTableViewController.h"
 #import "RealTimeDataViewController.h"
 #import "XWTableViewCell.h"
+
+#import "HttpClient+Authentication.h"
+
 @interface XWMemberCenterViewController () <UITableViewDataSource, UITableViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 @property (strong, nonatomic) UIImagePickerController *picker;
 
@@ -471,15 +474,11 @@ static NSString *const indentifier2 = @"XWCell";
     UIAlertController * alertView = [UIAlertController alertControllerWithTitle:@"提示" message:@"您确定要退出登录？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * ensureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        //
-        NSString * netPath = @"userinfo/loginout";
-        NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-        [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-        [HttpTool postWithPath:netPath params:allParams success:^(id responseObj) {
-            //没有任何返回
-        } failure:^(NSError *error) {
+        //退出
+        [[HttpClient sharedClient] LogOutWithComplection:^(id resoutObj, NSError *error) {
             
         }];
+        
         ///把保存的密码清空
         [SSKeychain deletePasswordForService:kServiceName account:kLoginStateKey];
         //
@@ -506,8 +505,6 @@ static NSString *const indentifier2 = @"XWCell";
         [alert show];
     }
 }
-
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //刚选中又马上取消选中状态，格子不变色

@@ -10,6 +10,9 @@
 #import "NSString+Hash.h"
 #import "AgreeProtocolViewController.h"
 #import "MZFormSheetController.h"
+
+#import "HttpClient+Authentication.h"
+
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UIView *nameBGView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
@@ -92,24 +95,24 @@
         [self showAlertViewWithTitle:@"请输入正确的手机号码"];
         return;
     }
-    NSString *netPath = @"userinfo/createcode";
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
-    [allParameters setObject:self.phoneNumTF.text forKey:@"tel"];
-    [allParameters setObject:@"1" forKey:@"type"];
-    [HttpTool postWithPath:netPath params:allParameters success:^(id responseObj) {
-        MyLog(@"%@",responseObj);
-        MyLog(@"%@,%@, %@", responseObj[@"return_code"],responseObj[@"data"],responseObj[@"msg"]);
-        if ([responseObj[@"return_code"] integerValue] == 0) {
-            //开启计时器倒计时
-            [self startResidualTimer];
-            self.code = [NSString stringWithFormat:@"%@", responseObj[@"data"][@"code"]];
-            [SVProgressHUD showSuccessWithStatus:@"发送成功"];
-        } else {
-            [SVProgressHUD showErrorWithStatus:responseObj[@"msg"]];
+    
+    @WeakObj(self);
+    [[HttpClient sharedClient] SendCodeWithPhoneNumber:self.phoneNumTF.text Complection:^(id resoutObj, NSError *error) {
+        @StrongObj(self);
+        if (error) {
+            MyLog(@"获取验证码失败%@",error);
+        }else {
+            if ([resoutObj[@"return_code"] integerValue] == 0) {
+                //开启计时器倒计时
+                [Strongself startResidualTimer];
+                Strongself.code = [NSString stringWithFormat:@"%@", resoutObj[@"data"][@"code"]];
+                [SVProgressHUD showSuccessWithStatus:@"发送成功"];
+            } else {
+                [SVProgressHUD showErrorWithStatus:resoutObj[@"msg"]];
+            }
         }
-    } failure:^(NSError *error) {
-        
     }];
+    
 }
 - (void)startResidualTimer {
     self.sendSeccodeBtn.userInteractionEnabled = NO;
@@ -180,30 +183,25 @@
 
 }
 
-
-
-
 - (void)userRegist {
     if (![self checkOut]) {
         MyLog(@"已经返回");
         return;
     }
-    NSString *netPath = @"userinfo/reg";
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
-    [allParameters setObject:self.phoneNumTF.text forKey:@"tel"];
-    [allParameters setObject:self.passWordTF.text.md5String forKey:@"password"];
-    [allParameters setObject:self.nameTF.text forKey:@"username"];
-    [allParameters setObject:self.code forKey:@"code"];
-    [HttpTool postWithPath:netPath params:allParameters success:^(id responseObj) {
-        if ([responseObj[@"return_code"] integerValue] == 0) {
-//            [self showAlertViewWithTitle:@"注册成功"];
-            [SVProgressHUD showSuccessWithStatus:@"注册成功"];
-            [self backLoginVC:nil];
-            return ;
+    
+    @WeakObj(self);
+    [[HttpClient sharedClient] registersWithAccountName:self.phoneNumTF.text Password:self.passWordTF.text.md5String UserName:self.nameTF.text Code:self.code Complection:^(id resoutObj, NSError *error) {
+        @StrongObj(self);
+        if (error) {
+            MyLog(@"%@",error);
+        }else {
+            if (![resoutObj[@"return_code"] integerValue]) {
+                [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+                [Strongself backLoginVC:nil];
+                return ;
+            }
+            [Strongself showAlertViewWithTitle:resoutObj[@"msg"]];
         }
-            [self showAlertViewWithTitle:responseObj[@"msg"]];
-    } failure:^(NSError *error) {
-        
     }];
 }
 - (NSInteger)checkOut {

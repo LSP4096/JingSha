@@ -75,7 +75,7 @@
                 <outlet property="titleLable" destination="tkQ-Sc-w0A" id="VVj-lz-2Rg"/>
                 <outlet property="xingjiView" destination="fvZ-zt-ljl" id="BTh-v0-Z9k"/>
             </connections>
-            <point key="canvasLocation" x="243" y="485"/>
+            <point key="canvasLocation" x="180" y="377"/>
         </tableViewCell>
     </objects>
     <resources>

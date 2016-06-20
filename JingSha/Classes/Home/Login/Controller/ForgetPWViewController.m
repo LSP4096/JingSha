@@ -9,6 +9,8 @@
 #import "ForgetPWViewController.h"
 #import "NSString+Hash.h"
 #import "SingleTon.h"
+
+#import "HttpClient+Authentication.h"
 @interface ForgetPWViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 @property (weak, nonatomic) IBOutlet UIView *phoneBGView;
@@ -76,24 +78,25 @@
         [self showAlertViewWithTitle:@"请输入正确的手机号码"];
         return;
     }
-    NSString *netPath = @"userinfo/createcode";
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
-    [allParameters setObject:self.phoneTF.text forKey:@"tel"];
-    [allParameters setObject:@"2" forKey:@"type"];
-    [HttpTool postWithPath:netPath params:allParameters success:^(id responseObj) {
-        MyLog(@"%@,%@, %@", responseObj[@"return_code"],responseObj[@"data"],responseObj[@"msg"]);
-        if ([responseObj[@"return_code"] integerValue]) {
-            [SVProgressHUD showErrorWithStatus:responseObj[@"msg"]];
-        } else {
-            //开启计时器倒计时
-            [self startResidualTimer];
-            self.code = responseObj[@"data"][@"code"];
-            [SVProgressHUD showSuccessWithStatus:@"发送成功"];
+    
+    @WeakObj(self);
+    [[HttpClient sharedClient] ResetPasswordCodeWithPhoneNumber:self.phoneTF.text Complection:^(id resoutObj, NSError *error) {
+        @StrongObj(self);
+        if (error) {
+            
+        }else {
+            if ([resoutObj[@"return_code"] integerValue]) {
+                [SVProgressHUD showErrorWithStatus:resoutObj[@"msg"]];
+            } else {
+                //开启计时器倒计时
+                [Strongself startResidualTimer];
+                Strongself.code = resoutObj[@"data"][@"code"];
+                [SVProgressHUD showSuccessWithStatus:@"发送成功"];
+            }
         }
-    } failure:^(NSError *error) {
-        
     }];
 }
+
 - (void)startResidualTimer {
     self.sendSeccodeBtn.userInteractionEnabled = NO;
     self.sendSeccodeBtn.layer.cornerRadius = 5;
@@ -165,6 +168,17 @@
         MyLog(@"已经返回");
         return;
     }
+    
+//    [[HttpClient sharedClient] ResetPasswordWithPhoneNumber:self.phoneTF.text Password:self.makeSurePWTF.text.md5String Code:self.code Complection:^(id resoutObj, NSError *error) {
+//        if (error) {
+//            
+//        }else {
+//            [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+//            [SingleTon shareSingleTon].userPassWoed = self.makeSurePWTF.text.md5String;
+//            [self.navigationController popViewControllerAnimated:YES];
+//        }
+//    }];
+    
     NSString *netPath = @"userinfo/forgetpwd";
     NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
     [allParameters setObject:self.phoneTF.text forKey:@"tel"];
@@ -175,7 +189,7 @@
         [SingleTon shareSingleTon].userPassWoed = self.makeSurePWTF.text.md5String;
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError *error) {
-        
+        MyLog(@"%@",error);
     }];
 }
 - (NSInteger)checkOut {

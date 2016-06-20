@@ -51,7 +51,7 @@
 #define kAppID  @"401626263"
 
 //#define kBaseURL  @"http://121.41.128.239:8096/jxw/index.php"
-#define kBaseURL  @"http://202.91.244.52/index.php"
+#define kBaseURL  @"http://202.91.244.52/index.php/"
 //存储用的key
 #define KKeyWithNewsID(newsID) [NSString stringWithFormat:@"%@.sqlite", newsID]
 #define KKeyWithHistory @"History.sqlite" //浏览历史

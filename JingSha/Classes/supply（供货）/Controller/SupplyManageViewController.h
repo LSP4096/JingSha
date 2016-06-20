@@ -10,4 +10,5 @@
 
 @interface SupplyManageViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isBottom;
 @end

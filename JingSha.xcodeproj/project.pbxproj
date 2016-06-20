@@ -295,6 +295,7 @@
 		4C556DD81D07F12100CA54AB /* JSLastRequestDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C556DD61D07F12100CA54AB /* JSLastRequestDetailCell.m */; };
 		4C556DD91D07F12100CA54AB /* JSLastRequestDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C556DD71D07F12100CA54AB /* JSLastRequestDetailCell.xib */; };
 		4C64CFDF1D13D02F00C37551 /* HttpClient+FirstPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64CFDE1D13D02F00C37551 /* HttpClient+FirstPage.m */; };
+		4C8301EF1D17B2F70057B319 /* HttpClient+Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8301EE1D17B2F70057B319 /* HttpClient+Authentication.m */; };
 		4C87BE6F1D01606C00A4ACE0 /* WantBuyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */; };
 		4C87BE701D01606C00A4ACE0 /* WantBuyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */; };
 		4CC6FCE91CE5B1CD00BF43DC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */; };
@@ -920,6 +921,8 @@
 		4C556DD71D07F12100CA54AB /* JSLastRequestDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSLastRequestDetailCell.xib; sourceTree = "<group>"; };
 		4C64CFDD1D13D02F00C37551 /* HttpClient+FirstPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HttpClient+FirstPage.h"; sourceTree = "<group>"; };
 		4C64CFDE1D13D02F00C37551 /* HttpClient+FirstPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HttpClient+FirstPage.m"; sourceTree = "<group>"; };
+		4C8301ED1D17B2F70057B319 /* HttpClient+Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HttpClient+Authentication.h"; sourceTree = "<group>"; };
+		4C8301EE1D17B2F70057B319 /* HttpClient+Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HttpClient+Authentication.m"; sourceTree = "<group>"; };
 		4C87BE6C1D01606C00A4ACE0 /* WantBuyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WantBuyTableViewCell.h; sourceTree = "<group>"; };
 		4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WantBuyTableViewCell.m; sourceTree = "<group>"; };
 		4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WantBuyTableViewCell.xib; sourceTree = "<group>"; };
@@ -1694,6 +1697,8 @@
 				4C50CE501D12A256005D6B6F /* HttpClient.m */,
 				4C64CFDD1D13D02F00C37551 /* HttpClient+FirstPage.h */,
 				4C64CFDE1D13D02F00C37551 /* HttpClient+FirstPage.m */,
+				4C8301ED1D17B2F70057B319 /* HttpClient+Authentication.h */,
+				4C8301EE1D17B2F70057B319 /* HttpClient+Authentication.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -3083,6 +3088,7 @@
 				210EA6B41C3F533C0020D828 /* CompanyListModel.m in Sources */,
 				8182C3451BF0B1A9006802C5 /* NewSearchTableViewController.m in Sources */,
 				211054BD1C16CB9000C8D62E /* FourTableViewCell.m in Sources */,
+				4C8301EF1D17B2F70057B319 /* HttpClient+Authentication.m in Sources */,
 				81B983591BE706B8005A6CA2 /* SXTitleLable.m in Sources */,
 				21EF8BA51C1134ED00FCFCC4 /* FirstPageSearchViewController.m in Sources */,
 				21EB8E241C21981F00A84375 /* CityModel.m in Sources */,

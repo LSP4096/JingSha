@@ -16,6 +16,8 @@
 #import "SSKeychain.h"
 #import "RootViewController.h"
 
+#import "HttpClient+Authentication.h"
+
 @interface XWLoginController ()
 @property (weak, nonatomic) IBOutlet UITextField *userAccountTF;
 @property (weak, nonatomic) IBOutlet UITextField *pssWordTF;
@@ -77,36 +79,36 @@
         MyLog(@"登录被返回");
         return;
     }
-    NSString *netPath = @"userinfo/login";
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
-    [allParameters setObject:self.userAccountTF.text forKey:@"tel"];
-    [allParameters setObject:self.pssWordTF.text.md5String forKey:@"password"];
-    [HttpTool postWithPath:netPath params:allParameters success:^(id responseObj) {
-        if (![responseObj[@"return_code"] integerValue]) {
-            [SingleTon shareSingleTon].userInformation = responseObj[@"data"];
-            [SingleTon shareSingleTon].userPassWoed = self.pssWordTF.text.md5String;
-            NSUserDefaults *defals = [NSUserDefaults standardUserDefaults];
-            [defals setObject:self.userAccountTF.text forKey:KKeyWithUserTel];
-            [defals synchronize];
-        // 保存密码
-            [SSKeychain setPassword:self.pssWordTF.text forService:kServiceName account:kLoginStateKey];
-            MyLog(@"登录成功， %@, %@", [SingleTon shareSingleTon].userInformation, responseObj[@"msg"]);
-            
+    
+    @WeakObj(self);
+    [[HttpClient sharedClient] LoginWithAccount:self.userAccountTF.text Password:self.pssWordTF.text.md5String Complection:^(id resoutObj, NSError *error) {
+        @StrongObj(self)
+        if (error) {
+            MyLog(@"=======登录请求错误======\n\n%@",error);
+        }else {
+            if (![resoutObj[@"return_code"] integerValue]) {
+                [SingleTon shareSingleTon].userInformation = resoutObj[@"data"];
+                [SingleTon shareSingleTon].userPassWoed = Strongself.pssWordTF.text.md5String;
+                NSUserDefaults *defals = [NSUserDefaults standardUserDefaults];
+                [defals setObject:Strongself.userAccountTF.text forKey:KKeyWithUserTel];
+                [defals synchronize];
+                // 保存密码
+                [SSKeychain setPassword:Strongself.pssWordTF.text forService:kServiceName account:kLoginStateKey];
+                MyLog(@"登录成功， %@, %@", [SingleTon shareSingleTon].userInformation, resoutObj[@"msg"]);
+                
                 RootViewController *root = [[RootViewController alloc] init];
                 root.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                [self presentViewController:root animated:YES completion:^{
+                [Strongself presentViewController:root animated:YES completion:^{
                 }];
-            
-            self.navigationController.navigationBarHidden = NO;
-        } else {
-            [self shakeButton];
-            
-            //请求错误信息（后台设置：手机不存在／手机后密码错误）
-            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", responseObj[@"msg"]]];
+                
+                Strongself.navigationController.navigationBarHidden = NO;
+            }else {
+                [Strongself shakeButton];
+                
+                //请求错误信息（后台设置：手机不存在／手机后密码错误）
+                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", resoutObj[@"msg"]]];
+            }
         }
-    } failure:^(NSError *error) {
-        
-        MyLog(@"======登录请求错误======\n\n%@",error);
     }];
 }
 

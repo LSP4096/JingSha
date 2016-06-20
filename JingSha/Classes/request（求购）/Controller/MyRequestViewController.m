@@ -71,7 +71,11 @@
 //}
 - (void)configerBottomView{
     UIButton * bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    bottomBtn.frame = CGRectMake(0, kUIScreenHeight - 45 - KTabBarHeight, kUIScreenWidth, 45);
+    if (self.fromMe) {
+        bottomBtn.frame = CGRectMake(0, kUIScreenHeight - 45, kUIScreenWidth, 45);
+    }else {
+        bottomBtn.frame = CGRectMake(0, kUIScreenHeight - 45 - KTabBarHeight, kUIScreenWidth, 45);
+    }
     [bottomBtn setTitle:@"发布求购" forState:UIControlStateNormal];
     bottomBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [bottomBtn addTarget:self action:@selector(bottomClicked:) forControlEvents:UIControlEventTouchUpInside];

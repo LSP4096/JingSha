@@ -10,7 +10,7 @@
 
 @interface HttpResponse : JSONModel
 @property (nonatomic, strong) NSString<Optional> *msg; // ok/no
-@property (nonatomic, strong) NSString<Optional> *return_code; // 0/1
+@property (nonatomic, strong) NSString<Optional> *return_code; // 0表示请求正确 
 @property (nonatomic, strong) NSString<Optional> *data; //数据
 
 @end

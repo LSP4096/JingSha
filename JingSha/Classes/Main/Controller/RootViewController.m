@@ -43,10 +43,12 @@
     
     //求购
     MyRequestViewController *requestVC = [[MyRequestViewController alloc] init];
+    requestVC.fromMe = NO;
     [self addChildVC:requestVC vcTitle:@"我的求购" tabBarItemTitle:@"发布求购" image:@"MainRequest" selectedImage:@"MainRequest-selected"];
     
     //供应
     SupplyManageViewController *supportVC = [[SupplyManageViewController alloc] init];
+    supportVC.isBottom = NO;
     [self addChildVC:supportVC vcTitle:@"供应管理" tabBarItemTitle:@"发布供应" image:@"tab-request" selectedImage:@"tab-requestSelected"];
     
     //我的

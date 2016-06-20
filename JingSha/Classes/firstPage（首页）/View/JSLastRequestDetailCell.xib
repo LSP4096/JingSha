@@ -79,10 +79,10 @@
                         <color key="textColor" red="0.99215686270000003" green="0.73333333329999995" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-01-01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aL-L6-Y6Z" userLabel="time">
-                        <rect key="frame" x="242" y="11" width="78" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-01-01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aL-L6-Y6Z" userLabel="time">
+                        <rect key="frame" x="235" y="11" width="88" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="78" id="7Hr-2h-iGe"/>
+                            <constraint firstAttribute="width" constant="88" id="7Hr-2h-iGe"/>
                             <constraint firstAttribute="height" constant="21" id="ZCq-fi-mNm"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -127,8 +127,8 @@
                     <constraint firstAttribute="trailing" secondItem="K2T-qv-YA1" secondAttribute="trailing" constant="167" id="RRP-9T-79T"/>
                     <constraint firstItem="63q-qw-YA7" firstAttribute="centerY" secondItem="5H9-pe-3Wk" secondAttribute="centerY" id="cic-eh-jd3"/>
                     <constraint firstAttribute="trailing" secondItem="VTI-ng-TNb" secondAttribute="trailing" constant="8" id="dJj-Rh-808"/>
-                    <constraint firstItem="8aL-L6-Y6Z" firstAttribute="centerX" secondItem="VTI-ng-TNb" secondAttribute="centerX" constant="2" id="fKy-OQ-pQq"/>
-                    <constraint firstItem="8aL-L6-Y6Z" firstAttribute="leading" secondItem="63q-qw-YA7" secondAttribute="trailing" constant="26" id="gu7-WU-0vw"/>
+                    <constraint firstItem="8aL-L6-Y6Z" firstAttribute="centerX" secondItem="VTI-ng-TNb" secondAttribute="centerX" id="fKy-OQ-pQq"/>
+                    <constraint firstItem="8aL-L6-Y6Z" firstAttribute="leading" secondItem="63q-qw-YA7" secondAttribute="trailing" constant="19" id="gu7-WU-0vw"/>
                     <constraint firstItem="VTI-ng-TNb" firstAttribute="top" secondItem="8aL-L6-Y6Z" secondAttribute="bottom" id="kUO-IC-qJF"/>
                     <constraint firstItem="K2T-qv-YA1" firstAttribute="leading" secondItem="JAl-AF-ynq" secondAttribute="trailing" constant="8" id="l3P-vZ-GmU"/>
                     <constraint firstItem="K2T-qv-YA1" firstAttribute="centerY" secondItem="JAl-AF-ynq" secondAttribute="centerY" id="mGa-Ix-7Kv"/>
@@ -147,7 +147,7 @@
                 <outlet property="titleW" destination="Tg9-tw-k0p" id="ULV-fH-FJ1"/>
                 <outlet property="zhisu" destination="63q-qw-YA7" id="MCS-Ox-H39"/>
             </connections>
-            <point key="canvasLocation" x="-2464.5" y="325"/>
+            <point key="canvasLocation" x="-2829.5" y="332"/>
         </tableViewCell>
     </objects>
     <resources>

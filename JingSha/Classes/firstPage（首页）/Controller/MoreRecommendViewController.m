@@ -50,6 +50,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leaveMessage:) name:@"message" object:nil];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 /**
  *  下拉

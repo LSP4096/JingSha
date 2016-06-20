@@ -29,6 +29,11 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCount:) name:@"count" object:[UILabel class]];
 }
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"count" object:nil];
+}
+
 - (void)getCount:(NSNotification *)center {
     self.count = [[[center userInfo] valueForKey:@"count"] integerValue];
     //确定输入的文字字数

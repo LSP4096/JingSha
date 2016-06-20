@@ -19,10 +19,7 @@
     // 拼接sign参数
     NSDictionary *allParams = [HttpClient jointParamsWithDict:params];
     
-    NSURLSessionDataTask *task = [self getWithRequestName:@"首页信息"
-                                                RoutePath:@"pro/home_list2"
-                                                   params:allParams
-                                                    block:complection];
+    NSURLSessionDataTask *task = [self getWithRequestName:@"首页信息" RoutePath:@"pro/home_list2" params:allParams block:complection];
     return task;
 }
 
