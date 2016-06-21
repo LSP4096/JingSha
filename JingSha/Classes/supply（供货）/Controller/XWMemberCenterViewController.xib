@@ -84,10 +84,10 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eP7-fJ-49r">
-                            <rect key="frame" x="330" y="25" width="25" height="25"/>
+                            <rect key="frame" x="322" y="17" width="44" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="25" id="SY5-eM-uOH"/>
-                                <constraint firstAttribute="width" constant="25" id="pXm-GN-rdO"/>
+                                <constraint firstAttribute="height" constant="44" id="SY5-eM-uOH"/>
+                                <constraint firstAttribute="width" constant="44" id="pXm-GN-rdO"/>
                             </constraints>
                             <state key="normal" image="memlog_03">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -126,7 +126,7 @@
                         <constraint firstItem="tZd-Y9-NtY" firstAttribute="top" secondItem="Toe-a1-NUY" secondAttribute="bottom" constant="5" id="Edb-dE-3Kt"/>
                         <constraint firstAttribute="bottom" secondItem="Px4-Lp-g66" secondAttribute="bottom" id="FYg-fD-sRb"/>
                         <constraint firstAttribute="height" constant="200" id="HEP-Gj-X8y"/>
-                        <constraint firstItem="eP7-fJ-49r" firstAttribute="centerY" secondItem="VjL-Us-Yog" secondAttribute="centerY" id="IWF-L2-cos"/>
+                        <constraint firstItem="eP7-fJ-49r" firstAttribute="centerY" secondItem="VjL-Us-Yog" secondAttribute="centerY" constant="1.5" id="IWF-L2-cos"/>
                         <constraint firstAttribute="trailing" secondItem="ZJB-Ju-RoD" secondAttribute="trailing" id="J9Y-7D-T3B"/>
                         <constraint firstAttribute="trailing" secondItem="Px4-Lp-g66" secondAttribute="trailing" id="NOB-vW-TkH"/>
                         <constraint firstItem="TTe-LE-vuc" firstAttribute="width" secondItem="tZd-Y9-NtY" secondAttribute="width" multiplier="2" id="OzL-qI-mOD"/>
@@ -135,7 +135,7 @@
                         <constraint firstItem="VjL-Us-Yog" firstAttribute="top" secondItem="wEd-ll-LBI" secondAttribute="top" constant="25" id="YZV-in-NgL"/>
                         <constraint firstItem="Px4-Lp-g66" firstAttribute="leading" secondItem="wEd-ll-LBI" secondAttribute="leading" id="a1p-FZ-sXg"/>
                         <constraint firstItem="UeL-oH-JTP" firstAttribute="top" secondItem="ZJB-Ju-RoD" secondAttribute="bottom" constant="10" id="bD5-2k-67I"/>
-                        <constraint firstAttribute="trailing" secondItem="eP7-fJ-49r" secondAttribute="trailing" constant="20" id="br3-1b-rao"/>
+                        <constraint firstAttribute="trailing" secondItem="eP7-fJ-49r" secondAttribute="trailing" constant="9" id="br3-1b-rao"/>
                         <constraint firstItem="tZd-Y9-NtY" firstAttribute="centerX" secondItem="TTe-LE-vuc" secondAttribute="centerX" id="f9t-fc-RWB"/>
                         <constraint firstItem="TTe-LE-vuc" firstAttribute="top" secondItem="Px4-Lp-g66" secondAttribute="bottom" id="gC7-T3-uu3"/>
                         <constraint firstItem="tZd-Y9-NtY" firstAttribute="centerX" secondItem="Toe-a1-NUY" secondAttribute="centerX" id="mwv-th-Yy3"/>
@@ -170,7 +170,7 @@
                     <exclude reference="4Ze-hd-96z"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-53.5" y="385.5"/>
+            <point key="canvasLocation" x="-306.5" y="386.5"/>
         </view>
         <tapGestureRecognizer id="BdB-0Q-asF">
             <connections>

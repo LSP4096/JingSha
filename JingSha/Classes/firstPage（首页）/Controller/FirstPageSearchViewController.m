@@ -8,6 +8,7 @@
 
 #import "FirstPageSearchViewController.h"
 #import "RecommendOptionViewController.h"
+#import "XTPopView.h"
 #define kPageCount 10
 
 @interface FirstPageSearchViewController ()<UISearchBarDelegate>

@@ -295,6 +295,7 @@
 		4C556DD81D07F12100CA54AB /* JSLastRequestDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C556DD61D07F12100CA54AB /* JSLastRequestDetailCell.m */; };
 		4C556DD91D07F12100CA54AB /* JSLastRequestDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C556DD71D07F12100CA54AB /* JSLastRequestDetailCell.xib */; };
 		4C64CFDF1D13D02F00C37551 /* HttpClient+FirstPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C64CFDE1D13D02F00C37551 /* HttpClient+FirstPage.m */; };
+		4C6939A11D1937EE00A8FF45 /* XTPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6939A01D1937EE00A8FF45 /* XTPopView.m */; };
 		4C8301EF1D17B2F70057B319 /* HttpClient+Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8301EE1D17B2F70057B319 /* HttpClient+Authentication.m */; };
 		4C87BE6F1D01606C00A4ACE0 /* WantBuyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */; };
 		4C87BE701D01606C00A4ACE0 /* WantBuyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */; };
@@ -921,6 +922,8 @@
 		4C556DD71D07F12100CA54AB /* JSLastRequestDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSLastRequestDetailCell.xib; sourceTree = "<group>"; };
 		4C64CFDD1D13D02F00C37551 /* HttpClient+FirstPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HttpClient+FirstPage.h"; sourceTree = "<group>"; };
 		4C64CFDE1D13D02F00C37551 /* HttpClient+FirstPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HttpClient+FirstPage.m"; sourceTree = "<group>"; };
+		4C69399F1D1937EE00A8FF45 /* XTPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTPopView.h; sourceTree = "<group>"; };
+		4C6939A01D1937EE00A8FF45 /* XTPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTPopView.m; sourceTree = "<group>"; };
 		4C8301ED1D17B2F70057B319 /* HttpClient+Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HttpClient+Authentication.h"; sourceTree = "<group>"; };
 		4C8301EE1D17B2F70057B319 /* HttpClient+Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HttpClient+Authentication.m"; sourceTree = "<group>"; };
 		4C87BE6C1D01606C00A4ACE0 /* WantBuyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WantBuyTableViewCell.h; sourceTree = "<group>"; };
@@ -1706,6 +1709,7 @@
 		4C4664F81CEC31A8005E31C1 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				4C69399E1D1937C400A8FF45 /* XTPopView */,
 				4C53A5D41D1125B000D15DE3 /* SCLAlertView */,
 				2109BECB1C4E70F80065C664 /* SDCycleScrollView */,
 				212D49AD1C43B91900573960 /* JudgeStarView2 */,
@@ -1822,6 +1826,15 @@
 				4C53A5E11D1125D300D15DE3 /* SCLTimerDisplay.m */,
 			);
 			name = SCLAlertView;
+			sourceTree = "<group>";
+		};
+		4C69399E1D1937C400A8FF45 /* XTPopView */ = {
+			isa = PBXGroup;
+			children = (
+				4C69399F1D1937EE00A8FF45 /* XTPopView.h */,
+				4C6939A01D1937EE00A8FF45 /* XTPopView.m */,
+			);
+			name = XTPopView;
 			sourceTree = "<group>";
 		};
 		8129C88E1BFADAF700F78429 /* ShareSDK */ = {
@@ -3070,6 +3083,7 @@
 				2109BED71C4E71190065C664 /* NSData+SDDataCache.m in Sources */,
 				81367A2A1BE4758C0032C1E8 /* NSString+Hash.m in Sources */,
 				211054C71C16D85100C8D62E /* CertityImageTableViewCell.m in Sources */,
+				4C6939A11D1937EE00A8FF45 /* XTPopView.m in Sources */,
 				2109BEDD1C4E71200065C664 /* ICETutorialPage.m in Sources */,
 				818BAD921BE77DE1002B467A /* NoPhotoTableViewCell.m in Sources */,
 				81B983551BE703D1005A6CA2 /* XWLoginController.m in Sources */,
