@@ -41,6 +41,8 @@
 @property (nonatomic, copy)NSString * click;
 @property (nonatomic, copy)NSString * xingji;
 //@property (nonatomic, copy)NSString * jifen;
+@property (weak, nonatomic) IBOutlet UIImageView *headerView;
+@property (nonatomic, assign) CGRect oldRect;
 
 @property (weak, nonatomic) IBOutlet UILabel *QianDaoLable;
 @property (weak, nonatomic) IBOutlet UIView *lineView;
@@ -58,6 +60,8 @@ static NSString *const indentifier2 = @"XWCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.oldRect = self.headerView.frame;
     
     self.view.backgroundColor = RGBColor(235, 235, 241);
     self.fd_prefersNavigationBarHidden = YES;
@@ -640,4 +644,33 @@ static NSString *const indentifier2 = @"XWCell";
     [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, string.length)];
     return str;
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGPoint offset = scrollView.contentOffset;
+    MyLog(@"offset****%f",offset.y + 20);
+    if (offset.y + 20< 0) {
+        //背景图
+        CGRect rect = self.headerView.frame;
+        rect.size.height = CGRectGetHeight(self.oldRect) - offset.y - 20;
+        self.headerView.frame = rect;
+        self.headerView.clipsToBounds=NO;
+        //头像
+        CGRect imgRect = self.avartView.frame;
+        imgRect.origin.y = CGRectGetMidY(self.oldRect) - 60 - offset.y - 20;
+        self.avartView.frame = imgRect;
+        //用户名
+        CGRect btnRect = self.loginBtn.frame;
+        btnRect.origin.y = CGRectGetMidY(self.oldRect) - offset.y - 5;
+        self.loginBtn.frame = btnRect;
+        //线条
+        CGRect lineRect = self.lineView.frame;
+        lineRect.origin.y = CGRectGetMidY(self.oldRect) - offset.y + 35;
+        self.lineView.frame = lineRect;
+        //签到字条
+        CGRect signRect = self.QianDaoLable.frame;
+        signRect.origin.y = CGRectGetMidY(self.oldRect) - offset.y + 45;
+        self.QianDaoLable.frame = signRect;
+    }
+}
+
 @end

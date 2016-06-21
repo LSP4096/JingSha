@@ -13,6 +13,7 @@
                 <outlet property="avartView" destination="Toe-a1-NUY" id="OAA-84-23K"/>
                 <outlet property="bgView" destination="wEd-ll-LBI" id="v5Q-gw-x7U"/>
                 <outlet property="contentTableView" destination="bdE-22-Mfj" id="heS-SR-Z7A"/>
+                <outlet property="headerView" destination="Px4-Lp-g66" id="HVK-jg-ELA"/>
                 <outlet property="lineView" destination="ZJB-Ju-RoD" id="QNi-El-Ddc"/>
                 <outlet property="loginBtn" destination="tZd-Y9-NtY" id="SJx-W8-zBl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -39,7 +40,7 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZd-Y9-NtY">
                             <rect key="frame" x="173" y="115" width="30" height="30"/>
-                            <state key="normal">
+                            <state key="normal" title="yu">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
