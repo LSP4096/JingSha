@@ -16,4 +16,17 @@
  */
 - (NSURLSessionDataTask *)getFirstPageInfoComplecion:(JSONResultBlock)complection;
 
+
+//消息列表
+- (NSURLSessionDataTask *)getNewsListWithPage:(NSInteger)page
+                                    PageCount:(NSInteger)pagecount
+                                  Complection:(JSONResultBlock)complection;
+//交易中心
+- (NSURLSessionDataTask *)getExchangesCenterWithPage:(NSInteger)page PageCount:(NSInteger)pagecount
+                                                Type:(NSInteger)type
+                                             KeyWord:(NSString *)keyword
+                                         Complection:(JSONResultBlock)complection;
+
+
+
 @end

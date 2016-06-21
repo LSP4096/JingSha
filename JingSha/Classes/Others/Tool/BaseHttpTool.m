@@ -54,6 +54,10 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     // 1.获得请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+//    mgr.responseSerializer = [AFHTTPResponseSerializer serializer];//把数据当做JSON来处理
+//    mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
     mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", @"text/json", @"text/javascript",@"text/plain",nil];
     
     // 2.发送POST请求

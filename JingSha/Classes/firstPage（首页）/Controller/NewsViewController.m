@@ -13,6 +13,9 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "SupplyDetailViewController.h"
 #import "RequestDetailViewController.h"
+
+#import "HttpClient+FirstPage.h"
+
 #define kPageCount 10
 @interface NewsViewController ()<UITableViewDelegate, UITableViewDataSource,DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
@@ -39,20 +42,19 @@
     return _dataAry;
 }
 - (void)configerDataWithPage:(NSInteger)page{
-    NSString * netPath = @"userinfo/my_email_list";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [allParams setObject:@(page) forKey:@"page"];
-    [allParams setObject:@(kPageCount) forKey:@"pagecount"];
-    [HttpTool postWithPath:netPath params:allParams success:^(id responseObj) {
-        MyLog(@"YYYYY%@", responseObj);
-        if (![responseObj[@"data"] isKindOfClass:[NSNull class]]) {
-            [self getDataFromResponseObj:responseObj];
+    @WeakObj(self);
+    [[HttpClient sharedClient] getNewsListWithPage:page PageCount:kPageCount Complection:^(id resoutObj, NSError *error) {
+        @StrongObj(self);
+        if (error) {
+            MyLog(@"%@",error);
+        }else {
+            MyLog(@"XXXXXXXX%@", resoutObj);
+            if (![resoutObj[@"data"] isKindOfClass:[NSNull class]]) {
+                [Strongself getDataFromResponseObj:resoutObj];
+            }
+            [_baseTable.header endRefreshing];
+            [_baseTable.footer endRefreshing];
         }
-        [_baseTable.header endRefreshing];
-        [_baseTable.footer endRefreshing];
-    } failure:^(NSError *error) {
-        MyLog(@"%@", error);
     }];
 }
 
@@ -144,7 +146,7 @@
         requestDetailVC.shareTitle = model.protitle;
         [self.navigationController pushViewController:requestDetailVC animated:YES];
     }else if ([model.type isEqualToString:@"2"]){//供应
-        SupplyDetailViewController * supplyVC = [[SupplyDetailViewController alloc] init];
+        SupplyDetailViewController * supplyVC = [[SupplyDetailViewController alloc] init];http:
         supplyVC.sendUrlStr = [NSString stringWithFormat:@"http://202.91.244.52/index.php/supply/%@/%@",model.pro_buy_id, KUserImfor[@"userid"]];
         supplyVC.chanpinId = model.pro_buy_id;
 //        supplyVC.fromNews = YES;

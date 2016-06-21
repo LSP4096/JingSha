@@ -13,6 +13,8 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "SuperMarketTabViewCell.h"
 
+#import "HttpClient+FirstPage.h"
+
 #define kPageCount 15
 #define ksearchViewHight 50
 #define KSecViewHeight 120
@@ -183,21 +185,15 @@ UISearchBarDelegate
 }
 
 - (void)configerDataWithPage:(NSInteger)page{
-    NSString * netPath = @"pro/pro_list";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [allParams setObject:@(page) forKey:@"page"];
-    [allParams setObject:@(kPageCount) forKey:@"pagecount"];
-    [allParams setObject:@(2) forKey:@"type"];
-    if (self.keyword.length > 0) {
-        [allParams setObject:self.keyword forKey:@"keyword"];
-    }
-    [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
-            [self getDataFromResponseObj:responseObj];
-        [_baseTabView.header endRefreshing];
-        [_baseTabView.footer endRefreshing];
-    } failure:^(NSError *error) {
-        MyLog(@"%@", error);
+    
+    [[HttpClient sharedClient] getExchangesCenterWithPage:page PageCount:kPageCount Type:2 KeyWord:self.keyword Complection:^(id resoutObj, NSError *error) {
+        if (error) {
+            MyLog(@"%@",error);
+        }else {
+            [self getDataFromResponseObj:resoutObj];
+            [_baseTabView.header endRefreshing];
+            [_baseTabView.footer endRefreshing];
+        }
     }];
 }
 

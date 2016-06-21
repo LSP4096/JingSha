@@ -48,6 +48,8 @@ typedef void(^afFailBlock)(NSURLSessionDataTask *task, NSError *error);
                                                   params:(NSDictionary *)params
                                                    block:(JSONResultBlock)resultBlock {
 
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     NSMutableString *requestDescripString = [NSMutableString stringWithFormat:@""];
     [requestDescripString appendString:@"\n========================Request Info==========================\n"];
     [requestDescripString appendFormat:@"request Name:%@\n",requestName];
@@ -65,6 +67,9 @@ typedef void(^afFailBlock)(NSURLSessionDataTask *task, NSError *error);
     
     //请求成功的回调
     afSuccessBlock successBlock = ^(NSURLSessionDataTask *task, id responseObj){
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
         resultBlock(responseObj, nil);
     };
     

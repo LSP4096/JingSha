@@ -169,28 +169,29 @@
         return;
     }
     
-//    [[HttpClient sharedClient] ResetPasswordWithPhoneNumber:self.phoneTF.text Password:self.makeSurePWTF.text.md5String Code:self.code Complection:^(id resoutObj, NSError *error) {
-//        if (error) {
-//            
-//        }else {
-//            [SVProgressHUD showSuccessWithStatus:@"修改成功"];
-//            [SingleTon shareSingleTon].userPassWoed = self.makeSurePWTF.text.md5String;
-//            [self.navigationController popViewControllerAnimated:YES];
-//        }
-//    }];
-    
-    NSString *netPath = @"userinfo/forgetpwd";
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
-    [allParameters setObject:self.phoneTF.text forKey:@"tel"];
-    [allParameters setObject:self.makeSurePWTF.text.md5String forKey:@"password"];
-    [allParameters setObject:self.code forKey:@"code"];
-    [HttpTool postWithPath:netPath params:allParameters success:^(id responseObj) {
-        [SVProgressHUD showSuccessWithStatus:@"修改成功"];
-        [SingleTon shareSingleTon].userPassWoed = self.makeSurePWTF.text.md5String;
-        [self.navigationController popViewControllerAnimated:YES];
-    } failure:^(NSError *error) {
-        MyLog(@"%@",error);
+    [[HttpClient sharedClient] ResetPasswordWithPhoneNumber:self.phoneTF.text Password:self.makeSurePWTF.text.md5String Code:self.code Complection:^(id resoutObj, NSError *error) {
+        MyLog(@"%@",resoutObj);
+        if (error) {
+             MyLog(@"%@",error);
+        }else {
+            [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+            [SingleTon shareSingleTon].userPassWoed = self.makeSurePWTF.text.md5String;
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }];
+    
+//    NSString *netPath = @"userinfo/forgetpwd";
+//    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
+//    [allParameters setObject:self.phoneTF.text forKey:@"tel"];
+//    [allParameters setObject:self.makeSurePWTF.text.md5String forKey:@"password"];
+//    [allParameters setObject:self.code forKey:@"code"];
+//    [HttpTool postWithPath:netPath params:allParameters success:^(id responseObj) {
+//        [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+//        [SingleTon shareSingleTon].userPassWoed = self.makeSurePWTF.text.md5String;
+//        [self.navigationController popViewControllerAnimated:YES];
+//    } failure:^(NSError *error) {
+//        MyLog(@"%@",error);
+//    }];
 }
 - (NSInteger)checkOut {
     NSArray *array = @[self.phoneTF, self.seccodeTF, self.inputPassWordTF, self.makeSurePWTF];
