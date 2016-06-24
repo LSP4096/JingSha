@@ -67,15 +67,15 @@ typedef void(^afFailBlock)(NSURLSessionDataTask *task, NSError *error);
     
     //请求成功的回调
     afSuccessBlock successBlock = ^(NSURLSessionDataTask *task, id responseObj){
-        
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
         resultBlock(responseObj, nil);
     };
     
     //请求失败的回调
     afFailBlock failBlock = ^(NSURLSessionDataTask *task, NSError *error){
         if(resultBlock) {
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            [MBProgressHUD showError:@"网络不给力"];
             resultBlock(nil, error);
         }
     };

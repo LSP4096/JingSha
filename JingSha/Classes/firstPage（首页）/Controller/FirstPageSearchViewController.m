@@ -11,7 +11,7 @@
 #import "XTPopView.h"
 #define kPageCount 10
 
-@interface FirstPageSearchViewController ()<UISearchBarDelegate>
+@interface FirstPageSearchViewController ()<UISearchBarDelegate, selectIndexPathDelegate>
 @property (nonatomic, assign)BOOL isChange;
 @property (nonatomic, strong)UIView * selctedView;
 @property (nonatomic, strong)UIButton * selectButton;
@@ -190,11 +190,28 @@ static NSString * indentifier = @"searchResultCell";
 }
 //选择按钮响应事件
 - (void)selectButtonClicked{
-    _isChange = !_isChange;
-    if (self.isChange) {
-        _selctedView.hidden = NO;
-    }else{
-        _selctedView.hidden = YES;
+//    _isChange = !_isChange;
+//    if (self.isChange) {
+//        _selctedView.hidden = NO;
+//    }else{
+//        _selctedView.hidden = YES;
+//    }
+    CGPoint point = CGPointMake(10, 10);
+    XTPopView *view1 = [[XTPopView alloc] initWithOrigin:point Width:kUIScreenWidth - 70 Height:45 Type:XTTypeOfUpLeft Color:RGBColor(250, 250, 250)];
+    view1.dataArray = @[@"您有一位朋友找您",@"123",@"456"];
+    view1.row_height = 30;
+    view1.delegate = self;
+    view1.titleTextColor = [UIColor yellowColor];
+    [view1 popView];
+}
+
+- (void)selectIndexPathRow:(NSInteger )index {
+    if (index == 0) {
+        MyLog(@"0");
+    }else if (index == 1) {
+        MyLog(@"1");
+    }else {
+        MyLog(@"2");
     }
 }
 
