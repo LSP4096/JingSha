@@ -17,6 +17,7 @@
 #import "RootViewController.h"
 
 #import "HttpClient+Authentication.h"
+#import "WXApi.h"
 
 @interface XWLoginController ()
 @property (weak, nonatomic) IBOutlet UITextField *userAccountTF;
@@ -142,6 +143,27 @@
         ident = 0;
     }
     return ident;
+}
+
+- (IBAction)weiXinLogin:(id)sender {
+    if ([WXApi isWXAppInstalled]) {
+        SendAuthReq *req = [[SendAuthReq alloc] init];
+        req.scope = @"snsapi_userinfo";
+        req.state = @"App";
+        [WXApi sendReq:req];
+    }
+    else {
+        [self setupAlertController];
+    }
+}
+
+#pragma mark - 设置弹出提示语
+- (void)setupAlertController {
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请先安装微信客户端" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionConfirm = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:actionConfirm];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

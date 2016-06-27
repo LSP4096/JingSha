@@ -1927,10 +1927,10 @@
 			children = (
 				4C4664F31CEC2F51005E31C1 /* Appdelegate */,
 				4C4664F41CEC2F7E005E31C1 /* Module */,
-				4C4664F61CEC30AC005E31C1 /* Resource */,
 				4C4664F71CEC3141005E31C1 /* Request */,
 				4C4664F51CEC2FFD005E31C1 /* Helper */,
 				813679F21BE4758C0032C1E8 /* Others */,
+				4C4664F61CEC30AC005E31C1 /* Resource */,
 				8136796C1BE44E780032C1E8 /* Supporting Files */,
 			);
 			path = JingSha;
@@ -3305,8 +3305,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/SinaWeiboSDK",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/WeChatSDK",
+					"$(PROJECT_DIR)/JingSha",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zgsxw.jingsha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bocweb.JingSha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3337,8 +3338,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/SinaWeiboSDK",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/extends/WeChatSDK",
+					"$(PROJECT_DIR)/JingSha",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zgsxw.jingsha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bocweb.JingSha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

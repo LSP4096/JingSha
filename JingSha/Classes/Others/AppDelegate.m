@@ -14,9 +14,12 @@
 #import "ICETutorialPage.h"
 #import <SSKeychain.h>
 #import "XWLoginController.h"
+
 #import "AppDelegate+ShareSDK.h"
 #import "AppDelegate+IQKeyBoard.h"
 #import "AppDelegate+Bugle.h"
+
+#import "WXApi.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) NSArray *tutorialLayers;
@@ -107,6 +110,13 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+// 这个方法是用于从微信返回第三方App
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    [WXApi handleOpenURL:url delegate:self];
+    return YES;
 }
 
 #pragma mark - Core Data stack
