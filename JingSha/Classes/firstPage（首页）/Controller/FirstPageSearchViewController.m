@@ -36,6 +36,7 @@
 
 @property (nonatomic, assign)BOOL change;
 @property (nonatomic, assign)NSInteger  cid;
+@property (nonatomic, strong)XTPopView *XTView;
 @end
 
 static NSString * indentifier = @"searchResultCell";
@@ -51,7 +52,6 @@ static NSString * indentifier = @"searchResultCell";
     
     self.isChange = NO;
     [self configerSearchBar];
-    [self configerTapToHidden];//点击页面，隐藏掉出现的下拉视图
 
     self.pageNum = 1;
     self.changeButPage = 0;
@@ -111,17 +111,6 @@ static NSString * indentifier = @"searchResultCell";
     }
 }
 
-
-- (void)configerTapToHidden{
-    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClicked)];
-    [self.view addGestureRecognizer:tapGesture];//给视图加上一个手势，点击页面空白处隐藏下拉视图
-}
-//点击视图隐藏下拉菜单  同时隐藏键盘
-- (void)tapClicked{
-    self.selctedView.hidden = YES;
-    [_searchBar resignFirstResponder];
-}
-
 #pragma mark --
 - (void)configerSearchBar{
     UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.height + 20, kUIScreenWidth, 65)]; //导航条部分
@@ -129,10 +118,10 @@ static NSString * indentifier = @"searchResultCell";
     [self.view addSubview:topView];
 
     //下拉菜单和搜索框的父视图
-    UIView * topBackView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, kUIScreenWidth - 70, 45)];
+    UIView *topBackView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, kUIScreenWidth - 70, 45)];
     topBackView.layer.borderWidth = 1;
     topBackView.layer.borderColor = RGBColor(230, 230, 230).CGColor;
-//        topBackView.backgroundColor = [UIColor yellowColor];
+//    _topBackView.backgroundColor = [UIColor yellowColor];
     [topView addSubview:topBackView];
     //左侧下拉选择按钮
     self.selectButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -146,7 +135,7 @@ static NSString * indentifier = @"searchResultCell";
     self.selectButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.selectButton addTarget:self action:@selector(selectButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [topBackView addSubview:self.selectButton];
-    
+
     
     //取消按钮
     UIButton * cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -190,67 +179,42 @@ static NSString * indentifier = @"searchResultCell";
 }
 //选择按钮响应事件
 - (void)selectButtonClicked{
-//    _isChange = !_isChange;
-//    if (self.isChange) {
-//        _selctedView.hidden = NO;
-//    }else{
-//        _selctedView.hidden = YES;
-//    }
-    CGPoint point = CGPointMake(10, 10);
-    XTPopView *view1 = [[XTPopView alloc] initWithOrigin:point Width:kUIScreenWidth - 70 Height:45 Type:XTTypeOfUpLeft Color:RGBColor(250, 250, 250)];
-    view1.dataArray = @[@"您有一位朋友找您",@"123",@"456"];
-    view1.row_height = 30;
-    view1.delegate = self;
-    view1.titleTextColor = [UIColor yellowColor];
-    [view1 popView];
+    CGPoint point = CGPointMake(CGRectGetMidX(_selectButton.frame) + 5, CGRectGetMaxY(_selectButton.frame) + 80);
+    _XTView = [[XTPopView alloc] initWithOrigin:point Width:100 Height:105 Type:XTTypeOfUpLeft Color:RGBColor(60, 60, 60)];
+    _XTView.alpha = 0.8;
+    _XTView.dataArray = @[@"产品",@"供应商",@"求购"];
+    _XTView.row_height = 35;
+    _XTView.delegate = self;
+    _XTView.titleTextColor = [UIColor whiteColor];
+    _XTView.fontSize = 16.0f;
+    [_XTView popView];
 }
 
 - (void)selectIndexPathRow:(NSInteger )index {
     if (index == 0) {
-        MyLog(@"0");
+        [self.selectButton setTitle:@"产品" forState:UIControlStateNormal];
+        self.selectedTitle = @"产品";
+        [self loadDataWithCid:23];
+        self.cid = 23;
     }else if (index == 1) {
-        MyLog(@"1");
+        [self.selectButton setTitle:@"供应商" forState:UIControlStateNormal];
+        self.selectedTitle = @"供应商";
+        [self loadDataWithCid:22];
+        self.cid = 22;
     }else {
-        MyLog(@"2");
+        [self.selectButton setTitle:@"求购" forState:UIControlStateNormal];
+        self.selectedTitle = @"求购";
+        [self loadDataWithCid:23];
+        self.cid = 23;
     }
+    self.selctedView.hidden = YES;
+    _isChange = !_isChange;
+    self.change = YES;
+    self.changeButPage = 0;
+    [_XTView dismiss];
 }
 
-#pragma mark -- 点击下拉菜单内的按钮时的触发事件
-- (void)productButtonClicked{
-    //这两个方法对应下拉菜单里的两个按钮，点击哪一个本来显示的按钮就会显示那一个标题，顺便切换下边显示的 大家都在搜。
-    //在开始的时候主动触发任意一个方法
-    [self.selectButton setTitle:@"产品" forState:UIControlStateNormal];
-    self.selctedView.hidden = YES;
-    _isChange = !_isChange;
-    self.selectedTitle = @"产品";
-    [self loadDataWithCid:23];
-    self.cid = 23;
-    self.change = YES;
-    self.changeButPage = 0;
-    MyLog(@"产品");
-}
-- (void)supplyButtonClicked{
-    [self.selectButton setTitle:@"供应商" forState:UIControlStateNormal];
-    self.selctedView.hidden = YES;
-    _isChange = !_isChange;
-    self.selectedTitle = @"供应商";
-    [self loadDataWithCid:22];
-    self.cid = 22;
-    self.change = YES;
-    self.changeButPage = 0;
-    MyLog(@"供应商");
-}
-- (void)requestBtnClicked {
-    [self.selectButton setTitle:@"求购" forState:UIControlStateNormal];
-    self.selctedView.height = YES;
-    _isChange = !_isChange;
-    self.selectedTitle = @"求购";
-    [self loadDataWithCid:23];
-    self.cid = 23;
-    self.change = YES;
-    self.changeButPage = 0;
-    MyLog(@"求购");
-}
+
 
 - (void)congigerOptionButton{
     if (self.bodyView) {
@@ -267,30 +231,6 @@ static NSString * indentifier = @"searchResultCell";
     self.selctedView.layer.masksToBounds = YES;
     [self.view addSubview:self.selctedView];
     self.selctedView.hidden = YES;
-    
-    UIButton * productButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    productButton.frame = CGRectMake(0, 0, 85, 35);
-    [productButton setTitle:@"产品" forState:UIControlStateNormal];
-    [productButton setTitleColor:RGBColor(106, 106, 106) forState:UIControlStateNormal];
-    productButton.titleLabel.font = [UIFont systemFontOfSize:15];
-    [productButton addTarget:self action:@selector(productButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.selctedView addSubview:productButton];
-    
-    UIButton * supplyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    supplyButton.frame = CGRectMake(0, 35, 85, 35);
-    [supplyButton setTitle:@"供应商" forState:UIControlStateNormal];
-    supplyButton.titleLabel.font = [UIFont systemFontOfSize:15];
-    [supplyButton setTitleColor:RGBColor(106, 106, 106) forState:UIControlStateNormal];
-    [supplyButton addTarget:self action:@selector(supplyButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.selctedView addSubview:supplyButton];
-    
-    UIButton *requestBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    requestBtn.frame = CGRectMake(0, CGRectGetMaxY(supplyButton.frame), 85, 35);
-    [requestBtn setTitle:@"求购" forState:UIControlStateNormal];
-    requestBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [requestBtn setTitleColor:RGBColor(106, 106, 106) forState:UIControlStateNormal];
-    [requestBtn addTarget:self action:@selector(requestBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.selctedView addSubview:requestBtn];
     
     //大家都在搜
     UILabel * EveryOneSearchLable = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 80,20)];

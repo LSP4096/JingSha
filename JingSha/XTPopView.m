@@ -43,6 +43,11 @@
         self.backGoundView = [[UIView alloc] initWithFrame:CGRectMake(origin.x, origin.y, width, height)];
         self.backGoundView.backgroundColor = color;
         [self addSubview:self.backGoundView];
+        
+        self.backGoundView.layer.cornerRadius = 5;
+        self.backGoundView.layer.borderWidth = 0.001;
+        self.backGoundView.layer.masksToBounds = YES;
+        
         // 添加tableview
         [self.backGoundView addSubview:self.tableView];
     }
@@ -308,6 +313,8 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.backGoundView.frame.size.width, self.backGoundView.frame.size.height) style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.bounces = NO;
         _tableView.delegate = self;
     }
     return _tableView;
