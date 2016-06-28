@@ -20,7 +20,7 @@
     /**
      *  分享
      */
-    [ShareSDK registerApp:@"12c00583791f6"
+    [ShareSDK registerApp:kShareAppId
           activePlatforms:@[@(SSDKPlatformSubTypeWechatSession),
                             @(SSDKPlatformSubTypeWechatTimeline),
                             @(SSDKPlatformSubTypeQQFriend),
@@ -49,22 +49,22 @@
                      switch (platformType) {
                          case SSDKPlatformTypeWechat:
                          {
-                             [appInfo SSDKSetupWeChatByAppId:@"wxef37270a3109f624"
-                                                   appSecret:@"cc188b3c1dc39115f983a0ef272e66c8"];
+                             [appInfo SSDKSetupWeChatByAppId:kWXAppId
+                                                   appSecret:kWXAppSecret];
                          }
                              break;
                          case SSDKPlatformTypeQQ:
                          {
-                             [appInfo SSDKSetupQQByAppId:@"1104978366"
-                                                  appKey:@"1eAcBPNqzgqanUXS"
+                             [appInfo SSDKSetupQQByAppId:kQQAppId
+                                                  appKey:kQQAppSecret
                                                 authType:@"SSDKAuthTypeSSO"];
                          }
                              break;
                          case SSDKPlatformTypeSinaWeibo:
                          {
-                             [appInfo SSDKSetupSinaWeiboByAppKey:@"1649734259"
-                                                       appSecret:@"b96788584a4150c4a1afd16be3a7361f"
-                                                     redirectUri:@"http://www.sharesdk.cn"
+                             [appInfo SSDKSetupSinaWeiboByAppKey:kSinaWeiboAppId
+                                                       appSecret:kSinaWeiboAppSecret
+                                                     redirectUri:kSinaWeiboRedirectUri
                                                         authType:@"SSDKAuthTypeBoth"];
                          }
                              break;

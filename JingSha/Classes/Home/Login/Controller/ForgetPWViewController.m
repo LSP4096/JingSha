@@ -143,21 +143,7 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alertView show];
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if ([alertView.message isEqualToString:@"修改成功"]) {
-        MyLog(@"buttonIndex:%zd", buttonIndex);//buttonIndex表示用户点击按钮的下标
-        switch (buttonIndex) {
-            case 0:
-                break;
-                
-            default:
-            {
-                [self.navigationController popViewControllerAnimated:YES];
-            }
-                break;
-        }
-    }
-}
+
 #pragma mark - 点击立即修改Btn
 - (IBAction)handleChangeInfo:(UIButton *)sender {
     [self userChangePassWodr];
@@ -176,22 +162,9 @@
         }else {
             [SVProgressHUD showSuccessWithStatus:@"修改成功"];
             [SingleTon shareSingleTon].userPassWoed = self.makeSurePWTF.text.md5String;
-            [self.navigationController popViewControllerAnimated:YES];
+            [self backLoginVC:nil];
         }
     }];
-    
-//    NSString *netPath = @"userinfo/forgetpwd";
-//    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
-//    [allParameters setObject:self.phoneTF.text forKey:@"tel"];
-//    [allParameters setObject:self.makeSurePWTF.text.md5String forKey:@"password"];
-//    [allParameters setObject:self.code forKey:@"code"];
-//    [HttpTool postWithPath:netPath params:allParameters success:^(id responseObj) {
-//        [SVProgressHUD showSuccessWithStatus:@"修改成功"];
-//        [SingleTon shareSingleTon].userPassWoed = self.makeSurePWTF.text.md5String;
-//        [self.navigationController popViewControllerAnimated:YES];
-//    } failure:^(NSError *error) {
-//        MyLog(@"%@",error);
-//    }];
 }
 - (NSInteger)checkOut {
     NSArray *array = @[self.phoneTF, self.seccodeTF, self.inputPassWordTF, self.makeSurePWTF];

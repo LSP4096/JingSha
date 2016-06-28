@@ -20,8 +20,10 @@
 #import "AppDelegate+Bugle.h"
 
 #import "WXApi.h"
+#import "WXApiObject.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <WXApiDelegate>
+
 @property (nonatomic, strong) NSArray *tutorialLayers;
 @property (nonatomic, strong) ICETutorialController *viewController;
 @end
@@ -44,6 +46,38 @@
     [self firstBegin];
 
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
+{
+    
+    [WXApi handleOpenURL:url delegate:self];
+    
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    [WXApi handleOpenURL:url delegate:self];
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    [WXApi handleOpenURL:url delegate:self];
+    return YES;
+}
+
+#pragma mark - WXApiDelegate
+- (void)onResp:(BaseResp *)resp {
+    if ([resp isKindOfClass:[SendAuthResp class]])
+    {
+        SendAuthResp *rep = (SendAuthResp *)resp;
+        if (rep.errCode == 0) {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"WXLoginSuccess" object:@{@"code":rep.code}];
+        }
+        
+    }
 }
 
 #pragma mark - 第一次启动
@@ -110,13 +144,6 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
-}
-
-// 这个方法是用于从微信返回第三方App
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    
-    [WXApi handleOpenURL:url delegate:self];
-    return YES;
 }
 
 #pragma mark - Core Data stack

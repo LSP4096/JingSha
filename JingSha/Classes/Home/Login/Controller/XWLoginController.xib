@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XWLoginController">
             <connections>
+                <outlet property="WXBtn" destination="Afl-YJ-2g8" id="1Gv-3K-89X"/>
                 <outlet property="forgetPWBtn" destination="99F-kZ-htr" id="df3-ha-tcf"/>
                 <outlet property="loginBtn" destination="ayp-30-4RG" id="ecG-6v-p9r"/>
                 <outlet property="pssWordTF" destination="B6O-0N-3f0" id="fy7-Hx-BwM"/>
@@ -69,7 +70,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rwp-aV-C7c">
-                    <rect key="frame" x="110" y="518" width="75" height="25"/>
+                    <rect key="frame" x="110" y="547" width="75" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="k2o-Em-ZLY"/>
                     </constraints>
@@ -82,7 +83,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99F-kZ-htr">
-                    <rect key="frame" x="190" y="518" width="75" height="25"/>
+                    <rect key="frame" x="190" y="547" width="75" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="O6S-e6-lUq"/>
                     </constraints>
@@ -128,7 +129,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-log" translatesAutoresizingMaskIntoConstraints="NO" id="3s7-s9-uM5">
-                    <rect key="frame" x="187" y="524" width="1" height="13"/>
+                    <rect key="frame" x="187" y="553" width="1" height="13"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="got-Zd-SdZ"/>
                     </constraints>
@@ -154,13 +155,15 @@
                     </variation>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afl-YJ-2g8">
-                    <rect key="frame" x="133" y="561" width="108" height="30"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="253" y="499" width="65" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="lqF-2N-cUh"/>
-                        <constraint firstAttribute="width" constant="108" id="zCl-AL-Rhr"/>
+                        <constraint firstAttribute="width" constant="65" id="7EO-fz-Jj5"/>
+                        <constraint firstAttribute="height" constant="21" id="RyH-Tt-iUT"/>
                     </constraints>
-                    <state key="normal" title="微信登录"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="微信登录">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="weiXinLogin:" destination="-1" eventType="touchUpInside" id="kPK-nN-Tw5"/>
                     </connections>
@@ -169,19 +172,20 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ayp-30-4RG" firstAttribute="top" secondItem="B6O-0N-3f0" secondAttribute="bottom" constant="60" id="090-if-fDO"/>
-                <constraint firstItem="Afl-YJ-2g8" firstAttribute="top" secondItem="99F-kZ-htr" secondAttribute="bottom" constant="18" id="09q-fK-NyI"/>
                 <constraint firstItem="99F-kZ-htr" firstAttribute="centerX" secondItem="ayp-30-4RG" secondAttribute="centerX" constant="40" id="2b7-BI-EJd"/>
                 <constraint firstItem="B6O-0N-3f0" firstAttribute="leading" secondItem="N7k-Jf-FEN" secondAttribute="trailing" constant="10" id="65n-qA-ZAU"/>
                 <constraint firstItem="UVh-9g-UHl" firstAttribute="centerY" secondItem="NLL-Ej-oDd" secondAttribute="centerY" id="7AQ-kf-X4k"/>
                 <constraint firstAttribute="centerY" secondItem="VKh-SV-yRy" secondAttribute="centerY" constant="20" id="8mu-PM-UmP"/>
                 <constraint firstItem="99F-kZ-htr" firstAttribute="top" secondItem="Rwp-aV-C7c" secondAttribute="top" id="AVP-IN-mwK"/>
                 <constraint firstAttribute="centerX" secondItem="ayp-30-4RG" secondAttribute="centerX" id="BmA-0f-9Kd"/>
+                <constraint firstItem="Afl-YJ-2g8" firstAttribute="trailing" secondItem="ayp-30-4RG" secondAttribute="trailing" id="CIc-lr-kjP"/>
                 <constraint firstItem="CsT-ZE-ZGV" firstAttribute="top" secondItem="fKh-oh-UcJ" secondAttribute="bottom" id="Dnp-Lx-2jS"/>
                 <constraint firstItem="99F-kZ-htr" firstAttribute="top" secondItem="Rwp-aV-C7c" secondAttribute="top" id="FYM-ag-sfT"/>
                 <constraint firstItem="B6O-0N-3f0" firstAttribute="trailing" secondItem="Kk8-Al-Rlv" secondAttribute="trailing" id="IP7-Ud-hDN"/>
-                <constraint firstItem="Rwp-aV-C7c" firstAttribute="top" secondItem="ayp-30-4RG" secondAttribute="bottom" constant="30" id="L83-C6-SH9"/>
+                <constraint firstItem="Rwp-aV-C7c" firstAttribute="top" secondItem="ayp-30-4RG" secondAttribute="bottom" constant="59" id="L83-C6-SH9"/>
                 <constraint firstItem="99F-kZ-htr" firstAttribute="height" secondItem="Rwp-aV-C7c" secondAttribute="height" id="P47-B9-fRj"/>
                 <constraint firstItem="UVh-9g-UHl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="QTk-ip-3Vp"/>
+                <constraint firstItem="Afl-YJ-2g8" firstAttribute="top" secondItem="ayp-30-4RG" secondAttribute="bottom" constant="11" id="Rpa-A0-L8M"/>
                 <constraint firstItem="lYT-kJ-CRu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="S7u-Eb-dbt"/>
                 <constraint firstItem="VKh-SV-yRy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="SIK-KB-Yjb"/>
                 <constraint firstAttribute="trailing" secondItem="fKh-oh-UcJ" secondAttribute="trailing" constant="20" id="U7b-4r-Vne"/>
@@ -206,7 +210,6 @@
                 <constraint firstItem="99F-kZ-htr" firstAttribute="width" secondItem="Rwp-aV-C7c" secondAttribute="width" id="paQ-DI-qGP"/>
                 <constraint firstAttribute="centerX" secondItem="NLL-Ej-oDd" secondAttribute="centerX" id="s8K-RS-UJr"/>
                 <constraint firstItem="3s7-s9-uM5" firstAttribute="centerY" secondItem="Rwp-aV-C7c" secondAttribute="centerY" id="szU-0d-6ZY"/>
-                <constraint firstItem="Afl-YJ-2g8" firstAttribute="centerX" secondItem="ayp-30-4RG" secondAttribute="centerX" id="u5t-kY-0bE"/>
                 <constraint firstItem="N7k-Jf-FEN" firstAttribute="centerY" secondItem="B6O-0N-3f0" secondAttribute="centerY" id="x6Z-0l-IsS"/>
                 <constraint firstAttribute="bottom" secondItem="lYT-kJ-CRu" secondAttribute="bottom" id="xEg-Rg-DYM"/>
                 <constraint firstItem="B6O-0N-3f0" firstAttribute="leading" secondItem="Kk8-Al-Rlv" secondAttribute="leading" id="xt5-i4-5P3"/>
@@ -220,7 +223,7 @@
                     <exclude reference="lg0-5T-1sk"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="96.5" y="430.5"/>
+            <point key="canvasLocation" x="-485.5" y="402.5"/>
         </view>
     </objects>
     <resources>

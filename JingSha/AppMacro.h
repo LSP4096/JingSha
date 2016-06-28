@@ -9,6 +9,18 @@
 #ifndef AppMacro_h
 #define AppMacro_h
 
+static NSString *const kShareAppId = @"12c00583791f6";
+
+static NSString *const kWXAppId = @"wxef37270a3109f624";
+static NSString *const kWXAppSecret = @"cc188b3c1dc39115f983a0ef272e66c8";
+
+static NSString *const kQQAppId = @"1104978366";
+static NSString *const kQQAppSecret = @"1eAcBPNqzgqanUXS";
+
+static NSString *const kSinaWeiboAppId = @"1649734259";
+static NSString *const kSinaWeiboAppSecret = @"b96788584a4150c4a1afd16be3a7361f";
+static NSString *const kSinaWeiboRedirectUri = @"http://www.sharesdk.cn";
+
 //1. 日志输出宏定义
 #ifdef DEBUG
 // 调试状态
@@ -63,8 +75,6 @@
 //屏幕比例
 #define KProportionWidth kUIScreenWidth / 375
 #define KProportionHeight kUIScreenHeight / 667
-
-
 
 //程序全局委托
 #define pub_appDelegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])

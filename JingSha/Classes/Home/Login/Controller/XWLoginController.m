@@ -17,11 +17,13 @@
 #import "RootViewController.h"
 
 #import "HttpClient+Authentication.h"
+#import "HttpClient+WXLogin.h"
 #import "WXApi.h"
 
 @interface XWLoginController ()
 @property (weak, nonatomic) IBOutlet UITextField *userAccountTF;
 @property (weak, nonatomic) IBOutlet UITextField *pssWordTF;
+@property (weak, nonatomic) IBOutlet UIButton *WXBtn;
 
 @end
 
@@ -31,9 +33,18 @@
     [self setupLoginBtn];
 //    [KeyboardToolBar registerKeyboardToolBar:_userAccountTF];
 //    [KeyboardToolBar registerKeyboardToolBar:_pssWordTF];
+    
+//    [self.WXBtn setCornerBackgroundColor:[UIColor whiteColor] withRadius:_WXBtn.frame.size.height / 2 forState:UIControlStateNormal];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(WXLogin:) name:@"WXLoginSuccess" object:nil];
+    
 }
 
-
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"WXLoginSuccess" object:nil];
+}
 
 - (void)setupLoginBtn {
     NSUserDefaults *defals = [NSUserDefaults standardUserDefaults];
@@ -147,9 +158,15 @@
 
 - (IBAction)weiXinLogin:(id)sender {
     if ([WXApi isWXAppInstalled]) {
+        
+        static NSString *kAuthScope = @"snsapi_userinfo";
+        static NSString *kAuthOpenID = @"cc188b3c1dc39115f983a0ef272e66c8";
+        static NSString *kAuthState = @"123";
+        
         SendAuthReq *req = [[SendAuthReq alloc] init];
-        req.scope = @"snsapi_userinfo";
-        req.state = @"App";
+        req.scope = kAuthScope;
+        req.state = kAuthState;
+        req.openID = kAuthOpenID;
         [WXApi sendReq:req];
     }
     else {
@@ -165,5 +182,82 @@
     [alert addAction:actionConfirm];
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+//登陆成功之后获取token
+- (void)WXLogin:(NSNotification *)notifi
+{
+    @WeakObj(self);
+    [[HttpClient sharedClient] getAccessTokenWithCode:notifi.object[@"code"] Complection:^(id resoutObj, NSError *error) {
+        @StrongObj(self);
+        if (error) {
+            MyLog(@"获取微信token失败%@",error.localizedDescription);
+        }else {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:resoutObj options:NSJSONReadingAllowFragments error:nil];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"WXSaveToken"];
+            
+            [Strongself saveTokenAndRequireWXInfo];
+        }
+    }];
+    
+//    AFHTTPRequestOperationManager *manage = [AFHTTPRequestOperationManager manager];
+//    manage.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    [manage GET:@"https://api.weixin.qq.com/sns/oauth2/access_token" parameters:@{@"appid":kWXAppId, @"secret":kWXAppSecret, @"code":notifi.object[@"code"], @"grant_type":@"authorization_code"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+//        /*"access_token" = "OezXcEiiBSKSxW0eoylIeBPKSgTfwua1QABCnleka9CqGYr9J4wP2NHLDEFTP0vqsiS4DFDyXNQmYSaM6dW1s8MrQi6NSC9dV6ZqqjazKWQv3kfeozrm-fbZTXU80vLaWYflw07nkDhmX3KJHsEVxQ";
+//         "expires_in" = 7200;
+//         openid = o22U5xMHZTjYDi3VwBva3JW6mqGk;
+//         "refresh_token" = "OezXcEiiBSKSxW0eoylIeBPKSgTfwua1QABCnleka9CqGYr9J4wP2NHLDEFTP0vq6O1ZVOcyb8uL5dLrcuRaydRmY9BcYgJeOLqRjlLyp5HpBlYc2Ikja-RFm6ghGQ32r_iZfQfAQhtEqwk9ibf8vA";
+//         scope = "snsapi_userinfo";
+//         unionid = o4bo2vzI0vCvGTa11GBMkx0SbcwQ;*/
+//        
+//        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"WXSaveToken"];
+//        
+//        [self saveTokenAndRequireWXInfo];
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"access_token error-->%@", error.localizedDescription);
+//    }];
+}
+
+- (void)saveTokenAndRequireWXInfo
+{
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXSaveToken"];
+    [[HttpClient sharedClient] getWeChatUserInfoWithOpenId:dict[@"openid"] AccessToken:dict[@"access_token"] Complection:^(id resoutObj, NSError *error) {
+        if (error) {
+            MyLog(@"获取微信用户信息失败 %@",error.localizedDescription);
+        }else {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:resoutObj options:NSJSONReadingAllowFragments error:nil];
+            [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"WXResponse_UserInfo"];
+        }
+    }];
+    
+    
+//    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXSaveToken"];
+//    AFHTTPRequestOperationManager *manage = [AFHTTPRequestOperationManager manager];
+//    manage.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    [manage GET:@"https://api.weixin.qq.com/sns/userinfo" parameters:@{@"openid":dict[@"openid"], @"access_token":dict[@"access_token"]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+//        //        NSLog(@"%@",dict);
+//        //        {
+//        //            city = "xxx";
+//        //            country = xxx;
+//        //            headimgurl = “http://wx.qlogo.cn/mmopen/xxxxxxx/0”;
+//        //            language = "zh_CN";
+//        //            nickname = xxx;
+//        //            openid = xxxxxxxxxxxxxxxxxxx;
+//        //            privilege =     (
+//        //            );
+//        //            province = "xxx";
+//        //            sex = 0;
+//        //            unionid = xxxxxxxxxxxxxxxxxx;
+//        //        }
+//        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"WXResponse_UserInfo"];
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"userinfo error-->%@", error.localizedDescription);
+//    }];
+}
+
 
 @end

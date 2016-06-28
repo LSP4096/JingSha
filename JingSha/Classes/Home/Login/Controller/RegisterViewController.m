@@ -253,7 +253,7 @@
                 
             default:
             {
-                [self.navigationController popViewControllerAnimated:YES];
+                [self dismissViewControllerAnimated:YES completion:nil];
             }
                 break;
         }
