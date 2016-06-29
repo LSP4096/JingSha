@@ -370,19 +370,16 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [UIView animateWithDuration:1 animations:^{
         self.secView.alpha = 0;
-        [UIView animateWithDuration:5 animations:^{
-            self.baseTable.frame = CGRectMake(0, ksearchViewHight, kUIScreenWidth, kUIScreenHeight- ksearchViewHight);
-        }];
     }];
-    
+    self.baseTable.frame = CGRectMake(0, ksearchViewHight, kUIScreenWidth, kUIScreenHeight- ksearchViewHight);
 }
 
 - (void)moveBack {
     [UIView animateWithDuration:1 animations:^{
         self.secView.alpha = 1;
-        self.baseTable.frame = CGRectMake(0, ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight-( ksearchViewHight + KSecViewHeight));
-        self.baseTable.mj_offsetY = -64;
     }];
+    self.baseTable.frame = CGRectMake(0, ksearchViewHight + KSecViewHeight, kUIScreenWidth, kUIScreenHeight-( ksearchViewHight + KSecViewHeight));
+    self.baseTable.mj_offsetY = -64;
 }
 
 #pragma mark --UITableViewDataSource,UITableViewDelegate
