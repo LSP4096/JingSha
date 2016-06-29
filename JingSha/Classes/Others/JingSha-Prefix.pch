@@ -16,6 +16,7 @@
 #import "UIView+Extension.h"
 #import "NSString+Helper.h"
 #import "MBProgressHUD+RY.h"
+#import "MBProgressHUD.h"
 #import "SVProgressHUD.h"
 //#import "UIImage+Color.h"
 #import "UIImageView+WebCache.h"

@@ -92,11 +92,14 @@
         return;
     }
     
+    [MBProgressHUD showMessage:@"登录中..." toView:self.view];
+    
     @WeakObj(self);
     [[HttpClient sharedClient] LoginWithAccount:self.userAccountTF.text Password:self.pssWordTF.text.md5String Complection:^(id resoutObj, NSError *error) {
         @StrongObj(self)
         if (error) {
             MyLog(@"=======登录请求错误======\n\n%@",error);
+            [MBProgressHUD hideHUDForView:self.view];
         }else {
             if (![resoutObj[@"return_code"] integerValue]) {
                 [SingleTon shareSingleTon].userInformation = resoutObj[@"data"];
