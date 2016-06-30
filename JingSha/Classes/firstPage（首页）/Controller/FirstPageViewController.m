@@ -41,6 +41,7 @@
 #import "SupplyDetailViewController.h"
 #import "JSLastRequestDetailCell.h"
 #import "SingUpViewController.h"
+#import "LeaveMessageTableViewController.h"
 
 @interface FirstPageViewController ()
 <
@@ -88,7 +89,8 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 @implementation FirstPageViewController
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(liveMessage:) name:@"ExchangeSign" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickBaoJiaBtn:) name:@"BaoJia" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -101,12 +103,19 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setupTableView];
     [self registeCell];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickBaoJiaBtn:) name:@"BaoJia" object:nil];
 }
 
-- (void)dealloc {
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ExchangeSign" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BaoJia" object:nil];
+}
+
+- (void)liveMessage:(NSNotification *)info {
+    LeaveMessageTableViewController *leaveMess = [LeaveMessageTableViewController new];
+    leaveMess.chanpinID = [info.userInfo objectForKey:@"id"];
+    [self.navigationController pushViewController:leaveMess animated:YES];
 }
 
 /**

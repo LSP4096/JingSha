@@ -11,5 +11,5 @@
 
 @interface ExchangeDetailView : UIView
 @property (nonatomic, strong) SuppleMsgModel *model;
-
+@property (nonatomic, strong) NSString *id;
 @end

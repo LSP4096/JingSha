@@ -24,7 +24,6 @@
 //设置图片的背景颜色
 + (UIImage *)imageWithColor:(UIColor *)color;
 
-
 //将图片压缩至需要的大小 -- 相册图片选取
 - (UIImage *)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize;
 

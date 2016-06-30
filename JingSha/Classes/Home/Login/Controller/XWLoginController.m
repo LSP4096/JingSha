@@ -119,7 +119,7 @@
                 Strongself.navigationController.navigationBarHidden = NO;
             }else {
                 [Strongself shakeButton];
-                
+                [MBProgressHUD hideHUDForView:self.view];
                 //请求错误信息（后台设置：手机不存在／手机后密码错误）
                 [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", resoutObj[@"msg"]]];
             }

@@ -12,7 +12,7 @@
 #import "SuppleMsgModel.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "SuperMarketTabViewCell.h"
-
+#import "LeaveMessageTableViewController.h"
 #import "HttpClient+FirstPage.h"
 
 #define kPageCount 15
@@ -55,6 +55,23 @@ UISearchBarDelegate
     self.pageNum = 1;
     self.index = 0;
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(liveMessage:) name:@"ExchangeSign" object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ExchangeSign" object:nil];
+}
+
+- (void)liveMessage:(NSNotification *)info {
+    LeaveMessageTableViewController *leaveMess = [LeaveMessageTableViewController new];
+    leaveMess.chanpinID = [info.userInfo objectForKey:@"id"];
+    [self.navigationController pushViewController:leaveMess animated:YES];
 }
 
 - (void)configOptionBtn {

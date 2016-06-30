@@ -24,6 +24,7 @@
 #import "RealTimeDataViewController.h"
 #import "XWTableViewCell.h"
 
+#import "AboutYarnViewController.h"
 #import "HttpClient+Authentication.h"
 
 @interface XWMemberCenterViewController () <UITableViewDataSource, UITableViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
@@ -419,7 +420,7 @@ static NSString *const indentifier2 = @"XWCell";
             return 6;
             break;
         default:
-            return 2;
+            return 3;
             break;
     }
 }
@@ -437,9 +438,9 @@ static NSString *const indentifier2 = @"XWCell";
     [formatter setDateFormat:@"HH:mm"];
     NSString *currentTime = [formatter stringFromDate:[NSDate date]];
     
-    NSArray *imageArray = @[@[@"memlog_07", @"memlog_19", @"memlog_21"], @[@"memlog_23", @"memlog_25", @"memlog_28", @"memlog_31", @"memlog_33", @"memlog_36"], @[@"memlog_39", @"memlog_43"]];
-    NSArray *titleArray = @[@[@"企业等级", @"企业访问", @"产品访问"], @[@"企业管理", @"我的积分", @"我的评论", @"我的收藏", @"修改密码", @"清除缓存"], @[@"帮助与反馈", @"联系客服"]];
-    NSArray *detailArray = @[@[[NSString stringWithFormat:@"实时数据(%@更新)", currentTime],companyVisistCount, productVisitCount],@[@"管理企业、产品、求购信息",@"积分换购享不停", @"评价消息一手掌握", @"信息收藏", @"信息安全轻松搞定", strCache], @[@"帮助反馈可以获得积分啦", @"0571-57579788"]];
+    NSArray *imageArray = @[@[@"memlog_07", @"memlog_19", @"memlog_21"], @[@"memlog_23", @"memlog_25", @"memlog_28", @"memlog_31", @"memlog_33", @"memlog_36"], @[@"memlog_39", @"memlog_43",@"修改资料_03"]];
+    NSArray *titleArray = @[@[@"企业等级", @"企业访问", @"产品访问"], @[@"企业管理", @"我的积分", @"我的评论", @"我的收藏", @"修改密码", @"清除缓存"], @[@"帮助与反馈", @"联系客服",@"关于纱线网"]];
+    NSArray *detailArray = @[@[[NSString stringWithFormat:@"实时数据(%@更新)", currentTime],companyVisistCount, productVisitCount],@[@"管理企业、产品、求购信息",@"积分换购享不停", @"评价消息一手掌握", @"信息收藏", @"信息安全轻松搞定", strCache], @[@"帮助反馈可以获得积分啦", @"0571-57579788",@"版本"]];
     if (indexPath.section == 0 && indexPath.row == 0) {
         XWTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:indentifier2 forIndexPath:indexPath];
         cell.titleImageView.image = [UIImage imageNamed:imageArray[indexPath.section][indexPath.row]];
@@ -520,7 +521,10 @@ static NSString *const indentifier2 = @"XWCell";
     } else if (2 == indexPath.section && 0 == indexPath.row) {//帮助于反馈
         HelpTableViewController *helpVC = [[HelpTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:helpVC animated:YES];
-    } else if (1 == indexPath.section && 4 == indexPath.row) {//修改密码
+    }else if (indexPath.section == 2 && indexPath.row == 2){//关于
+        AboutYarnViewController *aboutVC = [AboutYarnViewController new];
+        [self.navigationController pushViewController:aboutVC animated:YES];
+    }else if (1 == indexPath.section && 4 == indexPath.row) {//修改密码
         if (KUserImfor != nil) {
             ChangePWViewController *changeVC = [[ChangePWViewController alloc] initWithNibName:@"ChangePWViewController" bundle:nil];
             [self.navigationController pushViewController:changeVC animated:YES];
@@ -555,6 +559,7 @@ static NSString *const indentifier2 = @"XWCell";
     }else if (indexPath.section == 0 && indexPath.row == 2){//产品访问
         
     }
+    
 }
 #pragma mark - 清理缓存
 //获取缓存数据的大小
@@ -670,6 +675,10 @@ static NSString *const indentifier2 = @"XWCell";
         CGRect signRect = self.QianDaoLable.frame;
         signRect.origin.y = CGRectGetMidY(self.oldRect) - offset.y + 45;
         self.QianDaoLable.frame = signRect;
+        //签到btn
+        CGRect signBtnRect = self.attendanceBtn.frame;
+        signBtnRect.origin.y = CGRectGetMidY(self.oldRect) - offset.y + 30;
+        self.attendanceBtn.frame = signBtnRect;
     }
 }
 

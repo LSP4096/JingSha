@@ -314,6 +314,8 @@
 		4C87BE6F1D01606C00A4ACE0 /* WantBuyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */; };
 		4C87BE701D01606C00A4ACE0 /* WantBuyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */; };
 		4CC6FCE91CE5B1CD00BF43DC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */; };
+		4CC7F70A1D25005000E8D1A3 /* AboutYarnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC7F7081D25005000E8D1A3 /* AboutYarnViewController.m */; };
+		4CC7F70B1D25005000E8D1A3 /* AboutYarnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CC7F7091D25005000E8D1A3 /* AboutYarnViewController.xib */; };
 		8106B21C1BF4B4CC005F94C3 /* FirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */; };
 		8106B2211BF4BDFD005F94C3 /* HeadViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21F1BF4BDFD005F94C3 /* HeadViewTableViewCell.m */; };
 		8106B2221BF4BDFD005F94C3 /* HeadViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8106B2201BF4BDFD005F94C3 /* HeadViewTableViewCell.xib */; };
@@ -959,6 +961,9 @@
 		4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WantBuyTableViewCell.m; sourceTree = "<group>"; };
 		4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WantBuyTableViewCell.xib; sourceTree = "<group>"; };
 		4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		4CC7F7071D25005000E8D1A3 /* AboutYarnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutYarnViewController.h; sourceTree = "<group>"; };
+		4CC7F7081D25005000E8D1A3 /* AboutYarnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutYarnViewController.m; sourceTree = "<group>"; };
+		4CC7F7091D25005000E8D1A3 /* AboutYarnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutYarnViewController.xib; sourceTree = "<group>"; };
 		53500A056D00489A9B19570A /* Pods-JingSha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JingSha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JingSha/Pods-JingSha.debug.xcconfig"; sourceTree = "<group>"; };
 		70D4435EB28B3B92C4A248BB /* Pods-JingSha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JingSha.release.xcconfig"; path = "Pods/Target Support Files/Pods-JingSha/Pods-JingSha.release.xcconfig"; sourceTree = "<group>"; };
 		8106B2191BF4B4CC005F94C3 /* FirstPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageViewController.h; sourceTree = "<group>"; };
@@ -2555,6 +2560,9 @@
 		81BA8BA81BF447FF006954D6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4CC7F7071D25005000E8D1A3 /* AboutYarnViewController.h */,
+				4CC7F7081D25005000E8D1A3 /* AboutYarnViewController.m */,
+				4CC7F7091D25005000E8D1A3 /* AboutYarnViewController.xib */,
 				2109BEB51C4E55DD0065C664 /* XWMemberCenterViewController.h */,
 				2109BEB61C4E55DD0065C664 /* XWMemberCenterViewController.m */,
 				2109BEB71C4E55DD0065C664 /* XWMemberCenterViewController.xib */,
@@ -2847,6 +2855,7 @@
 				213E981A1C2971F0005EB63B /* convertHistoryTableViewCell.xib in Resources */,
 				813C93441BF0814B0071B5DB /* SearchTableViewCell.xib in Resources */,
 				81BBC1D71BED916900D1216A /* SearchViewController.xib in Resources */,
+				4CC7F70B1D25005000E8D1A3 /* AboutYarnViewController.xib in Resources */,
 				21EB8E1E1C21445100A84375 /* CitiesTableViewCell.xib in Resources */,
 				818BAD981BE77E00002B467A /* OnePhotoTableViewCell.xib in Resources */,
 				21CA63C71C27DA59003FA159 /* ProductPromptViewController.xib in Resources */,
@@ -3041,6 +3050,7 @@
 				21F84B1F1C76A788001322EE /* HuodongViewController.m in Sources */,
 				211054B31C16C5D300C8D62E /* TwoTableViewCell.m in Sources */,
 				211054961C167F0100C8D62E /* CompanyMessageViewController.m in Sources */,
+				4CC7F70A1D25005000E8D1A3 /* AboutYarnViewController.m in Sources */,
 				211579671C3364D300117428 /* IssueModel.m in Sources */,
 				210937571C0ECC19003CE1CD /* MyQuotedViewController.m in Sources */,
 				81367A321BE4758C0032C1E8 /* MBProgressHUD.m in Sources */,

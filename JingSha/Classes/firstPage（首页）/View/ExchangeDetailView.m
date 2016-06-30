@@ -29,6 +29,8 @@
 
 - (void)setModel:(SuppleMsgModel *)model {
     
+    self.id = model.Id;
+    
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, self.frame.size.width / 3 , self.frame.size.height / 3 * 2)];
     [imgView sd_setImageWithURL:[NSURL URLWithString:str(@"%@",model.photo)] placeholderImage:img(@"网络暂忙-193-133")];
     [self addSubview:imgView];
@@ -65,7 +67,7 @@
 }
 
 - (void)clickRegisterBtn {
-    [[SCLAlertView sharedInstance] showTitle:@"开发中，喵......" subTitle:nil closeButtonTitle:nil duration:1.5f];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ExchangeSign" object:nil userInfo:@{@"id":self.id}];
 }
 
 @end

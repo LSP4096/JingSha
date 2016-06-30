@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIView *cntView;
+@property (nonatomic, strong) NSString *id;
 
 @end
 
@@ -44,6 +45,7 @@
 - (void)setModel:(SuppleMsgModel *)model {
     _model = model;
     self.titleLabel.text = _model.title;
+    self.id = _model.Id;
     
     CGSize size = [_model.title sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0]}];
     CGSize size1 = CGSizeMake(ceilf(size.width), ceilf(size.height));
@@ -76,8 +78,10 @@
 
     // Configure the view for the selected state
 }
+
 - (IBAction)signBtnClick:(id)sender {
-    [[SCLAlertView sharedInstance] showTitle:@"开发中，喵......" subTitle:nil closeButtonTitle:nil duration:1.f];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ExchangeSign" object:nil userInfo:@{@"id":self.id}];
 }
 
 @end

@@ -170,7 +170,7 @@
                     <exclude reference="4Ze-hd-96z"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-306.5" y="386.5"/>
+            <point key="canvasLocation" x="-403.5" y="389.5"/>
         </view>
         <tapGestureRecognizer id="BdB-0Q-asF">
             <connections>
