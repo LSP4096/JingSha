@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLoginBtn];
+
 //    [KeyboardToolBar registerKeyboardToolBar:_userAccountTF];
 //    [KeyboardToolBar registerKeyboardToolBar:_pssWordTF];
     
@@ -49,10 +50,12 @@
 - (void)setupLoginBtn {
     NSUserDefaults *defals = [NSUserDefaults standardUserDefaults];
     self.userAccountTF.text = [defals objectForKey:KKeyWithUserTel];
+    MyLog(@"%@",[defals objectForKey:KKeyWithUserTel]);
     [defals synchronize];
     //取出密码
-    NSString *securety = [SSKeychain passwordForService:kServiceName account:kLoginStateKey];
-    self.pssWordTF.text = securety;
+//    NSString *securety =  [defals objectForKey:kLoginStateKey];
+//    self.pssWordTF.text = securety;
+//    MyLog(@"%@",securety);
     
       [self.userAccountTF addTarget:self action:@selector(textChangeAction:) forControlEvents:UIControlEventEditingChanged];
     
@@ -91,11 +94,15 @@
         MyLog(@"登录被返回");
         return;
     }
-    
+    [self loginWithUsercount:self.userAccountTF.text Password:self.pssWordTF.text.md5String];
+}
+
+//登录
+- (void)loginWithUsercount:(NSString *)usercount Password:(NSString *)password {
     [MBProgressHUD showMessage:@"登录中..." toView:self.view];
     
     @WeakObj(self);
-    [[HttpClient sharedClient] LoginWithAccount:self.userAccountTF.text Password:self.pssWordTF.text.md5String Complection:^(id resoutObj, NSError *error) {
+    [[HttpClient sharedClient] LoginWithAccount:usercount Password:password Complection:^(id resoutObj, NSError *error) {
         @StrongObj(self)
         if (error) {
             MyLog(@"=======登录请求错误======\n\n%@",error);
@@ -170,6 +177,7 @@
         req.scope = kAuthScope;
         req.state = kAuthState;
         req.openID = kAuthOpenID;
+
         [WXApi sendReq:req];
     }
     else {
@@ -195,72 +203,68 @@
         if (error) {
             MyLog(@"获取微信token失败%@",error.localizedDescription);
         }else {
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:resoutObj options:NSJSONReadingAllowFragments error:nil];
-            
-            [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"WXSaveToken"];
-            
+            MyLog(@"--微信token--%@",resoutObj);
+            [[NSUserDefaults standardUserDefaults] setObject:resoutObj forKey:@"WXSaveToken"];
             [Strongself saveTokenAndRequireWXInfo];
         }
     }];
-    
-//    AFHTTPRequestOperationManager *manage = [AFHTTPRequestOperationManager manager];
-//    manage.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    [manage GET:@"https://api.weixin.qq.com/sns/oauth2/access_token" parameters:@{@"appid":kWXAppId, @"secret":kWXAppSecret, @"code":notifi.object[@"code"], @"grant_type":@"authorization_code"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        
-//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-//        /*"access_token" = "OezXcEiiBSKSxW0eoylIeBPKSgTfwua1QABCnleka9CqGYr9J4wP2NHLDEFTP0vqsiS4DFDyXNQmYSaM6dW1s8MrQi6NSC9dV6ZqqjazKWQv3kfeozrm-fbZTXU80vLaWYflw07nkDhmX3KJHsEVxQ";
-//         "expires_in" = 7200;
-//         openid = o22U5xMHZTjYDi3VwBva3JW6mqGk;
-//         "refresh_token" = "OezXcEiiBSKSxW0eoylIeBPKSgTfwua1QABCnleka9CqGYr9J4wP2NHLDEFTP0vq6O1ZVOcyb8uL5dLrcuRaydRmY9BcYgJeOLqRjlLyp5HpBlYc2Ikja-RFm6ghGQ32r_iZfQfAQhtEqwk9ibf8vA";
-//         scope = "snsapi_userinfo";
-//         unionid = o4bo2vzI0vCvGTa11GBMkx0SbcwQ;*/
-//        
-//        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"WXSaveToken"];
-//        
-//        [self saveTokenAndRequireWXInfo];
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"access_token error-->%@", error.localizedDescription);
-//    }];
 }
+
+//"access_token" = "DQjoGpeU7fmnGMTklSkhGl7N6AYNMptxgoNuuglBOXWTyKmru-XwvjjBWKwjcgJpZFgNtSm4llkVIwPnxn6-_yGJH7IWaQQrAXEcuCVPIsc";
+//"expires_in" = 7200;
+//openid = oN1wct79pSXFjCJGzhQMnw3uZFak;
+//"refresh_token" = "62HJIekJCJLlTFLusQiZYvcSowEnq1XuYvpjhXRC46a6Jmz-SXDKdvSPkPjftJmZISYiZ1AkFMiBzyx0LY3ssAm8LInhU54N59vBwFKtgeM";
+//scope = "snsapi_userinfo";
+//unionid = "oia_PvtPxwJBMXyi1umBBZaoLxv8";
 
 - (void)saveTokenAndRequireWXInfo
 {
+    [NSThread sleepForTimeInterval:0.5];
+    
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXSaveToken"];
     [[HttpClient sharedClient] getWeChatUserInfoWithOpenId:dict[@"openid"] AccessToken:dict[@"access_token"] Complection:^(id resoutObj, NSError *error) {
         if (error) {
             MyLog(@"获取微信用户信息失败 %@",error.localizedDescription);
         }else {
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:resoutObj options:NSJSONReadingAllowFragments error:nil];
-            [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"WXResponse_UserInfo"];
+//            1.首先获取到微信的openID，然后通过openID去后台数据库查询该微信的openID有没有绑定好的手机号.
+//            2.如果没有绑定,首相第一步就是将微信用户的头像、昵称等等基本信息添加到数据库；然后通过手机获取验证码;最后绑定手机号。然后就登录App.
+//            3.如果有，那么后台就返回一个手机号，然后通过手机登录App.
+            
+            if (1) {
+                NSUserDefaults *defals = [NSUserDefaults standardUserDefaults];
+                self.userAccountTF.text = [defals objectForKey:KKeyWithUserTel];
+                MyLog(@"%@",[defals objectForKey:KKeyWithUserTel]);
+                [defals synchronize];
+                //取出密码
+                NSString *securety = [defals objectForKey:kLoginStateKey];
+                self.pssWordTF.text = securety;
+                MyLog(@"%@",securety);
+                
+                [self loginWithUsercount:@"" Password:@""];
+            
+            }else {
+                
+                MyLog(@"--微信用户信息--%@",resoutObj);
+                [[NSUserDefaults standardUserDefaults] setObject:resoutObj forKey:@"WXResponse_UserInfo"];
+                RegisterViewController *registerVC = [RegisterViewController new];
+                [self presentViewController:registerVC animated:YES completion:nil];
+            }
         }
     }];
-    
-    
-//    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXSaveToken"];
-//    AFHTTPRequestOperationManager *manage = [AFHTTPRequestOperationManager manager];
-//    manage.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    [manage GET:@"https://api.weixin.qq.com/sns/userinfo" parameters:@{@"openid":dict[@"openid"], @"access_token":dict[@"access_token"]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-//        //        NSLog(@"%@",dict);
-//        //        {
-//        //            city = "xxx";
-//        //            country = xxx;
-//        //            headimgurl = “http://wx.qlogo.cn/mmopen/xxxxxxx/0”;
-//        //            language = "zh_CN";
-//        //            nickname = xxx;
-//        //            openid = xxxxxxxxxxxxxxxxxxx;
-//        //            privilege =     (
-//        //            );
-//        //            province = "xxx";
-//        //            sex = 0;
-//        //            unionid = xxxxxxxxxxxxxxxxxx;
-//        //        }
-//        [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"WXResponse_UserInfo"];
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"userinfo error-->%@", error.localizedDescription);
-//    }];
 }
 
+/*
+ city = Hangzhou;
+ country = CN;
+ headimgurl = "http://wx.qlogo.cn/mmopen/thfLhcllFYoPEFlLSDoZrpfBicPIgjKIjCZeATicXX5q6pPicVUK3SXGeCZ0fS80BVGIiccCm7T3fgO0K8VDYweZfg/0";
+ language = en;
+ nickname = "丷戈";
+ openid = oN1wct79pSXFjCJGzhQMnw3uZFak;
+ privilege =     (
+ );
+ province = Zhejiang;
+ sex = 1;
+ unionid = "oia_PvtPxwJBMXyi1umBBZaoLxv8";
+ */
 
 @end

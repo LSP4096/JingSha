@@ -10,7 +10,7 @@
 #import "NSString+Hash.h"
 #import "AgreeProtocolViewController.h"
 #import "MZFormSheetController.h"
-
+#import "SSKeychain.h"
 #import "HttpClient+Authentication.h"
 
 @interface RegisterViewController ()
@@ -50,7 +50,6 @@
     [super viewDidLoad];
     self.title = @"注册";
     [self contifureTF];
-    
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -58,6 +57,11 @@
 }
 //配置输入框
 - (void)contifureTF {
+    NSDictionary *weixinDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXResponse_UserInfo"];
+    if (weixinDic) {
+        self.nameTF.text = weixinDic[@"nickname"];
+    }
+    
     [self configureTexfiled:self.nameTF iamgeName:@"注册_03" bgView:self.nameBGView];
     [self configureTexfiled:self.passWordTF iamgeName:@"tab-fg03" bgView:self.passWordBGView];
     [self configureTexfiled:self.makeSurePWTF iamgeName:@"tab-fg03" bgView:self.makeSurePWBGView];
@@ -197,6 +201,14 @@
         }else {
             if (![resoutObj[@"return_code"] integerValue]) {
                 [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+                [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumTF.text forKey:KKeyWithUserTel];
+
+                
+                //把账号密码传到服务器
+                
+                
+                
+                //退回登录界面
                 [Strongself backLoginVC:nil];
                 return ;
             }

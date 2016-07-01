@@ -73,7 +73,6 @@
     {
         SendAuthResp *rep = (SendAuthResp *)resp;
         if (rep.errCode == 0) {
-            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"WXLoginSuccess" object:@{@"code":rep.code}];
         }
         

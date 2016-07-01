@@ -30,7 +30,6 @@
 @interface XWMemberCenterViewController () <UITableViewDataSource, UITableViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 @property (strong, nonatomic) UIImagePickerController *picker;
 
-
 @property (weak, nonatomic) IBOutlet UIImageView *avartView;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *attendanceBtn;
@@ -64,6 +63,9 @@ static NSString *const indentifier2 = @"XWCell";
     
     self.oldRect = self.headerView.frame;
     
+    //设置微信登录头像
+    [self setAvartView];
+    
     self.view.backgroundColor = RGBColor(235, 235, 241);
     self.fd_prefersNavigationBarHidden = YES;
     [self setupTableView];
@@ -71,6 +73,14 @@ static NSString *const indentifier2 = @"XWCell";
     [self registerCell];
     
 }
+
+- (void)setAvartView {
+    NSDictionary *weChatDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXResponse_UserInfo"];
+    if (weChatDic) {
+        [self.avartView sd_setImageWithURL:weChatDic[@"headimgurl"] placeholderImage:nil];
+    }
+}
+
 - (void)registerCell{
     [self.contentTableView registerNib:[UINib nibWithNibName:@"XWTableViewCell" bundle:nil] forCellReuseIdentifier:indentifier2];
 }
