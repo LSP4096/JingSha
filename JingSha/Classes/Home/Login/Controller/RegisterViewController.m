@@ -57,7 +57,7 @@
 }
 //配置输入框
 - (void)contifureTF {
-    NSDictionary *weixinDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXResponse_UserInfo"];
+    NSDictionary *weixinDic = [SingleTon shareSingleTon].userInformation;
     if (weixinDic) {
         self.nameTF.text = weixinDic[@"nickname"];
     }
@@ -203,10 +203,6 @@
                 [SVProgressHUD showSuccessWithStatus:@"注册成功"];
                 [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumTF.text forKey:KKeyWithUserTel];
 
-                
-                //把账号密码传到服务器
-                
-                
                 
                 //退回登录界面
                 [Strongself backLoginVC:nil];

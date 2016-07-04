@@ -14,6 +14,8 @@
 #import "RequestMsgModel.h"
  #import "UIScrollView+EmptyDataSet.h"
 #import "IssueRequestViewController.h"
+#import "SingUpViewController.h"
+
 #define kTopViewHeight 65
 #define KSecViewHeight 120
 #define kPageCount 15
@@ -42,6 +44,12 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickBaoJiaBtn1:) name:@"BaoJia" object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BaoJia" object:nil];
 }
 
 - (void)viewDidLoad {
@@ -398,6 +406,7 @@
 //    [button addTarget:self action:@selector(rightBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 //}
+
 //取消searchbar背景色
 - (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
 {
@@ -498,6 +507,13 @@
     self.keyword = sender.titleLabel.text;
     self.searchBar.text = sender.titleLabel.text;
     [self refreshNewData];
+}
+
+- (void)clickBaoJiaBtn1:(NSNotification *)no {
+    NSString *id = no.userInfo[@"id"];
+    SingUpViewController * singUpVC = [[SingUpViewController alloc] init];
+    singUpVC.Id = id;
+    [self.navigationController pushViewController:singUpVC animated:YES];
 }
 
 /*

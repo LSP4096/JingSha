@@ -180,7 +180,7 @@
                 <outlet property="titleW" destination="2vC-4T-f1c" id="ElW-4f-bhi"/>
                 <outlet property="zhisu" destination="UvJ-Cj-sRl" id="sw6-zo-Fak"/>
             </connections>
-            <point key="canvasLocation" x="-1485" y="336"/>
+            <point key="canvasLocation" x="-1660" y="263"/>
         </tableViewCell>
     </objects>
     <resources>

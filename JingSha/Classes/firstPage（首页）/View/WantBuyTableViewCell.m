@@ -31,9 +31,7 @@
     self.cntView.layer.borderWidth = 0.001;
     self.cntView.layer.masksToBounds = YES;
     
-    self.titleImg.layer.cornerRadius = 12;
-    self.titleImg.layer.borderWidth = 0.001;
-    self.titleImg.layer.masksToBounds = YES;
+    self.titleImg.image = [UIImage clipWithImageName:@"qiugou" bordersW:0.001 borderColor:[UIColor clearColor]];
     
     self.BaoJia.layer.cornerRadius = 13;
     self.BaoJia.layer.borderWidth = 0.001;
@@ -46,6 +44,9 @@
     
     CGSize size = [_model.title sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0]}];
     CGSize size1 = CGSizeMake(ceilf(size.width), ceilf(size.height));
+    if (size1.width > kUIScreenWidth / 3) {
+        size1.width = kUIScreenWidth / 3;
+    }
     _titleW.constant = size1.width;
     
     self.zhisu.text = _model.zhisu;

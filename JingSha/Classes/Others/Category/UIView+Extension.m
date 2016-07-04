@@ -92,4 +92,22 @@
     return self.frame.size;
 }
 
+- (void)addCornerRadius:(CGFloat)radius
+            BorderWidth:(CGFloat)borderWidth
+        backgroundColor:(UIColor *)backgroundColor
+            borderColor:(UIColor *)borderColor{
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage clipWithImageName:@"" bordersW:borderWidth borderColor:borderColor]];
+    
+    [self insertSubview:imageView atIndex:0];
+}
+
+
+
+
+
+
+
+
+
 @end

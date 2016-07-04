@@ -89,8 +89,16 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 @implementation FirstPageViewController
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(liveMessage:) name:@"ExchangeSign" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickBaoJiaBtn:) name:@"BaoJia" object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ExchangeSign" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BaoJia" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -272,6 +280,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
      requestVC.fd_prefersNavigationBarHidden = YES;
     [self.navigationController pushViewController:requestVC animated:YES];
 }
+
 /**
  *  cell代理
  *
@@ -285,6 +294,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     requestDetailVC.shareTitle = model.title;
     [self.navigationController pushViewController:requestDetailVC animated:YES];
 }
+
 /**
  *  报价按钮
  *

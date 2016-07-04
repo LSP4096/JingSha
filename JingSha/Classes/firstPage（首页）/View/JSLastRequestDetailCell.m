@@ -30,9 +30,7 @@
     self.priceBtn.layer.borderWidth = 0.001;
     self.priceBtn.layer.masksToBounds = YES;
     
-    self.imgView.layer.cornerRadius = 12;
-    self.imgView.layer.borderWidth = 0.001;
-    self.imgView.layer.masksToBounds = YES;
+    self.imgView.image = [UIImage clipWithImageName:@"qiugou" bordersW:0.001 borderColor:[UIColor clearColor]];
 }
 
 -(void)setModel:(RequestMsgModel *)model {

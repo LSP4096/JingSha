@@ -63,6 +63,7 @@
 #pragma mark 裁剪图拍你的芳芳
 +(instancetype)clipWithImageName:(NSString *)name bordersW:(CGFloat)bordersW borderColor:(UIColor *)borderColor
 {
+
     UIImage *oldImage=[UIImage imageNamed:name];
     CGFloat borberW=bordersW;
     CGFloat imageW=oldImage.size.width+borberW*2;

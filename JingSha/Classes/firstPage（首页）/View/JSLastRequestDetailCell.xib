@@ -147,7 +147,7 @@
                 <outlet property="titleW" destination="Tg9-tw-k0p" id="ULV-fH-FJ1"/>
                 <outlet property="zhisu" destination="63q-qw-YA7" id="MCS-Ox-H39"/>
             </connections>
-            <point key="canvasLocation" x="-2829.5" y="332"/>
+            <point key="canvasLocation" x="-2979.5" y="327"/>
         </tableViewCell>
     </objects>
     <resources>

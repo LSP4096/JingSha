@@ -156,17 +156,17 @@ static NSString *const indentifier2 = @"XWCell";
         return;
     }
     self.contentTableView.tableFooterView.hidden = NO;
-    if ([KUserImfor[@"photo"] isKindOfClass:[NSNull class]]) {
+    if ([KUserImfor[@"headimgurl"] isKindOfClass:[NSNull class]]) {
         self.avartView.image = [UIImage imageNamed:@"tab-club"];
     }else{
         
-        [self.avartView sd_setImageWithURL:[NSURL URLWithString:KUserImfor[@"photo"]] placeholderImage:[UIImage imageNamed:@"tab-club"]];
+        [self.avartView sd_setImageWithURL:[NSURL URLWithString:KUserImfor[@"headimgurl"]] placeholderImage:[UIImage imageNamed:@"tab-club"]];
     }
     CGFloat avartViewH = _avartView.frame.size.height;
     _avartView.layer.cornerRadius = avartViewH / 2;
     _avartView.layer.masksToBounds = YES;
-    if (![KUserImfor[@"username"] isKindOfClass:[NSNull class]]) {
-        [self.loginBtn setTitle:KUserImfor[@"username"] forState:UIControlStateNormal];
+    if (![KUserImfor[@"nickname"] isKindOfClass:[NSNull class]]) {
+        [self.loginBtn setTitle:KUserImfor[@"nickname"] forState:UIControlStateNormal];
     }else{
         
     }
@@ -192,11 +192,11 @@ static NSString *const indentifier2 = @"XWCell";
     [allParameters setObject:userInfoDic[@"userid"] forKey:@"userid"];
     
     
-    [HttpTool postWithPath:netPath name:@"photo" imagePathList:@[self.avartView.image] params:allParameters success:^(id responseObj) {
+    [HttpTool postWithPath:netPath name:@"headimgurl" imagePathList:@[self.avartView.image] params:allParameters success:^(id responseObj) {
         if (![responseObj[@"return_code"] integerValue]) {
             [SingleTon shareSingleTon].userInformation = responseObj[@"data"];
             MyLog(@"提交%@", responseObj[@"data"]);
-            [self.avartView sd_setImageWithURL:[NSURL URLWithString:responseObj[@"data"][@"photo"]]];
+            [self.avartView sd_setImageWithURL:[NSURL URLWithString:responseObj[@"data"][@"headimgurl"]]];
         }
         if (!responseObj[@"return_code"]) {
             //配置数据

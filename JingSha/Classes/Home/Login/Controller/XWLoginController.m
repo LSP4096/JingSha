@@ -127,7 +127,7 @@
             }else {
                 [Strongself shakeButton];
                 [MBProgressHUD hideHUDForView:self.view];
-                //请求错误信息（后台设置：手机不存在／手机后密码错误）
+                //请求错误信息（后台设置：手机不存在／手机或密码错误）
                 [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", resoutObj[@"msg"]]];
             }
         }
@@ -230,7 +230,10 @@
 //            2.如果没有绑定,首相第一步就是将微信用户的头像、昵称等等基本信息添加到数据库；然后通过手机获取验证码;最后绑定手机号。然后就登录App.
 //            3.如果有，那么后台就返回一个手机号，然后通过手机登录App.
             
-            if (1) {
+            MyLog(@"--微信用户信息--%@",resoutObj);
+            [SingleTon shareSingleTon].userInformation = resoutObj;
+            
+            if ((1)) {
                 NSUserDefaults *defals = [NSUserDefaults standardUserDefaults];
                 self.userAccountTF.text = [defals objectForKey:KKeyWithUserTel];
                 MyLog(@"%@",[defals objectForKey:KKeyWithUserTel]);
@@ -240,12 +243,9 @@
                 self.pssWordTF.text = securety;
                 MyLog(@"%@",securety);
                 
-                [self loginWithUsercount:@"" Password:@""];
+                [self loginWithUsercount:self.userAccountTF.text Password:self.pssWordTF.text.md5String];
             
             }else {
-                
-                MyLog(@"--微信用户信息--%@",resoutObj);
-                [[NSUserDefaults standardUserDefaults] setObject:resoutObj forKey:@"WXResponse_UserInfo"];
                 RegisterViewController *registerVC = [RegisterViewController new];
                 [self presentViewController:registerVC animated:YES completion:nil];
             }

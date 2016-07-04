@@ -39,15 +39,15 @@
         return;
     }
     NSDictionary *userInfoDic = self.sendDic;
-    if ([userInfoDic[@"photo"] isKindOfClass:[NSString class]]) {
+    if ([userInfoDic[@"headimgurl"] isKindOfClass:[NSString class]]) {
         UIImageView *photo = [[UIImageView alloc] init];
-        [photo sd_setImageWithURL:[NSURL URLWithString:userInfoDic[@"photo"]] placeholderImage:[UIImage imageNamed:@"tab-club"]];
+        [photo sd_setImageWithURL:[NSURL URLWithString:userInfoDic[@"headimgurl"]] placeholderImage:[UIImage imageNamed:@"tab-club"]];
         self.avartBtn.layer.cornerRadius = _avartBtn.size.width / 2;
         self.avartBtn.layer.masksToBounds = YES;
         [self.avartBtn setBackgroundImage:photo.image forState:UIControlStateNormal];
     }
-    if ([userInfoDic[@"username"] isKindOfClass:[NSString class]]) {
-        [self.userNameBtn setTitle:userInfoDic[@"username"] forState:UIControlStateNormal];
+    if ([userInfoDic[@"nickname"] isKindOfClass:[NSString class]]) {
+        [self.userNameBtn setTitle:userInfoDic[@"nickname"] forState:UIControlStateNormal];
     }
     if ([userInfoDic[@"sex"] isKindOfClass:[NSString class]]) {
         if ([userInfoDic[@"sex"] integerValue] == 1) {
@@ -86,12 +86,12 @@
     NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
     [allParameters setObject:KUserImfor[@"userid"] forKey:@"userid"];
     [allParameters setObject:passWord forKey:@"password"];
-    [allParameters setObject:self.userNameBtn.currentTitle forKey:@"username"];
+    [allParameters setObject:self.userNameBtn.currentTitle forKey:@"nickname"];
     NSString *userSex = [NSString stringWithFormat:@"%zd", self.selectedSEXBtn.tag];
         [allParameters setObject:userSex forKey:@"sex"];
     [allParameters setObject:self.conpanyBtn.currentTitle forKey:@"gongsi"];
     [allParameters setObject:self.addressBtn.currentTitle forKey:@"addr"];
-    [HttpTool postWithPath:netPath name:@"photo" imagePathList:@[self.avartBtn.currentBackgroundImage] params:allParameters success:^(id responseObj) {
+    [HttpTool postWithPath:netPath name:@"headimgurl" imagePathList:@[self.avartBtn.currentBackgroundImage] params:allParameters success:^(id responseObj) {
         if (![responseObj[@"return_code"] integerValue]) {
             KUserImfor = responseObj[@"data"];
             MyLog(@"提交%@", responseObj[@"data"]);
