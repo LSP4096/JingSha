@@ -80,8 +80,6 @@
 
 - (void)setSize:(CGSize)size
 {
-//    self.width = size.width;
-//    self.height = size.height;
     CGRect frame = self.frame;
     frame.size = size;
     self.frame = frame;
@@ -92,18 +90,14 @@
     return self.frame.size;
 }
 
-- (void)addCornerRadius:(CGFloat)radius
-            BorderWidth:(CGFloat)borderWidth
-        backgroundColor:(UIColor *)backgroundColor
-            borderColor:(UIColor *)borderColor{
+- (void)setViewCircleWithRadius:(CGFloat)radius Size:(CGSize)size {
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage clipWithImageName:@"" bordersW:borderWidth borderColor:borderColor]];
+    UIImageView *imageView = [UIImageView new];
+    [imageView.image imageAddCornerWithRadius:radius andSize:size];
+    imageView.backgroundColor = [UIColor redColor];
     
     [self insertSubview:imageView atIndex:0];
 }
-
-
-
 
 
 

@@ -106,7 +106,7 @@
                                 </constraints>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Y8o-eC-Jie" firstAttribute="top" secondItem="YFY-Nn-jls" secondAttribute="bottom" id="MHI-7Y-dPm"/>
                             <constraint firstItem="YFY-Nn-jls" firstAttribute="top" secondItem="BO4-AJ-jjP" secondAttribute="top" id="Oma-V6-KjO"/>
@@ -132,7 +132,7 @@
                 <outlet property="headerView" destination="YFY-Nn-jls" id="0Xr-Pv-GRJ"/>
                 <outlet property="tableViewH" destination="cxp-mC-EdO" id="knz-s8-gMn"/>
             </connections>
-            <point key="canvasLocation" x="-8913" y="604"/>
+            <point key="canvasLocation" x="-9178" y="423"/>
         </tableViewCell>
     </objects>
     <resources>

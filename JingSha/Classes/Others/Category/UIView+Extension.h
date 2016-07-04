@@ -13,6 +13,6 @@
 @property (nonatomic, assign) CGFloat height;
 @property (nonatomic, assign) CGSize size;
 
-- (void)addCornerRadius:(CGFloat)radius BorderWidth:(CGFloat)borderWidth backgroundColor:(UIColor *)backgroundColor borderColor:(UIColor *)borderColor;
+- (void)setViewCircleWithRadius:(CGFloat)radius Size:(CGSize)size;
 
 @end
