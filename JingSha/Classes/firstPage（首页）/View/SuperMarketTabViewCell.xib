@@ -75,13 +75,13 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7d3-Cq-ppn">
                                 <rect key="frame" x="228" y="38" width="78" height="24"/>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.56078431370000004" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="nto-9T-Wxk"/>
                                     <constraint firstAttribute="width" constant="78" id="qnw-O6-RFF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="意向报名">
+                                <state key="normal" title="意向报名" backgroundImage="btnBG">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -157,4 +157,7 @@
             <point key="canvasLocation" x="-4961" y="406"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="btnBG" width="85" height="29"/>
+    </resources>
 </document>

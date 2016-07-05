@@ -15,11 +15,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ppu-CW-YUi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppu-CW-YUi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSn-aK-gTJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSn-aK-gTJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNM-WB-hoa">
+                                        <rect key="frame" x="129" y="45" width="85" height="30"/>
+                                    </button>
+                                </subviews>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,7 +46,7 @@
             <connections>
                 <outlet property="headView" destination="cSn-aK-gTJ" id="alE-gK-dTs"/>
             </connections>
-            <point key="canvasLocation" x="-1118.5" y="252.5"/>
+            <point key="canvasLocation" x="-1700.5" y="216"/>
         </tableViewCell>
     </objects>
 </document>

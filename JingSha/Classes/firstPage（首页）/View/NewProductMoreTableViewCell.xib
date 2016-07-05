@@ -83,13 +83,13 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6w-N8-4YX">
                                 <rect key="frame" x="224" y="35" width="78" height="27"/>
-                                <color key="backgroundColor" red="0.13725490196078433" green="0.5607843137254902" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="78" id="Mbx-YP-FyO"/>
                                     <constraint firstAttribute="height" constant="27" id="X1g-p7-UXE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="我要留言">
+                                <state key="normal" title="我要留言" backgroundImage="btnBG">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -154,5 +154,6 @@
     </objects>
     <resources>
         <image name="HotProduct" width="9" height="9"/>
+        <image name="btnBG" width="85" height="29"/>
     </resources>
 </document>

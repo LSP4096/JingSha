@@ -89,20 +89,6 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTI-ng-TNb">
-                        <rect key="frame" x="237" y="32" width="84" height="25"/>
-                        <color key="backgroundColor" red="0.13725490200000001" green="0.56078431370000004" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="84" id="Bmy-ZF-d5I"/>
-                            <constraint firstAttribute="height" constant="25" id="wNA-AR-au1"/>
-                        </constraints>
-                        <state key="normal" title="我要报价">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="clickPriceBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="J61-75-Umy"/>
-                        </connections>
-                    </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rD3-YW-Im6">
                         <rect key="frame" x="0.0" y="86" width="329" height="1"/>
                         <color key="backgroundColor" red="0.82684294869999997" green="0.82684294869999997" blue="0.82684294869999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -110,6 +96,21 @@
                             <constraint firstAttribute="height" constant="1" id="cDB-bx-yp4"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTI-ng-TNb">
+                        <rect key="frame" x="237" y="32" width="84" height="25"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="84" id="Bmy-ZF-d5I"/>
+                            <constraint firstAttribute="height" constant="25" id="wNA-AR-au1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="我要报价" backgroundImage="btnBG">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="clickPriceBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="J61-75-Umy"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="63q-qw-YA7" firstAttribute="leading" secondItem="5H9-pe-3Wk" secondAttribute="trailing" constant="8" id="4nP-sP-RID"/>
@@ -147,10 +148,11 @@
                 <outlet property="titleW" destination="Tg9-tw-k0p" id="ULV-fH-FJ1"/>
                 <outlet property="zhisu" destination="63q-qw-YA7" id="MCS-Ox-H39"/>
             </connections>
-            <point key="canvasLocation" x="-2979.5" y="327"/>
+            <point key="canvasLocation" x="-4254.5" y="335"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="btnBG" width="85" height="29"/>
         <image name="qiugou" width="9" height="9"/>
     </resources>
 </document>

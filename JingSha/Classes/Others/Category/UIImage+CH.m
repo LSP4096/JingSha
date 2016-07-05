@@ -136,45 +136,5 @@
     return newImage;
 }
 
-- (UIImage*)imageAddCornerWithRadius:(CGFloat)radius andSize:(CGSize)size{
-//    CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    
-//    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-//    CGContextRef ctx = UIGraphicsGetCurrentContext();
-//    UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(radius, radius)];
-//    CGContextAddPath(ctx,path.CGPath);
-//    CGContextClip(ctx);
-//    [self drawInRect:rect];
-//    CGContextDrawPath(ctx, kCGPathFillStroke);
-//    UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return newImage;
-    
-    CGFloat imageW=size.width;
-    CGFloat imageH=size.height;
-    CGSize  imageSize=CGSizeMake(imageW, imageH);
-    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
-    
-    CGContextRef ref=UIGraphicsGetCurrentContext();
-    //画一个大圆
-    CGFloat bigRadius=imageW*0.5;
-    CGFloat bigX=imageW*0.5;
-    CGFloat bigY=imageH*0.5;
-    CGContextAddArc(ref, bigX, bigY, bigRadius, 0, M_PI*2, 0);
-    //渲染到图层
-    CGContextFillPath(ref);
-    
-    //画一个小圆
-    CGFloat smallRadius=bigRadius;
-    CGContextAddArc(ref, bigX, bigY, smallRadius, 0, M_PI*2, 0);
-    //裁剪
-    CGContextClip(ref);
-    //画图
-//    [oldImage drawInRect:CGRectMake(borberW, borberW, oldImage.size.width, oldImage.size.height)];
-    //去除图片
-    UIImage *newImage=UIGraphicsGetImageFromCurrentImageContext();
-    return newImage;
-}
-
 
 @end

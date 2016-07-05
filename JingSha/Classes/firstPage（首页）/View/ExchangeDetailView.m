@@ -58,9 +58,10 @@
     [regiBtn setTitle:@"意向报名" forState:UIControlStateNormal];
     regiBtn.titleLabel.font = [UIFont systemFontOfSize:11.0f];
     [regiBtn setBackgroundColor:RGBColor(35, 143, 219) forState:UIControlStateNormal];
-    regiBtn.layer.cornerRadius = 11;
-    regiBtn.layer.borderWidth = 0.001;
-    regiBtn.layer.masksToBounds = YES;
+    [regiBtn setBackgroundImage:[UIImage imageNamed:@"btnBG"] forState:UIControlStateNormal];
+//    regiBtn.layer.cornerRadius = 11;
+//    regiBtn.layer.borderWidth = 0.001;
+//    regiBtn.layer.masksToBounds = YES;
     [regiBtn addTarget:self action:@selector(clickRegisterBtn) forControlEvents:UIControlEventTouchUpInside];
     regiBtn.frame = CGRectMake(CGRectGetMaxX(imgView.frame) + 7,CGRectGetMaxY(lastLabel.frame) + 5 , self.width - imgView.size.width - 30, 22);
     [self addSubview:regiBtn];

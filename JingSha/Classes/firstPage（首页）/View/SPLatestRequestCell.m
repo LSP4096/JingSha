@@ -29,10 +29,6 @@ static NSString *const reUseCellId = @"JSLastRequestDetailCell";
     [super awakeFromNib];
     // Initialization code
     
-//    CGSize size = self.cntView.size;
-//    self.cntView.backgroundColor = [UIColor clearColor];
-//    [self.cntView setViewCircleWithRadius:5 Size:size];
-    
     self.cntView.layer.cornerRadius = 5;
     self.cntView.layer.borderWidth = 0.001;
     self.cntView.layer.masksToBounds = YES;

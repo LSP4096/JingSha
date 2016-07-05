@@ -33,9 +33,9 @@
     
     self.titleImg.image = [UIImage clipWithImageName:@"qiugou" bordersW:0.001 borderColor:[UIColor clearColor]];
     
-    self.BaoJia.layer.cornerRadius = 13;
-    self.BaoJia.layer.borderWidth = 0.001;
-    self.BaoJia.layer.masksToBounds = YES;
+//    self.BaoJia.layer.cornerRadius = 13;
+//    self.BaoJia.layer.borderWidth = 0.001;
+//    self.BaoJia.layer.masksToBounds = YES;
 }
 
 - (void)setModel:(RequestMsgModel *)model{

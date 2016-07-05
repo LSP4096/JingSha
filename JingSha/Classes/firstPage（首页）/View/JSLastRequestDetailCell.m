@@ -26,10 +26,6 @@
     [super awakeFromNib];
     // Initialization code
     
-    self.priceBtn.layer.cornerRadius = 11;
-    self.priceBtn.layer.borderWidth = 0.001;
-    self.priceBtn.layer.masksToBounds = YES;
-    
     self.imgView.image = [UIImage clipWithImageName:@"qiugou" bordersW:0.001 borderColor:[UIColor clearColor]];
 }
 

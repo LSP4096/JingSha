@@ -90,14 +90,6 @@
     return self.frame.size;
 }
 
-- (void)setViewCircleWithRadius:(CGFloat)radius Size:(CGSize)size {
-    
-    UIImageView *imageView = [UIImageView new];
-    [imageView.image imageAddCornerWithRadius:radius andSize:size];
-    imageView.backgroundColor = [UIColor redColor];
-    
-    [self insertSubview:imageView atIndex:0];
-}
 
 
 
