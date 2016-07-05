@@ -53,9 +53,9 @@
     MyLog(@"%@",[defals objectForKey:KKeyWithUserTel]);
     [defals synchronize];
     //取出密码
-//    NSString *securety =  [defals objectForKey:kLoginStateKey];
-//    self.pssWordTF.text = securety;
-//    MyLog(@"%@",securety);
+    NSString *securety = [SSKeychain passwordForService:kServiceName account:kLoginStateKey];
+    self.pssWordTF.text = securety;
+    MyLog(@"%@",securety);
     
       [self.userAccountTF addTarget:self action:@selector(textChangeAction:) forControlEvents:UIControlEventEditingChanged];
     

@@ -163,12 +163,6 @@ static NSString *const cityReuseIdentifier = @"CitiesTableViewCell";
     
 }
 
-
-
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

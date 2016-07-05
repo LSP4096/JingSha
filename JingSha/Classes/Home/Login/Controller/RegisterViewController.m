@@ -201,9 +201,6 @@
         }else {
             if (![resoutObj[@"return_code"] integerValue]) {
                 [SVProgressHUD showSuccessWithStatus:@"注册成功"];
-                [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumTF.text forKey:KKeyWithUserTel];
-
-                
                 //退回登录界面
                 [Strongself backLoginVC:nil];
                 return ;
