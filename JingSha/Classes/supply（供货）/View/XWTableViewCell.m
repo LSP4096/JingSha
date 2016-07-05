@@ -23,5 +23,6 @@
 - (void)setStarCount:(NSString *)starCount{
     _starCount = starCount;
     self.xingjiView.value = [_starCount integerValue];
+    
 }
 @end

@@ -523,7 +523,7 @@ static NSString *const indentifier2 = @"XWCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //刚选中又马上取消选中状态，格子不变色
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (1 == indexPath.section && 5 == indexPath.row) {//清除缓存
         [self clear];
     } else if (2 == indexPath.section && 1 == indexPath.row) {//联系客服
@@ -562,8 +562,8 @@ static NSString *const indentifier2 = @"XWCell";
 //        BuiltViewController * buitVC = [[BuiltViewController alloc] init];
 //        [self.navigationController pushViewController:buitVC animated:YES];
     }else if (indexPath.section == 0 && indexPath.row == 0){//企业等级
-//        RealTimeDataViewController * realTimeVC = [[RealTimeDataViewController alloc] init];
-//        [self.navigationController pushViewController:realTimeVC animated:YES];
+        RealTimeDataViewController * realTimeVC = [[RealTimeDataViewController alloc] init];
+        [self.navigationController pushViewController:realTimeVC animated:YES];
     }else if (indexPath.section == 0 && indexPath.row == 1){//企业访问
         
     }else if (indexPath.section == 0 && indexPath.row == 2){//产品访问

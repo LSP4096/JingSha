@@ -31,9 +31,9 @@
     self.cntView.layer.borderWidth = 0.001;
     self.cntView.layer.masksToBounds = YES;
     
-    self.messageBtn.layer.cornerRadius = 12;
-    self.messageBtn.layer.borderWidth = 0.01;
-    self.messageBtn.layer.masksToBounds = YES;
+//    self.messageBtn.layer.cornerRadius = 12;
+//    self.messageBtn.layer.borderWidth = 0.01;
+//    self.messageBtn.layer.masksToBounds = YES;
 }
 
 - (void)setModel:(ProOptionModel *)model{//这里返回的值全部都是有值的或者@“”的。没有<NULL>

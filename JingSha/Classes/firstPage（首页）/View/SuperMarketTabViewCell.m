@@ -36,9 +36,9 @@
     self.cntView.layer.borderWidth = 0.001;
     self.cntView.layer.masksToBounds = YES;
     
-    self.signBtn.layer.cornerRadius = 12;
-    self.signBtn.layer.borderWidth = 0.001;
-    self.signBtn.layer.masksToBounds = YES;
+//    self.signBtn.layer.cornerRadius = 12;
+//    self.signBtn.layer.borderWidth = 0.001;
+//    self.signBtn.layer.masksToBounds = YES;
     
 }
 

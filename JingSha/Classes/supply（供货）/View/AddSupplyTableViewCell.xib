@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A2301" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,7 +16,6 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Me_addSupply" translatesAutoresizingMaskIntoConstraints="NO" id="yWo-Ix-c1X">
                         <rect key="frame" x="20" y="0.0" width="280" height="110"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="110" id="XTL-Lu-Rgz"/>
                         </constraints>
@@ -28,7 +27,6 @@
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS7-UJ-DiL">
                         <rect key="frame" x="140" y="25" width="40" height="40"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="FFt-3l-2fh"/>
                             <constraint firstAttribute="height" constant="40" id="ICw-Yt-Qpk"/>
@@ -37,7 +35,6 @@
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请插入图片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFf-M2-U4r">
                         <rect key="frame" x="130" y="80" width="60" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="JTf-NU-p5j"/>
                             <constraint firstAttribute="width" constant="60" id="KeS-c5-HpB"/>
@@ -48,7 +45,6 @@
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UDK-5M-FRR" customClass="MyTextView">
                         <rect key="frame" x="20" y="120" width="280" height="69"/>
-                        <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -61,7 +57,6 @@
                     </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khq-jr-LHN">
                         <rect key="frame" x="277" y="5" width="18" height="22"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="7jP-2m-O3F"/>
                             <constraint firstAttribute="width" constant="18" id="R84-C7-tTB"/>
@@ -72,7 +67,6 @@
                         </connections>
                     </button>
                 </subviews>
-                <animations/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="khq-jr-LHN" secondAttribute="trailing" constant="25" id="1Da-3N-MGj"/>
                     <constraint firstItem="khq-jr-LHN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="1Sl-dr-0aX"/>
@@ -89,7 +83,6 @@
                     <constraint firstItem="yWo-Ix-c1X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vY5-aL-OME"/>
                 </constraints>
             </tableViewCellContentView>
-            <animations/>
             <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="deleteBtn" destination="khq-jr-LHN" id="n1F-Q8-psM"/>

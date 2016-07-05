@@ -52,6 +52,7 @@
     self.userAccountTF.text = [defals objectForKey:KKeyWithUserTel];
     MyLog(@"%@",[defals objectForKey:KKeyWithUserTel]);
     [defals synchronize];
+    
     //取出密码
     NSString *securety = [SSKeychain passwordForService:kServiceName account:kLoginStateKey];
     self.pssWordTF.text = securety;
@@ -71,6 +72,7 @@
         [tf resignFirstResponder];
     }
 }
+
 /**返回按钮事件*/
 - (IBAction)backItem:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
