@@ -202,18 +202,14 @@ UISearchBarDelegate
 }
 
 - (void)configerDataWithPage:(NSInteger)page{
-    
-    [MBProgressHUD showMessage:@"请稍后..." toView:self.view];
-    
+
     [[HttpClient sharedClient] getExchangesCenterWithPage:page PageCount:kPageCount Type:2 KeyWord:self.keyword Complection:^(id resoutObj, NSError *error) {
         if (error) {
             MyLog(@"%@",error);
-            [MBProgressHUD hideHUDForView:self.view];
         }else {
             [self getDataFromResponseObj:resoutObj];
             [_baseTabView.header endRefreshing];
             [_baseTabView.footer endRefreshing];
-            [MBProgressHUD hideHUDForView:self.view];
         }
     }];
 }

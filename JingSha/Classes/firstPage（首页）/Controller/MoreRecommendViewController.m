@@ -113,18 +113,11 @@
         [allParams setObject:self.type forKey:@"type"];
     }
     MyLog(@"----------%@", allParams);
-    
-    [MBProgressHUD showMessage:@"请稍后..." toView:self.view];
-    
     [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
         [self getDataFromRespomseObjAboutSearch:responseObj];
         [_baseTable.header endRefreshing];
         [_baseTable.footer endRefreshing];
-        
-        [MBProgressHUD hideHUDForView:self.view];
-        
     } failure:^(NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view];
     }];
 }
 

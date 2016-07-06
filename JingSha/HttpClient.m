@@ -68,6 +68,7 @@ typedef void(^afFailBlock)(NSURLSessionDataTask *task, NSError *error);
     //请求成功的回调
     afSuccessBlock successBlock = ^(NSURLSessionDataTask *task, id responseObj){
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
         resultBlock(responseObj, nil);
     };
     

@@ -1695,7 +1695,7 @@
 			name = Resource;
 			sourceTree = "<group>";
 		};
-		4C4664F71CEC3141005E31C1 /* Request */ = {
+		4C4664F71CEC3141005E31C1 /* NETRequest */ = {
 			isa = PBXGroup;
 			children = (
 				81367A201BE4758C0032C1E8 /* BaseHttpTool.h */,
@@ -1713,7 +1713,7 @@
 				4C7C45231D22257100A025DD /* HttpClient+WXLogin.h */,
 				4C7C45241D22257100A025DD /* HttpClient+WXLogin.m */,
 			);
-			name = Request;
+			name = NETRequest;
 			sourceTree = "<group>";
 		};
 		4C4664F81CEC31A8005E31C1 /* Vendors */ = {
@@ -1936,7 +1936,7 @@
 			children = (
 				4C4664F31CEC2F51005E31C1 /* Appdelegate */,
 				4C4664F41CEC2F7E005E31C1 /* Module */,
-				4C4664F71CEC3141005E31C1 /* Request */,
+				4C4664F71CEC3141005E31C1 /* NETRequest */,
 				4C4664F51CEC2FFD005E31C1 /* Helper */,
 				813679F21BE4758C0032C1E8 /* Others */,
 				4C4664F61CEC30AC005E31C1 /* Resource */,
