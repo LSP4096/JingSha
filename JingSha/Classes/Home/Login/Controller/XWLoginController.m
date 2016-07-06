@@ -114,6 +114,7 @@
                 // 保存密码
                 [SSKeychain setPassword:Strongself.pssWordTF.text forService:kServiceName account:kLoginStateKey];
                 MyLog(@"登录成功， %@, %@", [SingleTon shareSingleTon].userInformation, resoutObj[@"msg"]);
+                MyLog(@"%@",resoutObj);
                 
                 RootViewController *root = [[RootViewController alloc] init];
                 root.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -130,6 +131,18 @@
         }
     }];
 }
+
+//data =     {
+//    addr = "请编辑公司地址";
+//    gongsi = "请编辑的公司名字";
+//    photo = "http://202.91.244.52/upload/1776/14675974123048.jpg";
+//    sex = 1;
+//    tel = 13456893451;
+//    userid = 1776;
+//    username = "丷戈";
+//};
+//msg = OK;
+//"return_code" = 0;
 
 #pragma mark - 注册
 - (IBAction)handleRegister:(UIButton *)sender {
@@ -217,10 +230,13 @@
 
 - (void)saveTokenAndRequireWXInfo
 {
-    [NSThread sleepForTimeInterval:0.5];
     
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXSaveToken"];
+    
+    //改成后台数据请求
+    @WeakObj(self);
     [[HttpClient sharedClient] getWeChatUserInfoWithOpenId:dict[@"openid"] AccessToken:dict[@"access_token"] Complection:^(id resoutObj, NSError *error) {
+        @StrongObj(self);
         if (error) {
             MyLog(@"获取微信用户信息失败 %@",error.localizedDescription);
         }else {
@@ -228,22 +244,18 @@
 //            2.如果没有绑定,首相第一步就是将微信用户的头像、昵称等等基本信息添加到数据库；然后通过手机获取验证码;最后绑定手机号。然后就登录App.
 //            3.如果有，那么后台就返回一个手机号，然后通过手机登录App.
             
-            MyLog(@"--微信用户信息--%@",resoutObj);
-            [SingleTon shareSingleTon].userInformation = resoutObj;
-            
-            if ((1)) {
-                NSUserDefaults *defals = [NSUserDefaults standardUserDefaults];
-                self.userAccountTF.text = [defals objectForKey:KKeyWithUserTel];
-                MyLog(@"%@",[defals objectForKey:KKeyWithUserTel]);
-                [defals synchronize];
-                //取出密码
-                NSString *securety = [defals objectForKey:kLoginStateKey];
-                self.pssWordTF.text = securety;
-                MyLog(@"%@",securety);
+            if (resoutObj[@""]) { //已经注册过的
+                [SingleTon shareSingleTon].userInformation = resoutObj[@"data"];
+                MyLog(@"登录成功， %@, %@", [SingleTon shareSingleTon].userInformation, resoutObj[@"msg"]);
                 
-//                [self loginWithUsercount:self.userAccountTF.text Password:self.pssWordTF.text.md5String];
-            
-            }else {
+                RootViewController *root = [[RootViewController alloc] init];
+                root.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                
+                [Strongself presentViewController:root animated:YES completion:nil];
+                
+                Strongself.navigationController.navigationBarHidden = NO;
+                
+            }else { //第一次注册
                 RegisterViewController *registerVC = [RegisterViewController new];
                 [self presentViewController:registerVC animated:YES completion:nil];
             }
