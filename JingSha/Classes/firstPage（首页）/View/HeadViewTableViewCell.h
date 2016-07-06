@@ -32,7 +32,5 @@
 
 @property (nonatomic, weak) id<HeadViewTableViewCellDelegate> delegate;
 
-
-
 //- (void)configureData;
 @end

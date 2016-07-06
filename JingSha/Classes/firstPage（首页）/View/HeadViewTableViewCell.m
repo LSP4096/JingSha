@@ -49,7 +49,7 @@
                                                    } else {
                                                        MyLog(@"首页新品推荐数据%@\n", resoutObj);
                                                        [Strongself getDataFromResponseObj:resoutObj];
-                                                       [Strongself configureData];
+                                                       [self configureData];
                                                    }
                                                }];
 }
@@ -80,9 +80,9 @@
 //}
 
 //配置滚动视图
-- (void)configureData {
+- (void)configureData{
     //轮播图片
-    NSMutableArray *imagesURLs = [NSMutableArray new];
+    NSMutableArray *imagesURLs = [@[]mutableCopy];
     for (int i = 0; i < self.bannerDataAry.count; i++) {
         [imagesURLs addObject:[self.bannerDataAry[i] photo]];
     }

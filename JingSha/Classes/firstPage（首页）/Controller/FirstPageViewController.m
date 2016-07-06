@@ -71,6 +71,7 @@ JSLasterRequestDetailCellDelegate
 
 @property (nonatomic, strong) TotalProviderTableViewCell *cell;
 @property (nonatomic ,strong) NSMutableArray * attentionAry;//例子，实验市场关注里面返回的cell样式和高度
+
 @property (nonatomic, assign) NSInteger NewProCount;
 @property (nonatomic, assign) NSInteger NewBuyCount;
 @property (nonatomic, assign) NSInteger pageCount;
@@ -89,7 +90,7 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 @implementation FirstPageViewController
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(liveMessage:) name:@"ExchangeSign" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clickBaoJiaBtn:) name:@"BaoJia" object:nil];
 }
@@ -101,17 +102,22 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BaoJia" object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [self setupLeftAndRightItem];
-    [self refreshFirstPageData];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setupTableView];
     [self registeCell];
 }
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [self setupLeftAndRightItem];
+    [self refreshFirstPageData];
+}
+
+
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
@@ -161,12 +167,14 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     self.NewBuyCount = newBuyArr.count;
     self.pageCount = [dict[@"userlist"] count];
     self.attentionAry = [NSMutableArray array];
+    
     if (![dict[@"guanzhu"] isKindOfClass:[NSNull class]]) {
         for (NSDictionary * smallDict in dict[@"guanzhu"]) {
             FirstPageAttModel * model = [FirstPageAttModel objectWithKeyValues:smallDict];
             [self.attentionAry addObject:model];
         }
     }
+    
     [_contentTableView reloadData];
     [self setupLeftAndRightItem];
 }
@@ -374,7 +382,6 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
         return 261 * KProportionHeight * 3/2;
     }
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.001;
