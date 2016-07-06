@@ -246,14 +246,16 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
 - (void)handlePushToSearchWithSender:(UIButton *)sender{
     [self handlePuthAllSelectedWith:sender];
 }
-- (void)clickedWantBuyViewToPush:(NSString *)sender{
-    RequestViewController  *requestVC = [[RequestViewController alloc] init];
-    [self.navigationController pushViewController:requestVC animated:YES];
-}
-- (void)clickedSuperMarketViewToPush:(NSString *)sender{
-    SuperMarketViewController * superMarketVC = [[SuperMarketViewController alloc] init];
-    [self.navigationController pushViewController:superMarketVC animated:YES];
-}
+
+//- (void)clickedWantBuyViewToPush:(NSString *)sender{
+//    RequestViewController  *requestVC = [[RequestViewController alloc] init];
+//    [self.navigationController pushViewController:requestVC animated:YES];
+//}
+//- (void)clickedSuperMarketViewToPush:(NSString *)sender{
+//    SuperMarketViewController * superMarketVC = [[SuperMarketViewController alloc] init];
+//    [self.navigationController pushViewController:superMarketVC animated:YES];
+//}
+
 - (void)bannerPush:(BannerModel *)model{
     BannerViewController * bannerVC = [[BannerViewController alloc] init];
     bannerVC.TopTitle = model.title;
