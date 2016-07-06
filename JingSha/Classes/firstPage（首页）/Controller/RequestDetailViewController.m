@@ -21,6 +21,7 @@
 #import "GongHuoTableViewController.h"
 #import "NJKWebViewProgress.h"
 #import "NJKWebViewProgressView.h"
+
 @interface RequestDetailViewController ()<UIWebViewDelegate, NJKWebViewProgressDelegate>
 @property (nonatomic, strong)UIButton * rightTopButton;
 @property (nonatomic, strong)UIView * backView;

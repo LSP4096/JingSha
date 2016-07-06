@@ -348,12 +348,19 @@
     if (self.keyword != nil) {
         [allParams setObject:_keyword forKey:@"keyword"];
     }
+    
+    [MBProgressHUD showMessage:@"请稍后..." toView:self.view];
+    
     [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
         [_baseTable.header endRefreshing];
         [_baseTable.footer endRefreshing];
+        
+        [MBProgressHUD hideHUDForView:self.view];
+        
         [self getDataFromResponseObj:responseObj];
     } failure:^(NSError *error) {
         MyLog(@"首页求购信息错误:%@",error);
+        [MBProgressHUD hideHUDForView:self.view];
     }];
 }
 
