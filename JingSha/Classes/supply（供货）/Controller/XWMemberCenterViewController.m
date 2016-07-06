@@ -450,7 +450,7 @@ static NSString *const indentifier2 = @"XWCell";
     
     NSArray *imageArray = @[@[@"memlog_07", @"memlog_19", @"memlog_21"], @[@"memlog_23", @"memlog_25", @"memlog_28", @"memlog_31", @"memlog_33", @"memlog_36"], @[@"memlog_39", @"memlog_43",@"修改资料_03"]];
     NSArray *titleArray = @[@[@"企业等级", @"企业访问", @"产品访问"], @[@"企业管理", @"我的积分", @"我的评论", @"我的收藏", @"修改密码", @"清除缓存"], @[@"帮助与反馈", @"联系客服",@"关于纱线网"]];
-    NSArray *detailArray = @[@[[NSString stringWithFormat:@"实时数据(%@更新)", currentTime],companyVisistCount, productVisitCount],@[@"管理企业、产品、求购信息",@"积分换购享不停", @"评价消息一手掌握", @"信息收藏", @"信息安全轻松搞定", strCache], @[@"帮助反馈可以获得积分啦", @"0571-57579788",@"版本"]];
+    NSArray *detailArray = @[@[[NSString stringWithFormat:@"实时数据(%@更新)", currentTime],companyVisistCount, productVisitCount],@[@"管理企业、产品、求购信息",@"积分换购享不停", @"评价消息一手掌握", @"信息收藏", @"信息安全轻松搞定", strCache], @[@"帮助反馈可以获得积分啦", @"0571-57579788",@"版本信息"]];
     if (indexPath.section == 0 && indexPath.row == 0) {
         XWTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:indentifier2 forIndexPath:indexPath];
         cell.titleImageView.image = [UIImage imageNamed:imageArray[indexPath.section][indexPath.row]];

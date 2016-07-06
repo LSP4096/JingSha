@@ -96,15 +96,10 @@
         MyLog(@"登录被返回");
         return;
     }
-    [self loginWithUsercount:self.userAccountTF.text Password:self.pssWordTF.text.md5String];
-}
-
-//登录
-- (void)loginWithUsercount:(NSString *)usercount Password:(NSString *)password {
     [MBProgressHUD showMessage:@"登录中..." toView:self.view];
     
     @WeakObj(self);
-    [[HttpClient sharedClient] LoginWithAccount:usercount Password:password Complection:^(id resoutObj, NSError *error) {
+    [[HttpClient sharedClient] LoginWithAccount:self.userAccountTF.text Password:self.pssWordTF.text.md5String Complection:^(id resoutObj, NSError *error) {
         @StrongObj(self)
         if (error) {
             MyLog(@"=======登录请求错误======\n\n%@",error);
@@ -168,6 +163,7 @@
     return ident;
 }
 
+#pragma mark - 微信登录
 - (IBAction)weiXinLogin:(id)sender {
     if ([WXApi isWXAppInstalled]) {
         
@@ -245,7 +241,7 @@
                 self.pssWordTF.text = securety;
                 MyLog(@"%@",securety);
                 
-                [self loginWithUsercount:self.userAccountTF.text Password:self.pssWordTF.text.md5String];
+//                [self loginWithUsercount:self.userAccountTF.text Password:self.pssWordTF.text.md5String];
             
             }else {
                 RegisterViewController *registerVC = [RegisterViewController new];
