@@ -117,15 +117,6 @@ static NSString *const reuseIdentifierWithExchangeCenter = @"SPExchangeCenterCel
     [self refreshFirstPageData];
 }
 
-
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ExchangeSign" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BaoJia" object:nil];
-}
-
 - (void)liveMessage:(NSNotification *)info {
     LeaveMessageTableViewController *leaveMess = [LeaveMessageTableViewController new];
     leaveMess.chanpinID = [info.userInfo objectForKey:@"id"];
