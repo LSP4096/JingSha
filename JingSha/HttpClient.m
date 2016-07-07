@@ -42,6 +42,7 @@ typedef void(^afFailBlock)(NSURLSessionDataTask *task, NSError *error);
     return [self sessionDataTaskWithRequestName:requestName RoutePath:path HttpMethod:@"post" params:params block:resultBlock];
 }
 
+
 - (NSURLSessionDataTask *)sessionDataTaskWithRequestName:(NSString *)requestName
                                                RoutePath:(NSString *)path
                                               HttpMethod:(NSString *)httpMethod
@@ -90,6 +91,14 @@ typedef void(^afFailBlock)(NSURLSessionDataTask *task, NSError *error);
     } else if ([httpMethod isEqualToString:@"delete"]){
         return [self DELETE:path parameters:params success:successBlock failure:failBlock];
     } else {
+//        [self POST:path parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//            for (int index=0; index<imageList.count; index++) {
+//                UIImage * image=[imageList objectAtIndex:index];
+//                NSData * imageData=UIImageJPEGRepresentation(image, 0.8);
+//                NSString * fileName=[NSString stringWithFormat:@"img%d.jpg",index];
+//                [formData appendPartWithFileData:imageData name:name fileName:fileName mimeType:@"image/jpg/file"];
+//            }
+//        } success:successBlock failure:failBlock];
         return nil;
     }
     

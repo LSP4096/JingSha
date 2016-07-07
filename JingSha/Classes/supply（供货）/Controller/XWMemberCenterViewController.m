@@ -89,18 +89,22 @@ static NSString *const indentifier2 = @"XWCell";
     //请求数据
     @WeakObj(self)
     [[HttpClient sharedClient] postUserinfoComplection:^(id resoutObj, NSError *error) {
-        @StrongObj(self)
-        Strongself.proclick = resoutObj[@"proclick"];
-        NSDictionary * dict = resoutObj[@"data"];
-        MyLog(@"%@",resoutObj[@"data"]);
-        Strongself.click = dict[@"click"];
-        Strongself.xingji = dict[@"xinji"];
-        Strongself.num = dict[@"num"];
-        Strongself.qiandao = resoutObj[@"qiandao"];
-        [Strongself hiddenOrShow];
-        [_contentTableView reloadData];
+        
+        if (!error) {
+            @StrongObj(self)
+            Strongself.proclick = resoutObj[@"proclick"];
+            NSDictionary * dict = resoutObj[@"data"];
+            MyLog(@"%@",resoutObj[@"data"]);
+            Strongself.click = dict[@"click"];
+            Strongself.xingji = dict[@"xinji"];
+            Strongself.num = dict[@"num"];
+            Strongself.qiandao = resoutObj[@"qiandao"];
+            [Strongself hiddenOrShow];
+            [_contentTableView reloadData];
+        }else {
+            
+        }
     }];
-    
 }
 
 - (void)hiddenOrShow{
@@ -182,13 +186,31 @@ static NSString *const indentifier2 = @"XWCell";
             [self.navigationController pushViewController:loginVC animated:YES];
     }
 }
+
 #pragma mark - 提交编辑
 - (void)handleSubmit {
+//    @WeakObj(self)
+//    [[HttpClient sharedClient] postEditeUserifoComplection:^(id resoutObj, NSError *error) {
+//        
+//        @StrongObj(self)
+//        if (!error) {
+//            if (![resoutObj[@"return_code"] integerValue]) {
+//                [SingleTon shareSingleTon].userInformation = resoutObj[@"data"];
+//                MyLog(@"提交%@", resoutObj[@"data"]);
+//                [Strongself.avartView sd_setImageWithURL:[NSURL URLWithString:resoutObj[@"data"][@"photo"]]];
+//            }
+//            if (!resoutObj[@"return_code"]) {
+//                //配置数据
+//            }
+//        }else {
+//        
+//        }
+//    }];
+    
     NSDictionary *userInfoDic = [SingleTon shareSingleTon].userInformation;
     NSString *netPath = @"userinfo/userinfoedit";
     NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
     [allParameters setObject:userInfoDic[@"userid"] forKey:@"userid"];
-    
     
     [HttpTool postWithPath:netPath name:@"photo" imagePathList:@[self.avartView.image] params:allParameters success:^(id responseObj) {
         if (![responseObj[@"return_code"] integerValue]) {
@@ -202,6 +224,7 @@ static NSString *const indentifier2 = @"XWCell";
     } failure:^(NSError *error) {
     }];
 }
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     //警示框

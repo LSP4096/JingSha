@@ -26,4 +26,10 @@ typedef void(^JSONResultBlock)(id resoutObj, NSError *error);
                                        params:(NSDictionary *)params
                                         block:(JSONResultBlock)resultBlock;
 
+- (NSURLSessionDataTask *)postUpLoadImageWithName:(NSString *)name
+                                        RoutePath:(NSString *)path
+                                           params:(NSDictionary *)params
+                                            block:(JSONResultBlock)resoultBlock;
+
+
 @end
