@@ -71,53 +71,53 @@
     self.pageNum++;
     [self configerData];
 }
+
 /**
  *  获得Keyword关键字
  */
 - (void)getKeywordFromNet {
-    NSString * netPath = @"news/keyword_list";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:@(23) forKey:@"cid"];
-    [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
-        [self getKeywordFromResponseObj:responseObj];
-    } failure:^(NSError *error) {
-        
-    }];
+    @WeakObj(self);
+    [[HttpClient sharedClient] getKeywordWithCid:23
+                                     Complection:^(id resoutObj, NSError *error) {
+                                         
+                                         @StrongObj(self);
+                                         if (!error) {
+                                             NSDictionary * dict = resoutObj[@"data"];
+                                             [Strongself.titleArr removeAllObjects];
+                                             for (NSDictionary * smallDic in dict) {
+                                                 [Strongself.titleArr2 addObject:smallDic[@"title"]];
+                                             }
+                                             if (Strongself.titleArr2.count > 24) {
+                                                 NSRange rang = {0, 23};
+                                                 Strongself.titleArr2 = [[Strongself.titleArr2 subarrayWithRange:rang] mutableCopy];
+                                             }
+                                             [Strongself selectBtnClick];
+                                         }else {
+                                             
+                                         }
+                                     }];
 }
 
-- (void)getKeywordFromResponseObj:(id)responseObj {
-    NSDictionary * dict = responseObj[@"data"];
-    [self.titleArr removeAllObjects];
-    for (NSDictionary * smallDic in dict) {
-        [self.titleArr2 addObject:smallDic[@"title"]];
-    }
-    if (self.titleArr2.count > 24) {
-        NSRange rang = {0, 23};
-        self.titleArr2 = [[self.titleArr2 subarrayWithRange:rang] mutableCopy];
-    }
-    [self selectBtnClick];
-}
 /**
  *  获得列表内容
  */
 - (void)configerData{
-    NSString * netPath = @"pro/pro_list";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [allParams setObject:@(kPageCount) forKey:@"pagecount"];
-    [allParams setObject:@(self.pageNum) forKey:@"page"];
-    if (self.keyword) {
-        [allParams setObject:self.keyword forKey:@"keyword"];
-    }
-    if (self.type) {//不等于空就是1或2
-        [allParams setObject:self.type forKey:@"type"];
-    }
-    MyLog(@"----------%@", allParams);
-    [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
-        [self getDataFromRespomseObjAboutSearch:responseObj];
-        [_baseTable.header endRefreshing];
-        [_baseTable.footer endRefreshing];
-    } failure:^(NSError *error) {
+    
+    @WeakObj(self)
+    [[HttpClient sharedClient] getHotRecommendWithPage:self.pageNum
+                                                 Count:kPageCount
+                                                  Type:self.type
+                                               KeyWord:self.keyword
+                                           Complection:^(id resoutObj, NSError *error) {
+                                               
+                                               @StrongObj(self)
+                                               if (!error) {
+                                                   [Strongself getDataFromRespomseObjAboutSearch:resoutObj];
+                                                   [_baseTable.header endRefreshing];
+                                                   [_baseTable.footer endRefreshing];
+                                               }else {
+                                               
+                                               }
     }];
 }
 

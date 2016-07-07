@@ -313,29 +313,29 @@
  *
  */
 - (void)loadData{
-    NSString * netPath = @"news/keyword_list";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:@(23) forKey:@"cid"];
-    [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
-        [self getKeywordData:responseObj];
-    } failure:^(NSError *error) {
-        
+    @WeakObj(self);
+    [[HttpClient sharedClient] getKeywordWithCid:23
+                                     Complection:^(id resoutObj, NSError *error) {
+                                         
+                                         @StrongObj(self);
+                                         if (!error) {
+                                             Strongself.titleArr = [NSMutableArray array];
+                                             Strongself.titleArr2 = [NSMutableArray array];
+                                             NSDictionary * dict = resoutObj[@"data"];
+                                             [Strongself.titleArr removeAllObjects];
+                                             for (NSDictionary * smallDic in dict) {
+                                                 [Strongself.titleArr2 addObject:smallDic[@"title"]];
+                                             }
+                                             
+                                             if (Strongself.titleArr2.count > 24) {
+                                                 NSRange range = {0, 23};
+                                                 Strongself.titleArr2 = [[Strongself.titleArr2 subarrayWithRange:range] mutableCopy];
+                                             }
+                                             [Strongself selectBtnClick];
+                                         }else {
+                                         
+                                         }
     }];
-}
-- (void)getKeywordData:(id)responseObj{
-    self.titleArr = [NSMutableArray array];
-    self.titleArr2 = [NSMutableArray array];
-    NSDictionary * dict = responseObj[@"data"];
-    [self.titleArr removeAllObjects];
-    for (NSDictionary * smallDic in dict) {
-        [self.titleArr2 addObject:smallDic[@"title"]];
-    }
-    
-    if (self.titleArr2.count > 24) {
-        NSRange range = {0, 23};
-        self.titleArr2 = [[self.titleArr2 subarrayWithRange:range] mutableCopy];
-    }
-    [self selectBtnClick];
 }
 
 /**

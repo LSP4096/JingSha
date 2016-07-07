@@ -66,4 +66,32 @@
     return task;
 }
 
+- (NSURLSessionDataTask *)getHotRecommendWithPage:(NSInteger)page
+                                            Count:(NSInteger)count
+                                             Type:(NSString *)type
+                                          KeyWord:(NSString *)keyword
+                                      Complection:(JSONResultBlock)complection {
+    
+    NSMutableDictionary *params = @{@"userid":KUserImfor[@"userid"], @"page":@(page), @"pagecount":@(count), @"type":type}.mutableCopy;
+    if (keyword) {
+        [params setObject:keyword forKey:@"keyword"];
+    }
+    NSDictionary *allParams = [HttpClient jointParamsWithDict:params];
+    
+    NSURLSessionDataTask *task = [self getWithRequestName:@"热门推荐" RoutePath:@"pro/pro_list" params:allParams block:complection];
+    return task;
+
+}
+
+- (NSURLSessionDataTask *)getKeywordWithCid:(NSInteger)cid
+                                Complection:(JSONResultBlock)complection {
+
+    NSMutableDictionary *params = @{@"cid":@(cid)}.mutableCopy;
+
+    NSDictionary *allParams = [HttpClient jointParamsWithDict:params];
+    
+    NSURLSessionDataTask *task = [self getWithRequestName:@"获得关键字" RoutePath:@"news/keyword_list" params:allParams block:complection];
+    return task;
+}
+
 @end

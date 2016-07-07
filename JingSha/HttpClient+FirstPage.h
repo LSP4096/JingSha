@@ -30,6 +30,10 @@
 
 //最新求购
 - (NSURLSessionDataTask *)getLasterRequestWithPage:(NSInteger)page Count:(NSInteger)count KeyWord:(NSString *)keyword Complection:(JSONResultBlock)complection;
+//关键字
+- (NSURLSessionDataTask *)getKeywordWithCid:(NSInteger)cid Complection:(JSONResultBlock)complection;
+//热门推荐
+- (NSURLSessionDataTask *)getHotRecommendWithPage:(NSInteger)page Count:(NSInteger)count Type:(NSString *)type KeyWord:(NSString *)keyword Complection:(JSONResultBlock)complection;
 
 @end
 
