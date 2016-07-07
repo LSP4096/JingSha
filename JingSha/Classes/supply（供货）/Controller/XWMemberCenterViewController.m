@@ -87,21 +87,18 @@ static NSString *const indentifier2 = @"XWCell";
 
 - (void)configerShowData{
     //请求数据
-    NSString *netPath = @"userinfo/userinfo_post";
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
-    [allParameters setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [HttpTool postWithPath:netPath params:allParameters success:^(id responseObj) {
-        //        MyLog(@"%@", responseObj);
-        self.proclick = responseObj[@"proclick"];
-        NSDictionary * dict = responseObj[@"data"];
-        self.click = dict[@"click"];
-        self.xingji = dict[@"xinji"];
-        self.num = dict[@"num"];
-        self.qiandao = responseObj[@"qiandao"];
-        [self hiddenOrShow];
+    @WeakObj(self)
+    [[HttpClient sharedClient] postUserinfoComplection:^(id resoutObj, NSError *error) {
+        @StrongObj(self)
+        Strongself.proclick = resoutObj[@"proclick"];
+        NSDictionary * dict = resoutObj[@"data"];
+        MyLog(@"%@",resoutObj[@"data"]);
+        Strongself.click = dict[@"click"];
+        Strongself.xingji = dict[@"xinji"];
+        Strongself.num = dict[@"num"];
+        Strongself.qiandao = resoutObj[@"qiandao"];
+        [Strongself hiddenOrShow];
         [_contentTableView reloadData];
-    } failure:^(NSError *error) {
-        
     }];
 }
 
@@ -687,7 +684,7 @@ static NSString *const indentifier2 = @"XWCell";
         self.QianDaoLable.frame = signRect;
         //签到btn
         CGRect signBtnRect = self.attendanceBtn.frame;
-        signBtnRect.origin.y = CGRectGetMidY(self.oldRect) - offset.y + 30;
+        signBtnRect.origin.y = CGRectGetMidY(self.oldRect) - offset.y + 40;
         self.attendanceBtn.frame = signBtnRect;
     }
 }

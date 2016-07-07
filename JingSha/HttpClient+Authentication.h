@@ -83,4 +83,8 @@
                                               Password:(NSString *)password
                                                   Code:(NSString *)code
                                            Complection:(JSONResultBlock)complection;
+
+//获取用户信息
+- (NSURLSessionDataTask *)postUserinfoComplection:(JSONResultBlock)complection;
+
 @end

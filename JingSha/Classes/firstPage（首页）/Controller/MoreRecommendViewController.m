@@ -112,33 +112,26 @@
                                                
                                                @StrongObj(self)
                                                if (!error) {
-                                                   [Strongself getDataFromRespomseObjAboutSearch:resoutObj];
+                                                   if ([resoutObj[@"data"]isKindOfClass:[NSNull class]]) {
+                                                   }else{
+                                                       if (Strongself.pageNum == 1) {
+                                                           Strongself.dataAry = [NSMutableArray array];
+                                                       }
+                                                       NSArray * listAry = resoutObj[@"data"];
+                                                       MyLog(@"%@",resoutObj[@"data"]);
+                                                       for (NSDictionary * dict in listAry) {
+                                                           ProOptionModel * model = [ProOptionModel objectWithKeyValues:dict];
+                                                           [Strongself.dataAry addObject:model];
+                                                       }
+                                                   }
+                                                   [_baseTable reloadData];
+                                                   
                                                    [_baseTable.header endRefreshing];
                                                    [_baseTable.footer endRefreshing];
                                                }else {
                                                
                                                }
     }];
-}
-
-/**
- *  解析数据
- */
-- (void)getDataFromRespomseObjAboutSearch:(id)responseObj{
-//    MyLog(@"%@", responseObj);
-    if ([responseObj[@"data"]isKindOfClass:[NSNull class]]) {
-    }else{
-        if (self.pageNum == 1) {
-            self.dataAry = [NSMutableArray array];
-        }
-        NSArray * listAry = responseObj[@"data"];
-        MyLog(@"%@",responseObj[@"data"]);
-        for (NSDictionary * dict in listAry) {
-            ProOptionModel * model = [ProOptionModel objectWithKeyValues:dict];
-            [self.dataAry addObject:model];
-        }
-    }
-    [_baseTable reloadData];
 }
 
 #pragma mark ---UISearchBarDelegate

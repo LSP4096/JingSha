@@ -95,5 +95,14 @@
     return task;
 }
 
+- (NSURLSessionDataTask *)postUserinfoComplection:(JSONResultBlock)complection {
+    
+    NSMutableDictionary *params = @{@"userid":KUserImfor[@"userid"]}.mutableCopy;
+    NSDictionary *paramAll = [HttpClient jointParamsWithDict:params];
+    NSURLSessionDataTask *task = [self postWithRequestName:@"获得用户信息" RoutePath:@"userinfo/userinfo_post" params:paramAll block:complection];
+    return task;
+}
+
+
 
 @end
