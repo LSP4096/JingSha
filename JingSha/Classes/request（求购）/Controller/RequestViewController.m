@@ -16,6 +16,8 @@
 #import "IssueRequestViewController.h"
 #import "SingUpViewController.h"
 
+#import "HttpClient+FirstPage.h"
+
 #define kTopViewHeight 65
 #define KSecViewHeight 120
 #define kPageCount 15
@@ -340,20 +342,20 @@
  *  获取原始数据
  */
 - (void)configerData{
-    NSString * netPath = @"pro/buy_list";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [allParams setObject:@(kPageCount) forKey:@"pagecount"];
-    [allParams setObject:@(self.pageNum) forKey:@"page"];
-    if (self.keyword != nil) {
-        [allParams setObject:_keyword forKey:@"keyword"];
-    }
-    [HttpTool getWithPath:netPath params:allParams success:^(id responseObj) {
-        [_baseTable.header endRefreshing];
-        [_baseTable.footer endRefreshing];
-        [self getDataFromResponseObj:responseObj];
-    } failure:^(NSError *error) {
-        MyLog(@"首页求购信息错误:%@",error);
+    @WeakObj(self);
+    [[HttpClient sharedClient] getLasterRequestWithPage:self.pageNum
+                                                  Count:kPageCount
+                                                KeyWord:_keyword
+                                            Complection:^(id resoutObj, NSError *error) {
+                                                
+                                                @StrongObj(self);
+                                                if (!error) {
+                                                    [_baseTable.header endRefreshing];
+                                                    [_baseTable.footer endRefreshing];
+                                                    [Strongself getDataFromResponseObj:resoutObj];
+                                                }else {
+                                                    MyLog(@"首页求购信息错误:%@",error);
+                                                }
     }];
 }
 

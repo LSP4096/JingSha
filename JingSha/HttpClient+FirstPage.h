@@ -22,11 +22,15 @@
                                     PageCount:(NSInteger)pagecount
                                   Complection:(JSONResultBlock)complection;
 //交易中心
-- (NSURLSessionDataTask *)getExchangesCenterWithPage:(NSInteger)page PageCount:(NSInteger)pagecount
+- (NSURLSessionDataTask *)getExchangesCenterWithPage:(NSInteger)page
+                                           PageCount:(NSInteger)pagecount
                                                 Type:(NSInteger)type
                                              KeyWord:(NSString *)keyword
                                          Complection:(JSONResultBlock)complection;
 
-
+//最新求购
+- (NSURLSessionDataTask *)getLasterRequestWithPage:(NSInteger)page Count:(NSInteger)count KeyWord:(NSString *)keyword Complection:(JSONResultBlock)complection;
 
 @end
+
+

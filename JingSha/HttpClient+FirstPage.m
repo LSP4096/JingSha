@@ -51,5 +51,19 @@
     return task;
 }
 
+- (NSURLSessionDataTask *)getLasterRequestWithPage:(NSInteger)page
+                                             Count:(NSInteger)count
+                                           KeyWord:(NSString *)keyword
+                                       Complection:(JSONResultBlock)complection {
+    
+    NSMutableDictionary *params = @{@"userid":KUserImfor[@"userid"], @"page":@(page), @"pagecount":@(count)}.mutableCopy;
+    if (keyword) {
+        [params setObject:keyword forKey:@"keyword"];
+    }
+    NSDictionary *allParams = [HttpClient jointParamsWithDict:params];
+    
+    NSURLSessionDataTask *task = [self getWithRequestName:@"最新求购" RoutePath:@"pro/buy_list" params:allParams block:complection];
+    return task;
+}
 
 @end

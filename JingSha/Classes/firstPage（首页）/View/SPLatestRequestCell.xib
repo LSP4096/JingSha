@@ -106,7 +106,6 @@
                                 </constraints>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Y8o-eC-Jie" firstAttribute="top" secondItem="YFY-Nn-jls" secondAttribute="bottom" id="MHI-7Y-dPm"/>
                             <constraint firstItem="YFY-Nn-jls" firstAttribute="top" secondItem="BO4-AJ-jjP" secondAttribute="top" id="Oma-V6-KjO"/>
@@ -115,6 +114,15 @@
                             <constraint firstItem="YFY-Nn-jls" firstAttribute="leading" secondItem="BO4-AJ-jjP" secondAttribute="leading" id="oYo-eK-WTp"/>
                             <constraint firstAttribute="trailing" secondItem="YFY-Nn-jls" secondAttribute="trailing" id="xWQ-9K-aDe"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="topRightRadius" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="topLeftRadius" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRightRadius" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeftRadius" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
@@ -132,7 +140,7 @@
                 <outlet property="headerView" destination="YFY-Nn-jls" id="0Xr-Pv-GRJ"/>
                 <outlet property="tableViewH" destination="cxp-mC-EdO" id="knz-s8-gMn"/>
             </connections>
-            <point key="canvasLocation" x="-9178" y="423"/>
+            <point key="canvasLocation" x="-9830" y="328"/>
         </tableViewCell>
     </objects>
     <resources>
