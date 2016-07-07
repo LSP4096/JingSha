@@ -100,6 +100,7 @@ static NSString *const indentifier2 = @"XWCell";
         [Strongself hiddenOrShow];
         [_contentTableView reloadData];
     }];
+    
 }
 
 - (void)hiddenOrShow{
