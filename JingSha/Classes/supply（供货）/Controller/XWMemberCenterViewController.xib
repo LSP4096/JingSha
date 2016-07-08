@@ -49,7 +49,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTe-LE-vuc">
-                            <rect key="frame" x="138" y="160" width="100" height="30"/>
+                            <rect key="frame" x="138" y="151" width="100" height="30"/>
                             <color key="backgroundColor" red="0.18431372549019609" green="0.25882352941176467" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="tcN-SE-ga8"/>
@@ -108,7 +108,7 @@
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJB-Ju-RoD">
                             <rect key="frame" x="0.0" y="153" width="375" height="1"/>
-                            <color key="backgroundColor" red="0.3411764705882353" green="0.44705882352941179" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="Ebw-s7-uEw"/>
                             </constraints>
@@ -131,7 +131,7 @@
                         <constraint firstAttribute="trailing" secondItem="Px4-Lp-g66" secondAttribute="trailing" id="NOB-vW-TkH"/>
                         <constraint firstItem="TTe-LE-vuc" firstAttribute="width" secondItem="tZd-Y9-NtY" secondAttribute="width" multiplier="2" id="OzL-qI-mOD"/>
                         <constraint firstAttribute="bottom" secondItem="UeL-oH-JTP" secondAttribute="bottom" constant="15" id="ScL-lq-Nkk"/>
-                        <constraint firstItem="TTe-LE-vuc" firstAttribute="top" secondItem="tZd-Y9-NtY" secondAttribute="bottom" constant="15" id="TAp-aZ-Pye"/>
+                        <constraint firstItem="TTe-LE-vuc" firstAttribute="top" secondItem="tZd-Y9-NtY" secondAttribute="bottom" constant="6" id="TAp-aZ-Pye"/>
                         <constraint firstItem="VjL-Us-Yog" firstAttribute="top" secondItem="wEd-ll-LBI" secondAttribute="top" constant="25" id="YZV-in-NgL"/>
                         <constraint firstItem="Px4-Lp-g66" firstAttribute="leading" secondItem="wEd-ll-LBI" secondAttribute="leading" id="a1p-FZ-sXg"/>
                         <constraint firstItem="UeL-oH-JTP" firstAttribute="top" secondItem="ZJB-Ju-RoD" secondAttribute="bottom" constant="10" id="bD5-2k-67I"/>
@@ -145,10 +145,10 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="OzL-qI-mOD"/>
-                            <exclude reference="gC7-T3-uu3"/>
                             <exclude reference="2h5-4w-O7A"/>
                             <exclude reference="Cn3-1g-Jji"/>
+                            <exclude reference="OzL-qI-mOD"/>
+                            <exclude reference="gC7-T3-uu3"/>
                         </mask>
                     </variation>
                 </view>
@@ -170,7 +170,7 @@
                     <exclude reference="4Ze-hd-96z"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-806.5" y="251.5"/>
+            <point key="canvasLocation" x="-956.5" y="227.5"/>
         </view>
         <tapGestureRecognizer id="BdB-0Q-asF">
             <connections>

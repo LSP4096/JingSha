@@ -63,22 +63,12 @@ static NSString *const indentifier2 = @"XWCell";
     
     self.oldRect = self.headerView.frame;
     
-    //设置微信登录头像
-    [self setAvartView];
-    
     self.view.backgroundColor = RGBColor(235, 235, 241);
     self.fd_prefersNavigationBarHidden = YES;
     [self setupTableView];
     [self setupTableHeadView];
     [self registerCell];
     
-}
-
-- (void)setAvartView {
-    NSDictionary *weChatDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXResponse_UserInfo"];
-    if (weChatDic) {
-        [self.avartView sd_setImageWithURL:weChatDic[@"headimgurl"] placeholderImage:nil];
-    }
 }
 
 - (void)registerCell{
@@ -117,6 +107,8 @@ static NSString *const indentifier2 = @"XWCell";
         self.attendanceBtn.hidden = YES;
         self.QianDaoLable.hidden = NO;
         self.lineView.hidden = NO;
+        self.lineView.backgroundColor = RGBColor(87, 114, 144);
+        
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"已连续签到%@天", self.num]];
         [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(5,str.length - 6)];
         self.QianDaoLable.attributedText = str;
@@ -342,15 +334,16 @@ static NSString *const indentifier2 = @"XWCell";
         return;
     }
     //请求数据
-    NSString *netPath = @"userinfo/userinfo_post";
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
-    [allParameters setObject:userInfoDic[@"userid"] forKey:@"userid"];
-    [HttpTool postWithPath:netPath params:allParameters success:^(id responseObj) {
-        MemberEditViewController *editVC = [[MemberEditViewController alloc] initWithNibName:@"MemberEditViewController" bundle:nil];
-        editVC.sendDic = responseObj[@"data"];
-        [self.navigationController pushViewController:editVC animated:YES];
-    } failure:^(NSError *error) {
+    @WeakObj(self)
+    [[HttpClient sharedClient] postUserinfoComplection:^(id resoutObj, NSError *error) {
+        @StrongObj(self)
+        if (!error) {
+            MemberEditViewController *editVC = [[MemberEditViewController alloc] initWithNibName:@"MemberEditViewController" bundle:nil];
+            editVC.sendDic = resoutObj[@"data"];
+            [Strongself.navigationController pushViewController:editVC animated:YES];
+        }else {
         
+        }
     }];
 }
 #pragma mark - 登录按钮相应事件
@@ -361,7 +354,7 @@ static NSString *const indentifier2 = @"XWCell";
     [self.navigationController pushViewController:loginVC animated:YES];
     }
 }
-#pragma mark -  AlertView delegate
+#pragma mark -  AlertView delegate  //ios 8.0一下才会调用
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([alertView.message isEqualToString:@"暂不支持拍照,是否调用相册?"]) {
         if (buttonIndex) {
@@ -387,12 +380,7 @@ static NSString *const indentifier2 = @"XWCell";
             loginVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
             [self presentViewController:loginVC animated:YES completion:nil];
             //
-            NSString * netPath = @"userinfo/loginout";
-            NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-            [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-            [HttpTool postWithPath:netPath params:allParams success:^(id responseObj) {
-                //没有任何返回
-            } failure:^(NSError *error) {
+            [[HttpClient sharedClient] LogOutWithComplection:^(id resoutObj, NSError *error) {
                 
             }];
         }
@@ -400,21 +388,33 @@ static NSString *const indentifier2 = @"XWCell";
 }
 #pragma mark - 签到相应事件
 - (IBAction)handleAttendance:(UIButton *)sender {
-    NSString * netPath = @"userinfo/qiandao";
-    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [HttpTool postWithPath:netPath params:allParams success:^(id responseObj) {
-        [SVProgressHUD showSuccessWithStatus:@"签到成功"];
-        [self QianDaoSuccess];
-    } failure:^(NSError *error) {
+    @WeakObj(self)
+    [[HttpClient sharedClient] postSignComplection:^(id resoutObj, NSError *error) {
+       @StrongObj(self)
+        if (!error) {
+            [SVProgressHUD showSuccessWithStatus:@"签到成功"];
+            [Strongself QianDaoSuccess];
+        }else {
         
+        }
     }];
+    
+//    NSString * netPath = @"userinfo/qiandao";
+//    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
+//    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
+//    [HttpTool postWithPath:netPath params:allParams success:^(id responseObj) {
+//        
+//    } failure:^(NSError *error) {
+//        
+//    }];
 }
 
 - (void)QianDaoSuccess{
     self.attendanceBtn.hidden = YES;
     self.QianDaoLable.hidden = NO;
     self.lineView.hidden = NO;
+    self.lineView.backgroundColor = RGBColor(87, 114, 144);
+    
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"已连续签到%zd天", [self.num integerValue] + 1]];
     [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(5,str.length - 6)];
     self.QianDaoLable.attributedText = str;
@@ -510,6 +510,7 @@ static NSString *const indentifier2 = @"XWCell";
         [self presentViewController:loginVC animated:YES completion:nil];
 
     }];
+    
     UIAlertAction * cancleAction  =[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
@@ -690,7 +691,7 @@ static NSString *const indentifier2 = @"XWCell";
         self.QianDaoLable.frame = signRect;
         //签到btn
         CGRect signBtnRect = self.attendanceBtn.frame;
-        signBtnRect.origin.y = CGRectGetMidY(self.oldRect) - offset.y + 40;
+        signBtnRect.origin.y = CGRectGetMidY(self.oldRect) - offset.y + 31;
         self.attendanceBtn.frame = signBtnRect;
     }
 }
