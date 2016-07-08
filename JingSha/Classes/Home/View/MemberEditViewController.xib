@@ -313,11 +313,6 @@
             </variation>
             <point key="canvasLocation" x="307.5" y="379.5"/>
         </view>
-        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="wpb-8D-ojQ">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <point key="canvasLocation" x="208" y="380"/>
-        </imageView>
     </objects>
     <resources>
         <image name="tab-club" width="83" height="83"/>

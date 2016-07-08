@@ -398,15 +398,6 @@ static NSString *const indentifier2 = @"XWCell";
         
         }
     }];
-    
-//    NSString * netPath = @"userinfo/qiandao";
-//    NSMutableDictionary * allParams = [NSMutableDictionary dictionary];
-//    [allParams setObject:KUserImfor[@"userid"] forKey:@"userid"];
-//    [HttpTool postWithPath:netPath params:allParams success:^(id responseObj) {
-//        
-//    } failure:^(NSError *error) {
-//        
-//    }];
 }
 
 - (void)QianDaoSuccess{

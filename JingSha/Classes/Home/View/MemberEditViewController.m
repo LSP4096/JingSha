@@ -8,6 +8,8 @@
 
 #import "MemberEditViewController.h"
 #import "UIBarButtonItem+CH.h"
+#import "HttpClient+Authentication.h"
+
 @interface MemberEditViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) UIImagePickerController *picker;
 
@@ -81,25 +83,26 @@
 }
 #pragma mark - 提交编辑
 - (void)handleSubmit {
-    NSString *passWord = [SingleTon shareSingleTon].userPassWoed;
-    NSString *netPath = @"userinfo/userinfoedit";
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
-    [allParameters setObject:KUserImfor[@"userid"] forKey:@"userid"];
-    [allParameters setObject:passWord forKey:@"password"];
-    [allParameters setObject:self.userNameBtn.currentTitle forKey:@"username"];
-    NSString *userSex = [NSString stringWithFormat:@"%zd", self.selectedSEXBtn.tag];
-        [allParameters setObject:userSex forKey:@"sex"];
-    [allParameters setObject:self.conpanyBtn.currentTitle forKey:@"gongsi"];
-    [allParameters setObject:self.addressBtn.currentTitle forKey:@"addr"];
-    [HttpTool postWithPath:netPath name:@"photo" imagePathList:@[self.avartBtn.currentBackgroundImage] params:allParameters success:^(id responseObj) {
-        if (![responseObj[@"return_code"] integerValue]) {
-            KUserImfor = responseObj[@"data"];
-            MyLog(@"提交%@", responseObj[@"data"]);
-            [SVProgressHUD showSuccessWithStatus:@"编辑成功"];
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-    } failure:^(NSError *error) {
-        
+    
+    @WeakObj(self)
+    [[HttpClient sharedClient] postUpdataWithImagePathList:@[self.avartBtn.currentBackgroundImage]
+                                                      Name:self.userNameBtn.currentTitle
+                                                       Sex:[NSString stringWithFormat:@"%zd", self.selectedSEXBtn.tag]
+                                                   Compony:self.conpanyBtn.currentTitle
+                                                      addr:self.addressBtn.currentTitle
+                                                     Block:^(id resoutObj, NSError *error) {
+                                                         
+                                                         @StrongObj(self)
+                                                         if (!error) {
+                                                             if (![resoutObj[@"return_code"] integerValue]) {
+                                                                 KUserImfor = resoutObj[@"data"];
+                                                                 MyLog(@"提交%@", resoutObj[@"data"]);
+                                                                 [SVProgressHUD showSuccessWithStatus:@"编辑成功"];
+                                                                 [Strongself.navigationController popViewControllerAnimated:YES];
+                                                             }
+                                                         }else {
+                                                             
+                                                         }
     }];
 }
 - (void)configureIQKeyboard {
@@ -324,7 +327,7 @@
 }
 #pragma mark - 修改公司
 - (IBAction)handleChanCompany:(UIButton *)sender {
-//    [self showAlertViewWithMessage:@"请输入公司名称"];
+    [self showAlertViewWithMessage:@"请输入公司名称"];
 }
 #pragma mark - 修改地址
 - (IBAction)handleChangeAddress:(UIButton *)sender {

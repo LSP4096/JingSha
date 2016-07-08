@@ -28,5 +28,7 @@
 - (NSURLSessionDataTask *)postSignComplection:(JSONResultBlock)complection;
 //图片上传
 - (NSURLSessionDataTask *)postUpLoadImageForUserinfoWithImagePathList:(NSArray *)imageList block:(JSONResultBlock)resoultBlock;
+//提交编辑
+- (NSURLSessionDataTask *)postUpdataWithImagePathList:(NSArray *)imageList Name:(NSString *)name Sex:(NSString *)sex Compony:(NSString *)compony addr:(NSString *)addr Block:(JSONResultBlock)complection;
 
 @end

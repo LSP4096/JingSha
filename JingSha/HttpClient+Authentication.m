@@ -105,8 +105,9 @@
 
 - (NSURLSessionDataTask *)postUpLoadImageForUserinfoWithImagePathList:(NSArray *)imageList
                                                        block:(JSONResultBlock)resoultBlock {
-    
+
     NSMutableDictionary *params = @{@"userid":[SingleTon shareSingleTon].userInformation[@"userid"]}.mutableCopy;
+
     NSDictionary *paramAll = [HttpClient jointParamsWithDict:params];
   
     NSURLSessionDataTask *task = [self postUpLoadImageWithName:@"photo" RoutePath:@"userinfo/userinfoedit" imagePathList:imageList params:paramAll block:resoultBlock];
@@ -118,6 +119,21 @@
     NSMutableDictionary *params = @{@"userid":KUserImfor[@"userid"]}.mutableCopy;
     NSDictionary *paramAll = [HttpClient jointParamsWithDict:params];
     NSURLSessionDataTask *task = [self postWithRequestName:@"签到" RoutePath:@"userinfo/qiandao" params:paramAll block:complection];
+    return task;
+}
+
+- (NSURLSessionDataTask *)postUpdataWithImagePathList:(NSArray *)imageList Name:(NSString *)name Sex:(NSString *)sex Compony:(NSString *)compony addr:(NSString *)addr Block:(JSONResultBlock)complection{
+    
+    NSMutableDictionary *params = @{@"userid":KUserImfor[@"userid"],
+                                    @"passWord":[SingleTon shareSingleTon].userPassWoed,
+                                    @"username":name,
+                                    @"sex":sex,
+                                    @"gongsi":compony,
+                                    @"addr":addr
+                                    }.mutableCopy;
+    
+    NSDictionary *paramAll = [HttpClient jointParamsWithDict:params];
+    NSURLSessionDataTask *task = [self postUpLoadImageWithName:@"photo" RoutePath:@"userinfo/userinfoedit" imagePathList:imageList params:paramAll block:complection];
     return task;
 }
 
