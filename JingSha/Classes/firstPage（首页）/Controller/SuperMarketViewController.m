@@ -21,7 +21,6 @@
 
 @interface SuperMarketViewController ()
 <
-//UIScrollViewDelegate,
 UITableViewDelegate,
 UITableViewDataSource,
 DZNEmptyDataSetDelegate,
@@ -48,9 +47,9 @@ UISearchBarDelegate
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"交易中心";
+    [self loadData];
     [self configOptionBtn];
     [self RefreshNewData];
-    [self loadData];
     [self.view addSubview:self.baseTabView];
     self.pageNum = 1;
     self.index = 0;
@@ -203,15 +202,20 @@ UISearchBarDelegate
 
 - (void)configerDataWithPage:(NSInteger)page{
 
-    [[HttpClient sharedClient] getExchangesCenterWithPage:page PageCount:kPageCount Type:2 KeyWord:self.keyword Complection:^(id resoutObj, NSError *error) {
-        if (error) {
-            MyLog(@"%@",error);
-        }else {
-            [self getDataFromResponseObj:resoutObj];
-            [_baseTabView.header endRefreshing];
-            [_baseTabView.footer endRefreshing];
-        }
-    }];
+    [[HttpClient sharedClient] getExchangesCenterWithPage:page
+                                                PageCount:kPageCount
+                                                     Type:2
+                                                  KeyWord:self.keyword
+                                              Complection:^(id resoutObj, NSError *error) {
+                                                  
+                                                  if (error) {
+                                                      MyLog(@"%@",error);
+                                                  }else {
+                                                      [self getDataFromResponseObj:resoutObj];
+                                                      [_baseTabView.header endRefreshing];
+                                                      [_baseTabView.footer endRefreshing];
+                                                  }
+                                              }];
 }
 
 - (void)getDataFromResponseObj:(id)responseObj{

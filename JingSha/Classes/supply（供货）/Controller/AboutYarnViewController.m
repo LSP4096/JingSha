@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+
     self.title = @"关于中国纱线网";
     self.headerImg.layer.cornerRadius = 5;
     self.headerImg.layer.masksToBounds = YES;

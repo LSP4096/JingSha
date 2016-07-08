@@ -136,5 +136,14 @@
     return newImage;
 }
 
+- (UIImage *)makeRoundedWithRadius:(float)radius
+{
+    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.width);
+    UIGraphicsBeginImageContextWithOptions(self.size, false, 0);
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius];
+    [path addClip];
+    [self drawInRect:rect];
+    return UIGraphicsGetImageFromCurrentImageContext();
+}
 
 @end

@@ -140,7 +140,7 @@
                 <outlet property="headerView" destination="YFY-Nn-jls" id="0Xr-Pv-GRJ"/>
                 <outlet property="tableViewH" destination="cxp-mC-EdO" id="knz-s8-gMn"/>
             </connections>
-            <point key="canvasLocation" x="-9830" y="328"/>
+            <point key="canvasLocation" x="-9953" y="225"/>
         </tableViewCell>
     </objects>
     <resources>
