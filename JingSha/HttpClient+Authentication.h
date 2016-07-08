@@ -87,6 +87,7 @@
 //获取用户信息
 - (NSURLSessionDataTask *)postUserinfoComplection:(JSONResultBlock)complection;
 //图片上传
-- (NSURLSessionDataTask *)postUpLoadImgWithImgs:(NSArray *)imgs Complection:(JSONResultBlock)complection;
+- (NSURLSessionDataTask *)postUpLoadImageForUserinfoWithImagePathList:(NSArray *)imageList
+                                                       block:(JSONResultBlock)resoultBlock;
 
 @end

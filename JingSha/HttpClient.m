@@ -35,13 +35,38 @@ typedef void(^afFailBlock)(NSURLSessionDataTask *task, NSError *error);
     return [self sessionDataTaskWithRequestName:requestName RoutePath:path HttpMethod:@"get" params:params block:resultBlock];
 }
 
-- (NSURLSessionDataTask *)postWithRequestName:(NSString *)requestName RoutePath:(NSString *)path
+- (NSURLSessionDataTask *)postWithRequestName:(NSString *)requestName
+                                    RoutePath:(NSString *)path
                                        params:(NSDictionary *)params
                                         block:(JSONResultBlock)resultBlock {
     
     return [self sessionDataTaskWithRequestName:requestName RoutePath:path HttpMethod:@"post" params:params block:resultBlock];
 }
 
+- (NSURLSessionDataTask *)postUpLoadImageWithName:(NSString *)name
+                                        RoutePath:(NSString *)path
+                                    imagePathList:(NSArray *)imageList
+                                           params:(NSDictionary *)params
+                                            block:(JSONResultBlock)resoultBlock {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    return [self POST:path parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                    for (int index=0; index<imageList.count; index++) {
+                        UIImage * image=[imageList objectAtIndex:index];
+                        NSData * imageData=UIImageJPEGRepresentation(image, 0.5);
+                        NSString * fileName=[NSString stringWithFormat:@"img%d.jpg",index];
+                        [formData appendPartWithFileData:imageData name:name fileName:fileName mimeType:@"image/jpg/file"];
+                }
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        resoultBlock(responseObject, nil);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        [MBProgressHUD showError:@"网络不给力"];
+        resoultBlock(nil, error);
+    }];
+}
 
 - (NSURLSessionDataTask *)sessionDataTaskWithRequestName:(NSString *)requestName
                                                RoutePath:(NSString *)path
@@ -90,15 +115,7 @@ typedef void(^afFailBlock)(NSURLSessionDataTask *task, NSError *error);
         return [self PUT:path parameters:params success:successBlock failure:failBlock];
     } else if ([httpMethod isEqualToString:@"delete"]){
         return [self DELETE:path parameters:params success:successBlock failure:failBlock];
-    } else {
-//        [self POST:path parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-//            for (int index=0; index<imageList.count; index++) {
-//                UIImage * image=[imageList objectAtIndex:index];
-//                NSData * imageData=UIImageJPEGRepresentation(image, 0.8);
-//                NSString * fileName=[NSString stringWithFormat:@"img%d.jpg",index];
-//                [formData appendPartWithFileData:imageData name:name fileName:fileName mimeType:@"image/jpg/file"];
-//            }
-//        } success:successBlock failure:failBlock];
+    }else {
         return nil;
     }
     

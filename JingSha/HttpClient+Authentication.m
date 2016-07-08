@@ -103,13 +103,13 @@
     return task;
 }
 
-- (NSURLSessionDataTask *)postUpLoadImgWithImgs:(NSArray *)imgs
-                                    Complection:(JSONResultBlock)complection {
+- (NSURLSessionDataTask *)postUpLoadImageForUserinfoWithImagePathList:(NSArray *)imageList
+                                                       block:(JSONResultBlock)resoultBlock {
     
     NSMutableDictionary *params = @{@"userid":[SingleTon shareSingleTon].userInformation[@"userid"]}.mutableCopy;
     NSDictionary *paramAll = [HttpClient jointParamsWithDict:params];
-
-    NSURLSessionDataTask *task = [self postWithRequestName:@"图片上传" RoutePath:@"userinfo/userinfoedit" params:paramAll block:complection];
+  
+    NSURLSessionDataTask *task = [self postUpLoadImageWithName:@"photo" RoutePath:@"userinfo/userinfoedit" imagePathList:imageList params:paramAll block:resoultBlock];
     return task;
 }
 

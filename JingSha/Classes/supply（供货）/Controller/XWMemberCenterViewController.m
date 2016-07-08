@@ -189,39 +189,21 @@ static NSString *const indentifier2 = @"XWCell";
 
 #pragma mark - 提交编辑
 - (void)handleSubmit {
-//    @WeakObj(self)
-//    [[HttpClient sharedClient] postEditeUserifoComplection:^(id resoutObj, NSError *error) {
-//        
-//        @StrongObj(self)
-//        if (!error) {
-//            if (![resoutObj[@"return_code"] integerValue]) {
-//                [SingleTon shareSingleTon].userInformation = resoutObj[@"data"];
-//                MyLog(@"提交%@", resoutObj[@"data"]);
-//                [Strongself.avartView sd_setImageWithURL:[NSURL URLWithString:resoutObj[@"data"][@"photo"]]];
-//            }
-//            if (!resoutObj[@"return_code"]) {
-//                //配置数据
-//            }
-//        }else {
-//        
-//        }
-//    }];
-    
-    NSDictionary *userInfoDic = [SingleTon shareSingleTon].userInformation;
-    NSString *netPath = @"userinfo/userinfoedit";
-    NSMutableDictionary *allParameters = [NSMutableDictionary dictionary];
-    [allParameters setObject:userInfoDic[@"userid"] forKey:@"userid"];
-    
-    [HttpTool postWithPath:netPath name:@"photo" imagePathList:@[self.avartView.image] params:allParameters success:^(id responseObj) {
-        if (![responseObj[@"return_code"] integerValue]) {
-            [SingleTon shareSingleTon].userInformation = responseObj[@"data"];
-            MyLog(@"提交%@", responseObj[@"data"]);
-            [self.avartView sd_setImageWithURL:[NSURL URLWithString:responseObj[@"data"][@"photo"]]];
+    @WeakObj(self)
+    [[HttpClient sharedClient] postUpLoadImageForUserinfoWithImagePathList:@[self.avartView.image] block:^(id resoutObj, NSError *error) {
+        @StrongObj(self)
+        if (!error) {
+            if (![resoutObj[@"return_code"] integerValue]) {
+                [SingleTon shareSingleTon].userInformation = resoutObj[@"data"];
+                MyLog(@"提交%@", resoutObj[@"data"]);
+                [Strongself.avartView sd_setImageWithURL:[NSURL URLWithString:resoutObj[@"data"][@"photo"]]];
+            }
+            if (!resoutObj[@"return_code"]) {
+                //配置数据
+            }
+        }else {
+            
         }
-        if (!responseObj[@"return_code"]) {
-            //配置数据
-        }
-    } failure:^(NSError *error) {
     }];
 }
 

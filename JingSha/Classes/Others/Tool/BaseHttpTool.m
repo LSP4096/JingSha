@@ -85,7 +85,7 @@
     [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         for (int index=0; index<imageList.count; index++) {
             UIImage * image=[imageList objectAtIndex:index];
-            NSData * imageData=UIImageJPEGRepresentation(image, 0.8);
+            NSData * imageData=UIImageJPEGRepresentation(image, 0.5);
             NSString * fileName=[NSString stringWithFormat:@"img%d.jpg",index];
             [formData appendPartWithFileData:imageData name:name fileName:fileName mimeType:@"image/jpg/file"];
         }
@@ -95,6 +95,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
+            [MBProgressHUD showError:@"网络请求错误"];
             failure(error);
         }
     }];

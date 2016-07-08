@@ -47,7 +47,7 @@
     if (imageList == nil || imageList.count == 0) {
         [BaseHttpTool post:netPath params:params success:success failure:failure];
     }else{
-        [BaseHttpTool uploadImageWithPath:netPath name:(NSString *)name imagePathList:imageList params:allParams success:success failure:failure];
+        [BaseHttpTool uploadImageWithPath:netPath name:name imagePathList:imageList params:allParams success:success failure:failure];
     }
 }
 
