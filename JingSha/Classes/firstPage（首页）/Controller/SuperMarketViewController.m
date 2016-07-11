@@ -202,16 +202,24 @@ UISearchBarDelegate
 
 - (void)configerDataWithPage:(NSInteger)page{
 
+    [MBProgressHUD showMessage:@"请稍后..."];
+    @WeakObj(self)
     [[HttpClient sharedClient] getExchangesCenterWithPage:page
                                                 PageCount:kPageCount
                                                      Type:2
                                                   KeyWord:self.keyword
                                               Complection:^(id resoutObj, NSError *error) {
                                                   
+                                                  @StrongObj(self)
                                                   if (error) {
+                                                      [MBProgressHUD hideHUD];
+                                                      
                                                       MyLog(@"%@",error);
                                                   }else {
-                                                      [self getDataFromResponseObj:resoutObj];
+                                                      
+                                                      [MBProgressHUD hideHUD];
+                                                      
+                                                      [Strongself getDataFromResponseObj:resoutObj];
                                                       [_baseTabView.header endRefreshing];
                                                       [_baseTabView.footer endRefreshing];
                                                   }

@@ -103,6 +103,7 @@
  */
 - (void)configerData{
     
+    [MBProgressHUD showMessage:@"请稍后..."];
     @WeakObj(self)
     [[HttpClient sharedClient] getHotRecommendWithPage:self.pageNum
                                                  Count:kPageCount
@@ -112,6 +113,8 @@
                                                
                                                @StrongObj(self)
                                                if (!error) {
+                                                   [MBProgressHUD hideHUD];
+                                                   
                                                    if ([resoutObj[@"data"]isKindOfClass:[NSNull class]]) {
                                                    }else{
                                                        if (Strongself.pageNum == 1) {
@@ -129,7 +132,8 @@
                                                    [_baseTable.header endRefreshing];
                                                    [_baseTable.footer endRefreshing];
                                                }else {
-                                               
+                                                   [MBProgressHUD hideHUD];
+                                                   
                                                }
     }];
 }

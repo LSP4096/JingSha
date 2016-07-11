@@ -342,6 +342,7 @@
  *  获取原始数据
  */
 - (void)configerData{
+    [MBProgressHUD showMessage:@"请稍后..."];
     @WeakObj(self);
     [[HttpClient sharedClient] getLasterRequestWithPage:self.pageNum
                                                   Count:kPageCount
@@ -350,10 +351,13 @@
                                                 
                                                 @StrongObj(self);
                                                 if (!error) {
+                                                    
+                                                    [MBProgressHUD hideHUD];
                                                     [_baseTable.header endRefreshing];
                                                     [_baseTable.footer endRefreshing];
                                                     [Strongself getDataFromResponseObj:resoutObj];
                                                 }else {
+                                                    [MBProgressHUD hideHUD];
                                                     MyLog(@"首页求购信息错误:%@",error);
                                                 }
     }];
