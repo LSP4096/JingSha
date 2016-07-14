@@ -103,7 +103,7 @@
  */
 - (void)configerData{
     
-    [MBProgressHUD showMessage:@"请稍后..."];
+    [MBProgressHUD showMessage:@"请稍后..." toView:self.view];
     @WeakObj(self)
     [[HttpClient sharedClient] getHotRecommendWithPage:self.pageNum
                                                  Count:kPageCount
@@ -111,9 +111,9 @@
                                                KeyWord:self.keyword
                                            Complection:^(id resoutObj, NSError *error) {
                                                
+                                               [MBProgressHUD hideHUDForView:self.view];
                                                @StrongObj(self)
                                                if (!error) {
-                                                   [MBProgressHUD hideHUD];
                                                    
                                                    if ([resoutObj[@"data"]isKindOfClass:[NSNull class]]) {
                                                    }else{
@@ -132,8 +132,7 @@
                                                    [_baseTable.header endRefreshing];
                                                    [_baseTable.footer endRefreshing];
                                                }else {
-                                                   [MBProgressHUD hideHUD];
-                                                   
+                                                  
                                                }
     }];
 }

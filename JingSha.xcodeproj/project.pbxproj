@@ -2683,7 +2683,7 @@
 				TargetAttributes = {
 					813679681BE44E780032C1E8 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = UGKT48GX9N;
+						DevelopmentTeam = 9SJCTXDMG4;
 					};
 				};
 			};
@@ -3295,7 +3295,7 @@
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bocweb.JingSha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bocweb.Jin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3334,7 +3334,7 @@
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bocweb.JingSha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bocweb.Jin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

@@ -21,13 +21,13 @@
     // Do any additional setup after loading the view from its nib.
 
     self.title = @"关于中国纱线网";
-    self.headerImg.layer.cornerRadius = 5;
-    self.headerImg.layer.masksToBounds = YES;
+
+    self.headerImg.image = [self.headerImg.image makeRoundedWithRadius:5.0];
     
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
     // 获取App的版本号
     NSString *appVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
-    self.version.text = str(@"版本号:%@",appVersion);
+    self.version.text = str(@"V:%@",appVersion);
     
     // 获取App的build版本
     NSString *appBuildVersion = [infoDic objectForKey:@"CFBundleVersion"];
