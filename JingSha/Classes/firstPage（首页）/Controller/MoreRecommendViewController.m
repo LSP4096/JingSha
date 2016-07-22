@@ -103,7 +103,6 @@
  */
 - (void)configerData{
     
-    [MBProgressHUD showMessage:@"请稍后..." toView:self.view];
     @WeakObj(self)
     [[HttpClient sharedClient] getHotRecommendWithPage:self.pageNum
                                                  Count:kPageCount
@@ -111,7 +110,6 @@
                                                KeyWord:self.keyword
                                            Complection:^(id resoutObj, NSError *error) {
                                                
-                                               [MBProgressHUD hideHUDForView:self.view];
                                                @StrongObj(self)
                                                if (!error) {
                                                    

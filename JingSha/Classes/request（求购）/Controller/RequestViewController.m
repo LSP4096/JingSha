@@ -342,14 +342,12 @@
  *  获取原始数据
  */
 - (void)configerData{
-    [MBProgressHUD showMessage:@"请稍后..." toView:self.view];
     @WeakObj(self);
     [[HttpClient sharedClient] getLasterRequestWithPage:self.pageNum
                                                   Count:kPageCount
                                                 KeyWord:_keyword
                                             Complection:^(id resoutObj, NSError *error) {
                                                 
-                                                [MBProgressHUD hideHUDForView:self.view];
                                                 @StrongObj(self);
                                                 if (!error) {
                                                     

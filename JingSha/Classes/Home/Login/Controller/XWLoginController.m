@@ -238,27 +238,28 @@
     [[HttpClient sharedClient] getWeChatUserInfoWithOpenId:dict[@"openid"] AccessToken:dict[@"access_token"] Complection:^(id resoutObj, NSError *error) {
         @StrongObj(self);
         if (error) {
+            
             MyLog(@"获取微信用户信息失败 %@",error.localizedDescription);
         }else {
 //            1.首先获取到微信的openID，然后通过openID去后台数据库查询该微信的openID有没有绑定好的手机号.
 //            2.如果没有绑定,首相第一步就是将微信用户的头像、昵称等等基本信息添加到数据库；然后通过手机获取验证码;最后绑定手机号。然后就登录App.
 //            3.如果有，那么后台就返回一个手机号，然后通过手机登录App.
             
-            if (resoutObj[@""]) { //已经注册过的
-                [SingleTon shareSingleTon].userInformation = resoutObj[@"data"];
-                MyLog(@"登录成功， %@, %@", [SingleTon shareSingleTon].userInformation, resoutObj[@"msg"]);
+//            if (resoutObj[@""]) { //已经注册过的
+                [SingleTon shareSingleTon].userInformation = resoutObj;
+                MyLog(@"登录成功， %@", [SingleTon shareSingleTon].userInformation);
                 
-                RootViewController *root = [[RootViewController alloc] init];
-                root.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                
-                [Strongself presentViewController:root animated:YES completion:nil];
-                
+//                RootViewController *root = [[RootViewController alloc] init];
+//                root.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//                
+//                [Strongself presentViewController:root animated:YES completion:nil];
+//                
                 Strongself.navigationController.navigationBarHidden = NO;
-                
-            }else { //第一次注册
-                RegisterViewController *registerVC = [RegisterViewController new];
-                [self presentViewController:registerVC animated:YES completion:nil];
-            }
+            
+//            }else { //第一次注册
+//                RegisterViewController *registerVC = [RegisterViewController new];
+//                [self presentViewController:registerVC animated:YES completion:nil];
+//            }
         }
     }];
 }
@@ -276,5 +277,8 @@
  sex = 1;
  unionid = "oia_PvtPxwJBMXyi1umBBZaoLxv8";
  */
+
+
+
 
 @end
