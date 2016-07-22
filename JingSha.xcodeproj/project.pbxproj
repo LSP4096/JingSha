@@ -270,6 +270,9 @@
 		21F8E6081C29527400C73C9B /* AddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21F8E6061C29527400C73C9B /* AddTableViewCell.xib */; };
 		21F8E60C1C295D8200C73C9B /* MyStandingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F8E60B1C295D8200C73C9B /* MyStandingsTableViewController.m */; };
 		21F8E6101C2964E500C73C9B /* TopHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F8E60F1C2964E500C73C9B /* TopHeaderView.m */; };
+		4C0D903C1D41F70D00C17E83 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D903B1D41F70D00C17E83 /* Me.storyboard */; };
+		4C0D903F1D41F76700C17E83 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D903E1D41F76700C17E83 /* AboutTableViewController.m */; };
+		4C0D90461D42115E00C17E83 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0D90451D42115E00C17E83 /* WebViewController.m */; };
 		4C4664FC1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4664FB1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m */; };
 		4C4664FF1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4664FE1CEC37A9005E31C1 /* AppDelegate+IQKeyBoard.m */; };
 		4C4665021CEC3810005E31C1 /* AppDelegate+Bugle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4665011CEC3810005E31C1 /* AppDelegate+Bugle.m */; };
@@ -314,8 +317,6 @@
 		4C87BE6F1D01606C00A4ACE0 /* WantBuyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */; };
 		4C87BE701D01606C00A4ACE0 /* WantBuyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */; };
 		4CC6FCE91CE5B1CD00BF43DC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */; };
-		4CC7F70A1D25005000E8D1A3 /* AboutYarnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC7F7081D25005000E8D1A3 /* AboutYarnViewController.m */; };
-		4CC7F70B1D25005000E8D1A3 /* AboutYarnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CC7F7091D25005000E8D1A3 /* AboutYarnViewController.xib */; };
 		8106B21C1BF4B4CC005F94C3 /* FirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21A1BF4B4CC005F94C3 /* FirstPageViewController.m */; };
 		8106B2211BF4BDFD005F94C3 /* HeadViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8106B21F1BF4BDFD005F94C3 /* HeadViewTableViewCell.m */; };
 		8106B2221BF4BDFD005F94C3 /* HeadViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8106B2201BF4BDFD005F94C3 /* HeadViewTableViewCell.xib */; };
@@ -879,6 +880,11 @@
 		21F8E60B1C295D8200C73C9B /* MyStandingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyStandingsTableViewController.m; sourceTree = "<group>"; };
 		21F8E60E1C2964E500C73C9B /* TopHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopHeaderView.h; sourceTree = "<group>"; };
 		21F8E60F1C2964E500C73C9B /* TopHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopHeaderView.m; sourceTree = "<group>"; };
+		4C0D903B1D41F70D00C17E83 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		4C0D903D1D41F76700C17E83 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
+		4C0D903E1D41F76700C17E83 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
+		4C0D90441D42115E00C17E83 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		4C0D90451D42115E00C17E83 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		4C4664F91CEC32BD005E31C1 /* AppMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppMacro.h; sourceTree = "<group>"; };
 		4C4664FA1CEC36E5005E31C1 /* AppDelegate+ShareSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ShareSDK.h"; sourceTree = "<group>"; };
 		4C4664FB1CEC36E5005E31C1 /* AppDelegate+ShareSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ShareSDK.m"; sourceTree = "<group>"; };
@@ -961,9 +967,6 @@
 		4C87BE6D1D01606C00A4ACE0 /* WantBuyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WantBuyTableViewCell.m; sourceTree = "<group>"; };
 		4C87BE6E1D01606C00A4ACE0 /* WantBuyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WantBuyTableViewCell.xib; sourceTree = "<group>"; };
 		4CC6FCE81CE5B1CD00BF43DC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		4CC7F7071D25005000E8D1A3 /* AboutYarnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutYarnViewController.h; sourceTree = "<group>"; };
-		4CC7F7081D25005000E8D1A3 /* AboutYarnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutYarnViewController.m; sourceTree = "<group>"; };
-		4CC7F7091D25005000E8D1A3 /* AboutYarnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutYarnViewController.xib; sourceTree = "<group>"; };
 		53500A056D00489A9B19570A /* Pods-JingSha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JingSha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JingSha/Pods-JingSha.debug.xcconfig"; sourceTree = "<group>"; };
 		70D4435EB28B3B92C4A248BB /* Pods-JingSha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JingSha.release.xcconfig"; path = "Pods/Target Support Files/Pods-JingSha/Pods-JingSha.release.xcconfig"; sourceTree = "<group>"; };
 		8106B2191BF4B4CC005F94C3 /* FirstPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstPageViewController.h; sourceTree = "<group>"; };
@@ -2527,9 +2530,11 @@
 		81BA8BA81BF447FF006954D6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4CC7F7071D25005000E8D1A3 /* AboutYarnViewController.h */,
-				4CC7F7081D25005000E8D1A3 /* AboutYarnViewController.m */,
-				4CC7F7091D25005000E8D1A3 /* AboutYarnViewController.xib */,
+				4C0D903B1D41F70D00C17E83 /* Me.storyboard */,
+				4C0D903D1D41F76700C17E83 /* AboutTableViewController.h */,
+				4C0D903E1D41F76700C17E83 /* AboutTableViewController.m */,
+				4C0D90441D42115E00C17E83 /* WebViewController.h */,
+				4C0D90451D42115E00C17E83 /* WebViewController.m */,
 				2109BEB51C4E55DD0065C664 /* XWMemberCenterViewController.h */,
 				2109BEB61C4E55DD0065C664 /* XWMemberCenterViewController.m */,
 				2109BEB71C4E55DD0065C664 /* XWMemberCenterViewController.xib */,
@@ -2683,7 +2688,7 @@
 				TargetAttributes = {
 					813679681BE44E780032C1E8 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = UGKT48GX9N;
+						DevelopmentTeam = 9SJCTXDMG4;
 					};
 				};
 			};
@@ -2796,6 +2801,7 @@
 				4C7C450B1D2213CB00A025DD /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				213CB4D11C26ABF50062233B /* BottomTableViewMyCell.xib in Resources */,
 				211296031C2399690077A0D3 /* PromptViewController.xib in Resources */,
+				4C0D903C1D41F70D00C17E83 /* Me.storyboard in Resources */,
 				818BAD931BE77DE1002B467A /* NoPhotoTableViewCell.xib in Resources */,
 				211054B41C16C5D300C8D62E /* TwoTableViewCell.xib in Resources */,
 				8106B2221BF4BDFD005F94C3 /* HeadViewTableViewCell.xib in Resources */,
@@ -2822,7 +2828,6 @@
 				213E981A1C2971F0005EB63B /* convertHistoryTableViewCell.xib in Resources */,
 				813C93441BF0814B0071B5DB /* SearchTableViewCell.xib in Resources */,
 				81BBC1D71BED916900D1216A /* SearchViewController.xib in Resources */,
-				4CC7F70B1D25005000E8D1A3 /* AboutYarnViewController.xib in Resources */,
 				21EB8E1E1C21445100A84375 /* CitiesTableViewCell.xib in Resources */,
 				818BAD981BE77E00002B467A /* OnePhotoTableViewCell.xib in Resources */,
 				21CA63C71C27DA59003FA159 /* ProductPromptViewController.xib in Resources */,
@@ -3017,7 +3022,6 @@
 				21F84B1F1C76A788001322EE /* HuodongViewController.m in Sources */,
 				211054B31C16C5D300C8D62E /* TwoTableViewCell.m in Sources */,
 				211054961C167F0100C8D62E /* CompanyMessageViewController.m in Sources */,
-				4CC7F70A1D25005000E8D1A3 /* AboutYarnViewController.m in Sources */,
 				211579671C3364D300117428 /* IssueModel.m in Sources */,
 				210937571C0ECC19003CE1CD /* MyQuotedViewController.m in Sources */,
 				81367A321BE4758C0032C1E8 /* MBProgressHUD.m in Sources */,
@@ -3084,6 +3088,7 @@
 				8182C3451BF0B1A9006802C5 /* NewSearchTableViewController.m in Sources */,
 				211054BD1C16CB9000C8D62E /* FourTableViewCell.m in Sources */,
 				4C8301EF1D17B2F70057B319 /* HttpClient+Authentication.m in Sources */,
+				4C0D903F1D41F76700C17E83 /* AboutTableViewController.m in Sources */,
 				81B983591BE706B8005A6CA2 /* SXTitleLable.m in Sources */,
 				21EF8BA51C1134ED00FCFCC4 /* FirstPageSearchViewController.m in Sources */,
 				21EB8E241C21981F00A84375 /* CityModel.m in Sources */,
@@ -3120,6 +3125,7 @@
 				21071F971C2A3E4A00D40D88 /* convertHistoryTableViewCell.m in Sources */,
 				21F8E6071C29527400C73C9B /* AddTableViewCell.m in Sources */,
 				81367A2B1BE4758C0032C1E8 /* NSString+Helper.m in Sources */,
+				4C0D90461D42115E00C17E83 /* WebViewController.m in Sources */,
 				813A7D721BFF0DC700038C1F /* JHTickerView.m in Sources */,
 				81367A3E1BE4758C0032C1E8 /* MyTextView.m in Sources */,
 				21F8E6021C2944D600C73C9B /* AddSupplyTableViewCell.m in Sources */,
@@ -3295,7 +3301,7 @@
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bocweb.JingSha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bocweb.JingSha123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3334,7 +3340,7 @@
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/JingSha/Classes/Others/Library/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bocweb.JingSha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bocweb.JingSha123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

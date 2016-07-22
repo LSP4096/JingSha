@@ -24,7 +24,7 @@
 #import "RealTimeDataViewController.h"
 #import "XWTableViewCell.h"
 
-#import "AboutYarnViewController.h"
+#import "AboutTableViewController.h"
 #import "HttpClient+Authentication.h"
 
 @interface XWMemberCenterViewController () <UITableViewDataSource, UITableViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
@@ -527,7 +527,7 @@ static NSString *const indentifier2 = @"XWCell";
         HelpTableViewController *helpVC = [[HelpTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:helpVC animated:YES];
     }else if (indexPath.section == 2 && indexPath.row == 2){//关于
-        AboutYarnViewController *aboutVC = [AboutYarnViewController new];
+        AboutTableViewController *aboutVC = [[UIStoryboard storyboardWithName:@"Me" bundle:nil]instantiateViewControllerWithIdentifier:@"AboutTableViewController"];
         [self.navigationController pushViewController:aboutVC animated:YES];
     }else if (1 == indexPath.section && 4 == indexPath.row) {//修改密码
         if (KUserImfor != nil) {
