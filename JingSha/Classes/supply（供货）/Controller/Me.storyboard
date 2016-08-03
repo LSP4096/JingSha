@@ -14,9 +14,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="NdV-s7-mer">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="143"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="409"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTI-Au-ltE">
+                                    <rect key="frame" x="8" y="151" width="584" height="77"/>
+                                    <string key="text">      中国纱线网是由杭州精纱信息技术有限公司开发并运营的电子商务平台和技术交流平台，是由中国棉纺织行业协会主办建立的行业网站。汇聚了一批纺织、管理、营销、法律等专业人士，致力于为中国纺织企业提供便捷、有效的专业化服务。                              </string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.chinayarn.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mU-Al-c9h">
+                                    <rect key="frame" x="211" y="283" width="177" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="177" id="7Xe-8J-lSI"/>
+                                        <constraint firstAttribute="height" constant="21" id="IIv-Sz-qXk"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.13725490200000001" green="0.56078431370000004" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官网:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tP2-Eh-raq">
+                                    <rect key="frame" x="166" y="283" width="37" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="37" id="4qI-aM-2Wr"/>
+                                        <constraint firstAttribute="height" constant="21" id="rqF-8m-tfa"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本: 2.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atg-cn-m2h">
                                     <rect key="frame" x="247" y="122" width="106" height="21"/>
                                     <constraints>
@@ -34,83 +61,39 @@
                                         <constraint firstAttribute="height" constant="90" id="ulL-4c-t1t"/>
                                     </constraints>
                                 </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      我们的目标：打造中国最大的纺织贸易服务平台、打造中国最大的纺织技术交流平台、打造中国最大的纺织资讯信息平台" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUn-WG-d72">
+                                    <rect key="frame" x="8" y="236" width="584" height="39"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="UTI-Au-ltE" secondAttribute="trailing" constant="8" id="0po-Zh-8nI"/>
+                                <constraint firstItem="UTI-Au-ltE" firstAttribute="top" secondItem="atg-cn-m2h" secondAttribute="bottom" constant="8" id="3gV-H4-ygK"/>
+                                <constraint firstItem="4mU-Al-c9h" firstAttribute="centerX" secondItem="NdV-s7-mer" secondAttribute="centerX" id="BHb-1x-ulr"/>
+                                <constraint firstItem="dUn-WG-d72" firstAttribute="top" secondItem="UTI-Au-ltE" secondAttribute="bottom" constant="8" id="OcC-CL-feu"/>
+                                <constraint firstItem="dUn-WG-d72" firstAttribute="leading" secondItem="NdV-s7-mer" secondAttribute="leading" constant="8" id="OqF-7G-4Jf"/>
+                                <constraint firstItem="4mU-Al-c9h" firstAttribute="leading" secondItem="tP2-Eh-raq" secondAttribute="trailing" constant="8" id="Ty3-sb-iTc"/>
+                                <constraint firstItem="tP2-Eh-raq" firstAttribute="centerY" secondItem="4mU-Al-c9h" secondAttribute="centerY" id="csx-5v-ZVr"/>
+                                <constraint firstItem="UTI-Au-ltE" firstAttribute="centerX" secondItem="NdV-s7-mer" secondAttribute="centerX" id="d9v-YC-HOe"/>
                                 <constraint firstItem="Jzk-9a-Tnr" firstAttribute="centerX" secondItem="NdV-s7-mer" secondAttribute="centerX" id="fyu-E9-6Lf"/>
                                 <constraint firstItem="atg-cn-m2h" firstAttribute="top" secondItem="Jzk-9a-Tnr" secondAttribute="bottom" constant="8" id="fzA-s4-Rty"/>
                                 <constraint firstItem="atg-cn-m2h" firstAttribute="centerX" secondItem="NdV-s7-mer" secondAttribute="centerX" id="hPm-Pe-Cvu"/>
+                                <constraint firstItem="UTI-Au-ltE" firstAttribute="leading" secondItem="NdV-s7-mer" secondAttribute="leading" constant="8" id="kz9-nd-Hi5"/>
                                 <constraint firstItem="Jzk-9a-Tnr" firstAttribute="top" secondItem="NdV-s7-mer" secondAttribute="top" constant="24" id="rhY-iu-VBF"/>
+                                <constraint firstAttribute="trailing" secondItem="dUn-WG-d72" secondAttribute="trailing" constant="8" id="vLz-rg-eJq"/>
+                                <constraint firstItem="dUn-WG-d72" firstAttribute="centerX" secondItem="NdV-s7-mer" secondAttribute="centerX" id="xe3-Cz-ODq"/>
+                                <constraint firstItem="4mU-Al-c9h" firstAttribute="top" secondItem="dUn-WG-d72" secondAttribute="bottom" constant="8" id="xvN-8B-NHI"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="QlE-nb-BVD">
-                            <rect key="frame" x="0.0" y="493" width="600" height="107"/>
+                            <rect key="frame" x="0.0" y="409" width="600" height="107"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <sections>
-                            <tableViewSection id="BRc-oC-xQG">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="350" id="YHO-Oi-wKe">
-                                        <rect key="frame" x="0.0" y="143" width="600" height="350"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YHO-Oi-wKe" id="Hd5-7U-EcI">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="350"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTI-Au-ltE">
-                                                    <rect key="frame" x="8" y="7" width="584" height="77"/>
-                                                    <string key="text">      中国纱线网是由杭州精纱信息技术有限公司开发并运营的电子商务平台和技术交流平台，是由中国棉纺织行业协会主办建立的行业网站。汇聚了一批纺织、管理、营销、法律等专业人士，致力于为中国纺织企业提供便捷、有效的专业化服务。                              </string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      我们的目标：打造中国最大的纺织贸易服务平台、打造中国最大的纺织技术交流平台、打造中国最大的纺织资讯信息平台" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUn-WG-d72">
-                                                    <rect key="frame" x="8" y="92" width="584" height="39"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.chinayarn.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mU-Al-c9h">
-                                                    <rect key="frame" x="211" y="139" width="177" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="azZ-NN-AIe"/>
-                                                        <constraint firstAttribute="width" constant="177" id="hP8-eC-VaR"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.13725490200000001" green="0.56078431370000004" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官网:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tP2-Eh-raq">
-                                                    <rect key="frame" x="166" y="139" width="37" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="cUg-BY-8ar"/>
-                                                        <constraint firstAttribute="width" constant="37" id="lbu-AQ-3jD"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="tP2-Eh-raq" firstAttribute="centerY" secondItem="4mU-Al-c9h" secondAttribute="centerY" id="94v-j8-4PA"/>
-                                                <constraint firstItem="4mU-Al-c9h" firstAttribute="top" secondItem="dUn-WG-d72" secondAttribute="bottom" constant="8" id="DWa-6i-O5w"/>
-                                                <constraint firstItem="4mU-Al-c9h" firstAttribute="leading" secondItem="tP2-Eh-raq" secondAttribute="trailing" constant="8" id="FAF-id-QAf"/>
-                                                <constraint firstItem="4mU-Al-c9h" firstAttribute="centerX" secondItem="Hd5-7U-EcI" secondAttribute="centerX" id="KIT-zI-GII"/>
-                                                <constraint firstItem="UTI-Au-ltE" firstAttribute="top" secondItem="Hd5-7U-EcI" secondAttribute="top" constant="7" id="NCP-EJ-2Pa"/>
-                                                <constraint firstAttribute="trailing" secondItem="UTI-Au-ltE" secondAttribute="trailing" constant="8" id="PPQ-WS-fqX"/>
-                                                <constraint firstItem="UTI-Au-ltE" firstAttribute="centerX" secondItem="Hd5-7U-EcI" secondAttribute="centerX" id="WMB-fp-2lw"/>
-                                                <constraint firstItem="dUn-WG-d72" firstAttribute="leading" secondItem="Hd5-7U-EcI" secondAttribute="leading" constant="8" id="aUD-0W-cDe"/>
-                                                <constraint firstAttribute="trailing" secondItem="dUn-WG-d72" secondAttribute="trailing" constant="8" id="mu3-Go-xHM"/>
-                                                <constraint firstItem="dUn-WG-d72" firstAttribute="centerX" secondItem="Hd5-7U-EcI" secondAttribute="centerX" id="qDv-GS-56l"/>
-                                                <constraint firstItem="UTI-Au-ltE" firstAttribute="leading" secondItem="Hd5-7U-EcI" secondAttribute="leading" constant="8" id="uKr-WY-vKe"/>
-                                                <constraint firstItem="dUn-WG-d72" firstAttribute="top" secondItem="UTI-Au-ltE" secondAttribute="bottom" constant="8" id="uNo-1h-kBv"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="Rl8-5L-2cP" id="PfC-zv-Gcd"/>
                             <outlet property="delegate" destination="Rl8-5L-2cP" id="xQv-4q-GSK"/>

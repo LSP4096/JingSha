@@ -31,4 +31,9 @@
 - (NSURLSessionDataTask *)getWeChatUserInfoWithOpenId:(NSString *)openId
                                           AccessToken:(NSString *)accesstoken
                                           Complection:(JSONResultBlock)complection;
+
+
+- (NSURLSessionDataTask *)getUserIdWithOpenId:(NSString *)openid
+                                  Complection:(JSONResultBlock)complection;
+
 @end

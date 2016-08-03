@@ -20,7 +20,19 @@
 - (NSURLSessionDataTask *)getWeChatUserInfoWithOpenId:(NSString *)openId AccessToken:(NSString *)accesstoken Complection:(JSONResultBlock)complection {
     NSMutableDictionary *params = @{@"openid":openId ,@"access_token":accesstoken}.mutableCopy;
     NSDictionary *allParams = [HttpClient jointParamsWithDict:params];
-    NSURLSessionDataTask *task = [self postWithRequestName:@"用户微信登录" RoutePath:@"login/getweixin" params:allParams block:complection];
+    NSURLSessionDataTask *task = [self postWithRequestName:@"用户微信登录" RoutePath:@"https://api.weixin.qq.com/sns/userinfo?" params:allParams block:complection];
+    return task;
+}
+
+- (NSURLSessionDataTask *)getUserIdWithOpenId:(NSString *)openid
+                                  Complection:(JSONResultBlock)complection {
+    
+    NSMutableDictionary *params = nil;
+    if (openid) {
+        params = @{@"openid":openid }.mutableCopy;
+    }
+    NSDictionary *allParams = [HttpClient jointParamsWithDict:params];
+    NSURLSessionDataTask *task = [self postWithRequestName:@"获取用户ID" RoutePath:@"login/getweixin" params:allParams block:complection];
     return task;
 }
 

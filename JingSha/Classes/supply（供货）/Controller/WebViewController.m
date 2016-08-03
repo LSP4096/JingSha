@@ -24,7 +24,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.myWebView loadRequest:request];
     self.myWebView.delegate = self;
-    [MBProgressHUD showText:@"加载网页中，请稍后..."];
+    [MBProgressHUD showText:@"加载中，请稍后"];
 }
 
 - (void)didReceiveMemoryWarning {

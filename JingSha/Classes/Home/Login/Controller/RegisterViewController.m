@@ -202,6 +202,10 @@
             if (![resoutObj[@"return_code"] integerValue]) {
                 [SVProgressHUD showSuccessWithStatus:@"注册成功"];
                 //退回登录界面
+                MyLog(@"%@",resoutObj);
+                [[SingleTon shareSingleTon].userInformation setValue:resoutObj[@"userid"] forKey:@"userid"];
+                [[SingleTon shareSingleTon].userInformation setValue:resoutObj[@"tel"] forKey:@"tel"];
+                
                 [Strongself backLoginVC:nil];
                 return ;
             }

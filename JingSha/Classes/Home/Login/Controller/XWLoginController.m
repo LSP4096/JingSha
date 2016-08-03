@@ -31,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLoginBtn];
-
 //    [KeyboardToolBar registerKeyboardToolBar:_userAccountTF];
 //    [KeyboardToolBar registerKeyboardToolBar:_pssWordTF];
     
@@ -190,6 +189,10 @@
         req.openID = kAuthOpenID;
 
         [WXApi sendReq:req];
+        
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"openid"]) {
+//            [self getUserIdWith];
+        }
     }
     else {
         [self setupAlertController];
@@ -233,7 +236,7 @@
     
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXSaveToken"];
     
-    //改成后台数据请求
+    // https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID   http://202.91.244.52/index.php/login/getweixin
     @WeakObj(self);
     [[HttpClient sharedClient] getWeChatUserInfoWithOpenId:dict[@"openid"] AccessToken:dict[@"access_token"] Complection:^(id resoutObj, NSError *error) {
         @StrongObj(self);
@@ -241,42 +244,71 @@
             
             MyLog(@"获取微信用户信息失败 %@",error.localizedDescription);
         }else {
-//            1.首先获取到微信的openID，然后通过openID去后台数据库查询该微信的openID有没有绑定好的手机号.
-//            2.如果没有绑定,首相第一步就是将微信用户的头像、昵称等等基本信息添加到数据库；然后通过手机获取验证码;最后绑定手机号。然后就登录App.
-//            3.如果有，那么后台就返回一个手机号，然后通过手机登录App.
             
-//            if (resoutObj[@""]) { //已经注册过的
-                [SingleTon shareSingleTon].userInformation = resoutObj;
-                MyLog(@"登录成功， %@", [SingleTon shareSingleTon].userInformation);
-                
-//                RootViewController *root = [[RootViewController alloc] init];
-//                root.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//                
-//                [Strongself presentViewController:root animated:YES completion:nil];
-//                
+            [[NSUserDefaults standardUserDefaults] setObject:resoutObj[@"openid"] forKey:@"openid"];
+            MyLog(@"登录成功， %@", resoutObj);
+            NSDictionary *dic = resoutObj;
+            
+            NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+            [dict setObject:dic[@"nickname"] forKey:@"username"];
+            [dict setObject:dic[@"headimgurl"] forKey:@"photo"];
+            [dict setObject:dic[@"sex"] forKey:@"sex"];
+//            []
+            [Strongself getUserIdWithOpenid:resoutObj[@"openid"]];
+        }
+    }];
+}
+/*
+ city = Hangzhou;language = en;country = CN; openid = oN1wct79pSXFjCJGzhQMnw3uZFak; province = Zhejiang; unionid = "oia_PvtPxwJBMXyi1umBBZaoLxv8";
+ privilege =     (
+ );
+ headimgurl = "http://wx.qlogo.cn/mmopen/thfLhcllFYoPEFlLSDoZrpfBicPIgjKIjCZeATicXX5q6pPicVUK3SXGeCZ0fS80BVGIiccCm7T3fgO0K8VDYweZfg/0";
+ nickname = "丷戈";
+ sex = 1;
+
+ 
+addr = "请编辑公司地址";gongsi = "请编辑的公司名字";
+username = "丷戈";
+photo = "http://202.91.244.52/upload/1776/14675974123048.jpg";
+sex = 1;
+tel = 13456893451;
+userid = 1776;
+ */
+
+//
+- (void)getUserIdWithOpenid:(NSString *)openid {
+    
+    MyLog(@"%@",openid);
+    
+    @WeakObj(self);
+    [[HttpClient sharedClient] getUserIdWithOpenId:openid Complection:^(id resoutObj, NSError *error) {
+        @StrongObj(self);
+        if (error) {
+            
+            MyLog(@"获取微信用户ID失败 %@",error.localizedDescription);
+        }else {
+            
+            NSDictionary *dic = resoutObj[@"data"];
+            MyLog(@"获取微信用户ID， %@", dic);
+            
+            if ([resoutObj[@"return_code"] isEqual: @"1"]) { //已经注册过的
+//                [dict setObject:dic[@"userid"] forKey:@"userid"];
+//                [SingleTon shareSingleTon].userInformation = dict;
+
+                RootViewController *root = [[RootViewController alloc] init];
+                root.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                [Strongself presentViewController:root animated:YES completion:nil];
                 Strongself.navigationController.navigationBarHidden = NO;
-            
-//            }else { //第一次注册
-//                RegisterViewController *registerVC = [RegisterViewController new];
-//                [self presentViewController:registerVC animated:YES completion:nil];
-//            }
+            }else { //第一次注册
+                RegisterViewController *registerVC = [RegisterViewController new];
+                [Strongself presentViewController:registerVC animated:YES completion:nil];
+            }
         }
     }];
 }
 
-/*
- city = Hangzhou;
- country = CN;
- headimgurl = "http://wx.qlogo.cn/mmopen/thfLhcllFYoPEFlLSDoZrpfBicPIgjKIjCZeATicXX5q6pPicVUK3SXGeCZ0fS80BVGIiccCm7T3fgO0K8VDYweZfg/0";
- language = en;
- nickname = "丷戈";
- openid = oN1wct79pSXFjCJGzhQMnw3uZFak;
- privilege =     (
- );
- province = Zhejiang;
- sex = 1;
- unionid = "oia_PvtPxwJBMXyi1umBBZaoLxv8";
- */
+
+
 
 
 

@@ -55,14 +55,17 @@
                                        Complection:(JSONResultBlock )complection {
 
     NSMutableDictionary *params = [NSMutableDictionary new];
+    NSDictionary *dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"WXSaveToken"];
     [params setObject:accountName forKey:@"tel"];
     [params setObject:password forKey:@"password"];
     [params setObject:name forKey:@"username"];
     [params setObject:code forKey:@"code"];
+    MyLog(@"%@,%@",dic[@"openid"],dic);
     
+    [params setObject:@"openid" forKey:dic[@"openid"]];
     NSDictionary *paramAll = [HttpClient jointParamsWithDict:params];
     
-    NSURLSessionDataTask *task = [self postWithRequestName:@"用户注册" RoutePath:@"userinfo/reg" params:paramAll block:complection];
+    NSURLSessionDataTask *task = [self postWithRequestName:@"用户注册" RoutePath:@"userinfo/reg_weixin" params:paramAll block:complection];
     return task;
 }
 
