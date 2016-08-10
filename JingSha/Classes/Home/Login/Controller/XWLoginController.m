@@ -218,8 +218,7 @@
             MyLog(@"获取微信token失败%@",error.localizedDescription);
         }else {
             MyLog(@"--微信token--%@",resoutObj);
-            
-            
+
             [[NSUserDefaults standardUserDefaults] setObject:resoutObj forKey:@"WXSaveToken"];
             [Strongself saveTokenAndRequireWXInfo];
         }
@@ -255,15 +254,11 @@
             [dict setObject:dic[@"nickname"] forKey:@"username"];
             [dict setObject:dic[@"headimgurl"] forKey:@"photo"];
             [dict setObject:dic[@"sex"] forKey:@"sex"];
-            
-            MyLog(@"%@",dic[@"sex"]);
-            
             [dict setObject:@"请编辑公司地址" forKey:@"addr"];
             [dict setObject:@"请编辑的公司名字" forKey:@"gongsi"];
             
             [SingleTon shareSingleTon].userInformation = dict;
-            
-//            []
+
             [Strongself getUserIdWithOpenid:resoutObj[@"openid"]];
         }
     }];
@@ -277,7 +272,8 @@
  sex = 1;
 
  
-addr = "请编辑公司地址";gongsi = "请编辑的公司名字";
+addr = "请编辑公司地址";
+gongsi = "请编辑的公司名字";
 username = "丷戈";
 photo = "http://202.91.244.52/upload/1776/14675974123048.jpg";
 sex = 1;
@@ -302,7 +298,9 @@ userid = 1776;
             MyLog(@"获取用户ID， %@", dic);
             
             if ([resoutObj[@"return_code"] isEqual:@(1)]) { //已经注册过的
-
+                //用户信息？？
+                
+                
                 [[SingleTon shareSingleTon].userInformation setValue:dic[@"id"] forKey:@"userid"];
                 [[SingleTon shareSingleTon].userInformation setValue:dic[@"tel"] forKey:@"tel"];
             
@@ -319,11 +317,5 @@ userid = 1776;
         }
     }];
 }
-
-
-
-
-
-
 
 @end
