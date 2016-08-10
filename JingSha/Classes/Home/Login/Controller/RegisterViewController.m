@@ -12,6 +12,7 @@
 #import "MZFormSheetController.h"
 #import "SSKeychain.h"
 #import "HttpClient+Authentication.h"
+#import "RootViewController.h"
 
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UIView *nameBGView;
@@ -58,8 +59,8 @@
 //配置输入框
 - (void)contifureTF {
     NSDictionary *weixinDic = [SingleTon shareSingleTon].userInformation;
-    if (weixinDic) {
-        self.nameTF.text = weixinDic[@"nickname"];
+    if (weixinDic[@"username"]) {
+        self.nameTF.text = weixinDic[@"username"];
     }
     
     [self configureTexfiled:self.nameTF iamgeName:@"注册_03" bgView:self.nameBGView];
@@ -202,11 +203,24 @@
             if (![resoutObj[@"return_code"] integerValue]) {
                 [SVProgressHUD showSuccessWithStatus:@"注册成功"];
                 //退回登录界面
-                MyLog(@"%@",resoutObj);
-                [[SingleTon shareSingleTon].userInformation setValue:resoutObj[@"userid"] forKey:@"userid"];
-                [[SingleTon shareSingleTon].userInformation setValue:resoutObj[@"tel"] forKey:@"tel"];
+                MyLog(@"注册的回调-%@",resoutObj);
                 
-                [Strongself backLoginVC:nil];
+                if ([SingleTon shareSingleTon].userInformation[@"username"]) {
+                    
+                    [[SingleTon shareSingleTon].userInformation setValue:resoutObj[@"data"][@"userid"] forKey:@"userid"];
+                    [[SingleTon shareSingleTon].userInformation setValue:resoutObj[@"data"][@"tel"] forKey:@"tel"];
+                    
+                    MyLog(@"%@",[SingleTon shareSingleTon].userInformation);
+                    
+                    RootViewController *root = [[RootViewController alloc] init];
+                    root.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                    [Strongself presentViewController:root animated:YES completion:nil];
+                    Strongself.navigationController.navigationBarHidden = NO;
+                    
+                }else {
+                    [Strongself backLoginVC:nil];
+                }
+                
                 return ;
             }
             [Strongself showAlertViewWithTitle:resoutObj[@"msg"]];
@@ -253,6 +267,7 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alertView show];
 }
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([alertView.message isEqualToString:@"注册成功"]) {
         MyLog(@"buttonIndex:%zd", buttonIndex);//buttonIndex表示用户点击按钮的下标

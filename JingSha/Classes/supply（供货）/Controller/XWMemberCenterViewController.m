@@ -322,7 +322,14 @@ static NSString *const indentifier2 = @"XWCell";
 #pragma mark - 编辑个人信息
 - (IBAction)handleEdit:(UIButton *)sender {
     NSDictionary *userInfoDic = KUserImfor;
-    if (![userInfoDic isKindOfClass:[NSDictionary class]] || ![userInfoDic[@"userid"] isKindOfClass:[NSString class]]) {
+    NSString *userid;
+    MyLog(@"%@",userInfoDic);
+    MyLog(@"%d",![userInfoDic isKindOfClass:[NSDictionary class]]);
+    MyLog(@"%d",![userInfoDic[@"userid"] isKindOfClass:[NSString class]]);
+    if (userInfoDic[@"userid"]) {
+        userid = [NSString stringWithFormat:@"%@",userInfoDic[@"userid"]];
+    }
+    if (![userInfoDic isKindOfClass:[NSDictionary class]] || !userid) {
         XWLoginController *loginVC = [[XWLoginController alloc] initWithNibName:@"XWLoginController" bundle:nil];
         loginVC.fd_prefersNavigationBarHidden = YES;
         [self.navigationController pushViewController:loginVC animated:YES];
@@ -339,7 +346,12 @@ static NSString *const indentifier2 = @"XWCell";
         @StrongObj(self)
         if (!error) {
             MemberEditViewController *editVC = [[MemberEditViewController alloc] initWithNibName:@"MemberEditViewController" bundle:nil];
-            editVC.sendDic = resoutObj[@"data"];
+            NSMutableDictionary *muDic = [NSMutableDictionary dictionaryWithDictionary:resoutObj[@"data"]];
+            if ([SingleTon shareSingleTon].userInformation[@"photo"]) {
+                [muDic setValue:[SingleTon shareSingleTon].userInformation[@"photo"] forKey:@"photo"];
+            }
+            editVC.sendDic = muDic;
+            
             [Strongself.navigationController pushViewController:editVC animated:YES];
         }else {
         

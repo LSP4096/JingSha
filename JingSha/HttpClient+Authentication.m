@@ -7,6 +7,7 @@
 //
 
 #import "HttpClient+Authentication.h"
+#import <SSKeychain.h>
 
 @implementation HttpClient (Authentication)
 
@@ -62,7 +63,7 @@
     [params setObject:code forKey:@"code"];
     MyLog(@"%@,%@",dic[@"openid"],dic);
     
-    [params setObject:@"openid" forKey:dic[@"openid"]];
+    [params setObject:dic[@"openid"] forKey:@"openid"];
     NSDictionary *paramAll = [HttpClient jointParamsWithDict:params];
     
     NSURLSessionDataTask *task = [self postWithRequestName:@"用户注册" RoutePath:@"userinfo/reg_weixin" params:paramAll block:complection];
@@ -128,7 +129,7 @@
 - (NSURLSessionDataTask *)postUpdataWithImagePathList:(NSArray *)imageList Name:(NSString *)name Sex:(NSString *)sex Compony:(NSString *)compony addr:(NSString *)addr Block:(JSONResultBlock)complection{
     
     NSMutableDictionary *params = @{@"userid":KUserImfor[@"userid"],
-                                    @"passWord":[SingleTon shareSingleTon].userPassWoed,
+                                    @"passWord":[SSKeychain passwordForService:kServiceName account:kLoginStateKey],
                                     @"username":name,
                                     @"sex":sex,
                                     @"gongsi":compony,

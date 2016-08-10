@@ -218,6 +218,8 @@
             MyLog(@"获取微信token失败%@",error.localizedDescription);
         }else {
             MyLog(@"--微信token--%@",resoutObj);
+            
+            
             [[NSUserDefaults standardUserDefaults] setObject:resoutObj forKey:@"WXSaveToken"];
             [Strongself saveTokenAndRequireWXInfo];
         }
@@ -253,6 +255,14 @@
             [dict setObject:dic[@"nickname"] forKey:@"username"];
             [dict setObject:dic[@"headimgurl"] forKey:@"photo"];
             [dict setObject:dic[@"sex"] forKey:@"sex"];
+            
+            MyLog(@"%@",dic[@"sex"]);
+            
+            [dict setObject:@"请编辑公司地址" forKey:@"addr"];
+            [dict setObject:@"请编辑的公司名字" forKey:@"gongsi"];
+            
+            [SingleTon shareSingleTon].userInformation = dict;
+            
 //            []
             [Strongself getUserIdWithOpenid:resoutObj[@"openid"]];
         }
@@ -275,7 +285,7 @@ tel = 13456893451;
 userid = 1776;
  */
 
-//
+//后台传过来userId tel
 - (void)getUserIdWithOpenid:(NSString *)openid {
     
     MyLog(@"%@",openid);
@@ -285,21 +295,24 @@ userid = 1776;
         @StrongObj(self);
         if (error) {
             
-            MyLog(@"获取微信用户ID失败 %@",error.localizedDescription);
+            MyLog(@"获取用户ID失败 %@",error.localizedDescription);
         }else {
             
             NSDictionary *dic = resoutObj[@"data"];
-            MyLog(@"获取微信用户ID， %@", dic);
+            MyLog(@"获取用户ID， %@", dic);
             
-            if ([resoutObj[@"return_code"] isEqual: @"1"]) { //已经注册过的
-//                [dict setObject:dic[@"userid"] forKey:@"userid"];
-//                [SingleTon shareSingleTon].userInformation = dict;
+            if ([resoutObj[@"return_code"] isEqual:@(1)]) { //已经注册过的
 
+                [[SingleTon shareSingleTon].userInformation setValue:dic[@"id"] forKey:@"userid"];
+                [[SingleTon shareSingleTon].userInformation setValue:dic[@"tel"] forKey:@"tel"];
+            
                 RootViewController *root = [[RootViewController alloc] init];
                 root.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
                 [Strongself presentViewController:root animated:YES completion:nil];
                 Strongself.navigationController.navigationBarHidden = NO;
             }else { //第一次注册
+                
+                MyLog(@"%@",resoutObj[@"return_code"]);
                 RegisterViewController *registerVC = [RegisterViewController new];
                 [Strongself presentViewController:registerVC animated:YES completion:nil];
             }
