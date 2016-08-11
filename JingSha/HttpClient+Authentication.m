@@ -129,7 +129,6 @@
 - (NSURLSessionDataTask *)postUpdataWithImagePathList:(NSArray *)imageList Name:(NSString *)name Sex:(NSString *)sex Compony:(NSString *)compony addr:(NSString *)addr Block:(JSONResultBlock)complection{
     
     NSMutableDictionary *params = @{@"userid":KUserImfor[@"userid"],
-                                    @"passWord":[SSKeychain passwordForService:kServiceName account:kLoginStateKey],
                                     @"username":name,
                                     @"sex":sex,
                                     @"gongsi":compony,

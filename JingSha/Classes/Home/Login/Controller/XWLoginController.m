@@ -34,8 +34,6 @@
 //    [KeyboardToolBar registerKeyboardToolBar:_userAccountTF];
 //    [KeyboardToolBar registerKeyboardToolBar:_pssWordTF];
     
-//    [self.WXBtn setCornerBackgroundColor:[UIColor whiteColor] withRadius:_WXBtn.frame.size.height / 2 forState:UIControlStateNormal];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(WXLogin:) name:@"WXLoginSuccess" object:nil];
     
 }
@@ -295,15 +293,11 @@ userid = 1776;
         }else {
             
             NSDictionary *dic = resoutObj[@"data"];
-            MyLog(@"获取用户ID， %@", dic);
+            MyLog(@"获取用户ID， %@", resoutObj);
             
             if ([resoutObj[@"return_code"] isEqual:@(1)]) { //已经注册过的
-                //用户信息？？
-                
-                
-                [[SingleTon shareSingleTon].userInformation setValue:dic[@"id"] forKey:@"userid"];
-                [[SingleTon shareSingleTon].userInformation setValue:dic[@"tel"] forKey:@"tel"];
-            
+                //用户信息
+                KUserImfor = dic;
                 RootViewController *root = [[RootViewController alloc] init];
                 root.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
                 [Strongself presentViewController:root animated:YES completion:nil];

@@ -150,6 +150,7 @@ static NSString *const indentifier2 = @"XWCell";
         return;
     }
     self.contentTableView.tableFooterView.hidden = NO;
+    MyLog(@"%@",KUserImfor);
     if ([KUserImfor[@"photo"] isKindOfClass:[NSNull class]]) {
         self.avartView.image = [UIImage imageNamed:@"tab-club"];
     }else{
@@ -455,7 +456,7 @@ static NSString *const indentifier2 = @"XWCell";
     NSString *currentTime = [formatter stringFromDate:[NSDate date]];
     
     NSArray *imageArray = @[@[@"memlog_07", @"memlog_19", @"memlog_21"], @[@"memlog_23", @"memlog_25", @"memlog_28", @"memlog_31", @"memlog_33", @"memlog_36"], @[@"memlog_39", @"memlog_43",@"修改资料_03"]];
-    NSArray *titleArray = @[@[@"企业等级", @"企业访问", @"产品访问"], @[@"企业管理", @"我的积分", @"我的评论", @"我的收藏", @"修改密码", @"清除缓存"], @[@"帮助与反馈", @"联系客服",@"关于纱线网"]];
+    NSArray *titleArray = @[@[@"企业等级", @"企业访问", @"产品访问"], @[@"企业管理", @"我的积分", @"我的评论", @"我的收藏", @"修改密码", @"清除缓存"], @[@"帮助与反馈", @"联系客服",@"关于我们"]];
     NSArray *detailArray = @[@[[NSString stringWithFormat:@"实时数据(%@更新)", currentTime],companyVisistCount, productVisitCount],@[@"管理企业、产品、求购信息",@"积分换购享不停", @"评价消息一手掌握", @"信息收藏", @"信息安全轻松搞定", strCache], @[@"帮助反馈可以获得积分啦", @"0571-57579788",@"版本信息"]];
     if (indexPath.section == 0 && indexPath.row == 0) {
         XWTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:indentifier2 forIndexPath:indexPath];
@@ -669,7 +670,6 @@ static NSString *const indentifier2 = @"XWCell";
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint offset = scrollView.contentOffset;
-    MyLog(@"offset****%f",offset.y + 20);
     if (offset.y + 20< 0) {
         //背景图
         CGRect rect = self.headerView.frame;
